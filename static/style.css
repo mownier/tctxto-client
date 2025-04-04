@@ -1,0 +1,127 @@
+/* Simple Dark Theme CSS */
+
+body {
+    background-color: #121212;
+    /* Dark background */
+    color: #e0e0e0;
+    /* Light text color */
+    font-family: sans-serif;
+    /* Basic font */
+    line-height: 1.6;
+}
+
+a {
+    color: #8ab4f8;
+    /* Light blue link color */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    /* Underline on hover */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #bb86fc;
+    /* Purple heading color */
+}
+
+hr {
+    border-color: #333;
+    /* Darker horizontal rule */
+}
+
+pre,
+code {
+    background-color: #282828;
+    /* Darker background for code blocks */
+    color: #d4d4d4;
+    /* Light code text */
+    padding: 5px 10px;
+    border-radius: 3px;
+    overflow-x: auto;
+    /* Enable horizontal scrolling for long code lines */
+}
+
+input,
+textarea,
+select,
+button {
+    background-color: #333;
+    /* Darker input background */
+    color: #e0e0e0;
+    /* Light input text */
+    border: 1px solid #555;
+    /* Darker border */
+    padding: 5px;
+    border-radius: 3px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    /* Remove default focus outline */
+    border-color: #8ab4f8;
+    /* Highlighted border on focus */
+}
+
+button {
+    background-color: #bb86fc;
+    /* Purple button background */
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #9c68e7;
+    /* Slightly lighter purple on hover */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #333;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #282828;
+}
+
+/* Optional: Add scrollbar styling for webkit browsers */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #121212;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #777;
+}
+
+/* Optional: Add scrollbar styling for Firefox */
+html {
+    scrollbar-width: thin;
+    /* Firefox */
+    scrollbar-color: #555 #121212;
+    /* Firefox */
+}
