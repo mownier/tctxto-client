@@ -11,5 +11,8 @@
     "Player name should not be the same": "Hindi dapat magkapareho ang pangalan ng manlalaro",
     "Game": "Laro",
     "Join Lobby": "Sumali sa Lobby",
-    "Welcome": "Maligayang pagdating"
+    "Welcome": "Maligayang pagdating",
+    "Please enter lobby id": "Pakilagay ang lobby id",
+    "Enter lobby id": "Ilagay ang lobby id",
+    "Join": "Sumali"
 }

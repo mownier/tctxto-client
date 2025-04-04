@@ -5,3 +5,5 @@ export const MAIN_ROOT_CONTENT_ID = 'main-root-content'
 
 export const CREATE_LOBBY_BUTTON_ID = "create-lobby-btn"
 export const JOIN_LOBBY_BUTTON_ID = "join-lobby-btn"
+
+export const LOBBY_ID_INPUT_ID = "lobby-id-input"

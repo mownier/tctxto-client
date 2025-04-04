@@ -11,5 +11,8 @@
     "Player name should not be the same": "Player name should not be the same",
     "Game": "Game",
     "Join Lobby": "Join Lobby",
-    "Welcome": "Welcome"
+    "Welcome": "Welcome",
+    "Please enter lobby id": "Please enter lobby id",
+    "Enter lobby id": "Enter lobby id",
+    "Join": "Join"
 }
