@@ -121,3 +121,7 @@ __pycache__/ #python cache
 
 # Yalc files
 .yalc/
+
+# Custom
+*node_modules*
+*dist*
