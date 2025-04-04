@@ -2,6 +2,16 @@ import { LOCALES_DIR } from "../constants/directories"
 
 let translations: Record<string, string> = {}
 
+function getBrowserLocale(): string {
+    if (typeof navigator !== 'undefined') {
+        return navigator.languages && navigator.languages.length
+            ? navigator.languages[0]
+            : navigator.language || 'en-US'; // Use navigator.language, and default to 'en-US'
+    } else {
+        return 'en-US'; // Handle server-side rendering or non-browser environments
+    }
+}
+
 async function loadTranslations(locale: string): Promise<Record<string, string>> {
     try {
         const response = await fetch(`${LOCALES_DIR}${locale}.json`)
@@ -17,6 +27,11 @@ async function loadTranslations(locale: string): Promise<Record<string, string>>
 
 export async function setLocale(locale: string): Promise<void> {
     translations = await loadTranslations(locale)
+}
+
+export async function setLocaleAutomatically(): Promise<void> {
+    const locale = getBrowserLocale()
+    await setLocale(locale)
 }
 
 export async function i18n(key: string): Promise<string> {
