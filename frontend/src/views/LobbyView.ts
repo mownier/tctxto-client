@@ -66,6 +66,6 @@ export class LobbyView {
         this.titleHeading.textContent = `${await i18n("Lobby")} ${this.lobbyId}`
         this.player1Input.placeholder = await i18n("Enter player 1")
         this.player2Input.placeholder = await i18n("Enter player 2")
-        this.createGameButton.textContent = await i18n("Create game")
+        this.createGameButton.textContent = await i18n("Create Game")
     }
 }
