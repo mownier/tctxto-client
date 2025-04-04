@@ -1,3 +1,5 @@
+import * as ElementIds from "../constants/element-ids"
+
 export class MainRootView {
     constructor(containerId: string) {
         const container = document.getElementById(containerId) as HTMLElement
@@ -7,15 +9,15 @@ export class MainRootView {
         }
 
         const header = document.createElement('div')
-        header.id = "main-root-header"
+        header.id = ElementIds.MAIN_ROOT_HEADER_ID
         container.appendChild(header)
 
         const content = document.createElement('div')
-        content.id = "main-root-content"
+        content.id = ElementIds.MAIN_ROOT_CONTENT_ID
         container.appendChild(content)
 
         const footer = document.createElement('div')
-        footer.id= "main-root-footer"
+        footer.id = ElementIds.MAIN_ROOT_FOOTER_ID
         container.appendChild(footer)
     }
 }

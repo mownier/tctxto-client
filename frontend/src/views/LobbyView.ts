@@ -1,4 +1,5 @@
-import { i18n } from './../localization/localization'
+import { i18n } from "./../localization/localization"
+import * as ElementIds from "../constants/element-ids"
 
 export class LobbyView {
     private container: HTMLElement
@@ -22,12 +23,15 @@ export class LobbyView {
         this.container.append(this.titleHeading)
 
         this.player1Input = document.createElement('input')
+        this.player1Input.id = ElementIds.PLAYER_1_NAME_INPUT_ID
         this.container.append(this.player1Input)
 
         this.player2Input = document.createElement('input')
+        this.player1Input.id = ElementIds.PLAYER_2_NAME_INPUT_ID
         this.container.append(this.player2Input)
 
         this.createGameButton = document.createElement('button')
+        this.createGameButton.id = ElementIds.CREATE_GAME_BUTTON_ID
         this.container.append(this.createGameButton)
 
         this.lobbyId = lobbyId
