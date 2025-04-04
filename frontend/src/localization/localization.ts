@@ -1,10 +1,10 @@
+import { LOCALES_DIR } from "../constants/directories"
 
 let translations: Record<string, string> = {}
-let localesDir = ''
 
 async function loadTranslations(locale: string): Promise<Record<string, string>> {
     try {
-        const response = await fetch(`${localesDir}${locale}.json`)
+        const response = await fetch(`${LOCALES_DIR}${locale}.json`)
         if (!response.ok) {
             throw new Error(`failed to load translations for ${locale}`)
         }
@@ -13,10 +13,6 @@ async function loadTranslations(locale: string): Promise<Record<string, string>>
         console.error("error loading translations:", error)
         return {}
     }
-}
-
-export function setLocalesDirectory(dir: string) {
-    localesDir = dir
 }
 
 export async function setLocale(locale: string): Promise<void> {
