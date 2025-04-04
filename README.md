@@ -23,6 +23,11 @@ $ npm run build
 
 # For copying json, and other files
 $ npm install copy-webpack-plugin --save-dev
+
+# For gRPC
+$ npm install @grpc/grpc-js @grpc/proto-loader google-protobuf
+$ npm install -D @types/google-protobuf
+$ npm install -D grpc-tools
 ```
 
 ## How to run
@@ -48,4 +53,29 @@ $ make build-all
 # Default is 2323
 $ export TCTXTO_PORT=2424
 $ make run
+```
+
+## How to generate js files from proto
+
+```
+$ cd frontend
+
+# See script in package.json
+$ npm run generate-proto
+
+# You have to create tctxto_pb.d.ts manually
+# If proto file is updated, need to adjust the d.ts file
+
+# Install stream-browserify
+npm install stream-browserify buffer util --save-dev
+
+npm install stream-browserify browserify-zlib util url process path-browserify os-browserify stream-http
+
+npm install https-browserify
+
+npm install net-browserify
+
+npm install tls-browserify
+
+npm install querystring-es3 assert buffer crypto-browserify
 ```
