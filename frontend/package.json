@@ -1,9 +1,12 @@
 {
   "dependencies": {
+    "@grpc/grpc-js": "^1.13.2",
+    "google-protobuf": "^3.21.4",
     "typescript": "^5.8.2"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^13.0.0",
+    "grpc-tools": "^1.13.0",
     "terser-webpack-plugin": "^5.3.14",
     "ts-loader": "^9.5.2",
     "webpack": "^5.98.0",
