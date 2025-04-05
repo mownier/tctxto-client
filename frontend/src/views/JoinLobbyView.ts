@@ -39,11 +39,11 @@ export class JoinLobbyView {
         this.joinButton.addEventListener('click', () => {
             const playerName = this.playerNameInput.value
             const lobbyId = this.lobbyIdInput.value
-            if (lobbyId) {
+            if (!lobbyId) {
                 this.showAlert(i18n("Please enter lobby id"))
                 return
             }
-            if (playerName) {
+            if (!playerName) {
                 this.showAlert(i18n("Please enter a player name"))
                 return
             }
