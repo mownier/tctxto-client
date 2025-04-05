@@ -4,13 +4,14 @@ import * as ElementIds from "../constants/element-ids"
 export class LobbyView {
     private container: HTMLElement
     private titleHeading: HTMLHeadingElement
+    private playerNameHeading: HTMLHeadingElement
     private player1Input: HTMLInputElement
     private player2Input: HTMLInputElement
     private createGameButton: HTMLButtonElement
     private lobbyId: string
     private onCreateGame: (player1: string, player2: string) => void
 
-    constructor(containerId: string, lobbyId: string, onCreateGame: (player1: string, player2: string) => void) {
+    constructor(containerId: string, lobbyId: string, playerName: string, onCreateGame: (player1: string, player2: string) => void) {
         this.container = document.getElementById(containerId) as HTMLElement
         
         if (!this.container) {
@@ -21,6 +22,10 @@ export class LobbyView {
 
         this.titleHeading = document.createElement('h1')
         this.container.append(this.titleHeading)
+
+        this.playerNameHeading = document.createElement('h2')
+        this.playerNameHeading.textContent = playerName
+        this.container.append(this.playerNameHeading)
 
         this.player1Input = document.createElement('input')
         this.player1Input.id = ElementIds.PLAYER_1_NAME_INPUT_ID

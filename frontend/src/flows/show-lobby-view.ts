@@ -11,7 +11,7 @@ export function showLobbyView(): LobbyView {
     } catch (error) {
         throw error
     }
-    return new LobbyView(ElementIds.MAIN_ROOT_CONTENT_ID, session.lobby.id, (player1: string, player2: string) => {
+    return new LobbyView(ElementIds.MAIN_ROOT_CONTENT_ID, session.lobby.id, session.player.name, (player1: string, player2: string) => {
         const gameId = "1"
         showGameView(gameId)
     })
