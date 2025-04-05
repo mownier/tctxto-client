@@ -4,10 +4,11 @@ import * as ElementIds from "../constants/element-ids"
 export class JoinLobbyView {
     private titleHeading: HTMLHeadingElement
     private lobbyIdInput: HTMLInputElement
+    private playerNameInput: HTMLInputElement
     private joinButton: HTMLButtonElement
-    private onJoin: (lobbyId: string) => void
+    private onJoin: (lobbyId: string, playerName: string) => void
     
-    constructor(containerId: string, onJoin: (lobbyId: string) => void) {
+    constructor(containerId: string, onJoin: (lobbyId: string, playerName: string) => void) {
         const container = document.getElementById(containerId) as HTMLElement
 
         if (!container) {
@@ -23,6 +24,10 @@ export class JoinLobbyView {
         this.lobbyIdInput.id = ElementIds.LOBBY_ID_INPUT_ID
         container.appendChild(this.lobbyIdInput)
 
+        this.playerNameInput = document.createElement('input')
+        this.playerNameInput.id = ElementIds.PLAYER_NAME_INPUT_ID
+        container.appendChild(this.playerNameInput)
+
         this.joinButton = document.createElement('button')
         this.joinButton.id = ElementIds.JOIN_LOBBY_BUTTON_ID
         container.appendChild(this.joinButton)
@@ -32,12 +37,17 @@ export class JoinLobbyView {
         this.renderLocalizedTexts()
 
         this.joinButton.addEventListener('click', () => {
+            const playerName = this.playerNameInput.value
             const lobbyId = this.lobbyIdInput.value
             if (lobbyId) {
-                this.onJoin(lobbyId)
-            } else {
                 this.showAlert(i18n("Please enter lobby id"))
+                return
             }
+            if (playerName) {
+                this.showAlert(i18n("Please enter a player name"))
+                return
+            }
+            this.onJoin(lobbyId, playerName)
         })
     }
 
@@ -55,5 +65,6 @@ export class JoinLobbyView {
         this.titleHeading.textContent = await i18n("Join Lobby")
         this.lobbyIdInput.placeholder = await i18n("Enter lobby id")
         this.joinButton.textContent = await  i18n("Join")
+        this.playerNameInput.placeholder = await i18n("Enter player name")
     }
 }
