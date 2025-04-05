@@ -14,5 +14,6 @@
     "Welcome": "Welcome",
     "Please enter lobby id": "Please enter lobby id",
     "Enter lobby id": "Enter lobby id",
-    "Join": "Join"
+    "Join": "Join",
+    "Invalidate": "Invalidate"
 }

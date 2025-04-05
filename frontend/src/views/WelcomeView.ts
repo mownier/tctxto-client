@@ -15,6 +15,8 @@ export class WelcomeView {
             throw new Error(`container with id ${containerId} not found`)
         }
 
+        container.innerHTML = ''
+
         this.titleHeading = document.createElement('h1')
         container.append(this.titleHeading)
 
