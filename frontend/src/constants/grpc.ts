@@ -1,2 +1,2 @@
-export const GRPC_SERVER_HOST = 'localhost'
-export const GRPC_SERVER_PORT = 3232
+export const GRPC_WEB_PROXY_HOST = 'http://localhost'
+export const GRPC_WEB_PROXY_PORT = 2121

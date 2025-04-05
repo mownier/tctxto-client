@@ -23,11 +23,6 @@ $ npm run build
 
 # For copying json, and other files
 $ npm install copy-webpack-plugin --save-dev
-
-# For gRPC
-$ npm install @grpc/grpc-js @grpc/proto-loader google-protobuf
-$ npm install -D @types/google-protobuf
-$ npm install -D grpc-tools
 ```
 
 ## How to run
@@ -78,4 +73,29 @@ npm install net-browserify
 npm install tls-browserify
 
 npm install querystring-es3 assert buffer crypto-browserify
+```
+
+## How to generate proto files for gRPC-Web
+
+```
+# For gRPC
+$ npm install @grpc/grpc-js @grpc/proto-loader google-protobuf
+$ npm install -D @types/google-protobuf
+$ npm install -D grpc-tools
+
+$ npm install --save-dev @types/google-protobuf
+
+$ npm install grpc-web
+
+$ npm install --save-dev protoc-gen-grpc-web
+
+$ npm install --save-dev protoc-gen-ts
+
+$ npm install --save-dev protoc-gen-js
+
+# This script can be integrated in package.json
+$ protoc --plugin=protoc-gen-ts=./node_modules/.bin/protoc-gen-ts --plugin=protoc-gen-js=./node_modules/.bin/protoc-gen-js --plugin=protoc-gen-grpc-web=./node_modules/.bin/protoc-gen-grpc-web --ts_out=./src/grpc/ --js_out=import_style=commonjs:./src/grpc/ --grpc-web_out=import_style=typescript,mode=grpcwebtext:./src/grpc/ tctxto.proto
+
+# This is the script
+$ npm install generate-proto
 ```

@@ -13,13 +13,13 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = (function() {
-  if (this) { return this; }
-  if (typeof window !== 'undefined') { return window; }
-  if (typeof global !== 'undefined') { return global; }
-  if (typeof self !== 'undefined') { return self; }
-  return Function('return this')();
-}.call(null));
+var global =
+    (typeof globalThis !== 'undefined' && globalThis) ||
+    (typeof window !== 'undefined' && window) ||
+    (typeof global !== 'undefined' && global) ||
+    (typeof self !== 'undefined' && self) ||
+    (function () { return this; }).call(null) ||
+    Function('return this')();
 
 goog.exportSymbol('proto.server.CreateGameRequest', null, global);
 goog.exportSymbol('proto.server.CreateLobbyReply', null, global);
@@ -396,7 +396,7 @@ proto.server.CreateLobbyRequest.prototype.toObject = function(opt_includeInstanc
  */
 proto.server.CreateLobbyRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playername: jspb.Message.getFieldWithDefault(msg, 1, "")
+playername: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -526,8 +526,8 @@ proto.server.CreateLobbyReply.prototype.toObject = function(opt_includeInstance)
  */
 proto.server.CreateLobbyReply.toObject = function(includeInstance, msg) {
   var f, obj = {
-    lobbyid: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    playerid: jspb.Message.getFieldWithDefault(msg, 2, "")
+lobbyid: jspb.Message.getFieldWithDefault(msg, 1, ""),
+playerid: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -686,8 +686,8 @@ proto.server.JoinLobbyRequest.prototype.toObject = function(opt_includeInstance)
  */
 proto.server.JoinLobbyRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    lobbyid: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    playername: jspb.Message.getFieldWithDefault(msg, 2, "")
+lobbyid: jspb.Message.getFieldWithDefault(msg, 1, ""),
+playername: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -846,7 +846,7 @@ proto.server.JoinLobbyReply.prototype.toObject = function(opt_includeInstance) {
  */
 proto.server.JoinLobbyReply.toObject = function(includeInstance, msg) {
   var f, obj = {
-    playerid: jspb.Message.getFieldWithDefault(msg, 1, "")
+playerid: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -976,9 +976,9 @@ proto.server.CreateGameRequest.prototype.toObject = function(opt_includeInstance
  */
 proto.server.CreateGameRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    lobbyid: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    player1id: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    player2id: jspb.Message.getFieldWithDefault(msg, 3, "")
+lobbyid: jspb.Message.getFieldWithDefault(msg, 1, ""),
+player1id: jspb.Message.getFieldWithDefault(msg, 2, ""),
+player2id: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -1166,9 +1166,9 @@ proto.server.MoveRequest.prototype.toObject = function(opt_includeInstance) {
  */
 proto.server.MoveRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    gameid: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    playerid: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    position: jspb.Message.getFieldWithDefault(msg, 3, 0)
+gameid: jspb.Message.getFieldWithDefault(msg, 1, ""),
+playerid: jspb.Message.getFieldWithDefault(msg, 2, ""),
+position: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -1356,8 +1356,8 @@ proto.server.GameUpdateSubscription.prototype.toObject = function(opt_includeIns
  */
 proto.server.GameUpdateSubscription.toObject = function(includeInstance, msg) {
   var f, obj = {
-    gameid: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    playerid: jspb.Message.getFieldWithDefault(msg, 2, "")
+gameid: jspb.Message.getFieldWithDefault(msg, 1, ""),
+playerid: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -1523,11 +1523,11 @@ proto.server.GameUpdate.prototype.toObject = function(opt_includeInstance) {
  */
 proto.server.GameUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    gameid: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    boardList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f,
-    mover: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    winner: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    result: jspb.Message.getFieldWithDefault(msg, 5, 0)
+gameid: jspb.Message.getFieldWithDefault(msg, 1, ""),
+boardList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f,
+mover: jspb.Message.getFieldWithDefault(msg, 3, ""),
+winner: jspb.Message.getFieldWithDefault(msg, 4, ""),
+result: jspb.Message.getFieldWithDefault(msg, 5, 0)
   };
 
   if (includeInstance) {
@@ -1792,8 +1792,8 @@ proto.server.LobbySubscription.prototype.toObject = function(opt_includeInstance
  */
 proto.server.LobbySubscription.toObject = function(includeInstance, msg) {
   var f, obj = {
-    lobbyid: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    playerid: jspb.Message.getFieldWithDefault(msg, 2, "")
+lobbyid: jspb.Message.getFieldWithDefault(msg, 1, ""),
+playerid: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -1952,10 +1952,10 @@ proto.server.GameCreatedUpdate.prototype.toObject = function(opt_includeInstance
  */
 proto.server.GameCreatedUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-    lobbydid: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    gameid: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    player1id: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    player2id: jspb.Message.getFieldWithDefault(msg, 4, "")
+lobbydid: jspb.Message.getFieldWithDefault(msg, 1, ""),
+gameid: jspb.Message.getFieldWithDefault(msg, 2, ""),
+player1id: jspb.Message.getFieldWithDefault(msg, 3, ""),
+player2id: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
