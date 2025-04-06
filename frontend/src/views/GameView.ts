@@ -23,6 +23,6 @@ export class GameView {
     }
 
     async renderLocalizedTexts() {
-        this.titleHeading.textContent = await i18n("Game")
+        this.titleHeading.textContent = `${await i18n("Game")} ${this.gameId}`
     }
 }
