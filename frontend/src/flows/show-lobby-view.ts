@@ -1,7 +1,7 @@
 import { LobbyView } from "../views/LobbyView"
 import { showGameView } from './show-game-view'
 import * as ElementIds from "../constants/element-ids"
-import { getSession } from "../store/store"
+import { getSession, saveSession } from "../store/store"
 import { Session } from "../models/Session"
 import { createGame, removeGameCreationStream, subscribeGameCreatedUpdates } from "../grpc/client"
 import { Game } from "../models/Game"
@@ -27,6 +27,7 @@ export function showLobbyView(): LobbyView | null {
         () => {
             subscribeGameCreatedUpdates(session.lobby.id, session.player.id, (game: Game) => {
                 session.game = game
+                saveSession(session)
                 console.log("[STREAM] Will stop stream")
                 removeGameCreationStream(session.lobby.id, session.player.id)
                 console.log("[STREAM] Will show game")
