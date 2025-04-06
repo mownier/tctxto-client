@@ -3,16 +3,36 @@ import { showGameView } from './show-game-view'
 import * as ElementIds from "../constants/element-ids"
 import { getSession } from "../store/store"
 import { Session } from "../models/Session"
+import { createGame, removeGameCreationStream, subscribeGameCreatedUpdates } from "../grpc/client"
+import { Game } from "../models/Game"
 
-export function showLobbyView(): LobbyView {
+export function showLobbyView(): LobbyView | null {
     let session: Session
     try {
         session = getSession()
     } catch (error) {
         throw error
     }
-    return new LobbyView(ElementIds.MAIN_ROOT_CONTENT_ID, session.lobby.id, session.player.name, (player1: string, player2: string) => {
-        const gameId = "1"
-        showGameView(gameId)
-    })
+    if (session.game) {
+        showGameView(session.game.id)
+        return null
+    }
+   
+    return new LobbyView(
+        ElementIds.MAIN_ROOT_CONTENT_ID,
+        session.lobby.id, 
+        `${session.player.name}: ${session.player.id}`,
+        (player1: string, player2: string) => {
+            createGame(session.lobby.id, player1, player2)
+        },
+        () => {
+            subscribeGameCreatedUpdates(session.lobby.id, session.player.id, (game: Game) => {
+                session.game = game
+                showGameView(game.id)
+            })
+        },
+        () => {
+            removeGameCreationStream(session.lobby.id, session.player.id)
+        }
+    )
 }
