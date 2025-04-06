@@ -29,17 +29,4 @@ async function main() {
     showWelcomeView()
 }
 
-function wee() {
-    new MainRootView(ElementIds.MAIN_ROOT_ID)
-    showWelcomeView()
-
-    const lobbyId = '15aa7c8b-516e-46e9-833e-078f7ba67765'
-    const playerId = 'd823bdcb-f271-4af4-a56a-4a7a0161b88'
-
-    subscribeGameCreatedUpdates(lobbyId, playerId, (game: Game) => {
-        console.log("game:", game)            
-    })
-}
-
 main()
-//wee()

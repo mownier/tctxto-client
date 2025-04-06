@@ -11,15 +11,13 @@ export class LobbyView {
     private lobbyId: string
     private onCreateGame: (player1: string, player2: string) => void
     private onInit: () => void
-    private onDestroy: () => void
 
     constructor(
         containerId: string, 
         lobbyId: string, 
         playerName: string,
         onCreateGame: (player1: string, player2: string) => void,
-        onInit: () => void,
-        onDestroy: () => void
+        onInit: () => void
     ) {
         console.log(`[LobbyView] Constructor: Creating LobbyView for lobbyId=${lobbyId}`);
         
@@ -69,8 +67,6 @@ export class LobbyView {
 
         this.onInit = onInit
         this.onInit()
-
-        this.onDestroy = onDestroy
     }
 
     async showAlert(textPromise: Promise<string>) {
@@ -88,14 +84,5 @@ export class LobbyView {
         this.player1Input.placeholder = await i18n("Enter player 1")
         this.player2Input.placeholder = await i18n("Enter player 2")
         this.createGameButton.textContent = await i18n("Create Game")
-    }
-
-    updateView(newData: any) {
-        console.log(`[LobbyView] updateView: Updating view with new data`, newData)
-    }
-
-    cleanup() {
-        console.log(`[LobbyView] cleanup: Destroying LobbyView`)
-        this.onDestroy()
     }
 }

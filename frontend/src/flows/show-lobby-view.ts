@@ -28,11 +28,11 @@ export function showLobbyView(): LobbyView | null {
         () => {
             subscribeGameCreatedUpdates(session.lobby.id, session.player.id, (game: Game) => {
                 session.game = game
+                console.log("[STREAM] Will stop stream")
+                removeGameCreationStream(session.lobby.id, session.player.id)
+                console.log("[STREAM] Will show game")
                 showGameView(game.id)
             })
-        },
-        () => {
-            removeGameCreationStream(session.lobby.id, session.player.id)
         }
     )
 }

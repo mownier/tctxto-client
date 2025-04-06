@@ -5,7 +5,6 @@ import { Player } from "../models/Player"
 import { Lobby } from "../models/Lobby"
 import { Game } from "../models/Game"
 import { ClientReadableStream } from "grpc-web"
-import { showGameView } from "../flows/show-game-view"
 
 let gameCreationStreams: Map<string, Map<string, ClientReadableStream<GameCreatedUpdate>>> = new Map()
 
@@ -80,8 +79,9 @@ export function subscribeGameCreatedUpdates(lobbyId: string, playerId: string, n
                 console.log("game created update: ping only", update)
                 return
             }
+            const game = new Game(gameId)
+            notify(game)
             console.log("a game is created", gameId)
-            showGameView(gameId)
         } catch (error) {
             console.error(`[STREAM] Error in data handler for lobbyId=${lobbyId}, playerId=${playerId}:`, error)
             if (error instanceof Error) {
@@ -119,8 +119,15 @@ export function createGame(lobbyId: string, player1Id: string, player2Id: string
 export function removeGameCreationStream(lobbyId: string, playerId: string) {
     const lobbyStreams = gameCreationStreams.get(lobbyId);
     if (lobbyStreams) {
-        lobbyStreams.delete(playerId);
-        console.log(`[STREAM] Stream removed for lobbyId=${lobbyId}, playerId=${playerId}`);
+        const stream = lobbyStreams.get(playerId)
+        if (stream) {
+            stream.removeListener('error', () => {})
+            stream.removeListener('end', () => {})
+            stream.removeListener('data', () => {})
+            stream.cancel()
+            lobbyStreams.delete(playerId)
+            console.log(`[STREAM] Stream removed for lobbyId=${lobbyId}, playerId=${playerId}`)
+        }
         if (lobbyStreams.size === 0) {
             gameCreationStreams.delete(lobbyId);
             console.log(`[STREAM] Lobby map removed for lobbyId=${lobbyId}`);
