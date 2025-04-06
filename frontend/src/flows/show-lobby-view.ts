@@ -17,7 +17,6 @@ export function showLobbyView(): LobbyView | null {
         showGameView(session.game.id)
         return null
     }
-   
     return new LobbyView(
         ElementIds.MAIN_ROOT_CONTENT_ID,
         session.lobby.id, 
