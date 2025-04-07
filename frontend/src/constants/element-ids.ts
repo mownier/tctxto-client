@@ -11,3 +11,5 @@ export const LOBBY_ID_INPUT_ID = "lobby-id-input"
 export const PLAYER_NAME_INPUT_ID = "player-name-input"
 export const PLAYER_1_NAME_INPUT_ID = "player-1-name-input"
 export const PLAYER_2_NAME_INPUT_ID = "player-2-name-input"
+
+export const GAME_CONTAINER_DIV_ID = "game-container"

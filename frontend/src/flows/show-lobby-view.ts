@@ -14,7 +14,7 @@ export function showLobbyView(): LobbyView | null {
         throw error
     }
     if (session.game) {
-        showGameView(session.game.id)
+        showGameView()
         return null
     }
     return new LobbyView(
@@ -31,7 +31,7 @@ export function showLobbyView(): LobbyView | null {
                 console.log("[STREAM] Will stop stream")
                 removeGameCreationStream(session.lobby.id, session.player.id)
                 console.log("[STREAM] Will show game")
-                showGameView(game.id)
+                showGameView()
             })
         }
     )
