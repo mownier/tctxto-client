@@ -39,32 +39,183 @@ export class TicTacToeClient {
     this.options_ = options;
   }
 
+  methodDescriptorExchange = new grpcWeb.MethodDescriptor(
+    '/server.TicTacToe/Exchange',
+    grpcWeb.MethodType.UNARY,
+    tctxto_pb.ExchangeRequest,
+    tctxto_pb.ExchangeReply,
+    (request: tctxto_pb.ExchangeRequest) => {
+      return request.serializeBinary();
+    },
+    tctxto_pb.ExchangeReply.deserializeBinary
+  );
+
+  exchange(
+    request: tctxto_pb.ExchangeRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<tctxto_pb.ExchangeReply>;
+
+  exchange(
+    request: tctxto_pb.ExchangeRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: tctxto_pb.ExchangeReply) => void): grpcWeb.ClientReadableStream<tctxto_pb.ExchangeReply>;
+
+  exchange(
+    request: tctxto_pb.ExchangeRequest,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: tctxto_pb.ExchangeReply) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/server.TicTacToe/Exchange',
+        request,
+        metadata || {},
+        this.methodDescriptorExchange,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/server.TicTacToe/Exchange',
+    request,
+    metadata || {},
+    this.methodDescriptorExchange);
+  }
+
+  methodDescriptorSubscribe = new grpcWeb.MethodDescriptor(
+    '/server.TicTacToe/Subscribe',
+    grpcWeb.MethodType.SERVER_STREAMING,
+    tctxto_pb.Empty,
+    tctxto_pb.SubscriptionUpdate,
+    (request: tctxto_pb.Empty) => {
+      return request.serializeBinary();
+    },
+    tctxto_pb.SubscriptionUpdate.deserializeBinary
+  );
+
+  subscribe(
+    request: tctxto_pb.Empty,
+    metadata?: grpcWeb.Metadata): grpcWeb.ClientReadableStream<tctxto_pb.SubscriptionUpdate> {
+    return this.client_.serverStreaming(
+      this.hostname_ +
+        '/server.TicTacToe/Subscribe',
+      request,
+      metadata || {},
+      this.methodDescriptorSubscribe);
+  }
+
+  methodDescriptorHandshake = new grpcWeb.MethodDescriptor(
+    '/server.TicTacToe/Handshake',
+    grpcWeb.MethodType.UNARY,
+    tctxto_pb.HandshakeRequest,
+    tctxto_pb.Empty,
+    (request: tctxto_pb.HandshakeRequest) => {
+      return request.serializeBinary();
+    },
+    tctxto_pb.Empty.deserializeBinary
+  );
+
+  handshake(
+    request: tctxto_pb.HandshakeRequest,
+    metadata?: grpcWeb.Metadata | null): Promise<tctxto_pb.Empty>;
+
+  handshake(
+    request: tctxto_pb.HandshakeRequest,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: tctxto_pb.Empty) => void): grpcWeb.ClientReadableStream<tctxto_pb.Empty>;
+
+  handshake(
+    request: tctxto_pb.HandshakeRequest,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: tctxto_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/server.TicTacToe/Handshake',
+        request,
+        metadata || {},
+        this.methodDescriptorHandshake,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/server.TicTacToe/Handshake',
+    request,
+    metadata || {},
+    this.methodDescriptorHandshake);
+  }
+
+  methodDescriptorInvalidate = new grpcWeb.MethodDescriptor(
+    '/server.TicTacToe/Invalidate',
+    grpcWeb.MethodType.UNARY,
+    tctxto_pb.Empty,
+    tctxto_pb.Empty,
+    (request: tctxto_pb.Empty) => {
+      return request.serializeBinary();
+    },
+    tctxto_pb.Empty.deserializeBinary
+  );
+
+  invalidate(
+    request: tctxto_pb.Empty,
+    metadata?: grpcWeb.Metadata | null): Promise<tctxto_pb.Empty>;
+
+  invalidate(
+    request: tctxto_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: tctxto_pb.Empty) => void): grpcWeb.ClientReadableStream<tctxto_pb.Empty>;
+
+  invalidate(
+    request: tctxto_pb.Empty,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: tctxto_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/server.TicTacToe/Invalidate',
+        request,
+        metadata || {},
+        this.methodDescriptorInvalidate,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/server.TicTacToe/Invalidate',
+    request,
+    metadata || {},
+    this.methodDescriptorInvalidate);
+  }
+
   methodDescriptorCreateLobby = new grpcWeb.MethodDescriptor(
     '/server.TicTacToe/CreateLobby',
     grpcWeb.MethodType.UNARY,
     tctxto_pb.CreateLobbyRequest,
-    tctxto_pb.CreateLobbyReply,
+    tctxto_pb.Empty,
     (request: tctxto_pb.CreateLobbyRequest) => {
       return request.serializeBinary();
     },
-    tctxto_pb.CreateLobbyReply.deserializeBinary
+    tctxto_pb.Empty.deserializeBinary
   );
 
   createLobby(
     request: tctxto_pb.CreateLobbyRequest,
-    metadata?: grpcWeb.Metadata | null): Promise<tctxto_pb.CreateLobbyReply>;
+    metadata?: grpcWeb.Metadata | null): Promise<tctxto_pb.Empty>;
 
   createLobby(
     request: tctxto_pb.CreateLobbyRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
-               response: tctxto_pb.CreateLobbyReply) => void): grpcWeb.ClientReadableStream<tctxto_pb.CreateLobbyReply>;
+               response: tctxto_pb.Empty) => void): grpcWeb.ClientReadableStream<tctxto_pb.Empty>;
 
   createLobby(
     request: tctxto_pb.CreateLobbyRequest,
     metadata?: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
-               response: tctxto_pb.CreateLobbyReply) => void) {
+               response: tctxto_pb.Empty) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
@@ -86,28 +237,28 @@ export class TicTacToeClient {
     '/server.TicTacToe/JoinLobby',
     grpcWeb.MethodType.UNARY,
     tctxto_pb.JoinLobbyRequest,
-    tctxto_pb.JoinLobbyReply,
+    tctxto_pb.Empty,
     (request: tctxto_pb.JoinLobbyRequest) => {
       return request.serializeBinary();
     },
-    tctxto_pb.JoinLobbyReply.deserializeBinary
+    tctxto_pb.Empty.deserializeBinary
   );
 
   joinLobby(
     request: tctxto_pb.JoinLobbyRequest,
-    metadata?: grpcWeb.Metadata | null): Promise<tctxto_pb.JoinLobbyReply>;
+    metadata?: grpcWeb.Metadata | null): Promise<tctxto_pb.Empty>;
 
   joinLobby(
     request: tctxto_pb.JoinLobbyRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
-               response: tctxto_pb.JoinLobbyReply) => void): grpcWeb.ClientReadableStream<tctxto_pb.JoinLobbyReply>;
+               response: tctxto_pb.Empty) => void): grpcWeb.ClientReadableStream<tctxto_pb.Empty>;
 
   joinLobby(
     request: tctxto_pb.JoinLobbyRequest,
     metadata?: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
-               response: tctxto_pb.JoinLobbyReply) => void) {
+               response: tctxto_pb.Empty) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
@@ -123,6 +274,49 @@ export class TicTacToeClient {
     request,
     metadata || {},
     this.methodDescriptorJoinLobby);
+  }
+
+  methodDescriptorLeaveMyLobby = new grpcWeb.MethodDescriptor(
+    '/server.TicTacToe/LeaveMyLobby',
+    grpcWeb.MethodType.UNARY,
+    tctxto_pb.Empty,
+    tctxto_pb.Empty,
+    (request: tctxto_pb.Empty) => {
+      return request.serializeBinary();
+    },
+    tctxto_pb.Empty.deserializeBinary
+  );
+
+  leaveMyLobby(
+    request: tctxto_pb.Empty,
+    metadata?: grpcWeb.Metadata | null): Promise<tctxto_pb.Empty>;
+
+  leaveMyLobby(
+    request: tctxto_pb.Empty,
+    metadata: grpcWeb.Metadata | null,
+    callback: (err: grpcWeb.RpcError,
+               response: tctxto_pb.Empty) => void): grpcWeb.ClientReadableStream<tctxto_pb.Empty>;
+
+  leaveMyLobby(
+    request: tctxto_pb.Empty,
+    metadata?: grpcWeb.Metadata | null,
+    callback?: (err: grpcWeb.RpcError,
+               response: tctxto_pb.Empty) => void) {
+    if (callback !== undefined) {
+      return this.client_.rpcCall(
+        this.hostname_ +
+          '/server.TicTacToe/LeaveMyLobby',
+        request,
+        metadata || {},
+        this.methodDescriptorLeaveMyLobby,
+        callback);
+    }
+    return this.client_.unaryCall(
+    this.hostname_ +
+      '/server.TicTacToe/LeaveMyLobby',
+    request,
+    metadata || {},
+    this.methodDescriptorLeaveMyLobby);
   }
 
   methodDescriptorCreateGame = new grpcWeb.MethodDescriptor(
@@ -168,91 +362,47 @@ export class TicTacToeClient {
     this.methodDescriptorCreateGame);
   }
 
-  methodDescriptorMakeMoke = new grpcWeb.MethodDescriptor(
-    '/server.TicTacToe/MakeMoke',
+  methodDescriptorMakeMove = new grpcWeb.MethodDescriptor(
+    '/server.TicTacToe/MakeMove',
     grpcWeb.MethodType.UNARY,
-    tctxto_pb.MoveRequest,
+    tctxto_pb.MakeMoveRequest,
     tctxto_pb.Empty,
-    (request: tctxto_pb.MoveRequest) => {
+    (request: tctxto_pb.MakeMoveRequest) => {
       return request.serializeBinary();
     },
     tctxto_pb.Empty.deserializeBinary
   );
 
-  makeMoke(
-    request: tctxto_pb.MoveRequest,
+  makeMove(
+    request: tctxto_pb.MakeMoveRequest,
     metadata?: grpcWeb.Metadata | null): Promise<tctxto_pb.Empty>;
 
-  makeMoke(
-    request: tctxto_pb.MoveRequest,
+  makeMove(
+    request: tctxto_pb.MakeMoveRequest,
     metadata: grpcWeb.Metadata | null,
     callback: (err: grpcWeb.RpcError,
                response: tctxto_pb.Empty) => void): grpcWeb.ClientReadableStream<tctxto_pb.Empty>;
 
-  makeMoke(
-    request: tctxto_pb.MoveRequest,
+  makeMove(
+    request: tctxto_pb.MakeMoveRequest,
     metadata?: grpcWeb.Metadata | null,
     callback?: (err: grpcWeb.RpcError,
                response: tctxto_pb.Empty) => void) {
     if (callback !== undefined) {
       return this.client_.rpcCall(
         this.hostname_ +
-          '/server.TicTacToe/MakeMoke',
+          '/server.TicTacToe/MakeMove',
         request,
         metadata || {},
-        this.methodDescriptorMakeMoke,
+        this.methodDescriptorMakeMove,
         callback);
     }
     return this.client_.unaryCall(
     this.hostname_ +
-      '/server.TicTacToe/MakeMoke',
+      '/server.TicTacToe/MakeMove',
     request,
     metadata || {},
-    this.methodDescriptorMakeMoke);
-  }
-
-  methodDescriptorSubscribeGameUpdates = new grpcWeb.MethodDescriptor(
-    '/server.TicTacToe/SubscribeGameUpdates',
-    grpcWeb.MethodType.SERVER_STREAMING,
-    tctxto_pb.GameUpdateSubscription,
-    tctxto_pb.GameUpdate,
-    (request: tctxto_pb.GameUpdateSubscription) => {
-      return request.serializeBinary();
-    },
-    tctxto_pb.GameUpdate.deserializeBinary
-  );
-
-  subscribeGameUpdates(
-    request: tctxto_pb.GameUpdateSubscription,
-    metadata?: grpcWeb.Metadata): grpcWeb.ClientReadableStream<tctxto_pb.GameUpdate> {
-    return this.client_.serverStreaming(
-      this.hostname_ +
-        '/server.TicTacToe/SubscribeGameUpdates',
-      request,
-      metadata || {},
-      this.methodDescriptorSubscribeGameUpdates);
-  }
-
-  methodDescriptorSubscribeToGameCreation = new grpcWeb.MethodDescriptor(
-    '/server.TicTacToe/SubscribeToGameCreation',
-    grpcWeb.MethodType.SERVER_STREAMING,
-    tctxto_pb.LobbySubscription,
-    tctxto_pb.GameCreatedUpdate,
-    (request: tctxto_pb.LobbySubscription) => {
-      return request.serializeBinary();
-    },
-    tctxto_pb.GameCreatedUpdate.deserializeBinary
-  );
-
-  subscribeToGameCreation(
-    request: tctxto_pb.LobbySubscription,
-    metadata?: grpcWeb.Metadata): grpcWeb.ClientReadableStream<tctxto_pb.GameCreatedUpdate> {
-    return this.client_.serverStreaming(
-      this.hostname_ +
-        '/server.TicTacToe/SubscribeToGameCreation',
-      request,
-      metadata || {},
-      this.methodDescriptorSubscribeToGameCreation);
+    this.methodDescriptorMakeMove);
   }
 
 }

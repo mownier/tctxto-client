@@ -6,6 +6,820 @@
 import * as pb_1 from "google-protobuf";
 import * as grpc_1 from "@grpc/grpc-js";
 export namespace server {
+    export enum NavigationPath {
+        LOGIN = 0,
+        HOME = 1,
+        MY_LOBBY = 2,
+        GAME = 3
+    }
+    export enum Mover {
+        UNSPECIFIED = 0,
+        X = 1,
+        O = 2
+    }
+    export enum Winner {
+        you = 0,
+        other = 1
+    }
+    export class SubscriptionUpdateData extends pb_1.Message {
+        #one_of_decls: number[][] = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]];
+        constructor(data?: any[] | ({} & (({
+            navigation_update?: NavigationUpdate;
+            handshake_reply?: never;
+            invalidate_reply?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+        } | {
+            navigation_update?: never;
+            handshake_reply?: HandshakeReply;
+            invalidate_reply?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+        } | {
+            navigation_update?: never;
+            handshake_reply?: never;
+            invalidate_reply?: InvalidateReply;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+        } | {
+            navigation_update?: never;
+            handshake_reply?: never;
+            invalidate_reply?: never;
+            create_lobby_reply?: CreateLobbyReply;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+        } | {
+            navigation_update?: never;
+            handshake_reply?: never;
+            invalidate_reply?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: JoinLobbyReply;
+            leave_my_lobby_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+        } | {
+            navigation_update?: never;
+            handshake_reply?: never;
+            invalidate_reply?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: LeaveMyLobbyReply;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+        } | {
+            navigation_update?: never;
+            handshake_reply?: never;
+            invalidate_reply?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            my_lobby_details?: MyLobbyDetails;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+        } | {
+            navigation_update?: never;
+            handshake_reply?: never;
+            invalidate_reply?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: MyLobbyJoinerUpdate;
+            my_lobby_leaver_update?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+        } | {
+            navigation_update?: never;
+            handshake_reply?: never;
+            invalidate_reply?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: MyLobbyLeaverUpdate;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+        } | {
+            navigation_update?: never;
+            handshake_reply?: never;
+            invalidate_reply?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_game_reply?: CreateGameReply;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+        } | {
+            navigation_update?: never;
+            handshake_reply?: never;
+            invalidate_reply?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_game_reply?: never;
+            make_move_reply?: MakeMoveReply;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+        } | {
+            navigation_update?: never;
+            handshake_reply?: never;
+            invalidate_reply?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: MoveUpdate;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+        } | {
+            navigation_update?: never;
+            handshake_reply?: never;
+            invalidate_reply?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: WinnerUpdate;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+        } | {
+            navigation_update?: never;
+            handshake_reply?: never;
+            invalidate_reply?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: DrawUpdate;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+        } | {
+            navigation_update?: never;
+            handshake_reply?: never;
+            invalidate_reply?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: GameStartUpdate;
+            next_mover_update?: never;
+            player_client_update?: never;
+        } | {
+            navigation_update?: never;
+            handshake_reply?: never;
+            invalidate_reply?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: NextMoverUpdate;
+            player_client_update?: never;
+        } | {
+            navigation_update?: never;
+            handshake_reply?: never;
+            invalidate_reply?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: PlayerClientUpdate;
+        })))) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("navigation_update" in data && data.navigation_update != undefined) {
+                    this.navigation_update = data.navigation_update;
+                }
+                if ("handshake_reply" in data && data.handshake_reply != undefined) {
+                    this.handshake_reply = data.handshake_reply;
+                }
+                if ("invalidate_reply" in data && data.invalidate_reply != undefined) {
+                    this.invalidate_reply = data.invalidate_reply;
+                }
+                if ("create_lobby_reply" in data && data.create_lobby_reply != undefined) {
+                    this.create_lobby_reply = data.create_lobby_reply;
+                }
+                if ("join_lobby_reply" in data && data.join_lobby_reply != undefined) {
+                    this.join_lobby_reply = data.join_lobby_reply;
+                }
+                if ("leave_my_lobby_reply" in data && data.leave_my_lobby_reply != undefined) {
+                    this.leave_my_lobby_reply = data.leave_my_lobby_reply;
+                }
+                if ("my_lobby_details" in data && data.my_lobby_details != undefined) {
+                    this.my_lobby_details = data.my_lobby_details;
+                }
+                if ("my_lobby_joiner_update" in data && data.my_lobby_joiner_update != undefined) {
+                    this.my_lobby_joiner_update = data.my_lobby_joiner_update;
+                }
+                if ("my_lobby_leaver_update" in data && data.my_lobby_leaver_update != undefined) {
+                    this.my_lobby_leaver_update = data.my_lobby_leaver_update;
+                }
+                if ("create_game_reply" in data && data.create_game_reply != undefined) {
+                    this.create_game_reply = data.create_game_reply;
+                }
+                if ("make_move_reply" in data && data.make_move_reply != undefined) {
+                    this.make_move_reply = data.make_move_reply;
+                }
+                if ("move_update" in data && data.move_update != undefined) {
+                    this.move_update = data.move_update;
+                }
+                if ("winner_update" in data && data.winner_update != undefined) {
+                    this.winner_update = data.winner_update;
+                }
+                if ("draw_update" in data && data.draw_update != undefined) {
+                    this.draw_update = data.draw_update;
+                }
+                if ("game_start_update" in data && data.game_start_update != undefined) {
+                    this.game_start_update = data.game_start_update;
+                }
+                if ("next_mover_update" in data && data.next_mover_update != undefined) {
+                    this.next_mover_update = data.next_mover_update;
+                }
+                if ("player_client_update" in data && data.player_client_update != undefined) {
+                    this.player_client_update = data.player_client_update;
+                }
+            }
+        }
+        get navigation_update() {
+            return pb_1.Message.getWrapperField(this, NavigationUpdate, 1) as NavigationUpdate;
+        }
+        set navigation_update(value: NavigationUpdate) {
+            pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
+        }
+        get has_navigation_update() {
+            return pb_1.Message.getField(this, 1) != null;
+        }
+        get handshake_reply() {
+            return pb_1.Message.getWrapperField(this, HandshakeReply, 2) as HandshakeReply;
+        }
+        set handshake_reply(value: HandshakeReply) {
+            pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
+        }
+        get has_handshake_reply() {
+            return pb_1.Message.getField(this, 2) != null;
+        }
+        get invalidate_reply() {
+            return pb_1.Message.getWrapperField(this, InvalidateReply, 3) as InvalidateReply;
+        }
+        set invalidate_reply(value: InvalidateReply) {
+            pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0], value);
+        }
+        get has_invalidate_reply() {
+            return pb_1.Message.getField(this, 3) != null;
+        }
+        get create_lobby_reply() {
+            return pb_1.Message.getWrapperField(this, CreateLobbyReply, 4) as CreateLobbyReply;
+        }
+        set create_lobby_reply(value: CreateLobbyReply) {
+            pb_1.Message.setOneofWrapperField(this, 4, this.#one_of_decls[0], value);
+        }
+        get has_create_lobby_reply() {
+            return pb_1.Message.getField(this, 4) != null;
+        }
+        get join_lobby_reply() {
+            return pb_1.Message.getWrapperField(this, JoinLobbyReply, 5) as JoinLobbyReply;
+        }
+        set join_lobby_reply(value: JoinLobbyReply) {
+            pb_1.Message.setOneofWrapperField(this, 5, this.#one_of_decls[0], value);
+        }
+        get has_join_lobby_reply() {
+            return pb_1.Message.getField(this, 5) != null;
+        }
+        get leave_my_lobby_reply() {
+            return pb_1.Message.getWrapperField(this, LeaveMyLobbyReply, 6) as LeaveMyLobbyReply;
+        }
+        set leave_my_lobby_reply(value: LeaveMyLobbyReply) {
+            pb_1.Message.setOneofWrapperField(this, 6, this.#one_of_decls[0], value);
+        }
+        get has_leave_my_lobby_reply() {
+            return pb_1.Message.getField(this, 6) != null;
+        }
+        get my_lobby_details() {
+            return pb_1.Message.getWrapperField(this, MyLobbyDetails, 7) as MyLobbyDetails;
+        }
+        set my_lobby_details(value: MyLobbyDetails) {
+            pb_1.Message.setOneofWrapperField(this, 7, this.#one_of_decls[0], value);
+        }
+        get has_my_lobby_details() {
+            return pb_1.Message.getField(this, 7) != null;
+        }
+        get my_lobby_joiner_update() {
+            return pb_1.Message.getWrapperField(this, MyLobbyJoinerUpdate, 8) as MyLobbyJoinerUpdate;
+        }
+        set my_lobby_joiner_update(value: MyLobbyJoinerUpdate) {
+            pb_1.Message.setOneofWrapperField(this, 8, this.#one_of_decls[0], value);
+        }
+        get has_my_lobby_joiner_update() {
+            return pb_1.Message.getField(this, 8) != null;
+        }
+        get my_lobby_leaver_update() {
+            return pb_1.Message.getWrapperField(this, MyLobbyLeaverUpdate, 9) as MyLobbyLeaverUpdate;
+        }
+        set my_lobby_leaver_update(value: MyLobbyLeaverUpdate) {
+            pb_1.Message.setOneofWrapperField(this, 9, this.#one_of_decls[0], value);
+        }
+        get has_my_lobby_leaver_update() {
+            return pb_1.Message.getField(this, 9) != null;
+        }
+        get create_game_reply() {
+            return pb_1.Message.getWrapperField(this, CreateGameReply, 10) as CreateGameReply;
+        }
+        set create_game_reply(value: CreateGameReply) {
+            pb_1.Message.setOneofWrapperField(this, 10, this.#one_of_decls[0], value);
+        }
+        get has_create_game_reply() {
+            return pb_1.Message.getField(this, 10) != null;
+        }
+        get make_move_reply() {
+            return pb_1.Message.getWrapperField(this, MakeMoveReply, 11) as MakeMoveReply;
+        }
+        set make_move_reply(value: MakeMoveReply) {
+            pb_1.Message.setOneofWrapperField(this, 11, this.#one_of_decls[0], value);
+        }
+        get has_make_move_reply() {
+            return pb_1.Message.getField(this, 11) != null;
+        }
+        get move_update() {
+            return pb_1.Message.getWrapperField(this, MoveUpdate, 12) as MoveUpdate;
+        }
+        set move_update(value: MoveUpdate) {
+            pb_1.Message.setOneofWrapperField(this, 12, this.#one_of_decls[0], value);
+        }
+        get has_move_update() {
+            return pb_1.Message.getField(this, 12) != null;
+        }
+        get winner_update() {
+            return pb_1.Message.getWrapperField(this, WinnerUpdate, 13) as WinnerUpdate;
+        }
+        set winner_update(value: WinnerUpdate) {
+            pb_1.Message.setOneofWrapperField(this, 13, this.#one_of_decls[0], value);
+        }
+        get has_winner_update() {
+            return pb_1.Message.getField(this, 13) != null;
+        }
+        get draw_update() {
+            return pb_1.Message.getWrapperField(this, DrawUpdate, 14) as DrawUpdate;
+        }
+        set draw_update(value: DrawUpdate) {
+            pb_1.Message.setOneofWrapperField(this, 14, this.#one_of_decls[0], value);
+        }
+        get has_draw_update() {
+            return pb_1.Message.getField(this, 14) != null;
+        }
+        get game_start_update() {
+            return pb_1.Message.getWrapperField(this, GameStartUpdate, 15) as GameStartUpdate;
+        }
+        set game_start_update(value: GameStartUpdate) {
+            pb_1.Message.setOneofWrapperField(this, 15, this.#one_of_decls[0], value);
+        }
+        get has_game_start_update() {
+            return pb_1.Message.getField(this, 15) != null;
+        }
+        get next_mover_update() {
+            return pb_1.Message.getWrapperField(this, NextMoverUpdate, 16) as NextMoverUpdate;
+        }
+        set next_mover_update(value: NextMoverUpdate) {
+            pb_1.Message.setOneofWrapperField(this, 16, this.#one_of_decls[0], value);
+        }
+        get has_next_mover_update() {
+            return pb_1.Message.getField(this, 16) != null;
+        }
+        get player_client_update() {
+            return pb_1.Message.getWrapperField(this, PlayerClientUpdate, 17) as PlayerClientUpdate;
+        }
+        set player_client_update(value: PlayerClientUpdate) {
+            pb_1.Message.setOneofWrapperField(this, 17, this.#one_of_decls[0], value);
+        }
+        get has_player_client_update() {
+            return pb_1.Message.getField(this, 17) != null;
+        }
+        get subscription_update_data_type() {
+            const cases: {
+                [index: number]: "none" | "navigation_update" | "handshake_reply" | "invalidate_reply" | "create_lobby_reply" | "join_lobby_reply" | "leave_my_lobby_reply" | "my_lobby_details" | "my_lobby_joiner_update" | "my_lobby_leaver_update" | "create_game_reply" | "make_move_reply" | "move_update" | "winner_update" | "draw_update" | "game_start_update" | "next_mover_update" | "player_client_update";
+            } = {
+                0: "none",
+                1: "navigation_update",
+                2: "handshake_reply",
+                3: "invalidate_reply",
+                4: "create_lobby_reply",
+                5: "join_lobby_reply",
+                6: "leave_my_lobby_reply",
+                7: "my_lobby_details",
+                8: "my_lobby_joiner_update",
+                9: "my_lobby_leaver_update",
+                10: "create_game_reply",
+                11: "make_move_reply",
+                12: "move_update",
+                13: "winner_update",
+                14: "draw_update",
+                15: "game_start_update",
+                16: "next_mover_update",
+                17: "player_client_update"
+            };
+            return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17])];
+        }
+        static fromObject(data: {
+            navigation_update?: ReturnType<typeof NavigationUpdate.prototype.toObject>;
+            handshake_reply?: ReturnType<typeof HandshakeReply.prototype.toObject>;
+            invalidate_reply?: ReturnType<typeof InvalidateReply.prototype.toObject>;
+            create_lobby_reply?: ReturnType<typeof CreateLobbyReply.prototype.toObject>;
+            join_lobby_reply?: ReturnType<typeof JoinLobbyReply.prototype.toObject>;
+            leave_my_lobby_reply?: ReturnType<typeof LeaveMyLobbyReply.prototype.toObject>;
+            my_lobby_details?: ReturnType<typeof MyLobbyDetails.prototype.toObject>;
+            my_lobby_joiner_update?: ReturnType<typeof MyLobbyJoinerUpdate.prototype.toObject>;
+            my_lobby_leaver_update?: ReturnType<typeof MyLobbyLeaverUpdate.prototype.toObject>;
+            create_game_reply?: ReturnType<typeof CreateGameReply.prototype.toObject>;
+            make_move_reply?: ReturnType<typeof MakeMoveReply.prototype.toObject>;
+            move_update?: ReturnType<typeof MoveUpdate.prototype.toObject>;
+            winner_update?: ReturnType<typeof WinnerUpdate.prototype.toObject>;
+            draw_update?: ReturnType<typeof DrawUpdate.prototype.toObject>;
+            game_start_update?: ReturnType<typeof GameStartUpdate.prototype.toObject>;
+            next_mover_update?: ReturnType<typeof NextMoverUpdate.prototype.toObject>;
+            player_client_update?: ReturnType<typeof PlayerClientUpdate.prototype.toObject>;
+        }): SubscriptionUpdateData {
+            const message = new SubscriptionUpdateData({});
+            if (data.navigation_update != null) {
+                message.navigation_update = NavigationUpdate.fromObject(data.navigation_update);
+            }
+            if (data.handshake_reply != null) {
+                message.handshake_reply = HandshakeReply.fromObject(data.handshake_reply);
+            }
+            if (data.invalidate_reply != null) {
+                message.invalidate_reply = InvalidateReply.fromObject(data.invalidate_reply);
+            }
+            if (data.create_lobby_reply != null) {
+                message.create_lobby_reply = CreateLobbyReply.fromObject(data.create_lobby_reply);
+            }
+            if (data.join_lobby_reply != null) {
+                message.join_lobby_reply = JoinLobbyReply.fromObject(data.join_lobby_reply);
+            }
+            if (data.leave_my_lobby_reply != null) {
+                message.leave_my_lobby_reply = LeaveMyLobbyReply.fromObject(data.leave_my_lobby_reply);
+            }
+            if (data.my_lobby_details != null) {
+                message.my_lobby_details = MyLobbyDetails.fromObject(data.my_lobby_details);
+            }
+            if (data.my_lobby_joiner_update != null) {
+                message.my_lobby_joiner_update = MyLobbyJoinerUpdate.fromObject(data.my_lobby_joiner_update);
+            }
+            if (data.my_lobby_leaver_update != null) {
+                message.my_lobby_leaver_update = MyLobbyLeaverUpdate.fromObject(data.my_lobby_leaver_update);
+            }
+            if (data.create_game_reply != null) {
+                message.create_game_reply = CreateGameReply.fromObject(data.create_game_reply);
+            }
+            if (data.make_move_reply != null) {
+                message.make_move_reply = MakeMoveReply.fromObject(data.make_move_reply);
+            }
+            if (data.move_update != null) {
+                message.move_update = MoveUpdate.fromObject(data.move_update);
+            }
+            if (data.winner_update != null) {
+                message.winner_update = WinnerUpdate.fromObject(data.winner_update);
+            }
+            if (data.draw_update != null) {
+                message.draw_update = DrawUpdate.fromObject(data.draw_update);
+            }
+            if (data.game_start_update != null) {
+                message.game_start_update = GameStartUpdate.fromObject(data.game_start_update);
+            }
+            if (data.next_mover_update != null) {
+                message.next_mover_update = NextMoverUpdate.fromObject(data.next_mover_update);
+            }
+            if (data.player_client_update != null) {
+                message.player_client_update = PlayerClientUpdate.fromObject(data.player_client_update);
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                navigation_update?: ReturnType<typeof NavigationUpdate.prototype.toObject>;
+                handshake_reply?: ReturnType<typeof HandshakeReply.prototype.toObject>;
+                invalidate_reply?: ReturnType<typeof InvalidateReply.prototype.toObject>;
+                create_lobby_reply?: ReturnType<typeof CreateLobbyReply.prototype.toObject>;
+                join_lobby_reply?: ReturnType<typeof JoinLobbyReply.prototype.toObject>;
+                leave_my_lobby_reply?: ReturnType<typeof LeaveMyLobbyReply.prototype.toObject>;
+                my_lobby_details?: ReturnType<typeof MyLobbyDetails.prototype.toObject>;
+                my_lobby_joiner_update?: ReturnType<typeof MyLobbyJoinerUpdate.prototype.toObject>;
+                my_lobby_leaver_update?: ReturnType<typeof MyLobbyLeaverUpdate.prototype.toObject>;
+                create_game_reply?: ReturnType<typeof CreateGameReply.prototype.toObject>;
+                make_move_reply?: ReturnType<typeof MakeMoveReply.prototype.toObject>;
+                move_update?: ReturnType<typeof MoveUpdate.prototype.toObject>;
+                winner_update?: ReturnType<typeof WinnerUpdate.prototype.toObject>;
+                draw_update?: ReturnType<typeof DrawUpdate.prototype.toObject>;
+                game_start_update?: ReturnType<typeof GameStartUpdate.prototype.toObject>;
+                next_mover_update?: ReturnType<typeof NextMoverUpdate.prototype.toObject>;
+                player_client_update?: ReturnType<typeof PlayerClientUpdate.prototype.toObject>;
+            } = {};
+            if (this.navigation_update != null) {
+                data.navigation_update = this.navigation_update.toObject();
+            }
+            if (this.handshake_reply != null) {
+                data.handshake_reply = this.handshake_reply.toObject();
+            }
+            if (this.invalidate_reply != null) {
+                data.invalidate_reply = this.invalidate_reply.toObject();
+            }
+            if (this.create_lobby_reply != null) {
+                data.create_lobby_reply = this.create_lobby_reply.toObject();
+            }
+            if (this.join_lobby_reply != null) {
+                data.join_lobby_reply = this.join_lobby_reply.toObject();
+            }
+            if (this.leave_my_lobby_reply != null) {
+                data.leave_my_lobby_reply = this.leave_my_lobby_reply.toObject();
+            }
+            if (this.my_lobby_details != null) {
+                data.my_lobby_details = this.my_lobby_details.toObject();
+            }
+            if (this.my_lobby_joiner_update != null) {
+                data.my_lobby_joiner_update = this.my_lobby_joiner_update.toObject();
+            }
+            if (this.my_lobby_leaver_update != null) {
+                data.my_lobby_leaver_update = this.my_lobby_leaver_update.toObject();
+            }
+            if (this.create_game_reply != null) {
+                data.create_game_reply = this.create_game_reply.toObject();
+            }
+            if (this.make_move_reply != null) {
+                data.make_move_reply = this.make_move_reply.toObject();
+            }
+            if (this.move_update != null) {
+                data.move_update = this.move_update.toObject();
+            }
+            if (this.winner_update != null) {
+                data.winner_update = this.winner_update.toObject();
+            }
+            if (this.draw_update != null) {
+                data.draw_update = this.draw_update.toObject();
+            }
+            if (this.game_start_update != null) {
+                data.game_start_update = this.game_start_update.toObject();
+            }
+            if (this.next_mover_update != null) {
+                data.next_mover_update = this.next_mover_update.toObject();
+            }
+            if (this.player_client_update != null) {
+                data.player_client_update = this.player_client_update.toObject();
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.has_navigation_update)
+                writer.writeMessage(1, this.navigation_update, () => this.navigation_update.serialize(writer));
+            if (this.has_handshake_reply)
+                writer.writeMessage(2, this.handshake_reply, () => this.handshake_reply.serialize(writer));
+            if (this.has_invalidate_reply)
+                writer.writeMessage(3, this.invalidate_reply, () => this.invalidate_reply.serialize(writer));
+            if (this.has_create_lobby_reply)
+                writer.writeMessage(4, this.create_lobby_reply, () => this.create_lobby_reply.serialize(writer));
+            if (this.has_join_lobby_reply)
+                writer.writeMessage(5, this.join_lobby_reply, () => this.join_lobby_reply.serialize(writer));
+            if (this.has_leave_my_lobby_reply)
+                writer.writeMessage(6, this.leave_my_lobby_reply, () => this.leave_my_lobby_reply.serialize(writer));
+            if (this.has_my_lobby_details)
+                writer.writeMessage(7, this.my_lobby_details, () => this.my_lobby_details.serialize(writer));
+            if (this.has_my_lobby_joiner_update)
+                writer.writeMessage(8, this.my_lobby_joiner_update, () => this.my_lobby_joiner_update.serialize(writer));
+            if (this.has_my_lobby_leaver_update)
+                writer.writeMessage(9, this.my_lobby_leaver_update, () => this.my_lobby_leaver_update.serialize(writer));
+            if (this.has_create_game_reply)
+                writer.writeMessage(10, this.create_game_reply, () => this.create_game_reply.serialize(writer));
+            if (this.has_make_move_reply)
+                writer.writeMessage(11, this.make_move_reply, () => this.make_move_reply.serialize(writer));
+            if (this.has_move_update)
+                writer.writeMessage(12, this.move_update, () => this.move_update.serialize(writer));
+            if (this.has_winner_update)
+                writer.writeMessage(13, this.winner_update, () => this.winner_update.serialize(writer));
+            if (this.has_draw_update)
+                writer.writeMessage(14, this.draw_update, () => this.draw_update.serialize(writer));
+            if (this.has_game_start_update)
+                writer.writeMessage(15, this.game_start_update, () => this.game_start_update.serialize(writer));
+            if (this.has_next_mover_update)
+                writer.writeMessage(16, this.next_mover_update, () => this.next_mover_update.serialize(writer));
+            if (this.has_player_client_update)
+                writer.writeMessage(17, this.player_client_update, () => this.player_client_update.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): SubscriptionUpdateData {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new SubscriptionUpdateData();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        reader.readMessage(message.navigation_update, () => message.navigation_update = NavigationUpdate.deserialize(reader));
+                        break;
+                    case 2:
+                        reader.readMessage(message.handshake_reply, () => message.handshake_reply = HandshakeReply.deserialize(reader));
+                        break;
+                    case 3:
+                        reader.readMessage(message.invalidate_reply, () => message.invalidate_reply = InvalidateReply.deserialize(reader));
+                        break;
+                    case 4:
+                        reader.readMessage(message.create_lobby_reply, () => message.create_lobby_reply = CreateLobbyReply.deserialize(reader));
+                        break;
+                    case 5:
+                        reader.readMessage(message.join_lobby_reply, () => message.join_lobby_reply = JoinLobbyReply.deserialize(reader));
+                        break;
+                    case 6:
+                        reader.readMessage(message.leave_my_lobby_reply, () => message.leave_my_lobby_reply = LeaveMyLobbyReply.deserialize(reader));
+                        break;
+                    case 7:
+                        reader.readMessage(message.my_lobby_details, () => message.my_lobby_details = MyLobbyDetails.deserialize(reader));
+                        break;
+                    case 8:
+                        reader.readMessage(message.my_lobby_joiner_update, () => message.my_lobby_joiner_update = MyLobbyJoinerUpdate.deserialize(reader));
+                        break;
+                    case 9:
+                        reader.readMessage(message.my_lobby_leaver_update, () => message.my_lobby_leaver_update = MyLobbyLeaverUpdate.deserialize(reader));
+                        break;
+                    case 10:
+                        reader.readMessage(message.create_game_reply, () => message.create_game_reply = CreateGameReply.deserialize(reader));
+                        break;
+                    case 11:
+                        reader.readMessage(message.make_move_reply, () => message.make_move_reply = MakeMoveReply.deserialize(reader));
+                        break;
+                    case 12:
+                        reader.readMessage(message.move_update, () => message.move_update = MoveUpdate.deserialize(reader));
+                        break;
+                    case 13:
+                        reader.readMessage(message.winner_update, () => message.winner_update = WinnerUpdate.deserialize(reader));
+                        break;
+                    case 14:
+                        reader.readMessage(message.draw_update, () => message.draw_update = DrawUpdate.deserialize(reader));
+                        break;
+                    case 15:
+                        reader.readMessage(message.game_start_update, () => message.game_start_update = GameStartUpdate.deserialize(reader));
+                        break;
+                    case 16:
+                        reader.readMessage(message.next_mover_update, () => message.next_mover_update = NextMoverUpdate.deserialize(reader));
+                        break;
+                    case 17:
+                        reader.readMessage(message.player_client_update, () => message.player_client_update = PlayerClientUpdate.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): SubscriptionUpdateData {
+            return SubscriptionUpdateData.deserialize(bytes);
+        }
+    }
     export class Empty extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {}) {
@@ -46,40 +860,76 @@ export namespace server {
             return Empty.deserialize(bytes);
         }
     }
-    export class CreateLobbyRequest extends pb_1.Message {
+    export class Outcome extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
-            playerName?: string;
+            ok?: boolean;
+            error_code?: number;
+            error_message?: string;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
-                if ("playerName" in data && data.playerName != undefined) {
-                    this.playerName = data.playerName;
+                if ("ok" in data && data.ok != undefined) {
+                    this.ok = data.ok;
+                }
+                if ("error_code" in data && data.error_code != undefined) {
+                    this.error_code = data.error_code;
+                }
+                if ("error_message" in data && data.error_message != undefined) {
+                    this.error_message = data.error_message;
                 }
             }
         }
-        get playerName() {
-            return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
+        get ok() {
+            return pb_1.Message.getFieldWithDefault(this, 1, false) as boolean;
         }
-        set playerName(value: string) {
+        set ok(value: boolean) {
             pb_1.Message.setField(this, 1, value);
         }
+        get error_code() {
+            return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
+        }
+        set error_code(value: number) {
+            pb_1.Message.setField(this, 2, value);
+        }
+        get error_message() {
+            return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
+        }
+        set error_message(value: string) {
+            pb_1.Message.setField(this, 3, value);
+        }
         static fromObject(data: {
-            playerName?: string;
-        }): CreateLobbyRequest {
-            const message = new CreateLobbyRequest({});
-            if (data.playerName != null) {
-                message.playerName = data.playerName;
+            ok?: boolean;
+            error_code?: number;
+            error_message?: string;
+        }): Outcome {
+            const message = new Outcome({});
+            if (data.ok != null) {
+                message.ok = data.ok;
+            }
+            if (data.error_code != null) {
+                message.error_code = data.error_code;
+            }
+            if (data.error_message != null) {
+                message.error_message = data.error_message;
             }
             return message;
         }
         toObject() {
             const data: {
-                playerName?: string;
+                ok?: boolean;
+                error_code?: number;
+                error_message?: string;
             } = {};
-            if (this.playerName != null) {
-                data.playerName = this.playerName;
+            if (this.ok != null) {
+                data.ok = this.ok;
+            }
+            if (this.error_code != null) {
+                data.error_code = this.error_code;
+            }
+            if (this.error_message != null) {
+                data.error_message = this.error_message;
             }
             return data;
         }
@@ -87,19 +937,29 @@ export namespace server {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (this.playerName.length)
-                writer.writeString(1, this.playerName);
+            if (this.ok != false)
+                writer.writeBool(1, this.ok);
+            if (this.error_code != 0)
+                writer.writeInt32(2, this.error_code);
+            if (this.error_message.length)
+                writer.writeString(3, this.error_message);
             if (!w)
                 return writer.getResultBuffer();
         }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): CreateLobbyRequest {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new CreateLobbyRequest();
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): Outcome {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new Outcome();
             while (reader.nextField()) {
                 if (reader.isEndGroup())
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
-                        message.playerName = reader.readString();
+                        message.ok = reader.readBool();
+                        break;
+                    case 2:
+                        message.error_code = reader.readInt32();
+                        break;
+                    case 3:
+                        message.error_message = reader.readString();
                         break;
                     default: reader.skipField();
                 }
@@ -109,62 +969,152 @@ export namespace server {
         serializeBinary(): Uint8Array {
             return this.serialize();
         }
-        static deserializeBinary(bytes: Uint8Array): CreateLobbyRequest {
-            return CreateLobbyRequest.deserialize(bytes);
+        static deserializeBinary(bytes: Uint8Array): Outcome {
+            return Outcome.deserialize(bytes);
         }
     }
-    export class CreateLobbyReply extends pb_1.Message {
+    export class Lobby extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
-            lobbyId?: string;
-            playerId?: string;
+            name?: string;
+            players?: Player[];
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("name" in data && data.name != undefined) {
+                    this.name = data.name;
+                }
+                if ("players" in data && data.players != undefined) {
+                    this.players = data.players;
+                }
+            }
+        }
+        get name() {
+            return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
+        }
+        set name(value: string) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        get players() {
+            return pb_1.Message.getRepeatedWrapperField(this, Player, 2) as Player[];
+        }
+        set players(value: Player[]) {
+            pb_1.Message.setRepeatedWrapperField(this, 2, value);
+        }
+        static fromObject(data: {
+            name?: string;
+            players?: ReturnType<typeof Player.prototype.toObject>[];
+        }): Lobby {
+            const message = new Lobby({});
+            if (data.name != null) {
+                message.name = data.name;
+            }
+            if (data.players != null) {
+                message.players = data.players.map(item => Player.fromObject(item));
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                name?: string;
+                players?: ReturnType<typeof Player.prototype.toObject>[];
+            } = {};
+            if (this.name != null) {
+                data.name = this.name;
+            }
+            if (this.players != null) {
+                data.players = this.players.map((item: Player) => item.toObject());
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.name.length)
+                writer.writeString(1, this.name);
+            if (this.players.length)
+                writer.writeRepeatedMessage(2, this.players, (item: Player) => item.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): Lobby {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new Lobby();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.name = reader.readString();
+                        break;
+                    case 2:
+                        reader.readMessage(message.players, () => pb_1.Message.addToRepeatedWrapperField(message, 2, Player.deserialize(reader), Player));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): Lobby {
+            return Lobby.deserialize(bytes);
+        }
+    }
+    export class Player extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            id?: string;
+            name?: string;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
-                if ("lobbyId" in data && data.lobbyId != undefined) {
-                    this.lobbyId = data.lobbyId;
+                if ("id" in data && data.id != undefined) {
+                    this.id = data.id;
                 }
-                if ("playerId" in data && data.playerId != undefined) {
-                    this.playerId = data.playerId;
+                if ("name" in data && data.name != undefined) {
+                    this.name = data.name;
                 }
             }
         }
-        get lobbyId() {
+        get id() {
             return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
         }
-        set lobbyId(value: string) {
+        set id(value: string) {
             pb_1.Message.setField(this, 1, value);
         }
-        get playerId() {
+        get name() {
             return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
         }
-        set playerId(value: string) {
+        set name(value: string) {
             pb_1.Message.setField(this, 2, value);
         }
         static fromObject(data: {
-            lobbyId?: string;
-            playerId?: string;
-        }): CreateLobbyReply {
-            const message = new CreateLobbyReply({});
-            if (data.lobbyId != null) {
-                message.lobbyId = data.lobbyId;
+            id?: string;
+            name?: string;
+        }): Player {
+            const message = new Player({});
+            if (data.id != null) {
+                message.id = data.id;
             }
-            if (data.playerId != null) {
-                message.playerId = data.playerId;
+            if (data.name != null) {
+                message.name = data.name;
             }
             return message;
         }
         toObject() {
             const data: {
-                lobbyId?: string;
-                playerId?: string;
+                id?: string;
+                name?: string;
             } = {};
-            if (this.lobbyId != null) {
-                data.lobbyId = this.lobbyId;
+            if (this.id != null) {
+                data.id = this.id;
             }
-            if (this.playerId != null) {
-                data.playerId = this.playerId;
+            if (this.name != null) {
+                data.name = this.name;
             }
             return data;
         }
@@ -172,24 +1122,24 @@ export namespace server {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (this.lobbyId.length)
-                writer.writeString(1, this.lobbyId);
-            if (this.playerId.length)
-                writer.writeString(2, this.playerId);
+            if (this.id.length)
+                writer.writeString(1, this.id);
+            if (this.name.length)
+                writer.writeString(2, this.name);
             if (!w)
                 return writer.getResultBuffer();
         }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): CreateLobbyReply {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new CreateLobbyReply();
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): Player {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new Player();
             while (reader.nextField()) {
                 if (reader.isEndGroup())
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
-                        message.lobbyId = reader.readString();
+                        message.id = reader.readString();
                         break;
                     case 2:
-                        message.playerId = reader.readString();
+                        message.name = reader.readString();
                         break;
                     default: reader.skipField();
                 }
@@ -199,62 +1149,458 @@ export namespace server {
         serializeBinary(): Uint8Array {
             return this.serialize();
         }
-        static deserializeBinary(bytes: Uint8Array): CreateLobbyReply {
-            return CreateLobbyReply.deserialize(bytes);
+        static deserializeBinary(bytes: Uint8Array): Player {
+            return Player.deserialize(bytes);
+        }
+    }
+    export class ExchangeRequest extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            public_key?: string;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("public_key" in data && data.public_key != undefined) {
+                    this.public_key = data.public_key;
+                }
+            }
+        }
+        get public_key() {
+            return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
+        }
+        set public_key(value: string) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        static fromObject(data: {
+            public_key?: string;
+        }): ExchangeRequest {
+            const message = new ExchangeRequest({});
+            if (data.public_key != null) {
+                message.public_key = data.public_key;
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                public_key?: string;
+            } = {};
+            if (this.public_key != null) {
+                data.public_key = this.public_key;
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.public_key.length)
+                writer.writeString(1, this.public_key);
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): ExchangeRequest {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new ExchangeRequest();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.public_key = reader.readString();
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): ExchangeRequest {
+            return ExchangeRequest.deserialize(bytes);
+        }
+    }
+    export class ExchangeReply extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            client_id?: string;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("client_id" in data && data.client_id != undefined) {
+                    this.client_id = data.client_id;
+                }
+            }
+        }
+        get client_id() {
+            return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
+        }
+        set client_id(value: string) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        static fromObject(data: {
+            client_id?: string;
+        }): ExchangeReply {
+            const message = new ExchangeReply({});
+            if (data.client_id != null) {
+                message.client_id = data.client_id;
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                client_id?: string;
+            } = {};
+            if (this.client_id != null) {
+                data.client_id = this.client_id;
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.client_id.length)
+                writer.writeString(1, this.client_id);
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): ExchangeReply {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new ExchangeReply();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.client_id = reader.readString();
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): ExchangeReply {
+            return ExchangeReply.deserialize(bytes);
+        }
+    }
+    export class MyLobbyDetails extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            lobby?: Lobby;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("lobby" in data && data.lobby != undefined) {
+                    this.lobby = data.lobby;
+                }
+            }
+        }
+        get lobby() {
+            return pb_1.Message.getWrapperField(this, Lobby, 1) as Lobby;
+        }
+        set lobby(value: Lobby) {
+            pb_1.Message.setWrapperField(this, 1, value);
+        }
+        get has_lobby() {
+            return pb_1.Message.getField(this, 1) != null;
+        }
+        static fromObject(data: {
+            lobby?: ReturnType<typeof Lobby.prototype.toObject>;
+        }): MyLobbyDetails {
+            const message = new MyLobbyDetails({});
+            if (data.lobby != null) {
+                message.lobby = Lobby.fromObject(data.lobby);
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                lobby?: ReturnType<typeof Lobby.prototype.toObject>;
+            } = {};
+            if (this.lobby != null) {
+                data.lobby = this.lobby.toObject();
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.has_lobby)
+                writer.writeMessage(1, this.lobby, () => this.lobby.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): MyLobbyDetails {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new MyLobbyDetails();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        reader.readMessage(message.lobby, () => message.lobby = Lobby.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): MyLobbyDetails {
+            return MyLobbyDetails.deserialize(bytes);
+        }
+    }
+    export class MyLobbyJoinerUpdate extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            player?: Player;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("player" in data && data.player != undefined) {
+                    this.player = data.player;
+                }
+            }
+        }
+        get player() {
+            return pb_1.Message.getWrapperField(this, Player, 1) as Player;
+        }
+        set player(value: Player) {
+            pb_1.Message.setWrapperField(this, 1, value);
+        }
+        get has_player() {
+            return pb_1.Message.getField(this, 1) != null;
+        }
+        static fromObject(data: {
+            player?: ReturnType<typeof Player.prototype.toObject>;
+        }): MyLobbyJoinerUpdate {
+            const message = new MyLobbyJoinerUpdate({});
+            if (data.player != null) {
+                message.player = Player.fromObject(data.player);
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                player?: ReturnType<typeof Player.prototype.toObject>;
+            } = {};
+            if (this.player != null) {
+                data.player = this.player.toObject();
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.has_player)
+                writer.writeMessage(1, this.player, () => this.player.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): MyLobbyJoinerUpdate {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new MyLobbyJoinerUpdate();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        reader.readMessage(message.player, () => message.player = Player.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): MyLobbyJoinerUpdate {
+            return MyLobbyJoinerUpdate.deserialize(bytes);
+        }
+    }
+    export class MyLobbyLeaverUpdate extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            player?: Player;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("player" in data && data.player != undefined) {
+                    this.player = data.player;
+                }
+            }
+        }
+        get player() {
+            return pb_1.Message.getWrapperField(this, Player, 1) as Player;
+        }
+        set player(value: Player) {
+            pb_1.Message.setWrapperField(this, 1, value);
+        }
+        get has_player() {
+            return pb_1.Message.getField(this, 1) != null;
+        }
+        static fromObject(data: {
+            player?: ReturnType<typeof Player.prototype.toObject>;
+        }): MyLobbyLeaverUpdate {
+            const message = new MyLobbyLeaverUpdate({});
+            if (data.player != null) {
+                message.player = Player.fromObject(data.player);
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                player?: ReturnType<typeof Player.prototype.toObject>;
+            } = {};
+            if (this.player != null) {
+                data.player = this.player.toObject();
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.has_player)
+                writer.writeMessage(1, this.player, () => this.player.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): MyLobbyLeaverUpdate {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new MyLobbyLeaverUpdate();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        reader.readMessage(message.player, () => message.player = Player.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): MyLobbyLeaverUpdate {
+            return MyLobbyLeaverUpdate.deserialize(bytes);
+        }
+    }
+    export class LeaveMyLobbyReply extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            outcome?: Outcome;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("outcome" in data && data.outcome != undefined) {
+                    this.outcome = data.outcome;
+                }
+            }
+        }
+        get outcome() {
+            return pb_1.Message.getWrapperField(this, Outcome, 1) as Outcome;
+        }
+        set outcome(value: Outcome) {
+            pb_1.Message.setWrapperField(this, 1, value);
+        }
+        get has_outcome() {
+            return pb_1.Message.getField(this, 1) != null;
+        }
+        static fromObject(data: {
+            outcome?: ReturnType<typeof Outcome.prototype.toObject>;
+        }): LeaveMyLobbyReply {
+            const message = new LeaveMyLobbyReply({});
+            if (data.outcome != null) {
+                message.outcome = Outcome.fromObject(data.outcome);
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                outcome?: ReturnType<typeof Outcome.prototype.toObject>;
+            } = {};
+            if (this.outcome != null) {
+                data.outcome = this.outcome.toObject();
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.has_outcome)
+                writer.writeMessage(1, this.outcome, () => this.outcome.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): LeaveMyLobbyReply {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new LeaveMyLobbyReply();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        reader.readMessage(message.outcome, () => message.outcome = Outcome.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): LeaveMyLobbyReply {
+            return LeaveMyLobbyReply.deserialize(bytes);
         }
     }
     export class JoinLobbyRequest extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
-            lobbyId?: string;
-            playerName?: string;
+            lobby_id?: string;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
-                if ("lobbyId" in data && data.lobbyId != undefined) {
-                    this.lobbyId = data.lobbyId;
-                }
-                if ("playerName" in data && data.playerName != undefined) {
-                    this.playerName = data.playerName;
+                if ("lobby_id" in data && data.lobby_id != undefined) {
+                    this.lobby_id = data.lobby_id;
                 }
             }
         }
-        get lobbyId() {
+        get lobby_id() {
             return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
         }
-        set lobbyId(value: string) {
+        set lobby_id(value: string) {
             pb_1.Message.setField(this, 1, value);
         }
-        get playerName() {
-            return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
-        }
-        set playerName(value: string) {
-            pb_1.Message.setField(this, 2, value);
-        }
         static fromObject(data: {
-            lobbyId?: string;
-            playerName?: string;
+            lobby_id?: string;
         }): JoinLobbyRequest {
             const message = new JoinLobbyRequest({});
-            if (data.lobbyId != null) {
-                message.lobbyId = data.lobbyId;
-            }
-            if (data.playerName != null) {
-                message.playerName = data.playerName;
+            if (data.lobby_id != null) {
+                message.lobby_id = data.lobby_id;
             }
             return message;
         }
         toObject() {
             const data: {
-                lobbyId?: string;
-                playerName?: string;
+                lobby_id?: string;
             } = {};
-            if (this.lobbyId != null) {
-                data.lobbyId = this.lobbyId;
-            }
-            if (this.playerName != null) {
-                data.playerName = this.playerName;
+            if (this.lobby_id != null) {
+                data.lobby_id = this.lobby_id;
             }
             return data;
         }
@@ -262,10 +1608,8 @@ export namespace server {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (this.lobbyId.length)
-                writer.writeString(1, this.lobbyId);
-            if (this.playerName.length)
-                writer.writeString(2, this.playerName);
+            if (this.lobby_id.length)
+                writer.writeString(1, this.lobby_id);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -276,10 +1620,7 @@ export namespace server {
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
-                        message.lobbyId = reader.readString();
-                        break;
-                    case 2:
-                        message.playerName = reader.readString();
+                        message.lobby_id = reader.readString();
                         break;
                     default: reader.skipField();
                 }
@@ -296,37 +1637,40 @@ export namespace server {
     export class JoinLobbyReply extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
-            playerId?: string;
+            outcome?: Outcome;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
-                if ("playerId" in data && data.playerId != undefined) {
-                    this.playerId = data.playerId;
+                if ("outcome" in data && data.outcome != undefined) {
+                    this.outcome = data.outcome;
                 }
             }
         }
-        get playerId() {
-            return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
+        get outcome() {
+            return pb_1.Message.getWrapperField(this, Outcome, 1) as Outcome;
         }
-        set playerId(value: string) {
-            pb_1.Message.setField(this, 1, value);
+        set outcome(value: Outcome) {
+            pb_1.Message.setWrapperField(this, 1, value);
+        }
+        get has_outcome() {
+            return pb_1.Message.getField(this, 1) != null;
         }
         static fromObject(data: {
-            playerId?: string;
+            outcome?: ReturnType<typeof Outcome.prototype.toObject>;
         }): JoinLobbyReply {
             const message = new JoinLobbyReply({});
-            if (data.playerId != null) {
-                message.playerId = data.playerId;
+            if (data.outcome != null) {
+                message.outcome = Outcome.fromObject(data.outcome);
             }
             return message;
         }
         toObject() {
             const data: {
-                playerId?: string;
+                outcome?: ReturnType<typeof Outcome.prototype.toObject>;
             } = {};
-            if (this.playerId != null) {
-                data.playerId = this.playerId;
+            if (this.outcome != null) {
+                data.outcome = this.outcome.toObject();
             }
             return data;
         }
@@ -334,8 +1678,8 @@ export namespace server {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (this.playerId.length)
-                writer.writeString(1, this.playerId);
+            if (this.has_outcome)
+                writer.writeMessage(1, this.outcome, () => this.outcome.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -346,7 +1690,7 @@ export namespace server {
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
-                        message.playerId = reader.readString();
+                        reader.readMessage(message.outcome, () => message.outcome = Outcome.deserialize(reader));
                         break;
                     default: reader.skipField();
                 }
@@ -360,76 +1704,43 @@ export namespace server {
             return JoinLobbyReply.deserialize(bytes);
         }
     }
-    export class CreateGameRequest extends pb_1.Message {
+    export class InvalidateReply extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
-            lobbyId?: string;
-            player1Id?: string;
-            player2Id?: string;
+            outcome?: Outcome;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
-                if ("lobbyId" in data && data.lobbyId != undefined) {
-                    this.lobbyId = data.lobbyId;
-                }
-                if ("player1Id" in data && data.player1Id != undefined) {
-                    this.player1Id = data.player1Id;
-                }
-                if ("player2Id" in data && data.player2Id != undefined) {
-                    this.player2Id = data.player2Id;
+                if ("outcome" in data && data.outcome != undefined) {
+                    this.outcome = data.outcome;
                 }
             }
         }
-        get lobbyId() {
-            return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
+        get outcome() {
+            return pb_1.Message.getWrapperField(this, Outcome, 1) as Outcome;
         }
-        set lobbyId(value: string) {
-            pb_1.Message.setField(this, 1, value);
+        set outcome(value: Outcome) {
+            pb_1.Message.setWrapperField(this, 1, value);
         }
-        get player1Id() {
-            return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
-        }
-        set player1Id(value: string) {
-            pb_1.Message.setField(this, 2, value);
-        }
-        get player2Id() {
-            return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
-        }
-        set player2Id(value: string) {
-            pb_1.Message.setField(this, 3, value);
+        get has_outcome() {
+            return pb_1.Message.getField(this, 1) != null;
         }
         static fromObject(data: {
-            lobbyId?: string;
-            player1Id?: string;
-            player2Id?: string;
-        }): CreateGameRequest {
-            const message = new CreateGameRequest({});
-            if (data.lobbyId != null) {
-                message.lobbyId = data.lobbyId;
-            }
-            if (data.player1Id != null) {
-                message.player1Id = data.player1Id;
-            }
-            if (data.player2Id != null) {
-                message.player2Id = data.player2Id;
+            outcome?: ReturnType<typeof Outcome.prototype.toObject>;
+        }): InvalidateReply {
+            const message = new InvalidateReply({});
+            if (data.outcome != null) {
+                message.outcome = Outcome.fromObject(data.outcome);
             }
             return message;
         }
         toObject() {
             const data: {
-                lobbyId?: string;
-                player1Id?: string;
-                player2Id?: string;
+                outcome?: ReturnType<typeof Outcome.prototype.toObject>;
             } = {};
-            if (this.lobbyId != null) {
-                data.lobbyId = this.lobbyId;
-            }
-            if (this.player1Id != null) {
-                data.player1Id = this.player1Id;
-            }
-            if (this.player2Id != null) {
-                data.player2Id = this.player2Id;
+            if (this.outcome != null) {
+                data.outcome = this.outcome.toObject();
             }
             return data;
         }
@@ -437,12 +1748,893 @@ export namespace server {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (this.lobbyId.length)
-                writer.writeString(1, this.lobbyId);
-            if (this.player1Id.length)
-                writer.writeString(2, this.player1Id);
-            if (this.player2Id.length)
-                writer.writeString(3, this.player2Id);
+            if (this.has_outcome)
+                writer.writeMessage(1, this.outcome, () => this.outcome.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): InvalidateReply {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new InvalidateReply();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        reader.readMessage(message.outcome, () => message.outcome = Outcome.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): InvalidateReply {
+            return InvalidateReply.deserialize(bytes);
+        }
+    }
+    export class SubscriptionUpdate extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            data?: SubscriptionUpdateData;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("data" in data && data.data != undefined) {
+                    this.data = data.data;
+                }
+            }
+        }
+        get data() {
+            return pb_1.Message.getWrapperField(this, SubscriptionUpdateData, 1) as SubscriptionUpdateData;
+        }
+        set data(value: SubscriptionUpdateData) {
+            pb_1.Message.setWrapperField(this, 1, value);
+        }
+        get has_data() {
+            return pb_1.Message.getField(this, 1) != null;
+        }
+        static fromObject(data: {
+            data?: ReturnType<typeof SubscriptionUpdateData.prototype.toObject>;
+        }): SubscriptionUpdate {
+            const message = new SubscriptionUpdate({});
+            if (data.data != null) {
+                message.data = SubscriptionUpdateData.fromObject(data.data);
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                data?: ReturnType<typeof SubscriptionUpdateData.prototype.toObject>;
+            } = {};
+            if (this.data != null) {
+                data.data = this.data.toObject();
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.has_data)
+                writer.writeMessage(1, this.data, () => this.data.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): SubscriptionUpdate {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new SubscriptionUpdate();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        reader.readMessage(message.data, () => message.data = SubscriptionUpdateData.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): SubscriptionUpdate {
+            return SubscriptionUpdate.deserialize(bytes);
+        }
+    }
+    export class HandshakeRequest extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            player_name?: string;
+            player_pass?: string;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("player_name" in data && data.player_name != undefined) {
+                    this.player_name = data.player_name;
+                }
+                if ("player_pass" in data && data.player_pass != undefined) {
+                    this.player_pass = data.player_pass;
+                }
+            }
+        }
+        get player_name() {
+            return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
+        }
+        set player_name(value: string) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        get player_pass() {
+            return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
+        }
+        set player_pass(value: string) {
+            pb_1.Message.setField(this, 2, value);
+        }
+        static fromObject(data: {
+            player_name?: string;
+            player_pass?: string;
+        }): HandshakeRequest {
+            const message = new HandshakeRequest({});
+            if (data.player_name != null) {
+                message.player_name = data.player_name;
+            }
+            if (data.player_pass != null) {
+                message.player_pass = data.player_pass;
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                player_name?: string;
+                player_pass?: string;
+            } = {};
+            if (this.player_name != null) {
+                data.player_name = this.player_name;
+            }
+            if (this.player_pass != null) {
+                data.player_pass = this.player_pass;
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.player_name.length)
+                writer.writeString(1, this.player_name);
+            if (this.player_pass.length)
+                writer.writeString(2, this.player_pass);
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): HandshakeRequest {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new HandshakeRequest();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.player_name = reader.readString();
+                        break;
+                    case 2:
+                        message.player_pass = reader.readString();
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): HandshakeRequest {
+            return HandshakeRequest.deserialize(bytes);
+        }
+    }
+    export class HandshakeReply extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            outcome?: Outcome;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("outcome" in data && data.outcome != undefined) {
+                    this.outcome = data.outcome;
+                }
+            }
+        }
+        get outcome() {
+            return pb_1.Message.getWrapperField(this, Outcome, 1) as Outcome;
+        }
+        set outcome(value: Outcome) {
+            pb_1.Message.setWrapperField(this, 1, value);
+        }
+        get has_outcome() {
+            return pb_1.Message.getField(this, 1) != null;
+        }
+        static fromObject(data: {
+            outcome?: ReturnType<typeof Outcome.prototype.toObject>;
+        }): HandshakeReply {
+            const message = new HandshakeReply({});
+            if (data.outcome != null) {
+                message.outcome = Outcome.fromObject(data.outcome);
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                outcome?: ReturnType<typeof Outcome.prototype.toObject>;
+            } = {};
+            if (this.outcome != null) {
+                data.outcome = this.outcome.toObject();
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.has_outcome)
+                writer.writeMessage(1, this.outcome, () => this.outcome.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): HandshakeReply {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new HandshakeReply();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        reader.readMessage(message.outcome, () => message.outcome = Outcome.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): HandshakeReply {
+            return HandshakeReply.deserialize(bytes);
+        }
+    }
+    export class NavigationUpdate extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            path?: NavigationPath;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("path" in data && data.path != undefined) {
+                    this.path = data.path;
+                }
+            }
+        }
+        get path() {
+            return pb_1.Message.getFieldWithDefault(this, 1, NavigationPath.LOGIN) as NavigationPath;
+        }
+        set path(value: NavigationPath) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        static fromObject(data: {
+            path?: NavigationPath;
+        }): NavigationUpdate {
+            const message = new NavigationUpdate({});
+            if (data.path != null) {
+                message.path = data.path;
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                path?: NavigationPath;
+            } = {};
+            if (this.path != null) {
+                data.path = this.path;
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.path != NavigationPath.LOGIN)
+                writer.writeEnum(1, this.path);
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): NavigationUpdate {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new NavigationUpdate();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.path = reader.readEnum();
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): NavigationUpdate {
+            return NavigationUpdate.deserialize(bytes);
+        }
+    }
+    export class Move extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            mover?: Mover;
+            position?: number;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("mover" in data && data.mover != undefined) {
+                    this.mover = data.mover;
+                }
+                if ("position" in data && data.position != undefined) {
+                    this.position = data.position;
+                }
+            }
+        }
+        get mover() {
+            return pb_1.Message.getFieldWithDefault(this, 1, Mover.UNSPECIFIED) as Mover;
+        }
+        set mover(value: Mover) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        get position() {
+            return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
+        }
+        set position(value: number) {
+            pb_1.Message.setField(this, 2, value);
+        }
+        static fromObject(data: {
+            mover?: Mover;
+            position?: number;
+        }): Move {
+            const message = new Move({});
+            if (data.mover != null) {
+                message.mover = data.mover;
+            }
+            if (data.position != null) {
+                message.position = data.position;
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                mover?: Mover;
+                position?: number;
+            } = {};
+            if (this.mover != null) {
+                data.mover = this.mover;
+            }
+            if (this.position != null) {
+                data.position = this.position;
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.mover != Mover.UNSPECIFIED)
+                writer.writeEnum(1, this.mover);
+            if (this.position != 0)
+                writer.writeInt32(2, this.position);
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): Move {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new Move();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.mover = reader.readEnum();
+                        break;
+                    case 2:
+                        message.position = reader.readInt32();
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): Move {
+            return Move.deserialize(bytes);
+        }
+    }
+    export class MoveUpdate extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            move?: Move;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("move" in data && data.move != undefined) {
+                    this.move = data.move;
+                }
+            }
+        }
+        get move() {
+            return pb_1.Message.getWrapperField(this, Move, 1) as Move;
+        }
+        set move(value: Move) {
+            pb_1.Message.setWrapperField(this, 1, value);
+        }
+        get has_move() {
+            return pb_1.Message.getField(this, 1) != null;
+        }
+        static fromObject(data: {
+            move?: ReturnType<typeof Move.prototype.toObject>;
+        }): MoveUpdate {
+            const message = new MoveUpdate({});
+            if (data.move != null) {
+                message.move = Move.fromObject(data.move);
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                move?: ReturnType<typeof Move.prototype.toObject>;
+            } = {};
+            if (this.move != null) {
+                data.move = this.move.toObject();
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.has_move)
+                writer.writeMessage(1, this.move, () => this.move.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): MoveUpdate {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new MoveUpdate();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        reader.readMessage(message.move, () => message.move = Move.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): MoveUpdate {
+            return MoveUpdate.deserialize(bytes);
+        }
+    }
+    export class NextMoverUpdate extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            mover?: Mover;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("mover" in data && data.mover != undefined) {
+                    this.mover = data.mover;
+                }
+            }
+        }
+        get mover() {
+            return pb_1.Message.getFieldWithDefault(this, 1, Mover.UNSPECIFIED) as Mover;
+        }
+        set mover(value: Mover) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        static fromObject(data: {
+            mover?: Mover;
+        }): NextMoverUpdate {
+            const message = new NextMoverUpdate({});
+            if (data.mover != null) {
+                message.mover = data.mover;
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                mover?: Mover;
+            } = {};
+            if (this.mover != null) {
+                data.mover = this.mover;
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.mover != Mover.UNSPECIFIED)
+                writer.writeEnum(1, this.mover);
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): NextMoverUpdate {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new NextMoverUpdate();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.mover = reader.readEnum();
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): NextMoverUpdate {
+            return NextMoverUpdate.deserialize(bytes);
+        }
+    }
+    export class MakeMoveRequest extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            position?: number;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("position" in data && data.position != undefined) {
+                    this.position = data.position;
+                }
+            }
+        }
+        get position() {
+            return pb_1.Message.getFieldWithDefault(this, 1, 0) as number;
+        }
+        set position(value: number) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        static fromObject(data: {
+            position?: number;
+        }): MakeMoveRequest {
+            const message = new MakeMoveRequest({});
+            if (data.position != null) {
+                message.position = data.position;
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                position?: number;
+            } = {};
+            if (this.position != null) {
+                data.position = this.position;
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.position != 0)
+                writer.writeInt32(1, this.position);
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): MakeMoveRequest {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new MakeMoveRequest();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.position = reader.readInt32();
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): MakeMoveRequest {
+            return MakeMoveRequest.deserialize(bytes);
+        }
+    }
+    export class MakeMoveReply extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            outcome?: Outcome;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("outcome" in data && data.outcome != undefined) {
+                    this.outcome = data.outcome;
+                }
+            }
+        }
+        get outcome() {
+            return pb_1.Message.getWrapperField(this, Outcome, 1) as Outcome;
+        }
+        set outcome(value: Outcome) {
+            pb_1.Message.setWrapperField(this, 1, value);
+        }
+        get has_outcome() {
+            return pb_1.Message.getField(this, 1) != null;
+        }
+        static fromObject(data: {
+            outcome?: ReturnType<typeof Outcome.prototype.toObject>;
+        }): MakeMoveReply {
+            const message = new MakeMoveReply({});
+            if (data.outcome != null) {
+                message.outcome = Outcome.fromObject(data.outcome);
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                outcome?: ReturnType<typeof Outcome.prototype.toObject>;
+            } = {};
+            if (this.outcome != null) {
+                data.outcome = this.outcome.toObject();
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.has_outcome)
+                writer.writeMessage(1, this.outcome, () => this.outcome.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): MakeMoveReply {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new MakeMoveReply();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        reader.readMessage(message.outcome, () => message.outcome = Outcome.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): MakeMoveReply {
+            return MakeMoveReply.deserialize(bytes);
+        }
+    }
+    export class CreateLobbyRequest extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            name?: string;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("name" in data && data.name != undefined) {
+                    this.name = data.name;
+                }
+            }
+        }
+        get name() {
+            return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
+        }
+        set name(value: string) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        static fromObject(data: {
+            name?: string;
+        }): CreateLobbyRequest {
+            const message = new CreateLobbyRequest({});
+            if (data.name != null) {
+                message.name = data.name;
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                name?: string;
+            } = {};
+            if (this.name != null) {
+                data.name = this.name;
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.name.length)
+                writer.writeString(1, this.name);
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): CreateLobbyRequest {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new CreateLobbyRequest();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.name = reader.readString();
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): CreateLobbyRequest {
+            return CreateLobbyRequest.deserialize(bytes);
+        }
+    }
+    export class CreateLobbyReply extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            outcome?: Outcome;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("outcome" in data && data.outcome != undefined) {
+                    this.outcome = data.outcome;
+                }
+            }
+        }
+        get outcome() {
+            return pb_1.Message.getWrapperField(this, Outcome, 1) as Outcome;
+        }
+        set outcome(value: Outcome) {
+            pb_1.Message.setWrapperField(this, 1, value);
+        }
+        get has_outcome() {
+            return pb_1.Message.getField(this, 1) != null;
+        }
+        static fromObject(data: {
+            outcome?: ReturnType<typeof Outcome.prototype.toObject>;
+        }): CreateLobbyReply {
+            const message = new CreateLobbyReply({});
+            if (data.outcome != null) {
+                message.outcome = Outcome.fromObject(data.outcome);
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                outcome?: ReturnType<typeof Outcome.prototype.toObject>;
+            } = {};
+            if (this.outcome != null) {
+                data.outcome = this.outcome.toObject();
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.has_outcome)
+                writer.writeMessage(1, this.outcome, () => this.outcome.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): CreateLobbyReply {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new CreateLobbyReply();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        reader.readMessage(message.outcome, () => message.outcome = Outcome.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): CreateLobbyReply {
+            return CreateLobbyReply.deserialize(bytes);
+        }
+    }
+    export class CreateGameRequest extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            player1_id?: string;
+            player2_id?: string;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("player1_id" in data && data.player1_id != undefined) {
+                    this.player1_id = data.player1_id;
+                }
+                if ("player2_id" in data && data.player2_id != undefined) {
+                    this.player2_id = data.player2_id;
+                }
+            }
+        }
+        get player1_id() {
+            return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
+        }
+        set player1_id(value: string) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        get player2_id() {
+            return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
+        }
+        set player2_id(value: string) {
+            pb_1.Message.setField(this, 2, value);
+        }
+        static fromObject(data: {
+            player1_id?: string;
+            player2_id?: string;
+        }): CreateGameRequest {
+            const message = new CreateGameRequest({});
+            if (data.player1_id != null) {
+                message.player1_id = data.player1_id;
+            }
+            if (data.player2_id != null) {
+                message.player2_id = data.player2_id;
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                player1_id?: string;
+                player2_id?: string;
+            } = {};
+            if (this.player1_id != null) {
+                data.player1_id = this.player1_id;
+            }
+            if (this.player2_id != null) {
+                data.player2_id = this.player2_id;
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.player1_id.length)
+                writer.writeString(1, this.player1_id);
+            if (this.player2_id.length)
+                writer.writeString(2, this.player2_id);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -453,13 +2645,10 @@ export namespace server {
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
-                        message.lobbyId = reader.readString();
+                        message.player1_id = reader.readString();
                         break;
                     case 2:
-                        message.player1Id = reader.readString();
-                        break;
-                    case 3:
-                        message.player2Id = reader.readString();
+                        message.player2_id = reader.readString();
                         break;
                     default: reader.skipField();
                 }
@@ -473,76 +2662,43 @@ export namespace server {
             return CreateGameRequest.deserialize(bytes);
         }
     }
-    export class MoveRequest extends pb_1.Message {
+    export class CreateGameReply extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
-            gameId?: string;
-            playerId?: string;
-            position?: number;
+            outcome?: Outcome;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
-                if ("gameId" in data && data.gameId != undefined) {
-                    this.gameId = data.gameId;
-                }
-                if ("playerId" in data && data.playerId != undefined) {
-                    this.playerId = data.playerId;
-                }
-                if ("position" in data && data.position != undefined) {
-                    this.position = data.position;
+                if ("outcome" in data && data.outcome != undefined) {
+                    this.outcome = data.outcome;
                 }
             }
         }
-        get gameId() {
-            return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
+        get outcome() {
+            return pb_1.Message.getWrapperField(this, Outcome, 1) as Outcome;
         }
-        set gameId(value: string) {
-            pb_1.Message.setField(this, 1, value);
+        set outcome(value: Outcome) {
+            pb_1.Message.setWrapperField(this, 1, value);
         }
-        get playerId() {
-            return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
-        }
-        set playerId(value: string) {
-            pb_1.Message.setField(this, 2, value);
-        }
-        get position() {
-            return pb_1.Message.getFieldWithDefault(this, 3, 0) as number;
-        }
-        set position(value: number) {
-            pb_1.Message.setField(this, 3, value);
+        get has_outcome() {
+            return pb_1.Message.getField(this, 1) != null;
         }
         static fromObject(data: {
-            gameId?: string;
-            playerId?: string;
-            position?: number;
-        }): MoveRequest {
-            const message = new MoveRequest({});
-            if (data.gameId != null) {
-                message.gameId = data.gameId;
-            }
-            if (data.playerId != null) {
-                message.playerId = data.playerId;
-            }
-            if (data.position != null) {
-                message.position = data.position;
+            outcome?: ReturnType<typeof Outcome.prototype.toObject>;
+        }): CreateGameReply {
+            const message = new CreateGameReply({});
+            if (data.outcome != null) {
+                message.outcome = Outcome.fromObject(data.outcome);
             }
             return message;
         }
         toObject() {
             const data: {
-                gameId?: string;
-                playerId?: string;
-                position?: number;
+                outcome?: ReturnType<typeof Outcome.prototype.toObject>;
             } = {};
-            if (this.gameId != null) {
-                data.gameId = this.gameId;
-            }
-            if (this.playerId != null) {
-                data.playerId = this.playerId;
-            }
-            if (this.position != null) {
-                data.position = this.position;
+            if (this.outcome != null) {
+                data.outcome = this.outcome.toObject();
             }
             return data;
         }
@@ -550,29 +2706,19 @@ export namespace server {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (this.gameId.length)
-                writer.writeString(1, this.gameId);
-            if (this.playerId.length)
-                writer.writeString(2, this.playerId);
-            if (this.position != 0)
-                writer.writeInt32(3, this.position);
+            if (this.has_outcome)
+                writer.writeMessage(1, this.outcome, () => this.outcome.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();
         }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): MoveRequest {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new MoveRequest();
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): CreateGameReply {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new CreateGameReply();
             while (reader.nextField()) {
                 if (reader.isEndGroup())
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
-                        message.gameId = reader.readString();
-                        break;
-                    case 2:
-                        message.playerId = reader.readString();
-                        break;
-                    case 3:
-                        message.position = reader.readInt32();
+                        reader.readMessage(message.outcome, () => message.outcome = Outcome.deserialize(reader));
                         break;
                     default: reader.skipField();
                 }
@@ -582,246 +2728,87 @@ export namespace server {
         serializeBinary(): Uint8Array {
             return this.serialize();
         }
-        static deserializeBinary(bytes: Uint8Array): MoveRequest {
-            return MoveRequest.deserialize(bytes);
+        static deserializeBinary(bytes: Uint8Array): CreateGameReply {
+            return CreateGameReply.deserialize(bytes);
         }
     }
-    export class GameUpdateSubscription extends pb_1.Message {
+    export class WinnerUpdate extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
-            gameId?: string;
-            playerId?: string;
+            winner?: Winner;
+            mover?: Mover;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
-                if ("gameId" in data && data.gameId != undefined) {
-                    this.gameId = data.gameId;
-                }
-                if ("playerId" in data && data.playerId != undefined) {
-                    this.playerId = data.playerId;
-                }
-            }
-        }
-        get gameId() {
-            return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
-        }
-        set gameId(value: string) {
-            pb_1.Message.setField(this, 1, value);
-        }
-        get playerId() {
-            return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
-        }
-        set playerId(value: string) {
-            pb_1.Message.setField(this, 2, value);
-        }
-        static fromObject(data: {
-            gameId?: string;
-            playerId?: string;
-        }): GameUpdateSubscription {
-            const message = new GameUpdateSubscription({});
-            if (data.gameId != null) {
-                message.gameId = data.gameId;
-            }
-            if (data.playerId != null) {
-                message.playerId = data.playerId;
-            }
-            return message;
-        }
-        toObject() {
-            const data: {
-                gameId?: string;
-                playerId?: string;
-            } = {};
-            if (this.gameId != null) {
-                data.gameId = this.gameId;
-            }
-            if (this.playerId != null) {
-                data.playerId = this.playerId;
-            }
-            return data;
-        }
-        serialize(): Uint8Array;
-        serialize(w: pb_1.BinaryWriter): void;
-        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
-            const writer = w || new pb_1.BinaryWriter();
-            if (this.gameId.length)
-                writer.writeString(1, this.gameId);
-            if (this.playerId.length)
-                writer.writeString(2, this.playerId);
-            if (!w)
-                return writer.getResultBuffer();
-        }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): GameUpdateSubscription {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new GameUpdateSubscription();
-            while (reader.nextField()) {
-                if (reader.isEndGroup())
-                    break;
-                switch (reader.getFieldNumber()) {
-                    case 1:
-                        message.gameId = reader.readString();
-                        break;
-                    case 2:
-                        message.playerId = reader.readString();
-                        break;
-                    default: reader.skipField();
-                }
-            }
-            return message;
-        }
-        serializeBinary(): Uint8Array {
-            return this.serialize();
-        }
-        static deserializeBinary(bytes: Uint8Array): GameUpdateSubscription {
-            return GameUpdateSubscription.deserialize(bytes);
-        }
-    }
-    export class GameUpdate extends pb_1.Message {
-        #one_of_decls: number[][] = [];
-        constructor(data?: any[] | {
-            gameId?: string;
-            board?: string[];
-            mover?: string;
-            winner?: string;
-            result?: number;
-        }) {
-            super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
-            if (!Array.isArray(data) && typeof data == "object") {
-                if ("gameId" in data && data.gameId != undefined) {
-                    this.gameId = data.gameId;
-                }
-                if ("board" in data && data.board != undefined) {
-                    this.board = data.board;
+                if ("winner" in data && data.winner != undefined) {
+                    this.winner = data.winner;
                 }
                 if ("mover" in data && data.mover != undefined) {
                     this.mover = data.mover;
                 }
-                if ("winner" in data && data.winner != undefined) {
-                    this.winner = data.winner;
-                }
-                if ("result" in data && data.result != undefined) {
-                    this.result = data.result;
-                }
             }
-        }
-        get gameId() {
-            return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
-        }
-        set gameId(value: string) {
-            pb_1.Message.setField(this, 1, value);
-        }
-        get board() {
-            return pb_1.Message.getFieldWithDefault(this, 2, []) as string[];
-        }
-        set board(value: string[]) {
-            pb_1.Message.setField(this, 2, value);
-        }
-        get mover() {
-            return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
-        }
-        set mover(value: string) {
-            pb_1.Message.setField(this, 3, value);
         }
         get winner() {
-            return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
+            return pb_1.Message.getFieldWithDefault(this, 1, Winner.you) as Winner;
         }
-        set winner(value: string) {
-            pb_1.Message.setField(this, 4, value);
+        set winner(value: Winner) {
+            pb_1.Message.setField(this, 1, value);
         }
-        get result() {
-            return pb_1.Message.getFieldWithDefault(this, 5, 0) as number;
+        get mover() {
+            return pb_1.Message.getFieldWithDefault(this, 2, Mover.UNSPECIFIED) as Mover;
         }
-        set result(value: number) {
-            pb_1.Message.setField(this, 5, value);
+        set mover(value: Mover) {
+            pb_1.Message.setField(this, 2, value);
         }
         static fromObject(data: {
-            gameId?: string;
-            board?: string[];
-            mover?: string;
-            winner?: string;
-            result?: number;
-        }): GameUpdate {
-            const message = new GameUpdate({});
-            if (data.gameId != null) {
-                message.gameId = data.gameId;
-            }
-            if (data.board != null) {
-                message.board = data.board;
+            winner?: Winner;
+            mover?: Mover;
+        }): WinnerUpdate {
+            const message = new WinnerUpdate({});
+            if (data.winner != null) {
+                message.winner = data.winner;
             }
             if (data.mover != null) {
                 message.mover = data.mover;
             }
-            if (data.winner != null) {
-                message.winner = data.winner;
-            }
-            if (data.result != null) {
-                message.result = data.result;
-            }
             return message;
         }
         toObject() {
             const data: {
-                gameId?: string;
-                board?: string[];
-                mover?: string;
-                winner?: string;
-                result?: number;
+                winner?: Winner;
+                mover?: Mover;
             } = {};
-            if (this.gameId != null) {
-                data.gameId = this.gameId;
-            }
-            if (this.board != null) {
-                data.board = this.board;
+            if (this.winner != null) {
+                data.winner = this.winner;
             }
             if (this.mover != null) {
                 data.mover = this.mover;
             }
-            if (this.winner != null) {
-                data.winner = this.winner;
-            }
-            if (this.result != null) {
-                data.result = this.result;
-            }
             return data;
         }
         serialize(): Uint8Array;
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (this.gameId.length)
-                writer.writeString(1, this.gameId);
-            if (this.board.length)
-                writer.writeRepeatedString(2, this.board);
-            if (this.mover.length)
-                writer.writeString(3, this.mover);
-            if (this.winner.length)
-                writer.writeString(4, this.winner);
-            if (this.result != 0)
-                writer.writeInt32(5, this.result);
+            if (this.winner != Winner.you)
+                writer.writeEnum(1, this.winner);
+            if (this.mover != Mover.UNSPECIFIED)
+                writer.writeEnum(2, this.mover);
             if (!w)
                 return writer.getResultBuffer();
         }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): GameUpdate {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new GameUpdate();
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): WinnerUpdate {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new WinnerUpdate();
             while (reader.nextField()) {
                 if (reader.isEndGroup())
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
-                        message.gameId = reader.readString();
+                        message.winner = reader.readEnum();
                         break;
                     case 2:
-                        pb_1.Message.addToRepeatedField(message, 2, reader.readString());
-                        break;
-                    case 3:
-                        message.mover = reader.readString();
-                        break;
-                    case 4:
-                        message.winner = reader.readString();
-                        break;
-                    case 5:
-                        message.result = reader.readInt32();
+                        message.mover = reader.readEnum();
                         break;
                     default: reader.skipField();
                 }
@@ -831,62 +2818,102 @@ export namespace server {
         serializeBinary(): Uint8Array {
             return this.serialize();
         }
-        static deserializeBinary(bytes: Uint8Array): GameUpdate {
-            return GameUpdate.deserialize(bytes);
+        static deserializeBinary(bytes: Uint8Array): WinnerUpdate {
+            return WinnerUpdate.deserialize(bytes);
         }
     }
-    export class LobbySubscription extends pb_1.Message {
+    export class DrawUpdate extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {}) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") { }
+        }
+        static fromObject(data: {}): DrawUpdate {
+            const message = new DrawUpdate({});
+            return message;
+        }
+        toObject() {
+            const data: {} = {};
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): DrawUpdate {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new DrawUpdate();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): DrawUpdate {
+            return DrawUpdate.deserialize(bytes);
+        }
+    }
+    export class GameStartUpdate extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
-            lobbyId?: string;
-            playerId?: string;
+            you?: Mover;
+            other?: Mover;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
-                if ("lobbyId" in data && data.lobbyId != undefined) {
-                    this.lobbyId = data.lobbyId;
+                if ("you" in data && data.you != undefined) {
+                    this.you = data.you;
                 }
-                if ("playerId" in data && data.playerId != undefined) {
-                    this.playerId = data.playerId;
+                if ("other" in data && data.other != undefined) {
+                    this.other = data.other;
                 }
             }
         }
-        get lobbyId() {
-            return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
+        get you() {
+            return pb_1.Message.getFieldWithDefault(this, 1, Mover.UNSPECIFIED) as Mover;
         }
-        set lobbyId(value: string) {
+        set you(value: Mover) {
             pb_1.Message.setField(this, 1, value);
         }
-        get playerId() {
-            return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
+        get other() {
+            return pb_1.Message.getFieldWithDefault(this, 2, Mover.UNSPECIFIED) as Mover;
         }
-        set playerId(value: string) {
+        set other(value: Mover) {
             pb_1.Message.setField(this, 2, value);
         }
         static fromObject(data: {
-            lobbyId?: string;
-            playerId?: string;
-        }): LobbySubscription {
-            const message = new LobbySubscription({});
-            if (data.lobbyId != null) {
-                message.lobbyId = data.lobbyId;
+            you?: Mover;
+            other?: Mover;
+        }): GameStartUpdate {
+            const message = new GameStartUpdate({});
+            if (data.you != null) {
+                message.you = data.you;
             }
-            if (data.playerId != null) {
-                message.playerId = data.playerId;
+            if (data.other != null) {
+                message.other = data.other;
             }
             return message;
         }
         toObject() {
             const data: {
-                lobbyId?: string;
-                playerId?: string;
+                you?: Mover;
+                other?: Mover;
             } = {};
-            if (this.lobbyId != null) {
-                data.lobbyId = this.lobbyId;
+            if (this.you != null) {
+                data.you = this.you;
             }
-            if (this.playerId != null) {
-                data.playerId = this.playerId;
+            if (this.other != null) {
+                data.other = this.other;
             }
             return data;
         }
@@ -894,24 +2921,24 @@ export namespace server {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (this.lobbyId.length)
-                writer.writeString(1, this.lobbyId);
-            if (this.playerId.length)
-                writer.writeString(2, this.playerId);
+            if (this.you != Mover.UNSPECIFIED)
+                writer.writeEnum(1, this.you);
+            if (this.other != Mover.UNSPECIFIED)
+                writer.writeEnum(2, this.other);
             if (!w)
                 return writer.getResultBuffer();
         }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): LobbySubscription {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new LobbySubscription();
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): GameStartUpdate {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new GameStartUpdate();
             while (reader.nextField()) {
                 if (reader.isEndGroup())
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
-                        message.lobbyId = reader.readString();
+                        message.you = reader.readEnum();
                         break;
                     case 2:
-                        message.playerId = reader.readString();
+                        message.other = reader.readEnum();
                         break;
                     default: reader.skipField();
                 }
@@ -921,98 +2948,44 @@ export namespace server {
         serializeBinary(): Uint8Array {
             return this.serialize();
         }
-        static deserializeBinary(bytes: Uint8Array): LobbySubscription {
-            return LobbySubscription.deserialize(bytes);
+        static deserializeBinary(bytes: Uint8Array): GameStartUpdate {
+            return GameStartUpdate.deserialize(bytes);
         }
     }
-    export class GameCreatedUpdate extends pb_1.Message {
+    export class PlayerClientUpdate extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
-            lobbydId?: string;
-            gameId?: string;
-            player1Id?: string;
-            player2Id?: string;
+            message?: string;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
-                if ("lobbydId" in data && data.lobbydId != undefined) {
-                    this.lobbydId = data.lobbydId;
-                }
-                if ("gameId" in data && data.gameId != undefined) {
-                    this.gameId = data.gameId;
-                }
-                if ("player1Id" in data && data.player1Id != undefined) {
-                    this.player1Id = data.player1Id;
-                }
-                if ("player2Id" in data && data.player2Id != undefined) {
-                    this.player2Id = data.player2Id;
+                if ("message" in data && data.message != undefined) {
+                    this.message = data.message;
                 }
             }
         }
-        get lobbydId() {
+        get message() {
             return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
         }
-        set lobbydId(value: string) {
+        set message(value: string) {
             pb_1.Message.setField(this, 1, value);
         }
-        get gameId() {
-            return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
-        }
-        set gameId(value: string) {
-            pb_1.Message.setField(this, 2, value);
-        }
-        get player1Id() {
-            return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
-        }
-        set player1Id(value: string) {
-            pb_1.Message.setField(this, 3, value);
-        }
-        get player2Id() {
-            return pb_1.Message.getFieldWithDefault(this, 4, "") as string;
-        }
-        set player2Id(value: string) {
-            pb_1.Message.setField(this, 4, value);
-        }
         static fromObject(data: {
-            lobbydId?: string;
-            gameId?: string;
-            player1Id?: string;
-            player2Id?: string;
-        }): GameCreatedUpdate {
-            const message = new GameCreatedUpdate({});
-            if (data.lobbydId != null) {
-                message.lobbydId = data.lobbydId;
-            }
-            if (data.gameId != null) {
-                message.gameId = data.gameId;
-            }
-            if (data.player1Id != null) {
-                message.player1Id = data.player1Id;
-            }
-            if (data.player2Id != null) {
-                message.player2Id = data.player2Id;
+            message?: string;
+        }): PlayerClientUpdate {
+            const message = new PlayerClientUpdate({});
+            if (data.message != null) {
+                message.message = data.message;
             }
             return message;
         }
         toObject() {
             const data: {
-                lobbydId?: string;
-                gameId?: string;
-                player1Id?: string;
-                player2Id?: string;
+                message?: string;
             } = {};
-            if (this.lobbydId != null) {
-                data.lobbydId = this.lobbydId;
-            }
-            if (this.gameId != null) {
-                data.gameId = this.gameId;
-            }
-            if (this.player1Id != null) {
-                data.player1Id = this.player1Id;
-            }
-            if (this.player2Id != null) {
-                data.player2Id = this.player2Id;
+            if (this.message != null) {
+                data.message = this.message;
             }
             return data;
         }
@@ -1020,34 +2993,19 @@ export namespace server {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (this.lobbydId.length)
-                writer.writeString(1, this.lobbydId);
-            if (this.gameId.length)
-                writer.writeString(2, this.gameId);
-            if (this.player1Id.length)
-                writer.writeString(3, this.player1Id);
-            if (this.player2Id.length)
-                writer.writeString(4, this.player2Id);
+            if (this.message.length)
+                writer.writeString(1, this.message);
             if (!w)
                 return writer.getResultBuffer();
         }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): GameCreatedUpdate {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new GameCreatedUpdate();
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): PlayerClientUpdate {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new PlayerClientUpdate();
             while (reader.nextField()) {
                 if (reader.isEndGroup())
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
-                        message.lobbydId = reader.readString();
-                        break;
-                    case 2:
-                        message.gameId = reader.readString();
-                        break;
-                    case 3:
-                        message.player1Id = reader.readString();
-                        break;
-                    case 4:
-                        message.player2Id = reader.readString();
+                        message.message = reader.readString();
                         break;
                     default: reader.skipField();
                 }
@@ -1057,8 +3015,8 @@ export namespace server {
         serializeBinary(): Uint8Array {
             return this.serialize();
         }
-        static deserializeBinary(bytes: Uint8Array): GameCreatedUpdate {
-            return GameCreatedUpdate.deserialize(bytes);
+        static deserializeBinary(bytes: Uint8Array): PlayerClientUpdate {
+            return PlayerClientUpdate.deserialize(bytes);
         }
     }
     interface GrpcUnaryServiceInterface<P, R> {
@@ -1087,14 +3045,50 @@ export namespace server {
     }
     export abstract class UnimplementedTicTacToeService {
         static definition = {
+            Exchange: {
+                path: "/server.TicTacToe/Exchange",
+                requestStream: false,
+                responseStream: false,
+                requestSerialize: (message: ExchangeRequest) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => ExchangeRequest.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: ExchangeReply) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => ExchangeReply.deserialize(new Uint8Array(bytes))
+            },
+            Subscribe: {
+                path: "/server.TicTacToe/Subscribe",
+                requestStream: false,
+                responseStream: true,
+                requestSerialize: (message: Empty) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => Empty.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: SubscriptionUpdate) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => SubscriptionUpdate.deserialize(new Uint8Array(bytes))
+            },
+            Handshake: {
+                path: "/server.TicTacToe/Handshake",
+                requestStream: false,
+                responseStream: false,
+                requestSerialize: (message: HandshakeRequest) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => HandshakeRequest.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: Empty) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => Empty.deserialize(new Uint8Array(bytes))
+            },
+            Invalidate: {
+                path: "/server.TicTacToe/Invalidate",
+                requestStream: false,
+                responseStream: false,
+                requestSerialize: (message: Empty) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => Empty.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: Empty) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => Empty.deserialize(new Uint8Array(bytes))
+            },
             CreateLobby: {
                 path: "/server.TicTacToe/CreateLobby",
                 requestStream: false,
                 responseStream: false,
                 requestSerialize: (message: CreateLobbyRequest) => Buffer.from(message.serialize()),
                 requestDeserialize: (bytes: Buffer) => CreateLobbyRequest.deserialize(new Uint8Array(bytes)),
-                responseSerialize: (message: CreateLobbyReply) => Buffer.from(message.serialize()),
-                responseDeserialize: (bytes: Buffer) => CreateLobbyReply.deserialize(new Uint8Array(bytes))
+                responseSerialize: (message: Empty) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => Empty.deserialize(new Uint8Array(bytes))
             },
             JoinLobby: {
                 path: "/server.TicTacToe/JoinLobby",
@@ -1102,8 +3096,17 @@ export namespace server {
                 responseStream: false,
                 requestSerialize: (message: JoinLobbyRequest) => Buffer.from(message.serialize()),
                 requestDeserialize: (bytes: Buffer) => JoinLobbyRequest.deserialize(new Uint8Array(bytes)),
-                responseSerialize: (message: JoinLobbyReply) => Buffer.from(message.serialize()),
-                responseDeserialize: (bytes: Buffer) => JoinLobbyReply.deserialize(new Uint8Array(bytes))
+                responseSerialize: (message: Empty) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => Empty.deserialize(new Uint8Array(bytes))
+            },
+            LeaveMyLobby: {
+                path: "/server.TicTacToe/LeaveMyLobby",
+                requestStream: false,
+                responseStream: false,
+                requestSerialize: (message: Empty) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => Empty.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: Empty) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => Empty.deserialize(new Uint8Array(bytes))
             },
             CreateGame: {
                 path: "/server.TicTacToe/CreateGame",
@@ -1114,63 +3117,57 @@ export namespace server {
                 responseSerialize: (message: Empty) => Buffer.from(message.serialize()),
                 responseDeserialize: (bytes: Buffer) => Empty.deserialize(new Uint8Array(bytes))
             },
-            MakeMoke: {
-                path: "/server.TicTacToe/MakeMoke",
+            MakeMove: {
+                path: "/server.TicTacToe/MakeMove",
                 requestStream: false,
                 responseStream: false,
-                requestSerialize: (message: MoveRequest) => Buffer.from(message.serialize()),
-                requestDeserialize: (bytes: Buffer) => MoveRequest.deserialize(new Uint8Array(bytes)),
+                requestSerialize: (message: MakeMoveRequest) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => MakeMoveRequest.deserialize(new Uint8Array(bytes)),
                 responseSerialize: (message: Empty) => Buffer.from(message.serialize()),
                 responseDeserialize: (bytes: Buffer) => Empty.deserialize(new Uint8Array(bytes))
-            },
-            SubscribeGameUpdates: {
-                path: "/server.TicTacToe/SubscribeGameUpdates",
-                requestStream: false,
-                responseStream: true,
-                requestSerialize: (message: GameUpdateSubscription) => Buffer.from(message.serialize()),
-                requestDeserialize: (bytes: Buffer) => GameUpdateSubscription.deserialize(new Uint8Array(bytes)),
-                responseSerialize: (message: GameUpdate) => Buffer.from(message.serialize()),
-                responseDeserialize: (bytes: Buffer) => GameUpdate.deserialize(new Uint8Array(bytes))
-            },
-            SubscribeToGameCreation: {
-                path: "/server.TicTacToe/SubscribeToGameCreation",
-                requestStream: false,
-                responseStream: true,
-                requestSerialize: (message: LobbySubscription) => Buffer.from(message.serialize()),
-                requestDeserialize: (bytes: Buffer) => LobbySubscription.deserialize(new Uint8Array(bytes)),
-                responseSerialize: (message: GameCreatedUpdate) => Buffer.from(message.serialize()),
-                responseDeserialize: (bytes: Buffer) => GameCreatedUpdate.deserialize(new Uint8Array(bytes))
             }
         };
         [method: string]: grpc_1.UntypedHandleCall;
-        abstract CreateLobby(call: grpc_1.ServerUnaryCall<CreateLobbyRequest, CreateLobbyReply>, callback: grpc_1.sendUnaryData<CreateLobbyReply>): void;
-        abstract JoinLobby(call: grpc_1.ServerUnaryCall<JoinLobbyRequest, JoinLobbyReply>, callback: grpc_1.sendUnaryData<JoinLobbyReply>): void;
+        abstract Exchange(call: grpc_1.ServerUnaryCall<ExchangeRequest, ExchangeReply>, callback: grpc_1.sendUnaryData<ExchangeReply>): void;
+        abstract Subscribe(call: grpc_1.ServerWritableStream<Empty, SubscriptionUpdate>): void;
+        abstract Handshake(call: grpc_1.ServerUnaryCall<HandshakeRequest, Empty>, callback: grpc_1.sendUnaryData<Empty>): void;
+        abstract Invalidate(call: grpc_1.ServerUnaryCall<Empty, Empty>, callback: grpc_1.sendUnaryData<Empty>): void;
+        abstract CreateLobby(call: grpc_1.ServerUnaryCall<CreateLobbyRequest, Empty>, callback: grpc_1.sendUnaryData<Empty>): void;
+        abstract JoinLobby(call: grpc_1.ServerUnaryCall<JoinLobbyRequest, Empty>, callback: grpc_1.sendUnaryData<Empty>): void;
+        abstract LeaveMyLobby(call: grpc_1.ServerUnaryCall<Empty, Empty>, callback: grpc_1.sendUnaryData<Empty>): void;
         abstract CreateGame(call: grpc_1.ServerUnaryCall<CreateGameRequest, Empty>, callback: grpc_1.sendUnaryData<Empty>): void;
-        abstract MakeMoke(call: grpc_1.ServerUnaryCall<MoveRequest, Empty>, callback: grpc_1.sendUnaryData<Empty>): void;
-        abstract SubscribeGameUpdates(call: grpc_1.ServerWritableStream<GameUpdateSubscription, GameUpdate>): void;
-        abstract SubscribeToGameCreation(call: grpc_1.ServerWritableStream<LobbySubscription, GameCreatedUpdate>): void;
+        abstract MakeMove(call: grpc_1.ServerUnaryCall<MakeMoveRequest, Empty>, callback: grpc_1.sendUnaryData<Empty>): void;
     }
     export class TicTacToeClient extends grpc_1.makeGenericClientConstructor(UnimplementedTicTacToeService.definition, "TicTacToe", {}) {
         constructor(address: string, credentials: grpc_1.ChannelCredentials, options?: Partial<grpc_1.ChannelOptions>) {
             super(address, credentials, options);
         }
-        CreateLobby: GrpcUnaryServiceInterface<CreateLobbyRequest, CreateLobbyReply> = (message: CreateLobbyRequest, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<CreateLobbyReply>, options?: grpc_1.CallOptions | grpc_1.requestCallback<CreateLobbyReply>, callback?: grpc_1.requestCallback<CreateLobbyReply>): grpc_1.ClientUnaryCall => {
+        Exchange: GrpcUnaryServiceInterface<ExchangeRequest, ExchangeReply> = (message: ExchangeRequest, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<ExchangeReply>, options?: grpc_1.CallOptions | grpc_1.requestCallback<ExchangeReply>, callback?: grpc_1.requestCallback<ExchangeReply>): grpc_1.ClientUnaryCall => {
+            return super.Exchange(message, metadata, options, callback);
+        };
+        Subscribe: GrpcStreamServiceInterface<Empty, SubscriptionUpdate> = (message: Empty, metadata?: grpc_1.Metadata | grpc_1.CallOptions, options?: grpc_1.CallOptions): grpc_1.ClientReadableStream<SubscriptionUpdate> => {
+            return super.Subscribe(message, metadata, options);
+        };
+        Handshake: GrpcUnaryServiceInterface<HandshakeRequest, Empty> = (message: HandshakeRequest, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<Empty>, options?: grpc_1.CallOptions | grpc_1.requestCallback<Empty>, callback?: grpc_1.requestCallback<Empty>): grpc_1.ClientUnaryCall => {
+            return super.Handshake(message, metadata, options, callback);
+        };
+        Invalidate: GrpcUnaryServiceInterface<Empty, Empty> = (message: Empty, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<Empty>, options?: grpc_1.CallOptions | grpc_1.requestCallback<Empty>, callback?: grpc_1.requestCallback<Empty>): grpc_1.ClientUnaryCall => {
+            return super.Invalidate(message, metadata, options, callback);
+        };
+        CreateLobby: GrpcUnaryServiceInterface<CreateLobbyRequest, Empty> = (message: CreateLobbyRequest, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<Empty>, options?: grpc_1.CallOptions | grpc_1.requestCallback<Empty>, callback?: grpc_1.requestCallback<Empty>): grpc_1.ClientUnaryCall => {
             return super.CreateLobby(message, metadata, options, callback);
         };
-        JoinLobby: GrpcUnaryServiceInterface<JoinLobbyRequest, JoinLobbyReply> = (message: JoinLobbyRequest, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<JoinLobbyReply>, options?: grpc_1.CallOptions | grpc_1.requestCallback<JoinLobbyReply>, callback?: grpc_1.requestCallback<JoinLobbyReply>): grpc_1.ClientUnaryCall => {
+        JoinLobby: GrpcUnaryServiceInterface<JoinLobbyRequest, Empty> = (message: JoinLobbyRequest, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<Empty>, options?: grpc_1.CallOptions | grpc_1.requestCallback<Empty>, callback?: grpc_1.requestCallback<Empty>): grpc_1.ClientUnaryCall => {
             return super.JoinLobby(message, metadata, options, callback);
+        };
+        LeaveMyLobby: GrpcUnaryServiceInterface<Empty, Empty> = (message: Empty, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<Empty>, options?: grpc_1.CallOptions | grpc_1.requestCallback<Empty>, callback?: grpc_1.requestCallback<Empty>): grpc_1.ClientUnaryCall => {
+            return super.LeaveMyLobby(message, metadata, options, callback);
         };
         CreateGame: GrpcUnaryServiceInterface<CreateGameRequest, Empty> = (message: CreateGameRequest, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<Empty>, options?: grpc_1.CallOptions | grpc_1.requestCallback<Empty>, callback?: grpc_1.requestCallback<Empty>): grpc_1.ClientUnaryCall => {
             return super.CreateGame(message, metadata, options, callback);
         };
-        MakeMoke: GrpcUnaryServiceInterface<MoveRequest, Empty> = (message: MoveRequest, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<Empty>, options?: grpc_1.CallOptions | grpc_1.requestCallback<Empty>, callback?: grpc_1.requestCallback<Empty>): grpc_1.ClientUnaryCall => {
-            return super.MakeMoke(message, metadata, options, callback);
-        };
-        SubscribeGameUpdates: GrpcStreamServiceInterface<GameUpdateSubscription, GameUpdate> = (message: GameUpdateSubscription, metadata?: grpc_1.Metadata | grpc_1.CallOptions, options?: grpc_1.CallOptions): grpc_1.ClientReadableStream<GameUpdate> => {
-            return super.SubscribeGameUpdates(message, metadata, options);
-        };
-        SubscribeToGameCreation: GrpcStreamServiceInterface<LobbySubscription, GameCreatedUpdate> = (message: LobbySubscription, metadata?: grpc_1.Metadata | grpc_1.CallOptions, options?: grpc_1.CallOptions): grpc_1.ClientReadableStream<GameCreatedUpdate> => {
-            return super.SubscribeToGameCreation(message, metadata, options);
+        MakeMove: GrpcUnaryServiceInterface<MakeMoveRequest, Empty> = (message: MakeMoveRequest, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<Empty>, options?: grpc_1.CallOptions | grpc_1.requestCallback<Empty>, callback?: grpc_1.requestCallback<Empty>): grpc_1.ClientUnaryCall => {
+            return super.MakeMove(message, metadata, options, callback);
         };
     }
 }
