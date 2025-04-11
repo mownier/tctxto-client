@@ -3,6 +3,7 @@ import { MainRootView } from './views/MainRootView'
 import * as ElementIds from './constants/element-ids'
 import { NoSessionHeaderView } from './views/NoSessionHeaderView'
 import { WelcomeView } from './views/WelcomeView'
+import { exchange } from './grpc/client'
 
 async function main() {
     try {
@@ -27,8 +28,23 @@ async function main() {
         return
     }
 
-    const noSessionHeaderView = new NoSessionHeaderView(mainRootHeaderElement)
-    const welcomeView = new WelcomeView(mainRootContentElement)
+    let ok: boolean
+
+    try {
+        exchange()
+        ok = true
+    } catch (error) {
+        console.error("exchange error:", error)
+        ok = false
+    }
+
+    if (!ok) {
+        const noSessionHeaderView = new NoSessionHeaderView(mainRootHeaderElement)
+        const welcomeView = new WelcomeView(mainRootContentElement)
+        return
+    }
+
+    mainRootContentElement.innerHTML = '<h1>Wee</h1>'
 }
 
 main()
