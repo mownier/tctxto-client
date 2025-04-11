@@ -47,7 +47,7 @@ export interface LocalizableElement {
     key: string;
 }
 
-export async function renderLocalizedTexts(localizableElements: Array<LocalizableElement>): Promise<void> {
+export async function renderLocalizedTexts(localizableElements: LocalizableElement[]): Promise<void> {
     for (const item of localizableElements) {
         try {
             if (item.element instanceof HTMLInputElement) {
