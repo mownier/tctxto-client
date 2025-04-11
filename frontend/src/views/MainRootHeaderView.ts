@@ -1,6 +1,6 @@
 import { i18n } from "../localization/localization"
 
-export class MainRooHeaderView {
+export class MainRootHeaderView {
     private invalidateButton: HTMLButtonElement
     private onInvalidate: () => void
 
