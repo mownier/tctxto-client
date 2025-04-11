@@ -6,9 +6,9 @@ function getBrowserLocale(): string {
     if (typeof navigator !== 'undefined') {
         return navigator.languages && navigator.languages.length
             ? navigator.languages[0]
-            : navigator.language || 'en-US'; // Use navigator.language, and default to 'en-US'
+            : navigator.language || 'en-US'
     } else {
-        return 'en-US'; // Handle server-side rendering or non-browser environments
+        return 'en-US'
     }
 }
 
@@ -40,4 +40,29 @@ export async function i18n(key: string): Promise<string> {
         return key
     }
     return translations[key]
+}
+
+export interface LocalizableElement {
+    element: HTMLElement;
+    key: string;
+}
+
+export async function renderLocalizedTexts(localizableElements: Array<LocalizableElement>): Promise<void> {
+    for (const item of localizableElements) {
+        try {
+            if (item.element instanceof HTMLInputElement) {
+                item.element.placeholder = await i18n(item.key)
+            } else {
+                item.element.textContent = item.key
+            }
+            item.element.textContent = await i18n(item.key)
+        } catch (error) {
+            console.error("Error loading localization:", error)
+            if (item.element instanceof HTMLInputElement) {
+                item.element.placeholder = await i18n(item.key)
+            } else {
+                item.element.textContent = item.key
+            }
+        }
+    }
 }
