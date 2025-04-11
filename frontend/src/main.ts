@@ -1,32 +1,31 @@
 import { setLocaleAutomatically } from './localization/localization'
 import { MainRootView } from './views/MainRootView'
 import * as ElementIds from './constants/element-ids'
-import { showWelcomeView } from './flows/show-welcome-view'
-import { Session } from './models/Session'
-import { getSession, removeSession } from './store/store'
-import { showLobbyView } from './flows/show-lobby-view'
-import { MainRooHeaderView } from './views/MainRootHeaderView'
-import { subscribeGameCreatedUpdates } from './grpc/client'
-import { Game } from './models/Game'
+import { NoSessionHeaderView } from './views/NoSessionHeaderView'
 
 async function main() {
-    await setLocaleAutomatically()
-    new MainRootView(ElementIds.MAIN_ROOT_ID)
-    new MainRooHeaderView(ElementIds.MAIN_ROOT_HEADER_ID, () => {
-        removeSession()
-        showWelcomeView()
-    })
-    let session: Session | null
     try {
-        session = getSession()
+        await setLocaleAutomatically()
     } catch (error) {
-        session = null
+        console.error("locale not set automatically:", error)
     }
-    if (session) {
-        showLobbyView()
+    
+    const mainRootElement = document.getElementById(ElementIds.MAIN_ROOT_ID) as HTMLElement
+
+    if (!mainRootElement) {
+        console.error("main root not found")
         return
     }
-    showWelcomeView()
+
+    const mainRootView = new MainRootView(mainRootElement)
+    const mainRootHeaderElement = document.getElementById(ElementIds.MAIN_ROOT_HEADER_ID) as HTMLElement
+
+    if (!mainRootHeaderElement) {
+        console.error("main root header not found")
+        return
+    }
+
+    const noSessionHeaderView = new NoSessionHeaderView(mainRootHeaderElement)
 }
 
 main()
