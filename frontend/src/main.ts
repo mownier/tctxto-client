@@ -2,6 +2,7 @@ import { setLocaleAutomatically } from './localization/localization'
 import { MainRootView } from './views/MainRootView'
 import * as ElementIds from './constants/element-ids'
 import { NoSessionHeaderView } from './views/NoSessionHeaderView'
+import { WelcomeView } from './views/WelcomeView'
 
 async function main() {
     try {
@@ -19,6 +20,7 @@ async function main() {
 
     const mainRootView = new MainRootView(mainRootElement)
     const mainRootHeaderElement = document.getElementById(ElementIds.MAIN_ROOT_HEADER_ID) as HTMLElement
+    const mainRootContentElement = document.getElementById(ElementIds.MAIN_ROOT_CONTENT_ID) as HTMLElement
 
     if (!mainRootHeaderElement) {
         console.error("main root header not found")
@@ -26,6 +28,7 @@ async function main() {
     }
 
     const noSessionHeaderView = new NoSessionHeaderView(mainRootHeaderElement)
+    const welcomeView = new WelcomeView(mainRootContentElement)
 }
 
 main()
