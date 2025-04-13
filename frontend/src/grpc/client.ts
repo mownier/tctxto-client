@@ -1,14 +1,33 @@
 import { TicTacToeClient } from './TctxtoServiceClientPb';
 import * as GrpcConst from "../constants/grpc"
-import { ClientUpdate, NavigationPath, NavigationUpdate, ServerUpdate, SignInRequest, SignUpRequest, SubscriptionAction, SubscribeRequest, SignOutRequest } from "./tctxto_pb"
+import { ClientUpdate, NavigationPath, NavigationUpdate, ServerUpdate, SignInRequest, SignUpRequest, SignOutRequest, CreateLobbyRequest, Lobby, Empty, Player } from "./tctxto_pb"
 import { ClientReadableStream, Metadata } from "grpc-web"
 
 const CLIENT_ID_STORAGE_KEY: string = 'TicTacToeClient_clientId'
-const PLAYER_DISPLAY_NAME_STORAGE_KEY: string = "Player_displayName"
 const SUBSCRIBE_MAX_ATTEMPTS: number = 3
 
 let subscribeAttempts: number = 0
 let stream: ClientReadableStream<ServerUpdate> | null = null
+let latestData: LatestData = {
+    path: null,
+    lobby: null,
+    playerDisplayName: ''
+}
+
+function resetLatestData(): void {
+    latestData.lobby = null
+    latestData.playerDisplayName = ''
+}
+
+export function getLatestData(): LatestData {
+    return latestData
+}
+
+export interface LatestData {
+    path: NavigationPath | null
+    lobby: Lobby | null
+    playerDisplayName: string
+}
 
 export interface ClientCallback {
     showHome(): void
@@ -20,6 +39,9 @@ export interface ClientCallback {
     signOutNotOkay(): void
     showRefreshPage(): void
     playerUsingOtherClient(message: string): void
+    createLobbyNotOkay(): void
+    displayMyLobbyDetails(lobby: Lobby): void
+    updatePlayerDisplayName(name: string): void
 }
 
 class ClientCallbackDefaultImp implements ClientCallback {
@@ -44,19 +66,31 @@ class ClientCallbackDefaultImp implements ClientCallback {
     }
 
     signUpNotOkay(): void {
-        throw new Error('Method not implemented.')
+        throw new Error("Method not implemented.")
     }
 
     signOutNotOkay(): void {
-        throw new Error('Method not implemented.')
+        throw new Error("Method not implemented.")
     }
 
     showRefreshPage(): void {
-        throw new Error('Method not implemented.')
+        throw new Error("Method not implemented.")
     }
 
     playerUsingOtherClient(message: string): void {
-        throw new Error('Method not implemented.')
+        throw new Error("Method not implemented.")
+    }
+
+    createLobbyNotOkay(): void {
+        throw new Error("Method not implemented.")
+    }
+
+    displayMyLobbyDetails(lobby: Lobby): void {
+        throw new Error("Method not implemented.")
+    }
+
+    updatePlayerDisplayName(name: string): void {
+        throw new Error("Method not implemented.")
     }
 }
 
@@ -78,18 +112,6 @@ function getClientId(): string {
     return sessionStorage.getItem(CLIENT_ID_STORAGE_KEY) || ''
 }
 
-function storePlayerDisplayName(displayName: string): void {
-    sessionStorage.setItem(PLAYER_DISPLAY_NAME_STORAGE_KEY, displayName)
-}
-
-function removePlayerDisplayName(): void {
-    sessionStorage.removeItem(PLAYER_DISPLAY_NAME_STORAGE_KEY)
-}
-
-export function getPlayerDisplayName(): string {
-    return sessionStorage.getItem(PLAYER_DISPLAY_NAME_STORAGE_KEY) || ''
-}
-
 function metadataWithClientId(): Metadata {
     const clientId = getClientId()
     return { 'ClientId': clientId }
@@ -103,12 +125,10 @@ function subscribeMetdata(): Metadata {
     }
 }
 
-export async function subscribe(action: SubscriptionAction): Promise<void> {
+export async function subscribe(): Promise<void> {
     return new Promise((resolve, _) => {
         const client = createClient()
-        const request = new SubscribeRequest()
-        request.setAction(action)
-        stream = client.subscribe(request, subscribeMetdata())
+        stream = client.subscribe(new Empty(), subscribeMetdata())
         stream.on('data', handleStreamData)
         stream.on('error', handleStreamError)
         stream.on('end', handleStreamEnd)
@@ -168,6 +188,23 @@ export async function signOut(): Promise<void> {
     })
 }
 
+export async function createLobby(name: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+        try {
+            const update = new ClientUpdate()
+            const request = new CreateLobbyRequest()
+            request.setName(name)
+            update.setCreateLobbyRequest(request)
+            const client = createClient()
+            client.notify(update, metadataWithClientId())
+            resolve()
+        } catch (error) {
+            clientCallback.createLobbyNotOkay()
+            reject(error)
+        }
+    })
+}
+
 function handleStreamData(update: ServerUpdate) {
     console.log(`[STREAM] server update received`)
     subscribeAttempts = 0
@@ -206,24 +243,72 @@ function handleStreamData(update: ServerUpdate) {
                 if (update.getSignOutReply()!.getOutcome()) {
                     if (!update.getSignOutReply()!.getOutcome()!.getOk()) {
                         clientCallback.signOutNotOkay()
-                    } else {
-                        removePlayerDisplayName()
                     }
                 }
             }
             break
         case ServerUpdate.TypeCase.PLAYER_CLIENT_UPDATE:
             if (update.getPlayerClientUpdate()) {
-                removePlayerDisplayName()
                 clientCallback.playerUsingOtherClient(update.getPlayerClientUpdate()!.getMessage())
             }
             break
         case ServerUpdate.TypeCase.PLAYER_DISPLAY_NAME_UPDATE:
             if (update.getPlayerDisplayNameUpdate()) {
-                storePlayerDisplayName(update.getPlayerDisplayNameUpdate()!.getDisplayname())
+                latestData.playerDisplayName = update.getPlayerDisplayNameUpdate()!.getDisplayname()
+                clientCallback.updatePlayerDisplayName(latestData.playerDisplayName)
+            }
+            break
+        case ServerUpdate.TypeCase.CREATE_LOBBY_REPLY:
+            if (update.getCreateLobbyReply()) {
+                if (update.getCreateLobbyReply()!.getOutcome()) {
+                    if (!update.getCreateLobbyReply()!.getOutcome()!.getOk()) {
+                        clientCallback.createLobbyNotOkay()
+                    }
+                }
+            }
+            break
+        case ServerUpdate.TypeCase.MY_LOBBY_DETAILS:
+            if (update.getMyLobbyDetails()) {
+                if (update.getMyLobbyDetails()!.getLobby()) {
+                    if (!deepCompareLobby(latestData.lobby, update.getMyLobbyDetails()!.getLobby()!)) {
+                        latestData.lobby = update.getMyLobbyDetails()!.getLobby()!
+                        clientCallback.displayMyLobbyDetails(latestData.lobby!)
+                    }
+                }
             }
             break
     }
+}
+
+function deepCompareLobby(lobby1: Lobby | null, lobby2: Lobby | null): boolean {
+    if (lobby1 === lobby2) {
+        return true // Both are null or the same object reference
+    }
+    if (!lobby1 || !lobby2) {
+        return false // One is null and the other isn't
+    }
+    if (lobby1.getName() !== lobby2.getName()) {
+        return false
+    }
+    if (lobby1.getPlayersList().length !== lobby2.getPlayersList().length) {
+        return false
+    }
+    for (let i = 0; i < lobby1.getPlayersList().length; i++) {
+        if (!deepComparePlayer(lobby1.getPlayersList()[i] || null, lobby2.getPlayersList()[i] || null)) {
+            return false
+        }
+    }
+    return true
+}
+
+function deepComparePlayer(player1: Player | null, player2: Player | null): boolean {
+    if (player1 === player2) {
+        return true // Both are null or the same object reference
+    }
+    if (!player1 || !player2) {
+        return false // One is null and the other isn't
+    }
+    return player1.getId() === player2.getId() && player1.getName() === player2.getName()
 }
 
 function handleStreamError(error: Error) {
@@ -235,7 +320,7 @@ function handleStreamError(error: Error) {
     stream = null
     subscribeAttempts += 1
     if (subscribeAttempts < SUBSCRIBE_MAX_ATTEMPTS) {
-        subscribe(SubscriptionAction.RE_SUBSCRIBE)
+        subscribe()
         return
     }
     clientCallback.showRefreshPage()
@@ -250,28 +335,30 @@ function handleStreamEnd() {
     stream = null
     subscribeAttempts += 1
     if (subscribeAttempts < SUBSCRIBE_MAX_ATTEMPTS) {
-        subscribe(SubscriptionAction.RE_SUBSCRIBE)
+        subscribe()
         return
     }
     clientCallback.showRefreshPage()
 }
 
 function handleNavigationUpdate(update: NavigationUpdate) {
-    if (!update.getRefresh()) {
+    if (latestData.path === update.getPath()) {
         return
     }
+    latestData.path = update.getPath()
     switch (update.getPath()) {
-    case NavigationPath.GAME:
-        clientCallback.showGame()
-        break
-    case NavigationPath.HOME:
-        clientCallback.showHome()
-        break
-    case NavigationPath.WELCOME:
-        clientCallback.showWelcome()
-        break
-    case NavigationPath.MY_LOBBY:
-        clientCallback.showMyLobby()
-        break
+        case NavigationPath.GAME:
+            clientCallback.showGame()
+            break
+        case NavigationPath.HOME:
+            clientCallback.showHome()
+            break
+        case NavigationPath.WELCOME:
+            resetLatestData()
+            clientCallback.showWelcome()
+            break
+        case NavigationPath.MY_LOBBY:
+            clientCallback.showMyLobby()
+            break
     }
 }

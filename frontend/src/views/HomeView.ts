@@ -1,4 +1,5 @@
 import { LocalizableElement, renderLocalizedTexts } from "../localization/localization"
+import * as ElementIds from "../constants/element-ids"
 
 export type JoinLobbyCallback = (lobbyId: string) => void
 export type CreateLobbyCallback = (lobbyName: string) => void
@@ -11,6 +12,7 @@ export class HomeView {
     private joinLobbyIdInput: HTMLInputElement = document.createElement('input')
     private createLobbyButton: HTMLButtonElement = document.createElement('button')
     private createLobbyNameInput: HTMLInputElement = document.createElement('input')
+    private statusParagraph: HTMLParagraphElement = document.createElement('p')
 
     private joinLobbyCallback: JoinLobbyCallback | null = null
     private createLobbyCallback: CreateLobbyCallback | null = null
@@ -33,10 +35,13 @@ export class HomeView {
         this.rootElement.innerHTML = ''
 
         this.rootElement.appendChild(this.titleHeading)
+        this.rootElement.appendChild(this.statusParagraph)
         this.rootElement.appendChild(this.joinLobbyIdInput)
         this.rootElement.appendChild(this.joinLobbyButton)
         this.rootElement.appendChild(this.createLobbyNameInput)
         this.rootElement.appendChild(this.createLobbyButton)
+
+        this.statusParagraph.id = ElementIds.HOME_STATUS_ID
 
         this.joinLobbyButton.addEventListener('click', () => {
             const id = this.joinLobbyIdInput.value

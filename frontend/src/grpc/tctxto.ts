@@ -21,10 +21,6 @@ export namespace server2 {
         you = 0,
         other = 1
     }
-    export enum SubscriptionAction {
-        INITIAL = 0,
-        RE_SUBSCRIBE = 1
-    }
     export class Empty extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {}) {
@@ -63,73 +59,6 @@ export namespace server2 {
         }
         static deserializeBinary(bytes: Uint8Array): Empty {
             return Empty.deserialize(bytes);
-        }
-    }
-    export class SubscribeRequest extends pb_1.Message {
-        #one_of_decls: number[][] = [];
-        constructor(data?: any[] | {
-            action?: SubscriptionAction;
-        }) {
-            super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
-            if (!Array.isArray(data) && typeof data == "object") {
-                if ("action" in data && data.action != undefined) {
-                    this.action = data.action;
-                }
-            }
-        }
-        get action() {
-            return pb_1.Message.getFieldWithDefault(this, 1, SubscriptionAction.INITIAL) as SubscriptionAction;
-        }
-        set action(value: SubscriptionAction) {
-            pb_1.Message.setField(this, 1, value);
-        }
-        static fromObject(data: {
-            action?: SubscriptionAction;
-        }): SubscribeRequest {
-            const message = new SubscribeRequest({});
-            if (data.action != null) {
-                message.action = data.action;
-            }
-            return message;
-        }
-        toObject() {
-            const data: {
-                action?: SubscriptionAction;
-            } = {};
-            if (this.action != null) {
-                data.action = this.action;
-            }
-            return data;
-        }
-        serialize(): Uint8Array;
-        serialize(w: pb_1.BinaryWriter): void;
-        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
-            const writer = w || new pb_1.BinaryWriter();
-            if (this.action != SubscriptionAction.INITIAL)
-                writer.writeEnum(1, this.action);
-            if (!w)
-                return writer.getResultBuffer();
-        }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): SubscribeRequest {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new SubscribeRequest();
-            while (reader.nextField()) {
-                if (reader.isEndGroup())
-                    break;
-                switch (reader.getFieldNumber()) {
-                    case 1:
-                        message.action = reader.readEnum();
-                        break;
-                    default: reader.skipField();
-                }
-            }
-            return message;
-        }
-        serializeBinary(): Uint8Array {
-            return this.serialize();
-        }
-        static deserializeBinary(bytes: Uint8Array): SubscribeRequest {
-            return SubscribeRequest.deserialize(bytes);
         }
     }
     export class ClientUpdate extends pb_1.Message {
@@ -1771,16 +1700,12 @@ export namespace server2 {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
             path?: NavigationPath;
-            refresh?: boolean;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("path" in data && data.path != undefined) {
                     this.path = data.path;
-                }
-                if ("refresh" in data && data.refresh != undefined) {
-                    this.refresh = data.refresh;
                 }
             }
         }
@@ -1790,35 +1715,21 @@ export namespace server2 {
         set path(value: NavigationPath) {
             pb_1.Message.setField(this, 1, value);
         }
-        get refresh() {
-            return pb_1.Message.getFieldWithDefault(this, 2, false) as boolean;
-        }
-        set refresh(value: boolean) {
-            pb_1.Message.setField(this, 2, value);
-        }
         static fromObject(data: {
             path?: NavigationPath;
-            refresh?: boolean;
         }): NavigationUpdate {
             const message = new NavigationUpdate({});
             if (data.path != null) {
                 message.path = data.path;
-            }
-            if (data.refresh != null) {
-                message.refresh = data.refresh;
             }
             return message;
         }
         toObject() {
             const data: {
                 path?: NavigationPath;
-                refresh?: boolean;
             } = {};
             if (this.path != null) {
                 data.path = this.path;
-            }
-            if (this.refresh != null) {
-                data.refresh = this.refresh;
             }
             return data;
         }
@@ -1828,8 +1739,6 @@ export namespace server2 {
             const writer = w || new pb_1.BinaryWriter();
             if (this.path != NavigationPath.WELCOME)
                 writer.writeEnum(1, this.path);
-            if (this.refresh != false)
-                writer.writeBool(2, this.refresh);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -1841,9 +1750,6 @@ export namespace server2 {
                 switch (reader.getFieldNumber()) {
                     case 1:
                         message.path = reader.readEnum();
-                        break;
-                    case 2:
-                        message.refresh = reader.readBool();
                         break;
                     default: reader.skipField();
                 }
@@ -3862,8 +3768,8 @@ export namespace server2 {
                 path: "/server2.TicTacToe/Subscribe",
                 requestStream: false,
                 responseStream: true,
-                requestSerialize: (message: SubscribeRequest) => Buffer.from(message.serialize()),
-                requestDeserialize: (bytes: Buffer) => SubscribeRequest.deserialize(new Uint8Array(bytes)),
+                requestSerialize: (message: Empty) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => Empty.deserialize(new Uint8Array(bytes)),
                 responseSerialize: (message: ServerUpdate) => Buffer.from(message.serialize()),
                 responseDeserialize: (bytes: Buffer) => ServerUpdate.deserialize(new Uint8Array(bytes))
             },
@@ -3878,14 +3784,14 @@ export namespace server2 {
             }
         };
         [method: string]: grpc_1.UntypedHandleCall;
-        abstract Subscribe(call: grpc_1.ServerWritableStream<SubscribeRequest, ServerUpdate>): void;
+        abstract Subscribe(call: grpc_1.ServerWritableStream<Empty, ServerUpdate>): void;
         abstract Notify(call: grpc_1.ServerUnaryCall<ClientUpdate, Empty>, callback: grpc_1.sendUnaryData<Empty>): void;
     }
     export class TicTacToeClient extends grpc_1.makeGenericClientConstructor(UnimplementedTicTacToeService.definition, "TicTacToe", {}) {
         constructor(address: string, credentials: grpc_1.ChannelCredentials, options?: Partial<grpc_1.ChannelOptions>) {
             super(address, credentials, options);
         }
-        Subscribe: GrpcStreamServiceInterface<SubscribeRequest, ServerUpdate> = (message: SubscribeRequest, metadata?: grpc_1.Metadata | grpc_1.CallOptions, options?: grpc_1.CallOptions): grpc_1.ClientReadableStream<ServerUpdate> => {
+        Subscribe: GrpcStreamServiceInterface<Empty, ServerUpdate> = (message: Empty, metadata?: grpc_1.Metadata | grpc_1.CallOptions, options?: grpc_1.CallOptions): grpc_1.ClientReadableStream<ServerUpdate> => {
             return super.Subscribe(message, metadata, options);
         };
         Notify: GrpcUnaryServiceInterface<ClientUpdate, Empty> = (message: ClientUpdate, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<Empty>, options?: grpc_1.CallOptions | grpc_1.requestCallback<Empty>, callback?: grpc_1.requestCallback<Empty>): grpc_1.ClientUnaryCall => {

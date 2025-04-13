@@ -16,24 +16,6 @@ export namespace Empty {
   }
 }
 
-export class SubscribeRequest extends jspb.Message {
-  getAction(): SubscriptionAction;
-  setAction(value: SubscriptionAction): SubscribeRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): SubscribeRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: SubscribeRequest): SubscribeRequest.AsObject;
-  static serializeBinaryToWriter(message: SubscribeRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): SubscribeRequest;
-  static deserializeBinaryFromReader(message: SubscribeRequest, reader: jspb.BinaryReader): SubscribeRequest;
-}
-
-export namespace SubscribeRequest {
-  export type AsObject = {
-    action: SubscriptionAction,
-  }
-}
-
 export class ClientUpdate extends jspb.Message {
   getSignUpRequest(): SignUpRequest | undefined;
   setSignUpRequest(value?: SignUpRequest): ClientUpdate;
@@ -352,9 +334,6 @@ export class NavigationUpdate extends jspb.Message {
   getPath(): NavigationPath;
   setPath(value: NavigationPath): NavigationUpdate;
 
-  getRefresh(): boolean;
-  setRefresh(value: boolean): NavigationUpdate;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): NavigationUpdate.AsObject;
   static toObject(includeInstance: boolean, msg: NavigationUpdate): NavigationUpdate.AsObject;
@@ -366,7 +345,6 @@ export class NavigationUpdate extends jspb.Message {
 export namespace NavigationUpdate {
   export type AsObject = {
     path: NavigationPath,
-    refresh: boolean,
   }
 }
 
@@ -918,8 +896,4 @@ export enum Mover {
 export enum Winner { 
   YOU = 0,
   OTHER = 1,
-}
-export enum SubscriptionAction { 
-  INITIAL = 0,
-  RE_SUBSCRIBE = 1,
 }

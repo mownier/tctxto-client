@@ -33,6 +33,8 @@ export class WithSessionHeaderView {
         this.rootElement.appendChild(this.statusParagraph)
 
         this.playerNameParagraph.textContent = this.playerName
+        this.playerNameParagraph.id = ElementIds.PLAYER_DISPLAY_NAME_ID
+        
         this.statusParagraph.id = ElementIds.WITH_SESSION_STATUS_ID
 
         this.signOutButton.addEventListener('click', () => {

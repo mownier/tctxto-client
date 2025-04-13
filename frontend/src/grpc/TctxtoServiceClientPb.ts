@@ -42,16 +42,16 @@ export class TicTacToeClient {
   methodDescriptorSubscribe = new grpcWeb.MethodDescriptor(
     '/server2.TicTacToe/Subscribe',
     grpcWeb.MethodType.SERVER_STREAMING,
-    tctxto_pb.SubscribeRequest,
+    tctxto_pb.Empty,
     tctxto_pb.ServerUpdate,
-    (request: tctxto_pb.SubscribeRequest) => {
+    (request: tctxto_pb.Empty) => {
       return request.serializeBinary();
     },
     tctxto_pb.ServerUpdate.deserializeBinary
   );
 
   subscribe(
-    request: tctxto_pb.SubscribeRequest,
+    request: tctxto_pb.Empty,
     metadata?: grpcWeb.Metadata): grpcWeb.ClientReadableStream<tctxto_pb.ServerUpdate> {
     return this.client_.serverStreaming(
       this.hostname_ +
