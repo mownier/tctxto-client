@@ -32,5 +32,11 @@
     "Encountered error while signing up. Please try again.": "Encountered error while signing up. Please try again.",
     "Sign Up": "Sign Up",
     "You are using another client": "You are using another client",
-    "Encountered error while signing out. Please try again.": "Encountered error while signing out. Please try again."
+    "Encountered error while signing out. Please try again.": "Encountered error while signing out. Please try again.",
+    "Leave": "Leave",
+    "Players": "Players",
+    "Encountered error while creating a lobby. Please try again.": "Encountered error while creating a lobby. Please try again.",
+    "Name": "Name",
+    "Select Player 1": "Select Player 1", 
+    "Select Player 2": "Select Player 2"
 }

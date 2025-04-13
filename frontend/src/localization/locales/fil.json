@@ -32,5 +32,11 @@
     "Encountered error while signing up. Please try again.": "Nakaranas ng error habang nagsa-sign up. Pakisubukang muli.",
     "Sign Up": "Mag-sign Up",
     "You are using another client": "Gumagamit ka ng ibang kliyente",
-    "Encountered error while signing out. Please try again.": "Nakaranas ng error habang nagsa-sign out. Pakisubukang muli."
+    "Encountered error while signing out. Please try again.": "Nakaranas ng error habang nagsa-sign out. Pakisubukang muli.",
+    "Leave": "Umalis",
+    "Players": "Mga manlalaro",
+    "Encountered error while creating a lobby. Please try again.": "Nakaranas ng error habang gumagawa ng lobby. Pakisubukang muli.",
+    "Name": "Pangalan",
+    "Select Player 1": "Piliin ang Manlalaro 1", 
+    "Select Player 2": "Piliin ang Manlalaro 2"
 }
