@@ -96,6 +96,8 @@ $ npm install --save-dev protoc-gen-js
 # This script can be integrated in package.json
 $ protoc --plugin=protoc-gen-ts=./node_modules/.bin/protoc-gen-ts --plugin=protoc-gen-js=./node_modules/.bin/protoc-gen-js --plugin=protoc-gen-grpc-web=./node_modules/.bin/protoc-gen-grpc-web --ts_out=./src/grpc/ --js_out=import_style=commonjs:./src/grpc/ --grpc-web_out=import_style=typescript,mode=grpcwebtext:./src/grpc/ tctxto.proto
 
+$ protoc --plugin=protoc-gen-ts=./node_modules/.bin/protoc-gen-ts --plugin=protoc-gen-grpc-web=./node_modules/.bin/protoc-gen-grpc-web --ts_out=./src/grpc/ --grpc-web_out=import_style=typescript,mode=grpcwebtext:./src/grpc/ tctxto.proto
+
 # This is the script
 $ npm install generate-proto
 ```

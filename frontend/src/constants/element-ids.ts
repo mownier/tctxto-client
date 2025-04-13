@@ -13,3 +13,6 @@ export const PLAYER_1_NAME_INPUT_ID = "player-1-name-input"
 export const PLAYER_2_NAME_INPUT_ID = "player-2-name-input"
 
 export const GAME_CONTAINER_DIV_ID = "game-container"
+
+export const NO_SESSION_STATUS_ID = "no-session-status"
+export const WITH_SESSION_STATUS_ID = "with-session-status"

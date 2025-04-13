@@ -2,145 +2,6 @@ import * as jspb from 'google-protobuf'
 
 
 
-export class SubscriptionUpdateData extends jspb.Message {
-  getNavigationUpdate(): NavigationUpdate | undefined;
-  setNavigationUpdate(value?: NavigationUpdate): SubscriptionUpdateData;
-  hasNavigationUpdate(): boolean;
-  clearNavigationUpdate(): SubscriptionUpdateData;
-
-  getHandshakeReply(): HandshakeReply | undefined;
-  setHandshakeReply(value?: HandshakeReply): SubscriptionUpdateData;
-  hasHandshakeReply(): boolean;
-  clearHandshakeReply(): SubscriptionUpdateData;
-
-  getInvalidateReply(): InvalidateReply | undefined;
-  setInvalidateReply(value?: InvalidateReply): SubscriptionUpdateData;
-  hasInvalidateReply(): boolean;
-  clearInvalidateReply(): SubscriptionUpdateData;
-
-  getCreateLobbyReply(): CreateLobbyReply | undefined;
-  setCreateLobbyReply(value?: CreateLobbyReply): SubscriptionUpdateData;
-  hasCreateLobbyReply(): boolean;
-  clearCreateLobbyReply(): SubscriptionUpdateData;
-
-  getJoinLobbyReply(): JoinLobbyReply | undefined;
-  setJoinLobbyReply(value?: JoinLobbyReply): SubscriptionUpdateData;
-  hasJoinLobbyReply(): boolean;
-  clearJoinLobbyReply(): SubscriptionUpdateData;
-
-  getLeaveMyLobbyReply(): LeaveMyLobbyReply | undefined;
-  setLeaveMyLobbyReply(value?: LeaveMyLobbyReply): SubscriptionUpdateData;
-  hasLeaveMyLobbyReply(): boolean;
-  clearLeaveMyLobbyReply(): SubscriptionUpdateData;
-
-  getMyLobbyDetails(): MyLobbyDetails | undefined;
-  setMyLobbyDetails(value?: MyLobbyDetails): SubscriptionUpdateData;
-  hasMyLobbyDetails(): boolean;
-  clearMyLobbyDetails(): SubscriptionUpdateData;
-
-  getMyLobbyJoinerUpdate(): MyLobbyJoinerUpdate | undefined;
-  setMyLobbyJoinerUpdate(value?: MyLobbyJoinerUpdate): SubscriptionUpdateData;
-  hasMyLobbyJoinerUpdate(): boolean;
-  clearMyLobbyJoinerUpdate(): SubscriptionUpdateData;
-
-  getMyLobbyLeaverUpdate(): MyLobbyLeaverUpdate | undefined;
-  setMyLobbyLeaverUpdate(value?: MyLobbyLeaverUpdate): SubscriptionUpdateData;
-  hasMyLobbyLeaverUpdate(): boolean;
-  clearMyLobbyLeaverUpdate(): SubscriptionUpdateData;
-
-  getCreateGameReply(): CreateGameReply | undefined;
-  setCreateGameReply(value?: CreateGameReply): SubscriptionUpdateData;
-  hasCreateGameReply(): boolean;
-  clearCreateGameReply(): SubscriptionUpdateData;
-
-  getMakeMoveReply(): MakeMoveReply | undefined;
-  setMakeMoveReply(value?: MakeMoveReply): SubscriptionUpdateData;
-  hasMakeMoveReply(): boolean;
-  clearMakeMoveReply(): SubscriptionUpdateData;
-
-  getMoveUpdate(): MoveUpdate | undefined;
-  setMoveUpdate(value?: MoveUpdate): SubscriptionUpdateData;
-  hasMoveUpdate(): boolean;
-  clearMoveUpdate(): SubscriptionUpdateData;
-
-  getWinnerUpdate(): WinnerUpdate | undefined;
-  setWinnerUpdate(value?: WinnerUpdate): SubscriptionUpdateData;
-  hasWinnerUpdate(): boolean;
-  clearWinnerUpdate(): SubscriptionUpdateData;
-
-  getDrawUpdate(): DrawUpdate | undefined;
-  setDrawUpdate(value?: DrawUpdate): SubscriptionUpdateData;
-  hasDrawUpdate(): boolean;
-  clearDrawUpdate(): SubscriptionUpdateData;
-
-  getGameStartUpdate(): GameStartUpdate | undefined;
-  setGameStartUpdate(value?: GameStartUpdate): SubscriptionUpdateData;
-  hasGameStartUpdate(): boolean;
-  clearGameStartUpdate(): SubscriptionUpdateData;
-
-  getNextMoverUpdate(): NextMoverUpdate | undefined;
-  setNextMoverUpdate(value?: NextMoverUpdate): SubscriptionUpdateData;
-  hasNextMoverUpdate(): boolean;
-  clearNextMoverUpdate(): SubscriptionUpdateData;
-
-  getPlayerClientUpdate(): PlayerClientUpdate | undefined;
-  setPlayerClientUpdate(value?: PlayerClientUpdate): SubscriptionUpdateData;
-  hasPlayerClientUpdate(): boolean;
-  clearPlayerClientUpdate(): SubscriptionUpdateData;
-
-  getSubscriptionUpdateDataTypeCase(): SubscriptionUpdateData.SubscriptionUpdateDataTypeCase;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): SubscriptionUpdateData.AsObject;
-  static toObject(includeInstance: boolean, msg: SubscriptionUpdateData): SubscriptionUpdateData.AsObject;
-  static serializeBinaryToWriter(message: SubscriptionUpdateData, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): SubscriptionUpdateData;
-  static deserializeBinaryFromReader(message: SubscriptionUpdateData, reader: jspb.BinaryReader): SubscriptionUpdateData;
-}
-
-export namespace SubscriptionUpdateData {
-  export type AsObject = {
-    navigationUpdate?: NavigationUpdate.AsObject,
-    handshakeReply?: HandshakeReply.AsObject,
-    invalidateReply?: InvalidateReply.AsObject,
-    createLobbyReply?: CreateLobbyReply.AsObject,
-    joinLobbyReply?: JoinLobbyReply.AsObject,
-    leaveMyLobbyReply?: LeaveMyLobbyReply.AsObject,
-    myLobbyDetails?: MyLobbyDetails.AsObject,
-    myLobbyJoinerUpdate?: MyLobbyJoinerUpdate.AsObject,
-    myLobbyLeaverUpdate?: MyLobbyLeaverUpdate.AsObject,
-    createGameReply?: CreateGameReply.AsObject,
-    makeMoveReply?: MakeMoveReply.AsObject,
-    moveUpdate?: MoveUpdate.AsObject,
-    winnerUpdate?: WinnerUpdate.AsObject,
-    drawUpdate?: DrawUpdate.AsObject,
-    gameStartUpdate?: GameStartUpdate.AsObject,
-    nextMoverUpdate?: NextMoverUpdate.AsObject,
-    playerClientUpdate?: PlayerClientUpdate.AsObject,
-  }
-
-  export enum SubscriptionUpdateDataTypeCase { 
-    SUBSCRIPTION_UPDATE_DATA_TYPE_NOT_SET = 0,
-    NAVIGATION_UPDATE = 1,
-    HANDSHAKE_REPLY = 2,
-    INVALIDATE_REPLY = 3,
-    CREATE_LOBBY_REPLY = 4,
-    JOIN_LOBBY_REPLY = 5,
-    LEAVE_MY_LOBBY_REPLY = 6,
-    MY_LOBBY_DETAILS = 7,
-    MY_LOBBY_JOINER_UPDATE = 8,
-    MY_LOBBY_LEAVER_UPDATE = 9,
-    CREATE_GAME_REPLY = 10,
-    MAKE_MOVE_REPLY = 11,
-    MOVE_UPDATE = 12,
-    WINNER_UPDATE = 13,
-    DRAW_UPDATE = 14,
-    GAME_START_UPDATE = 15,
-    NEXT_MOVER_UPDATE = 16,
-    PLAYER_CLIENT_UPDATE = 17,
-  }
-}
-
 export class Empty extends jspb.Message {
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): Empty.AsObject;
@@ -155,29 +16,271 @@ export namespace Empty {
   }
 }
 
-export class Outcome extends jspb.Message {
-  getOk(): boolean;
-  setOk(value: boolean): Outcome;
-
-  getErrorCode(): number;
-  setErrorCode(value: number): Outcome;
-
-  getErrorMessage(): string;
-  setErrorMessage(value: string): Outcome;
+export class SubscribeRequest extends jspb.Message {
+  getAction(): SubscriptionAction;
+  setAction(value: SubscriptionAction): SubscribeRequest;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): Outcome.AsObject;
-  static toObject(includeInstance: boolean, msg: Outcome): Outcome.AsObject;
-  static serializeBinaryToWriter(message: Outcome, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): Outcome;
-  static deserializeBinaryFromReader(message: Outcome, reader: jspb.BinaryReader): Outcome;
+  toObject(includeInstance?: boolean): SubscribeRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: SubscribeRequest): SubscribeRequest.AsObject;
+  static serializeBinaryToWriter(message: SubscribeRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SubscribeRequest;
+  static deserializeBinaryFromReader(message: SubscribeRequest, reader: jspb.BinaryReader): SubscribeRequest;
 }
 
-export namespace Outcome {
+export namespace SubscribeRequest {
   export type AsObject = {
-    ok: boolean,
-    errorCode: number,
-    errorMessage: string,
+    action: SubscriptionAction,
+  }
+}
+
+export class ClientUpdate extends jspb.Message {
+  getSignUpRequest(): SignUpRequest | undefined;
+  setSignUpRequest(value?: SignUpRequest): ClientUpdate;
+  hasSignUpRequest(): boolean;
+  clearSignUpRequest(): ClientUpdate;
+
+  getSignInRequest(): SignInRequest | undefined;
+  setSignInRequest(value?: SignInRequest): ClientUpdate;
+  hasSignInRequest(): boolean;
+  clearSignInRequest(): ClientUpdate;
+
+  getSignOutRequest(): SignOutRequest | undefined;
+  setSignOutRequest(value?: SignOutRequest): ClientUpdate;
+  hasSignOutRequest(): boolean;
+  clearSignOutRequest(): ClientUpdate;
+
+  getCreateLobbyRequest(): CreateLobbyRequest | undefined;
+  setCreateLobbyRequest(value?: CreateLobbyRequest): ClientUpdate;
+  hasCreateLobbyRequest(): boolean;
+  clearCreateLobbyRequest(): ClientUpdate;
+
+  getJoinLobbyRequest(): JoinLobbyRequest | undefined;
+  setJoinLobbyRequest(value?: JoinLobbyRequest): ClientUpdate;
+  hasJoinLobbyRequest(): boolean;
+  clearJoinLobbyRequest(): ClientUpdate;
+
+  getCreateGameRequest(): CreateGameRequest | undefined;
+  setCreateGameRequest(value?: CreateGameRequest): ClientUpdate;
+  hasCreateGameRequest(): boolean;
+  clearCreateGameRequest(): ClientUpdate;
+
+  getMakeMoveRequest(): MakeMoveRequest | undefined;
+  setMakeMoveRequest(value?: MakeMoveRequest): ClientUpdate;
+  hasMakeMoveRequest(): boolean;
+  clearMakeMoveRequest(): ClientUpdate;
+
+  getTypeCase(): ClientUpdate.TypeCase;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ClientUpdate.AsObject;
+  static toObject(includeInstance: boolean, msg: ClientUpdate): ClientUpdate.AsObject;
+  static serializeBinaryToWriter(message: ClientUpdate, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ClientUpdate;
+  static deserializeBinaryFromReader(message: ClientUpdate, reader: jspb.BinaryReader): ClientUpdate;
+}
+
+export namespace ClientUpdate {
+  export type AsObject = {
+    signUpRequest?: SignUpRequest.AsObject,
+    signInRequest?: SignInRequest.AsObject,
+    signOutRequest?: SignOutRequest.AsObject,
+    createLobbyRequest?: CreateLobbyRequest.AsObject,
+    joinLobbyRequest?: JoinLobbyRequest.AsObject,
+    createGameRequest?: CreateGameRequest.AsObject,
+    makeMoveRequest?: MakeMoveRequest.AsObject,
+  }
+
+  export enum TypeCase { 
+    TYPE_NOT_SET = 0,
+    SIGN_UP_REQUEST = 1,
+    SIGN_IN_REQUEST = 2,
+    SIGN_OUT_REQUEST = 3,
+    CREATE_LOBBY_REQUEST = 4,
+    JOIN_LOBBY_REQUEST = 5,
+    CREATE_GAME_REQUEST = 6,
+    MAKE_MOVE_REQUEST = 7,
+  }
+}
+
+export class ServerUpdate extends jspb.Message {
+  getPing(): Ping | undefined;
+  setPing(value?: Ping): ServerUpdate;
+  hasPing(): boolean;
+  clearPing(): ServerUpdate;
+
+  getClientAssignmentUpdate(): ClientAssignmentUpdate | undefined;
+  setClientAssignmentUpdate(value?: ClientAssignmentUpdate): ServerUpdate;
+  hasClientAssignmentUpdate(): boolean;
+  clearClientAssignmentUpdate(): ServerUpdate;
+
+  getNavigationUpdate(): NavigationUpdate | undefined;
+  setNavigationUpdate(value?: NavigationUpdate): ServerUpdate;
+  hasNavigationUpdate(): boolean;
+  clearNavigationUpdate(): ServerUpdate;
+
+  getSignUpReply(): SignUpReply | undefined;
+  setSignUpReply(value?: SignUpReply): ServerUpdate;
+  hasSignUpReply(): boolean;
+  clearSignUpReply(): ServerUpdate;
+
+  getSignInReply(): SignInReply | undefined;
+  setSignInReply(value?: SignInReply): ServerUpdate;
+  hasSignInReply(): boolean;
+  clearSignInReply(): ServerUpdate;
+
+  getSignOutReply(): SignOutReply | undefined;
+  setSignOutReply(value?: SignOutReply): ServerUpdate;
+  hasSignOutReply(): boolean;
+  clearSignOutReply(): ServerUpdate;
+
+  getMyLobbyDetails(): MyLobbyDetails | undefined;
+  setMyLobbyDetails(value?: MyLobbyDetails): ServerUpdate;
+  hasMyLobbyDetails(): boolean;
+  clearMyLobbyDetails(): ServerUpdate;
+
+  getMyLobbyJoinerUpdate(): MyLobbyJoinerUpdate | undefined;
+  setMyLobbyJoinerUpdate(value?: MyLobbyJoinerUpdate): ServerUpdate;
+  hasMyLobbyJoinerUpdate(): boolean;
+  clearMyLobbyJoinerUpdate(): ServerUpdate;
+
+  getMyLobbyLeaverUpdate(): MyLobbyLeaverUpdate | undefined;
+  setMyLobbyLeaverUpdate(value?: MyLobbyLeaverUpdate): ServerUpdate;
+  hasMyLobbyLeaverUpdate(): boolean;
+  clearMyLobbyLeaverUpdate(): ServerUpdate;
+
+  getCreateLobbyReply(): CreateLobbyReply | undefined;
+  setCreateLobbyReply(value?: CreateLobbyReply): ServerUpdate;
+  hasCreateLobbyReply(): boolean;
+  clearCreateLobbyReply(): ServerUpdate;
+
+  getJoinLobbyReply(): JoinLobbyReply | undefined;
+  setJoinLobbyReply(value?: JoinLobbyReply): ServerUpdate;
+  hasJoinLobbyReply(): boolean;
+  clearJoinLobbyReply(): ServerUpdate;
+
+  getLeaveMyLobbyReply(): LeaveMyLobbyReply | undefined;
+  setLeaveMyLobbyReply(value?: LeaveMyLobbyReply): ServerUpdate;
+  hasLeaveMyLobbyReply(): boolean;
+  clearLeaveMyLobbyReply(): ServerUpdate;
+
+  getCreateGameReply(): CreateGameReply | undefined;
+  setCreateGameReply(value?: CreateGameReply): ServerUpdate;
+  hasCreateGameReply(): boolean;
+  clearCreateGameReply(): ServerUpdate;
+
+  getMakeMoveReply(): MakeMoveReply | undefined;
+  setMakeMoveReply(value?: MakeMoveReply): ServerUpdate;
+  hasMakeMoveReply(): boolean;
+  clearMakeMoveReply(): ServerUpdate;
+
+  getMoveUpdate(): MoveUpdate | undefined;
+  setMoveUpdate(value?: MoveUpdate): ServerUpdate;
+  hasMoveUpdate(): boolean;
+  clearMoveUpdate(): ServerUpdate;
+
+  getWinnerUpdate(): WinnerUpdate | undefined;
+  setWinnerUpdate(value?: WinnerUpdate): ServerUpdate;
+  hasWinnerUpdate(): boolean;
+  clearWinnerUpdate(): ServerUpdate;
+
+  getDrawUpdate(): DrawUpdate | undefined;
+  setDrawUpdate(value?: DrawUpdate): ServerUpdate;
+  hasDrawUpdate(): boolean;
+  clearDrawUpdate(): ServerUpdate;
+
+  getGameStartUpdate(): GameStartUpdate | undefined;
+  setGameStartUpdate(value?: GameStartUpdate): ServerUpdate;
+  hasGameStartUpdate(): boolean;
+  clearGameStartUpdate(): ServerUpdate;
+
+  getNextMoverUpdate(): NextMoverUpdate | undefined;
+  setNextMoverUpdate(value?: NextMoverUpdate): ServerUpdate;
+  hasNextMoverUpdate(): boolean;
+  clearNextMoverUpdate(): ServerUpdate;
+
+  getPlayerClientUpdate(): PlayerClientUpdate | undefined;
+  setPlayerClientUpdate(value?: PlayerClientUpdate): ServerUpdate;
+  hasPlayerClientUpdate(): boolean;
+  clearPlayerClientUpdate(): ServerUpdate;
+
+  getPlayerDisplayNameUpdate(): PlayerDisplayNameUpdate | undefined;
+  setPlayerDisplayNameUpdate(value?: PlayerDisplayNameUpdate): ServerUpdate;
+  hasPlayerDisplayNameUpdate(): boolean;
+  clearPlayerDisplayNameUpdate(): ServerUpdate;
+
+  getTypeCase(): ServerUpdate.TypeCase;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ServerUpdate.AsObject;
+  static toObject(includeInstance: boolean, msg: ServerUpdate): ServerUpdate.AsObject;
+  static serializeBinaryToWriter(message: ServerUpdate, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ServerUpdate;
+  static deserializeBinaryFromReader(message: ServerUpdate, reader: jspb.BinaryReader): ServerUpdate;
+}
+
+export namespace ServerUpdate {
+  export type AsObject = {
+    ping?: Ping.AsObject,
+    clientAssignmentUpdate?: ClientAssignmentUpdate.AsObject,
+    navigationUpdate?: NavigationUpdate.AsObject,
+    signUpReply?: SignUpReply.AsObject,
+    signInReply?: SignInReply.AsObject,
+    signOutReply?: SignOutReply.AsObject,
+    myLobbyDetails?: MyLobbyDetails.AsObject,
+    myLobbyJoinerUpdate?: MyLobbyJoinerUpdate.AsObject,
+    myLobbyLeaverUpdate?: MyLobbyLeaverUpdate.AsObject,
+    createLobbyReply?: CreateLobbyReply.AsObject,
+    joinLobbyReply?: JoinLobbyReply.AsObject,
+    leaveMyLobbyReply?: LeaveMyLobbyReply.AsObject,
+    createGameReply?: CreateGameReply.AsObject,
+    makeMoveReply?: MakeMoveReply.AsObject,
+    moveUpdate?: MoveUpdate.AsObject,
+    winnerUpdate?: WinnerUpdate.AsObject,
+    drawUpdate?: DrawUpdate.AsObject,
+    gameStartUpdate?: GameStartUpdate.AsObject,
+    nextMoverUpdate?: NextMoverUpdate.AsObject,
+    playerClientUpdate?: PlayerClientUpdate.AsObject,
+    playerDisplayNameUpdate?: PlayerDisplayNameUpdate.AsObject,
+  }
+
+  export enum TypeCase { 
+    TYPE_NOT_SET = 0,
+    PING = 1,
+    CLIENT_ASSIGNMENT_UPDATE = 2,
+    NAVIGATION_UPDATE = 3,
+    SIGN_UP_REPLY = 4,
+    SIGN_IN_REPLY = 5,
+    SIGN_OUT_REPLY = 6,
+    MY_LOBBY_DETAILS = 7,
+    MY_LOBBY_JOINER_UPDATE = 8,
+    MY_LOBBY_LEAVER_UPDATE = 9,
+    CREATE_LOBBY_REPLY = 10,
+    JOIN_LOBBY_REPLY = 11,
+    LEAVE_MY_LOBBY_REPLY = 12,
+    CREATE_GAME_REPLY = 13,
+    MAKE_MOVE_REPLY = 14,
+    MOVE_UPDATE = 15,
+    WINNER_UPDATE = 16,
+    DRAW_UPDATE = 17,
+    GAME_START_UPDATE = 18,
+    NEXT_MOVER_UPDATE = 19,
+    PLAYER_CLIENT_UPDATE = 20,
+    PLAYER_DISPLAY_NAME_UPDATE = 21,
+  }
+}
+
+export class Ping extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Ping.AsObject;
+  static toObject(includeInstance: boolean, msg: Ping): Ping.AsObject;
+  static serializeBinaryToWriter(message: Ping, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Ping;
+  static deserializeBinaryFromReader(message: Ping, reader: jspb.BinaryReader): Ping;
+}
+
+export namespace Ping {
+  export type AsObject = {
   }
 }
 
@@ -227,39 +330,187 @@ export namespace Player {
   }
 }
 
-export class ExchangeRequest extends jspb.Message {
-  getPublicKey(): string;
-  setPublicKey(value: string): ExchangeRequest;
+export class ClientAssignmentUpdate extends jspb.Message {
+  getClientId(): string;
+  setClientId(value: string): ClientAssignmentUpdate;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ExchangeRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: ExchangeRequest): ExchangeRequest.AsObject;
-  static serializeBinaryToWriter(message: ExchangeRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ExchangeRequest;
-  static deserializeBinaryFromReader(message: ExchangeRequest, reader: jspb.BinaryReader): ExchangeRequest;
+  toObject(includeInstance?: boolean): ClientAssignmentUpdate.AsObject;
+  static toObject(includeInstance: boolean, msg: ClientAssignmentUpdate): ClientAssignmentUpdate.AsObject;
+  static serializeBinaryToWriter(message: ClientAssignmentUpdate, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ClientAssignmentUpdate;
+  static deserializeBinaryFromReader(message: ClientAssignmentUpdate, reader: jspb.BinaryReader): ClientAssignmentUpdate;
 }
 
-export namespace ExchangeRequest {
+export namespace ClientAssignmentUpdate {
   export type AsObject = {
-    publicKey: string,
+    clientId: string,
   }
 }
 
-export class ExchangeReply extends jspb.Message {
-  getClientId(): string;
-  setClientId(value: string): ExchangeReply;
+export class NavigationUpdate extends jspb.Message {
+  getPath(): NavigationPath;
+  setPath(value: NavigationPath): NavigationUpdate;
+
+  getRefresh(): boolean;
+  setRefresh(value: boolean): NavigationUpdate;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ExchangeReply.AsObject;
-  static toObject(includeInstance: boolean, msg: ExchangeReply): ExchangeReply.AsObject;
-  static serializeBinaryToWriter(message: ExchangeReply, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ExchangeReply;
-  static deserializeBinaryFromReader(message: ExchangeReply, reader: jspb.BinaryReader): ExchangeReply;
+  toObject(includeInstance?: boolean): NavigationUpdate.AsObject;
+  static toObject(includeInstance: boolean, msg: NavigationUpdate): NavigationUpdate.AsObject;
+  static serializeBinaryToWriter(message: NavigationUpdate, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): NavigationUpdate;
+  static deserializeBinaryFromReader(message: NavigationUpdate, reader: jspb.BinaryReader): NavigationUpdate;
 }
 
-export namespace ExchangeReply {
+export namespace NavigationUpdate {
   export type AsObject = {
-    clientId: string,
+    path: NavigationPath,
+    refresh: boolean,
+  }
+}
+
+export class SignInRequest extends jspb.Message {
+  getName(): string;
+  setName(value: string): SignInRequest;
+
+  getPass(): string;
+  setPass(value: string): SignInRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SignInRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: SignInRequest): SignInRequest.AsObject;
+  static serializeBinaryToWriter(message: SignInRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SignInRequest;
+  static deserializeBinaryFromReader(message: SignInRequest, reader: jspb.BinaryReader): SignInRequest;
+}
+
+export namespace SignInRequest {
+  export type AsObject = {
+    name: string,
+    pass: string,
+  }
+}
+
+export class SignInReply extends jspb.Message {
+  getOutcome(): Outcome | undefined;
+  setOutcome(value?: Outcome): SignInReply;
+  hasOutcome(): boolean;
+  clearOutcome(): SignInReply;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SignInReply.AsObject;
+  static toObject(includeInstance: boolean, msg: SignInReply): SignInReply.AsObject;
+  static serializeBinaryToWriter(message: SignInReply, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SignInReply;
+  static deserializeBinaryFromReader(message: SignInReply, reader: jspb.BinaryReader): SignInReply;
+}
+
+export namespace SignInReply {
+  export type AsObject = {
+    outcome?: Outcome.AsObject,
+  }
+}
+
+export class SignUpRequest extends jspb.Message {
+  getName(): string;
+  setName(value: string): SignUpRequest;
+
+  getPass(): string;
+  setPass(value: string): SignUpRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SignUpRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: SignUpRequest): SignUpRequest.AsObject;
+  static serializeBinaryToWriter(message: SignUpRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SignUpRequest;
+  static deserializeBinaryFromReader(message: SignUpRequest, reader: jspb.BinaryReader): SignUpRequest;
+}
+
+export namespace SignUpRequest {
+  export type AsObject = {
+    name: string,
+    pass: string,
+  }
+}
+
+export class SignUpReply extends jspb.Message {
+  getOutcome(): Outcome | undefined;
+  setOutcome(value?: Outcome): SignUpReply;
+  hasOutcome(): boolean;
+  clearOutcome(): SignUpReply;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SignUpReply.AsObject;
+  static toObject(includeInstance: boolean, msg: SignUpReply): SignUpReply.AsObject;
+  static serializeBinaryToWriter(message: SignUpReply, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SignUpReply;
+  static deserializeBinaryFromReader(message: SignUpReply, reader: jspb.BinaryReader): SignUpReply;
+}
+
+export namespace SignUpReply {
+  export type AsObject = {
+    outcome?: Outcome.AsObject,
+  }
+}
+
+export class SignOutRequest extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SignOutRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: SignOutRequest): SignOutRequest.AsObject;
+  static serializeBinaryToWriter(message: SignOutRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SignOutRequest;
+  static deserializeBinaryFromReader(message: SignOutRequest, reader: jspb.BinaryReader): SignOutRequest;
+}
+
+export namespace SignOutRequest {
+  export type AsObject = {
+  }
+}
+
+export class SignOutReply extends jspb.Message {
+  getOutcome(): Outcome | undefined;
+  setOutcome(value?: Outcome): SignOutReply;
+  hasOutcome(): boolean;
+  clearOutcome(): SignOutReply;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): SignOutReply.AsObject;
+  static toObject(includeInstance: boolean, msg: SignOutReply): SignOutReply.AsObject;
+  static serializeBinaryToWriter(message: SignOutReply, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): SignOutReply;
+  static deserializeBinaryFromReader(message: SignOutReply, reader: jspb.BinaryReader): SignOutReply;
+}
+
+export namespace SignOutReply {
+  export type AsObject = {
+    outcome?: Outcome.AsObject,
+  }
+}
+
+export class Outcome extends jspb.Message {
+  getOk(): boolean;
+  setOk(value: boolean): Outcome;
+
+  getErrorCode(): number;
+  setErrorCode(value: number): Outcome;
+
+  getErrorMessage(): string;
+  setErrorMessage(value: string): Outcome;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): Outcome.AsObject;
+  static toObject(includeInstance: boolean, msg: Outcome): Outcome.AsObject;
+  static serializeBinaryToWriter(message: Outcome, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): Outcome;
+  static deserializeBinaryFromReader(message: Outcome, reader: jspb.BinaryReader): Outcome;
+}
+
+export namespace Outcome {
+  export type AsObject = {
+    ok: boolean,
+    errorCode: number,
+    errorMessage: string,
   }
 }
 
@@ -381,103 +632,23 @@ export namespace JoinLobbyReply {
   }
 }
 
-export class InvalidateReply extends jspb.Message {
+export class CreateLobbyReply extends jspb.Message {
   getOutcome(): Outcome | undefined;
-  setOutcome(value?: Outcome): InvalidateReply;
+  setOutcome(value?: Outcome): CreateLobbyReply;
   hasOutcome(): boolean;
-  clearOutcome(): InvalidateReply;
+  clearOutcome(): CreateLobbyReply;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): InvalidateReply.AsObject;
-  static toObject(includeInstance: boolean, msg: InvalidateReply): InvalidateReply.AsObject;
-  static serializeBinaryToWriter(message: InvalidateReply, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): InvalidateReply;
-  static deserializeBinaryFromReader(message: InvalidateReply, reader: jspb.BinaryReader): InvalidateReply;
+  toObject(includeInstance?: boolean): CreateLobbyReply.AsObject;
+  static toObject(includeInstance: boolean, msg: CreateLobbyReply): CreateLobbyReply.AsObject;
+  static serializeBinaryToWriter(message: CreateLobbyReply, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CreateLobbyReply;
+  static deserializeBinaryFromReader(message: CreateLobbyReply, reader: jspb.BinaryReader): CreateLobbyReply;
 }
 
-export namespace InvalidateReply {
+export namespace CreateLobbyReply {
   export type AsObject = {
     outcome?: Outcome.AsObject,
-  }
-}
-
-export class SubscriptionUpdate extends jspb.Message {
-  getData(): SubscriptionUpdateData | undefined;
-  setData(value?: SubscriptionUpdateData): SubscriptionUpdate;
-  hasData(): boolean;
-  clearData(): SubscriptionUpdate;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): SubscriptionUpdate.AsObject;
-  static toObject(includeInstance: boolean, msg: SubscriptionUpdate): SubscriptionUpdate.AsObject;
-  static serializeBinaryToWriter(message: SubscriptionUpdate, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): SubscriptionUpdate;
-  static deserializeBinaryFromReader(message: SubscriptionUpdate, reader: jspb.BinaryReader): SubscriptionUpdate;
-}
-
-export namespace SubscriptionUpdate {
-  export type AsObject = {
-    data?: SubscriptionUpdateData.AsObject,
-  }
-}
-
-export class HandshakeRequest extends jspb.Message {
-  getPlayerName(): string;
-  setPlayerName(value: string): HandshakeRequest;
-
-  getPlayerPass(): string;
-  setPlayerPass(value: string): HandshakeRequest;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): HandshakeRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: HandshakeRequest): HandshakeRequest.AsObject;
-  static serializeBinaryToWriter(message: HandshakeRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): HandshakeRequest;
-  static deserializeBinaryFromReader(message: HandshakeRequest, reader: jspb.BinaryReader): HandshakeRequest;
-}
-
-export namespace HandshakeRequest {
-  export type AsObject = {
-    playerName: string,
-    playerPass: string,
-  }
-}
-
-export class HandshakeReply extends jspb.Message {
-  getOutcome(): Outcome | undefined;
-  setOutcome(value?: Outcome): HandshakeReply;
-  hasOutcome(): boolean;
-  clearOutcome(): HandshakeReply;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): HandshakeReply.AsObject;
-  static toObject(includeInstance: boolean, msg: HandshakeReply): HandshakeReply.AsObject;
-  static serializeBinaryToWriter(message: HandshakeReply, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): HandshakeReply;
-  static deserializeBinaryFromReader(message: HandshakeReply, reader: jspb.BinaryReader): HandshakeReply;
-}
-
-export namespace HandshakeReply {
-  export type AsObject = {
-    outcome?: Outcome.AsObject,
-  }
-}
-
-export class NavigationUpdate extends jspb.Message {
-  getPath(): NavigationPath;
-  setPath(value: NavigationPath): NavigationUpdate;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): NavigationUpdate.AsObject;
-  static toObject(includeInstance: boolean, msg: NavigationUpdate): NavigationUpdate.AsObject;
-  static serializeBinaryToWriter(message: NavigationUpdate, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): NavigationUpdate;
-  static deserializeBinaryFromReader(message: NavigationUpdate, reader: jspb.BinaryReader): NavigationUpdate;
-}
-
-export namespace NavigationUpdate {
-  export type AsObject = {
-    path: NavigationPath,
   }
 }
 
@@ -594,26 +765,6 @@ export class CreateLobbyRequest extends jspb.Message {
 export namespace CreateLobbyRequest {
   export type AsObject = {
     name: string,
-  }
-}
-
-export class CreateLobbyReply extends jspb.Message {
-  getOutcome(): Outcome | undefined;
-  setOutcome(value?: Outcome): CreateLobbyReply;
-  hasOutcome(): boolean;
-  clearOutcome(): CreateLobbyReply;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CreateLobbyReply.AsObject;
-  static toObject(includeInstance: boolean, msg: CreateLobbyReply): CreateLobbyReply.AsObject;
-  static serializeBinaryToWriter(message: CreateLobbyReply, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CreateLobbyReply;
-  static deserializeBinaryFromReader(message: CreateLobbyReply, reader: jspb.BinaryReader): CreateLobbyReply;
-}
-
-export namespace CreateLobbyReply {
-  export type AsObject = {
-    outcome?: Outcome.AsObject,
   }
 }
 
@@ -735,8 +886,26 @@ export namespace PlayerClientUpdate {
   }
 }
 
+export class PlayerDisplayNameUpdate extends jspb.Message {
+  getDisplayname(): string;
+  setDisplayname(value: string): PlayerDisplayNameUpdate;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): PlayerDisplayNameUpdate.AsObject;
+  static toObject(includeInstance: boolean, msg: PlayerDisplayNameUpdate): PlayerDisplayNameUpdate.AsObject;
+  static serializeBinaryToWriter(message: PlayerDisplayNameUpdate, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PlayerDisplayNameUpdate;
+  static deserializeBinaryFromReader(message: PlayerDisplayNameUpdate, reader: jspb.BinaryReader): PlayerDisplayNameUpdate;
+}
+
+export namespace PlayerDisplayNameUpdate {
+  export type AsObject = {
+    displayname: string,
+  }
+}
+
 export enum NavigationPath { 
-  LOGIN = 0,
+  WELCOME = 0,
   HOME = 1,
   MY_LOBBY = 2,
   GAME = 3,
@@ -749,4 +918,8 @@ export enum Mover {
 export enum Winner { 
   YOU = 0,
   OTHER = 1,
+}
+export enum SubscriptionAction { 
+  INITIAL = 0,
+  RE_SUBSCRIBE = 1,
 }

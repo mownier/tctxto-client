@@ -15,5 +15,22 @@
     "Please enter lobby id": "Please enter lobby id",
     "Enter lobby id": "Enter lobby id",
     "Join": "Join",
-    "Invalidate": "Invalidate"
+    "Invalidate": "Invalidate",
+    "No session": "No session",
+    "Sign In": "Sign In",
+    "Enter name": "Enter name",
+    "Enter pass": "Enter pass",
+    "With session": "With session",
+    "Sign Out": "Sign Out",
+    "Enter lobby name": "Enter lobby name",
+    "My Lobby": "My Lobby",
+    "Encountered error while signing in. Please try again.": "Encountered error while signing in. Please try again.",
+    "Home": "Home",
+    "Error": "Error",
+    "Unable to sign up. Please try again.": "Unable to sign up. Please try again.",
+    "Please refresh page": "Please refresh page",
+    "Encountered error while signing up. Please try again.": "Encountered error while signing up. Please try again.",
+    "Sign Up": "Sign Up",
+    "You are using another client": "You are using another client",
+    "Encountered error while signing out. Please try again.": "Encountered error while signing out. Please try again."
 }

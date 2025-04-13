@@ -1,58 +1,68 @@
 syntax = "proto3";
 
-package server;
+package server2;
 
-option go_package = "tctxto/server";
+option go_package = "tctxto/server2";
 
 service TicTacToe {
-    rpc Exchange(ExchangeRequest) returns (ExchangeReply) {}
-
-    rpc Subscribe(Empty) returns (stream SubscriptionUpdate) {}
-
-    rpc Handshake(HandshakeRequest) returns (Empty) {}
-    rpc Invalidate(Empty) returns (Empty) {}
-    
-    rpc CreateLobby(CreateLobbyRequest) returns (Empty) {}
-    rpc JoinLobby(JoinLobbyRequest) returns (Empty) {}
-    rpc LeaveMyLobby(Empty) returns (Empty) {}
-
-    rpc CreateGame(CreateGameRequest) returns (Empty) {}
-    rpc MakeMove(MakeMoveRequest) returns (Empty) {}
+    rpc Subscribe(SubscribeRequest) returns (stream ServerUpdate) {}
+    rpc Notify(ClientUpdate) returns (Empty) {}   
 }
 
-message SubscriptionUpdateData {
-    oneof subscription_update_data_type {
-        NavigationUpdate navigation_update = 1;
+message Empty {
+}
 
-        HandshakeReply handshake_reply = 2;
-        InvalidateReply invalidate_reply = 3;
+message SubscribeRequest {
+    SubscriptionAction action = 1;
+}
 
-        CreateLobbyReply create_lobby_reply = 4;
-        JoinLobbyReply join_lobby_reply = 5;
-        LeaveMyLobbyReply leave_my_lobby_reply = 6;
-        MyLobbyDetails my_lobby_details = 7;
-        MyLobbyJoinerUpdate my_lobby_joiner_update = 8;
-        MyLobbyLeaverUpdate my_lobby_leaver_update = 9;
+message ClientUpdate {
+    oneof type {
+        SignUpRequest sign_up_request = 1;
+        SignInRequest sign_in_request = 2;
+        SignOutRequest sign_out_request = 3;
 
-        CreateGameReply create_game_reply = 10;
-        MakeMoveReply make_move_reply = 11;
-        MoveUpdate move_update = 12;
-        WinnerUpdate winner_update = 13;
-        DrawUpdate draw_update = 14;
-        GameStartUpdate game_start_update = 15;
-        NextMoverUpdate next_mover_update = 16;
+        CreateLobbyRequest create_lobby_request = 4;
+        JoinLobbyRequest join_lobby_request = 5;
 
-        PlayerClientUpdate player_client_update = 17;
+        CreateGameRequest create_game_request = 6;
+        MakeMoveRequest make_move_request = 7;
     }
 }
 
-message Empty { 
+message ServerUpdate {
+    oneof type {
+        Ping ping = 1;
+        
+        ClientAssignmentUpdate client_assignment_update = 2;
+
+        NavigationUpdate navigation_update = 3;
+
+        SignUpReply sign_up_reply = 4;
+        SignInReply sign_in_reply = 5;
+        SignOutReply sign_out_reply = 6;
+
+        MyLobbyDetails my_lobby_details = 7;
+        MyLobbyJoinerUpdate my_lobby_joiner_update = 8;
+        MyLobbyLeaverUpdate my_lobby_leaver_update = 9;
+        CreateLobbyReply create_lobby_reply = 10;
+        JoinLobbyReply join_lobby_reply = 11;
+        LeaveMyLobbyReply leave_my_lobby_reply = 12;
+        
+        CreateGameReply create_game_reply = 13;
+        MakeMoveReply make_move_reply = 14;
+        MoveUpdate move_update = 15;
+        WinnerUpdate winner_update = 16;
+        DrawUpdate draw_update = 17;
+        GameStartUpdate game_start_update = 18;
+        NextMoverUpdate next_mover_update = 19;
+        
+        PlayerClientUpdate player_client_update = 20;
+        PlayerDisplayNameUpdate player_display_name_update = 21;
+    }
 }
 
-message Outcome {
-    bool ok = 1;
-    int32 error_code = 2;
-    string error_message = 3;
+message Ping {
 }
 
 message Lobby {
@@ -65,12 +75,44 @@ message Player {
     string name = 2;
 }
 
-message ExchangeRequest {
-    string public_key = 1;
+message ClientAssignmentUpdate {
+    string client_id = 1;
 }
 
-message ExchangeReply {
-    string client_id = 1;
+message NavigationUpdate {
+    NavigationPath path = 1;
+    bool refresh = 2;
+}
+
+message SignInRequest {
+    string name = 1;
+    string pass = 2;
+}
+
+message SignInReply {
+    Outcome Outcome = 1;
+}
+
+message SignUpRequest {
+    string name = 1;
+    string pass = 2;
+}
+
+message SignUpReply {
+    Outcome outcome = 1;
+}
+
+message SignOutRequest {
+}
+
+message SignOutReply {
+    Outcome outcome = 1;
+}
+
+message Outcome {
+    bool ok = 1;
+    int32 error_code = 2;
+    string error_message = 3;
 }
 
 message MyLobbyDetails {
@@ -97,25 +139,8 @@ message JoinLobbyReply {
     Outcome outcome = 1;
 }
 
-message InvalidateReply {
+message CreateLobbyReply {
     Outcome outcome = 1;
-}
-
-message SubscriptionUpdate {
-    SubscriptionUpdateData data  = 1;
-}
-
-message HandshakeRequest {
-    string player_name = 1;
-    string player_pass = 2;
-}
-
-message HandshakeReply {
-    Outcome outcome = 1;
-}
-
-message NavigationUpdate {
-    NavigationPath path = 1;
 }
 
 message Move {
@@ -141,10 +166,6 @@ message MakeMoveReply {
 
 message CreateLobbyRequest {
     string name = 1;
-}
-
-message CreateLobbyReply {
-    Outcome outcome = 1;
 }
 
 message CreateGameRequest {
@@ -173,8 +194,12 @@ message PlayerClientUpdate {
     string message = 1;
 }
 
+message PlayerDisplayNameUpdate {
+    string displayName = 1;
+}
+
 enum NavigationPath {
-    LOGIN = 0;
+    WELCOME = 0;
     HOME = 1;
     MY_LOBBY = 2;
     GAME = 3;
@@ -189,4 +214,9 @@ enum Mover {
 enum Winner {
     you = 0;
     other = 1;
+}
+
+enum SubscriptionAction {
+    INITIAL = 0;
+    RE_SUBSCRIBE = 1;
 }

@@ -21,41 +21,48 @@ var global =
     (function () { return this; }).call(null) ||
     Function('return this')();
 
-goog.exportSymbol('proto.server.CreateGameReply', null, global);
-goog.exportSymbol('proto.server.CreateGameRequest', null, global);
-goog.exportSymbol('proto.server.CreateLobbyReply', null, global);
-goog.exportSymbol('proto.server.CreateLobbyRequest', null, global);
-goog.exportSymbol('proto.server.DrawUpdate', null, global);
-goog.exportSymbol('proto.server.Empty', null, global);
-goog.exportSymbol('proto.server.ExchangeReply', null, global);
-goog.exportSymbol('proto.server.ExchangeRequest', null, global);
-goog.exportSymbol('proto.server.GameStartUpdate', null, global);
-goog.exportSymbol('proto.server.HandshakeReply', null, global);
-goog.exportSymbol('proto.server.HandshakeRequest', null, global);
-goog.exportSymbol('proto.server.InvalidateReply', null, global);
-goog.exportSymbol('proto.server.JoinLobbyReply', null, global);
-goog.exportSymbol('proto.server.JoinLobbyRequest', null, global);
-goog.exportSymbol('proto.server.LeaveMyLobbyReply', null, global);
-goog.exportSymbol('proto.server.Lobby', null, global);
-goog.exportSymbol('proto.server.MakeMoveReply', null, global);
-goog.exportSymbol('proto.server.MakeMoveRequest', null, global);
-goog.exportSymbol('proto.server.Move', null, global);
-goog.exportSymbol('proto.server.MoveUpdate', null, global);
-goog.exportSymbol('proto.server.Mover', null, global);
-goog.exportSymbol('proto.server.MyLobbyDetails', null, global);
-goog.exportSymbol('proto.server.MyLobbyJoinerUpdate', null, global);
-goog.exportSymbol('proto.server.MyLobbyLeaverUpdate', null, global);
-goog.exportSymbol('proto.server.NavigationPath', null, global);
-goog.exportSymbol('proto.server.NavigationUpdate', null, global);
-goog.exportSymbol('proto.server.NextMoverUpdate', null, global);
-goog.exportSymbol('proto.server.Outcome', null, global);
-goog.exportSymbol('proto.server.Player', null, global);
-goog.exportSymbol('proto.server.PlayerClientUpdate', null, global);
-goog.exportSymbol('proto.server.SubscriptionUpdate', null, global);
-goog.exportSymbol('proto.server.SubscriptionUpdateData', null, global);
-goog.exportSymbol('proto.server.SubscriptionUpdateData.SubscriptionUpdateDataTypeCase', null, global);
-goog.exportSymbol('proto.server.Winner', null, global);
-goog.exportSymbol('proto.server.WinnerUpdate', null, global);
+goog.exportSymbol('proto.server2.ClientAssignmentUpdate', null, global);
+goog.exportSymbol('proto.server2.ClientUpdate', null, global);
+goog.exportSymbol('proto.server2.ClientUpdate.TypeCase', null, global);
+goog.exportSymbol('proto.server2.CreateGameReply', null, global);
+goog.exportSymbol('proto.server2.CreateGameRequest', null, global);
+goog.exportSymbol('proto.server2.CreateLobbyReply', null, global);
+goog.exportSymbol('proto.server2.CreateLobbyRequest', null, global);
+goog.exportSymbol('proto.server2.DrawUpdate', null, global);
+goog.exportSymbol('proto.server2.Empty', null, global);
+goog.exportSymbol('proto.server2.GameStartUpdate', null, global);
+goog.exportSymbol('proto.server2.JoinLobbyReply', null, global);
+goog.exportSymbol('proto.server2.JoinLobbyRequest', null, global);
+goog.exportSymbol('proto.server2.LeaveMyLobbyReply', null, global);
+goog.exportSymbol('proto.server2.Lobby', null, global);
+goog.exportSymbol('proto.server2.MakeMoveReply', null, global);
+goog.exportSymbol('proto.server2.MakeMoveRequest', null, global);
+goog.exportSymbol('proto.server2.Move', null, global);
+goog.exportSymbol('proto.server2.MoveUpdate', null, global);
+goog.exportSymbol('proto.server2.Mover', null, global);
+goog.exportSymbol('proto.server2.MyLobbyDetails', null, global);
+goog.exportSymbol('proto.server2.MyLobbyJoinerUpdate', null, global);
+goog.exportSymbol('proto.server2.MyLobbyLeaverUpdate', null, global);
+goog.exportSymbol('proto.server2.NavigationPath', null, global);
+goog.exportSymbol('proto.server2.NavigationUpdate', null, global);
+goog.exportSymbol('proto.server2.NextMoverUpdate', null, global);
+goog.exportSymbol('proto.server2.Outcome', null, global);
+goog.exportSymbol('proto.server2.Ping', null, global);
+goog.exportSymbol('proto.server2.Player', null, global);
+goog.exportSymbol('proto.server2.PlayerClientUpdate', null, global);
+goog.exportSymbol('proto.server2.PlayerDisplayNameUpdate', null, global);
+goog.exportSymbol('proto.server2.ServerUpdate', null, global);
+goog.exportSymbol('proto.server2.ServerUpdate.TypeCase', null, global);
+goog.exportSymbol('proto.server2.SignInReply', null, global);
+goog.exportSymbol('proto.server2.SignInRequest', null, global);
+goog.exportSymbol('proto.server2.SignOutReply', null, global);
+goog.exportSymbol('proto.server2.SignOutRequest', null, global);
+goog.exportSymbol('proto.server2.SignUpReply', null, global);
+goog.exportSymbol('proto.server2.SignUpRequest', null, global);
+goog.exportSymbol('proto.server2.SubscribeRequest', null, global);
+goog.exportSymbol('proto.server2.SubscriptionAction', null, global);
+goog.exportSymbol('proto.server2.Winner', null, global);
+goog.exportSymbol('proto.server2.WinnerUpdate', null, global);
 /**
  * Generated by JsPbCodeGenerator.
  * @param {Array=} opt_data Optional initial data array, typically from a
@@ -66,37 +73,16 @@ goog.exportSymbol('proto.server.WinnerUpdate', null, global);
  * @extends {jspb.Message}
  * @constructor
  */
-proto.server.SubscriptionUpdateData = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, proto.server.SubscriptionUpdateData.oneofGroups_);
-};
-goog.inherits(proto.server.SubscriptionUpdateData, jspb.Message);
-if (goog.DEBUG && !COMPILED) {
-  /**
-   * @public
-   * @override
-   */
-  proto.server.SubscriptionUpdateData.displayName = 'proto.server.SubscriptionUpdateData';
-}
-/**
- * Generated by JsPbCodeGenerator.
- * @param {Array=} opt_data Optional initial data array, typically from a
- * server response, or constructed directly in Javascript. The array is used
- * in place and becomes part of the constructed object. It is not cloned.
- * If no data is provided, the constructed object will be empty, but still
- * valid.
- * @extends {jspb.Message}
- * @constructor
- */
-proto.server.Empty = function(opt_data) {
+proto.server2.Empty = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.server.Empty, jspb.Message);
+goog.inherits(proto.server2.Empty, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.server.Empty.displayName = 'proto.server.Empty';
+  proto.server2.Empty.displayName = 'proto.server2.Empty';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -108,16 +94,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.server.Outcome = function(opt_data) {
+proto.server2.SubscribeRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.server.Outcome, jspb.Message);
+goog.inherits(proto.server2.SubscribeRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.server.Outcome.displayName = 'proto.server.Outcome';
+  proto.server2.SubscribeRequest.displayName = 'proto.server2.SubscribeRequest';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -129,16 +115,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.server.Lobby = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, proto.server.Lobby.repeatedFields_, null);
+proto.server2.ClientUpdate = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, proto.server2.ClientUpdate.oneofGroups_);
 };
-goog.inherits(proto.server.Lobby, jspb.Message);
+goog.inherits(proto.server2.ClientUpdate, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.server.Lobby.displayName = 'proto.server.Lobby';
+  proto.server2.ClientUpdate.displayName = 'proto.server2.ClientUpdate';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -150,16 +136,37 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.server.Player = function(opt_data) {
+proto.server2.ServerUpdate = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, proto.server2.ServerUpdate.oneofGroups_);
+};
+goog.inherits(proto.server2.ServerUpdate, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.server2.ServerUpdate.displayName = 'proto.server2.ServerUpdate';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.server2.Ping = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.server.Player, jspb.Message);
+goog.inherits(proto.server2.Ping, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.server.Player.displayName = 'proto.server.Player';
+  proto.server2.Ping.displayName = 'proto.server2.Ping';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -171,16 +178,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.server.ExchangeRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+proto.server2.Lobby = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.server2.Lobby.repeatedFields_, null);
 };
-goog.inherits(proto.server.ExchangeRequest, jspb.Message);
+goog.inherits(proto.server2.Lobby, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.server.ExchangeRequest.displayName = 'proto.server.ExchangeRequest';
+  proto.server2.Lobby.displayName = 'proto.server2.Lobby';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -192,16 +199,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.server.ExchangeReply = function(opt_data) {
+proto.server2.Player = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.server.ExchangeReply, jspb.Message);
+goog.inherits(proto.server2.Player, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.server.ExchangeReply.displayName = 'proto.server.ExchangeReply';
+  proto.server2.Player.displayName = 'proto.server2.Player';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -213,16 +220,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.server.MyLobbyDetails = function(opt_data) {
+proto.server2.ClientAssignmentUpdate = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.server.MyLobbyDetails, jspb.Message);
+goog.inherits(proto.server2.ClientAssignmentUpdate, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.server.MyLobbyDetails.displayName = 'proto.server.MyLobbyDetails';
+  proto.server2.ClientAssignmentUpdate.displayName = 'proto.server2.ClientAssignmentUpdate';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -234,16 +241,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.server.MyLobbyJoinerUpdate = function(opt_data) {
+proto.server2.NavigationUpdate = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.server.MyLobbyJoinerUpdate, jspb.Message);
+goog.inherits(proto.server2.NavigationUpdate, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.server.MyLobbyJoinerUpdate.displayName = 'proto.server.MyLobbyJoinerUpdate';
+  proto.server2.NavigationUpdate.displayName = 'proto.server2.NavigationUpdate';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -255,16 +262,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.server.MyLobbyLeaverUpdate = function(opt_data) {
+proto.server2.SignInRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.server.MyLobbyLeaverUpdate, jspb.Message);
+goog.inherits(proto.server2.SignInRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.server.MyLobbyLeaverUpdate.displayName = 'proto.server.MyLobbyLeaverUpdate';
+  proto.server2.SignInRequest.displayName = 'proto.server2.SignInRequest';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -276,16 +283,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.server.LeaveMyLobbyReply = function(opt_data) {
+proto.server2.SignInReply = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.server.LeaveMyLobbyReply, jspb.Message);
+goog.inherits(proto.server2.SignInReply, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.server.LeaveMyLobbyReply.displayName = 'proto.server.LeaveMyLobbyReply';
+  proto.server2.SignInReply.displayName = 'proto.server2.SignInReply';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -297,16 +304,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.server.JoinLobbyRequest = function(opt_data) {
+proto.server2.SignUpRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.server.JoinLobbyRequest, jspb.Message);
+goog.inherits(proto.server2.SignUpRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.server.JoinLobbyRequest.displayName = 'proto.server.JoinLobbyRequest';
+  proto.server2.SignUpRequest.displayName = 'proto.server2.SignUpRequest';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -318,16 +325,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.server.JoinLobbyReply = function(opt_data) {
+proto.server2.SignUpReply = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.server.JoinLobbyReply, jspb.Message);
+goog.inherits(proto.server2.SignUpReply, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.server.JoinLobbyReply.displayName = 'proto.server.JoinLobbyReply';
+  proto.server2.SignUpReply.displayName = 'proto.server2.SignUpReply';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -339,16 +346,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.server.InvalidateReply = function(opt_data) {
+proto.server2.SignOutRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.server.InvalidateReply, jspb.Message);
+goog.inherits(proto.server2.SignOutRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.server.InvalidateReply.displayName = 'proto.server.InvalidateReply';
+  proto.server2.SignOutRequest.displayName = 'proto.server2.SignOutRequest';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -360,16 +367,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.server.SubscriptionUpdate = function(opt_data) {
+proto.server2.SignOutReply = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.server.SubscriptionUpdate, jspb.Message);
+goog.inherits(proto.server2.SignOutReply, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.server.SubscriptionUpdate.displayName = 'proto.server.SubscriptionUpdate';
+  proto.server2.SignOutReply.displayName = 'proto.server2.SignOutReply';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -381,16 +388,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.server.HandshakeRequest = function(opt_data) {
+proto.server2.Outcome = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.server.HandshakeRequest, jspb.Message);
+goog.inherits(proto.server2.Outcome, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.server.HandshakeRequest.displayName = 'proto.server.HandshakeRequest';
+  proto.server2.Outcome.displayName = 'proto.server2.Outcome';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -402,16 +409,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.server.HandshakeReply = function(opt_data) {
+proto.server2.MyLobbyDetails = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.server.HandshakeReply, jspb.Message);
+goog.inherits(proto.server2.MyLobbyDetails, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.server.HandshakeReply.displayName = 'proto.server.HandshakeReply';
+  proto.server2.MyLobbyDetails.displayName = 'proto.server2.MyLobbyDetails';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -423,16 +430,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.server.NavigationUpdate = function(opt_data) {
+proto.server2.MyLobbyJoinerUpdate = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.server.NavigationUpdate, jspb.Message);
+goog.inherits(proto.server2.MyLobbyJoinerUpdate, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.server.NavigationUpdate.displayName = 'proto.server.NavigationUpdate';
+  proto.server2.MyLobbyJoinerUpdate.displayName = 'proto.server2.MyLobbyJoinerUpdate';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -444,16 +451,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.server.Move = function(opt_data) {
+proto.server2.MyLobbyLeaverUpdate = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.server.Move, jspb.Message);
+goog.inherits(proto.server2.MyLobbyLeaverUpdate, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.server.Move.displayName = 'proto.server.Move';
+  proto.server2.MyLobbyLeaverUpdate.displayName = 'proto.server2.MyLobbyLeaverUpdate';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -465,16 +472,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.server.MoveUpdate = function(opt_data) {
+proto.server2.LeaveMyLobbyReply = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.server.MoveUpdate, jspb.Message);
+goog.inherits(proto.server2.LeaveMyLobbyReply, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.server.MoveUpdate.displayName = 'proto.server.MoveUpdate';
+  proto.server2.LeaveMyLobbyReply.displayName = 'proto.server2.LeaveMyLobbyReply';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -486,16 +493,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.server.NextMoverUpdate = function(opt_data) {
+proto.server2.JoinLobbyRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.server.NextMoverUpdate, jspb.Message);
+goog.inherits(proto.server2.JoinLobbyRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.server.NextMoverUpdate.displayName = 'proto.server.NextMoverUpdate';
+  proto.server2.JoinLobbyRequest.displayName = 'proto.server2.JoinLobbyRequest';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -507,16 +514,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.server.MakeMoveRequest = function(opt_data) {
+proto.server2.JoinLobbyReply = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.server.MakeMoveRequest, jspb.Message);
+goog.inherits(proto.server2.JoinLobbyReply, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.server.MakeMoveRequest.displayName = 'proto.server.MakeMoveRequest';
+  proto.server2.JoinLobbyReply.displayName = 'proto.server2.JoinLobbyReply';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -528,16 +535,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.server.MakeMoveReply = function(opt_data) {
+proto.server2.CreateLobbyReply = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.server.MakeMoveReply, jspb.Message);
+goog.inherits(proto.server2.CreateLobbyReply, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.server.MakeMoveReply.displayName = 'proto.server.MakeMoveReply';
+  proto.server2.CreateLobbyReply.displayName = 'proto.server2.CreateLobbyReply';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -549,16 +556,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.server.CreateLobbyRequest = function(opt_data) {
+proto.server2.Move = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.server.CreateLobbyRequest, jspb.Message);
+goog.inherits(proto.server2.Move, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.server.CreateLobbyRequest.displayName = 'proto.server.CreateLobbyRequest';
+  proto.server2.Move.displayName = 'proto.server2.Move';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -570,16 +577,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.server.CreateLobbyReply = function(opt_data) {
+proto.server2.MoveUpdate = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.server.CreateLobbyReply, jspb.Message);
+goog.inherits(proto.server2.MoveUpdate, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.server.CreateLobbyReply.displayName = 'proto.server.CreateLobbyReply';
+  proto.server2.MoveUpdate.displayName = 'proto.server2.MoveUpdate';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -591,16 +598,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.server.CreateGameRequest = function(opt_data) {
+proto.server2.NextMoverUpdate = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.server.CreateGameRequest, jspb.Message);
+goog.inherits(proto.server2.NextMoverUpdate, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.server.CreateGameRequest.displayName = 'proto.server.CreateGameRequest';
+  proto.server2.NextMoverUpdate.displayName = 'proto.server2.NextMoverUpdate';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -612,16 +619,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.server.CreateGameReply = function(opt_data) {
+proto.server2.MakeMoveRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.server.CreateGameReply, jspb.Message);
+goog.inherits(proto.server2.MakeMoveRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.server.CreateGameReply.displayName = 'proto.server.CreateGameReply';
+  proto.server2.MakeMoveRequest.displayName = 'proto.server2.MakeMoveRequest';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -633,16 +640,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.server.WinnerUpdate = function(opt_data) {
+proto.server2.MakeMoveReply = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.server.WinnerUpdate, jspb.Message);
+goog.inherits(proto.server2.MakeMoveReply, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.server.WinnerUpdate.displayName = 'proto.server.WinnerUpdate';
+  proto.server2.MakeMoveReply.displayName = 'proto.server2.MakeMoveReply';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -654,16 +661,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.server.DrawUpdate = function(opt_data) {
+proto.server2.CreateLobbyRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.server.DrawUpdate, jspb.Message);
+goog.inherits(proto.server2.CreateLobbyRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.server.DrawUpdate.displayName = 'proto.server.DrawUpdate';
+  proto.server2.CreateLobbyRequest.displayName = 'proto.server2.CreateLobbyRequest';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -675,16 +682,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.server.GameStartUpdate = function(opt_data) {
+proto.server2.CreateGameRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.server.GameStartUpdate, jspb.Message);
+goog.inherits(proto.server2.CreateGameRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.server.GameStartUpdate.displayName = 'proto.server.GameStartUpdate';
+  proto.server2.CreateGameRequest.displayName = 'proto.server2.CreateGameRequest';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -696,17 +703,353 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.server.PlayerClientUpdate = function(opt_data) {
+proto.server2.CreateGameReply = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.server.PlayerClientUpdate, jspb.Message);
+goog.inherits(proto.server2.CreateGameReply, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.server.PlayerClientUpdate.displayName = 'proto.server.PlayerClientUpdate';
+  proto.server2.CreateGameReply.displayName = 'proto.server2.CreateGameReply';
 }
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.server2.WinnerUpdate = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.server2.WinnerUpdate, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.server2.WinnerUpdate.displayName = 'proto.server2.WinnerUpdate';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.server2.DrawUpdate = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.server2.DrawUpdate, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.server2.DrawUpdate.displayName = 'proto.server2.DrawUpdate';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.server2.GameStartUpdate = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.server2.GameStartUpdate, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.server2.GameStartUpdate.displayName = 'proto.server2.GameStartUpdate';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.server2.PlayerClientUpdate = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.server2.PlayerClientUpdate, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.server2.PlayerClientUpdate.displayName = 'proto.server2.PlayerClientUpdate';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.server2.PlayerDisplayNameUpdate = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.server2.PlayerDisplayNameUpdate, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.server2.PlayerDisplayNameUpdate.displayName = 'proto.server2.PlayerDisplayNameUpdate';
+}
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.server2.Empty.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.Empty.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.server2.Empty} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.server2.Empty.toObject = function(includeInstance, msg) {
+  var f, obj = {
+
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.server2.Empty}
+ */
+proto.server2.Empty.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.server2.Empty;
+  return proto.server2.Empty.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.server2.Empty} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.server2.Empty}
+ */
+proto.server2.Empty.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.server2.Empty.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.server2.Empty.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.server2.Empty} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.server2.Empty.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.server2.SubscribeRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.SubscribeRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.server2.SubscribeRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.server2.SubscribeRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+action: jspb.Message.getFieldWithDefault(msg, 1, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.server2.SubscribeRequest}
+ */
+proto.server2.SubscribeRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.server2.SubscribeRequest;
+  return proto.server2.SubscribeRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.server2.SubscribeRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.server2.SubscribeRequest}
+ */
+proto.server2.SubscribeRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {!proto.server2.SubscriptionAction} */ (reader.readEnum());
+      msg.setAction(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.server2.SubscribeRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.server2.SubscribeRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.server2.SubscribeRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.server2.SubscribeRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getAction();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      1,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional SubscriptionAction action = 1;
+ * @return {!proto.server2.SubscriptionAction}
+ */
+proto.server2.SubscribeRequest.prototype.getAction = function() {
+  return /** @type {!proto.server2.SubscriptionAction} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/**
+ * @param {!proto.server2.SubscriptionAction} value
+ * @return {!proto.server2.SubscribeRequest} returns this
+ */
+proto.server2.SubscribeRequest.prototype.setAction = function(value) {
+  return jspb.Message.setProto3EnumField(this, 1, value);
+};
+
+
 
 /**
  * Oneof group definitions for this message. Each group defines the field
@@ -716,37 +1059,27 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<!Array<number>>}
  * @const
  */
-proto.server.SubscriptionUpdateData.oneofGroups_ = [[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]];
+proto.server2.ClientUpdate.oneofGroups_ = [[1,2,3,4,5,6,7]];
 
 /**
  * @enum {number}
  */
-proto.server.SubscriptionUpdateData.SubscriptionUpdateDataTypeCase = {
-  SUBSCRIPTION_UPDATE_DATA_TYPE_NOT_SET: 0,
-  NAVIGATION_UPDATE: 1,
-  HANDSHAKE_REPLY: 2,
-  INVALIDATE_REPLY: 3,
-  CREATE_LOBBY_REPLY: 4,
-  JOIN_LOBBY_REPLY: 5,
-  LEAVE_MY_LOBBY_REPLY: 6,
-  MY_LOBBY_DETAILS: 7,
-  MY_LOBBY_JOINER_UPDATE: 8,
-  MY_LOBBY_LEAVER_UPDATE: 9,
-  CREATE_GAME_REPLY: 10,
-  MAKE_MOVE_REPLY: 11,
-  MOVE_UPDATE: 12,
-  WINNER_UPDATE: 13,
-  DRAW_UPDATE: 14,
-  GAME_START_UPDATE: 15,
-  NEXT_MOVER_UPDATE: 16,
-  PLAYER_CLIENT_UPDATE: 17
+proto.server2.ClientUpdate.TypeCase = {
+  TYPE_NOT_SET: 0,
+  SIGN_UP_REQUEST: 1,
+  SIGN_IN_REQUEST: 2,
+  SIGN_OUT_REQUEST: 3,
+  CREATE_LOBBY_REQUEST: 4,
+  JOIN_LOBBY_REQUEST: 5,
+  CREATE_GAME_REQUEST: 6,
+  MAKE_MOVE_REQUEST: 7
 };
 
 /**
- * @return {proto.server.SubscriptionUpdateData.SubscriptionUpdateDataTypeCase}
+ * @return {proto.server2.ClientUpdate.TypeCase}
  */
-proto.server.SubscriptionUpdateData.prototype.getSubscriptionUpdateDataTypeCase = function() {
-  return /** @type {proto.server.SubscriptionUpdateData.SubscriptionUpdateDataTypeCase} */(jspb.Message.computeOneofCase(this, proto.server.SubscriptionUpdateData.oneofGroups_[0]));
+proto.server2.ClientUpdate.prototype.getTypeCase = function() {
+  return /** @type {proto.server2.ClientUpdate.TypeCase} */(jspb.Message.computeOneofCase(this, proto.server2.ClientUpdate.oneofGroups_[0]));
 };
 
 
@@ -764,8 +1097,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.server.SubscriptionUpdateData.prototype.toObject = function(opt_includeInstance) {
-  return proto.server.SubscriptionUpdateData.toObject(opt_includeInstance, this);
+proto.server2.ClientUpdate.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.ClientUpdate.toObject(opt_includeInstance, this);
 };
 
 
@@ -774,29 +1107,19 @@ proto.server.SubscriptionUpdateData.prototype.toObject = function(opt_includeIns
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.server.SubscriptionUpdateData} msg The msg instance to transform.
+ * @param {!proto.server2.ClientUpdate} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.SubscriptionUpdateData.toObject = function(includeInstance, msg) {
+proto.server2.ClientUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-navigationUpdate: (f = msg.getNavigationUpdate()) && proto.server.NavigationUpdate.toObject(includeInstance, f),
-handshakeReply: (f = msg.getHandshakeReply()) && proto.server.HandshakeReply.toObject(includeInstance, f),
-invalidateReply: (f = msg.getInvalidateReply()) && proto.server.InvalidateReply.toObject(includeInstance, f),
-createLobbyReply: (f = msg.getCreateLobbyReply()) && proto.server.CreateLobbyReply.toObject(includeInstance, f),
-joinLobbyReply: (f = msg.getJoinLobbyReply()) && proto.server.JoinLobbyReply.toObject(includeInstance, f),
-leaveMyLobbyReply: (f = msg.getLeaveMyLobbyReply()) && proto.server.LeaveMyLobbyReply.toObject(includeInstance, f),
-myLobbyDetails: (f = msg.getMyLobbyDetails()) && proto.server.MyLobbyDetails.toObject(includeInstance, f),
-myLobbyJoinerUpdate: (f = msg.getMyLobbyJoinerUpdate()) && proto.server.MyLobbyJoinerUpdate.toObject(includeInstance, f),
-myLobbyLeaverUpdate: (f = msg.getMyLobbyLeaverUpdate()) && proto.server.MyLobbyLeaverUpdate.toObject(includeInstance, f),
-createGameReply: (f = msg.getCreateGameReply()) && proto.server.CreateGameReply.toObject(includeInstance, f),
-makeMoveReply: (f = msg.getMakeMoveReply()) && proto.server.MakeMoveReply.toObject(includeInstance, f),
-moveUpdate: (f = msg.getMoveUpdate()) && proto.server.MoveUpdate.toObject(includeInstance, f),
-winnerUpdate: (f = msg.getWinnerUpdate()) && proto.server.WinnerUpdate.toObject(includeInstance, f),
-drawUpdate: (f = msg.getDrawUpdate()) && proto.server.DrawUpdate.toObject(includeInstance, f),
-gameStartUpdate: (f = msg.getGameStartUpdate()) && proto.server.GameStartUpdate.toObject(includeInstance, f),
-nextMoverUpdate: (f = msg.getNextMoverUpdate()) && proto.server.NextMoverUpdate.toObject(includeInstance, f),
-playerClientUpdate: (f = msg.getPlayerClientUpdate()) && proto.server.PlayerClientUpdate.toObject(includeInstance, f)
+signUpRequest: (f = msg.getSignUpRequest()) && proto.server2.SignUpRequest.toObject(includeInstance, f),
+signInRequest: (f = msg.getSignInRequest()) && proto.server2.SignInRequest.toObject(includeInstance, f),
+signOutRequest: (f = msg.getSignOutRequest()) && proto.server2.SignOutRequest.toObject(includeInstance, f),
+createLobbyRequest: (f = msg.getCreateLobbyRequest()) && proto.server2.CreateLobbyRequest.toObject(includeInstance, f),
+joinLobbyRequest: (f = msg.getJoinLobbyRequest()) && proto.server2.JoinLobbyRequest.toObject(includeInstance, f),
+createGameRequest: (f = msg.getCreateGameRequest()) && proto.server2.CreateGameRequest.toObject(includeInstance, f),
+makeMoveRequest: (f = msg.getMakeMoveRequest()) && proto.server2.MakeMoveRequest.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -810,23 +1133,23 @@ playerClientUpdate: (f = msg.getPlayerClientUpdate()) && proto.server.PlayerClie
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.server.SubscriptionUpdateData}
+ * @return {!proto.server2.ClientUpdate}
  */
-proto.server.SubscriptionUpdateData.deserializeBinary = function(bytes) {
+proto.server2.ClientUpdate.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.server.SubscriptionUpdateData;
-  return proto.server.SubscriptionUpdateData.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.server2.ClientUpdate;
+  return proto.server2.ClientUpdate.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.server.SubscriptionUpdateData} msg The message object to deserialize into.
+ * @param {!proto.server2.ClientUpdate} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.server.SubscriptionUpdateData}
+ * @return {!proto.server2.ClientUpdate}
  */
-proto.server.SubscriptionUpdateData.deserializeBinaryFromReader = function(msg, reader) {
+proto.server2.ClientUpdate.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -834,89 +1157,39 @@ proto.server.SubscriptionUpdateData.deserializeBinaryFromReader = function(msg, 
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new proto.server.NavigationUpdate;
-      reader.readMessage(value,proto.server.NavigationUpdate.deserializeBinaryFromReader);
-      msg.setNavigationUpdate(value);
+      var value = new proto.server2.SignUpRequest;
+      reader.readMessage(value,proto.server2.SignUpRequest.deserializeBinaryFromReader);
+      msg.setSignUpRequest(value);
       break;
     case 2:
-      var value = new proto.server.HandshakeReply;
-      reader.readMessage(value,proto.server.HandshakeReply.deserializeBinaryFromReader);
-      msg.setHandshakeReply(value);
+      var value = new proto.server2.SignInRequest;
+      reader.readMessage(value,proto.server2.SignInRequest.deserializeBinaryFromReader);
+      msg.setSignInRequest(value);
       break;
     case 3:
-      var value = new proto.server.InvalidateReply;
-      reader.readMessage(value,proto.server.InvalidateReply.deserializeBinaryFromReader);
-      msg.setInvalidateReply(value);
+      var value = new proto.server2.SignOutRequest;
+      reader.readMessage(value,proto.server2.SignOutRequest.deserializeBinaryFromReader);
+      msg.setSignOutRequest(value);
       break;
     case 4:
-      var value = new proto.server.CreateLobbyReply;
-      reader.readMessage(value,proto.server.CreateLobbyReply.deserializeBinaryFromReader);
-      msg.setCreateLobbyReply(value);
+      var value = new proto.server2.CreateLobbyRequest;
+      reader.readMessage(value,proto.server2.CreateLobbyRequest.deserializeBinaryFromReader);
+      msg.setCreateLobbyRequest(value);
       break;
     case 5:
-      var value = new proto.server.JoinLobbyReply;
-      reader.readMessage(value,proto.server.JoinLobbyReply.deserializeBinaryFromReader);
-      msg.setJoinLobbyReply(value);
+      var value = new proto.server2.JoinLobbyRequest;
+      reader.readMessage(value,proto.server2.JoinLobbyRequest.deserializeBinaryFromReader);
+      msg.setJoinLobbyRequest(value);
       break;
     case 6:
-      var value = new proto.server.LeaveMyLobbyReply;
-      reader.readMessage(value,proto.server.LeaveMyLobbyReply.deserializeBinaryFromReader);
-      msg.setLeaveMyLobbyReply(value);
+      var value = new proto.server2.CreateGameRequest;
+      reader.readMessage(value,proto.server2.CreateGameRequest.deserializeBinaryFromReader);
+      msg.setCreateGameRequest(value);
       break;
     case 7:
-      var value = new proto.server.MyLobbyDetails;
-      reader.readMessage(value,proto.server.MyLobbyDetails.deserializeBinaryFromReader);
-      msg.setMyLobbyDetails(value);
-      break;
-    case 8:
-      var value = new proto.server.MyLobbyJoinerUpdate;
-      reader.readMessage(value,proto.server.MyLobbyJoinerUpdate.deserializeBinaryFromReader);
-      msg.setMyLobbyJoinerUpdate(value);
-      break;
-    case 9:
-      var value = new proto.server.MyLobbyLeaverUpdate;
-      reader.readMessage(value,proto.server.MyLobbyLeaverUpdate.deserializeBinaryFromReader);
-      msg.setMyLobbyLeaverUpdate(value);
-      break;
-    case 10:
-      var value = new proto.server.CreateGameReply;
-      reader.readMessage(value,proto.server.CreateGameReply.deserializeBinaryFromReader);
-      msg.setCreateGameReply(value);
-      break;
-    case 11:
-      var value = new proto.server.MakeMoveReply;
-      reader.readMessage(value,proto.server.MakeMoveReply.deserializeBinaryFromReader);
-      msg.setMakeMoveReply(value);
-      break;
-    case 12:
-      var value = new proto.server.MoveUpdate;
-      reader.readMessage(value,proto.server.MoveUpdate.deserializeBinaryFromReader);
-      msg.setMoveUpdate(value);
-      break;
-    case 13:
-      var value = new proto.server.WinnerUpdate;
-      reader.readMessage(value,proto.server.WinnerUpdate.deserializeBinaryFromReader);
-      msg.setWinnerUpdate(value);
-      break;
-    case 14:
-      var value = new proto.server.DrawUpdate;
-      reader.readMessage(value,proto.server.DrawUpdate.deserializeBinaryFromReader);
-      msg.setDrawUpdate(value);
-      break;
-    case 15:
-      var value = new proto.server.GameStartUpdate;
-      reader.readMessage(value,proto.server.GameStartUpdate.deserializeBinaryFromReader);
-      msg.setGameStartUpdate(value);
-      break;
-    case 16:
-      var value = new proto.server.NextMoverUpdate;
-      reader.readMessage(value,proto.server.NextMoverUpdate.deserializeBinaryFromReader);
-      msg.setNextMoverUpdate(value);
-      break;
-    case 17:
-      var value = new proto.server.PlayerClientUpdate;
-      reader.readMessage(value,proto.server.PlayerClientUpdate.deserializeBinaryFromReader);
-      msg.setPlayerClientUpdate(value);
+      var value = new proto.server2.MakeMoveRequest;
+      reader.readMessage(value,proto.server2.MakeMoveRequest.deserializeBinaryFromReader);
+      msg.setMakeMoveRequest(value);
       break;
     default:
       reader.skipField();
@@ -931,9 +1204,9 @@ proto.server.SubscriptionUpdateData.deserializeBinaryFromReader = function(msg, 
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.server.SubscriptionUpdateData.prototype.serializeBinary = function() {
+proto.server2.ClientUpdate.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.server.SubscriptionUpdateData.serializeBinaryToWriter(this, writer);
+  proto.server2.ClientUpdate.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -941,58 +1214,644 @@ proto.server.SubscriptionUpdateData.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.server.SubscriptionUpdateData} message
+ * @param {!proto.server2.ClientUpdate} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.SubscriptionUpdateData.serializeBinaryToWriter = function(message, writer) {
+proto.server2.ClientUpdate.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getNavigationUpdate();
+  f = message.getSignUpRequest();
   if (f != null) {
     writer.writeMessage(
       1,
       f,
-      proto.server.NavigationUpdate.serializeBinaryToWriter
+      proto.server2.SignUpRequest.serializeBinaryToWriter
     );
   }
-  f = message.getHandshakeReply();
+  f = message.getSignInRequest();
   if (f != null) {
     writer.writeMessage(
       2,
       f,
-      proto.server.HandshakeReply.serializeBinaryToWriter
+      proto.server2.SignInRequest.serializeBinaryToWriter
     );
   }
-  f = message.getInvalidateReply();
+  f = message.getSignOutRequest();
   if (f != null) {
     writer.writeMessage(
       3,
       f,
-      proto.server.InvalidateReply.serializeBinaryToWriter
+      proto.server2.SignOutRequest.serializeBinaryToWriter
     );
   }
-  f = message.getCreateLobbyReply();
+  f = message.getCreateLobbyRequest();
   if (f != null) {
     writer.writeMessage(
       4,
       f,
-      proto.server.CreateLobbyReply.serializeBinaryToWriter
+      proto.server2.CreateLobbyRequest.serializeBinaryToWriter
     );
   }
-  f = message.getJoinLobbyReply();
+  f = message.getJoinLobbyRequest();
   if (f != null) {
     writer.writeMessage(
       5,
       f,
-      proto.server.JoinLobbyReply.serializeBinaryToWriter
+      proto.server2.JoinLobbyRequest.serializeBinaryToWriter
     );
   }
-  f = message.getLeaveMyLobbyReply();
+  f = message.getCreateGameRequest();
   if (f != null) {
     writer.writeMessage(
       6,
       f,
-      proto.server.LeaveMyLobbyReply.serializeBinaryToWriter
+      proto.server2.CreateGameRequest.serializeBinaryToWriter
+    );
+  }
+  f = message.getMakeMoveRequest();
+  if (f != null) {
+    writer.writeMessage(
+      7,
+      f,
+      proto.server2.MakeMoveRequest.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional SignUpRequest sign_up_request = 1;
+ * @return {?proto.server2.SignUpRequest}
+ */
+proto.server2.ClientUpdate.prototype.getSignUpRequest = function() {
+  return /** @type{?proto.server2.SignUpRequest} */ (
+    jspb.Message.getWrapperField(this, proto.server2.SignUpRequest, 1));
+};
+
+
+/**
+ * @param {?proto.server2.SignUpRequest|undefined} value
+ * @return {!proto.server2.ClientUpdate} returns this
+*/
+proto.server2.ClientUpdate.prototype.setSignUpRequest = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 1, proto.server2.ClientUpdate.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.server2.ClientUpdate} returns this
+ */
+proto.server2.ClientUpdate.prototype.clearSignUpRequest = function() {
+  return this.setSignUpRequest(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.server2.ClientUpdate.prototype.hasSignUpRequest = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional SignInRequest sign_in_request = 2;
+ * @return {?proto.server2.SignInRequest}
+ */
+proto.server2.ClientUpdate.prototype.getSignInRequest = function() {
+  return /** @type{?proto.server2.SignInRequest} */ (
+    jspb.Message.getWrapperField(this, proto.server2.SignInRequest, 2));
+};
+
+
+/**
+ * @param {?proto.server2.SignInRequest|undefined} value
+ * @return {!proto.server2.ClientUpdate} returns this
+*/
+proto.server2.ClientUpdate.prototype.setSignInRequest = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 2, proto.server2.ClientUpdate.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.server2.ClientUpdate} returns this
+ */
+proto.server2.ClientUpdate.prototype.clearSignInRequest = function() {
+  return this.setSignInRequest(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.server2.ClientUpdate.prototype.hasSignInRequest = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * optional SignOutRequest sign_out_request = 3;
+ * @return {?proto.server2.SignOutRequest}
+ */
+proto.server2.ClientUpdate.prototype.getSignOutRequest = function() {
+  return /** @type{?proto.server2.SignOutRequest} */ (
+    jspb.Message.getWrapperField(this, proto.server2.SignOutRequest, 3));
+};
+
+
+/**
+ * @param {?proto.server2.SignOutRequest|undefined} value
+ * @return {!proto.server2.ClientUpdate} returns this
+*/
+proto.server2.ClientUpdate.prototype.setSignOutRequest = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 3, proto.server2.ClientUpdate.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.server2.ClientUpdate} returns this
+ */
+proto.server2.ClientUpdate.prototype.clearSignOutRequest = function() {
+  return this.setSignOutRequest(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.server2.ClientUpdate.prototype.hasSignOutRequest = function() {
+  return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * optional CreateLobbyRequest create_lobby_request = 4;
+ * @return {?proto.server2.CreateLobbyRequest}
+ */
+proto.server2.ClientUpdate.prototype.getCreateLobbyRequest = function() {
+  return /** @type{?proto.server2.CreateLobbyRequest} */ (
+    jspb.Message.getWrapperField(this, proto.server2.CreateLobbyRequest, 4));
+};
+
+
+/**
+ * @param {?proto.server2.CreateLobbyRequest|undefined} value
+ * @return {!proto.server2.ClientUpdate} returns this
+*/
+proto.server2.ClientUpdate.prototype.setCreateLobbyRequest = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 4, proto.server2.ClientUpdate.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.server2.ClientUpdate} returns this
+ */
+proto.server2.ClientUpdate.prototype.clearCreateLobbyRequest = function() {
+  return this.setCreateLobbyRequest(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.server2.ClientUpdate.prototype.hasCreateLobbyRequest = function() {
+  return jspb.Message.getField(this, 4) != null;
+};
+
+
+/**
+ * optional JoinLobbyRequest join_lobby_request = 5;
+ * @return {?proto.server2.JoinLobbyRequest}
+ */
+proto.server2.ClientUpdate.prototype.getJoinLobbyRequest = function() {
+  return /** @type{?proto.server2.JoinLobbyRequest} */ (
+    jspb.Message.getWrapperField(this, proto.server2.JoinLobbyRequest, 5));
+};
+
+
+/**
+ * @param {?proto.server2.JoinLobbyRequest|undefined} value
+ * @return {!proto.server2.ClientUpdate} returns this
+*/
+proto.server2.ClientUpdate.prototype.setJoinLobbyRequest = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 5, proto.server2.ClientUpdate.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.server2.ClientUpdate} returns this
+ */
+proto.server2.ClientUpdate.prototype.clearJoinLobbyRequest = function() {
+  return this.setJoinLobbyRequest(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.server2.ClientUpdate.prototype.hasJoinLobbyRequest = function() {
+  return jspb.Message.getField(this, 5) != null;
+};
+
+
+/**
+ * optional CreateGameRequest create_game_request = 6;
+ * @return {?proto.server2.CreateGameRequest}
+ */
+proto.server2.ClientUpdate.prototype.getCreateGameRequest = function() {
+  return /** @type{?proto.server2.CreateGameRequest} */ (
+    jspb.Message.getWrapperField(this, proto.server2.CreateGameRequest, 6));
+};
+
+
+/**
+ * @param {?proto.server2.CreateGameRequest|undefined} value
+ * @return {!proto.server2.ClientUpdate} returns this
+*/
+proto.server2.ClientUpdate.prototype.setCreateGameRequest = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 6, proto.server2.ClientUpdate.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.server2.ClientUpdate} returns this
+ */
+proto.server2.ClientUpdate.prototype.clearCreateGameRequest = function() {
+  return this.setCreateGameRequest(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.server2.ClientUpdate.prototype.hasCreateGameRequest = function() {
+  return jspb.Message.getField(this, 6) != null;
+};
+
+
+/**
+ * optional MakeMoveRequest make_move_request = 7;
+ * @return {?proto.server2.MakeMoveRequest}
+ */
+proto.server2.ClientUpdate.prototype.getMakeMoveRequest = function() {
+  return /** @type{?proto.server2.MakeMoveRequest} */ (
+    jspb.Message.getWrapperField(this, proto.server2.MakeMoveRequest, 7));
+};
+
+
+/**
+ * @param {?proto.server2.MakeMoveRequest|undefined} value
+ * @return {!proto.server2.ClientUpdate} returns this
+*/
+proto.server2.ClientUpdate.prototype.setMakeMoveRequest = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 7, proto.server2.ClientUpdate.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.server2.ClientUpdate} returns this
+ */
+proto.server2.ClientUpdate.prototype.clearMakeMoveRequest = function() {
+  return this.setMakeMoveRequest(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.server2.ClientUpdate.prototype.hasMakeMoveRequest = function() {
+  return jspb.Message.getField(this, 7) != null;
+};
+
+
+
+/**
+ * Oneof group definitions for this message. Each group defines the field
+ * numbers belonging to that group. When of these fields' value is set, all
+ * other fields in the group are cleared. During deserialization, if multiple
+ * fields are encountered for a group, only the last value seen will be kept.
+ * @private {!Array<!Array<number>>}
+ * @const
+ */
+proto.server2.ServerUpdate.oneofGroups_ = [[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21]];
+
+/**
+ * @enum {number}
+ */
+proto.server2.ServerUpdate.TypeCase = {
+  TYPE_NOT_SET: 0,
+  PING: 1,
+  CLIENT_ASSIGNMENT_UPDATE: 2,
+  NAVIGATION_UPDATE: 3,
+  SIGN_UP_REPLY: 4,
+  SIGN_IN_REPLY: 5,
+  SIGN_OUT_REPLY: 6,
+  MY_LOBBY_DETAILS: 7,
+  MY_LOBBY_JOINER_UPDATE: 8,
+  MY_LOBBY_LEAVER_UPDATE: 9,
+  CREATE_LOBBY_REPLY: 10,
+  JOIN_LOBBY_REPLY: 11,
+  LEAVE_MY_LOBBY_REPLY: 12,
+  CREATE_GAME_REPLY: 13,
+  MAKE_MOVE_REPLY: 14,
+  MOVE_UPDATE: 15,
+  WINNER_UPDATE: 16,
+  DRAW_UPDATE: 17,
+  GAME_START_UPDATE: 18,
+  NEXT_MOVER_UPDATE: 19,
+  PLAYER_CLIENT_UPDATE: 20,
+  PLAYER_DISPLAY_NAME_UPDATE: 21
+};
+
+/**
+ * @return {proto.server2.ServerUpdate.TypeCase}
+ */
+proto.server2.ServerUpdate.prototype.getTypeCase = function() {
+  return /** @type {proto.server2.ServerUpdate.TypeCase} */(jspb.Message.computeOneofCase(this, proto.server2.ServerUpdate.oneofGroups_[0]));
+};
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.server2.ServerUpdate.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.ServerUpdate.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.server2.ServerUpdate} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.server2.ServerUpdate.toObject = function(includeInstance, msg) {
+  var f, obj = {
+ping: (f = msg.getPing()) && proto.server2.Ping.toObject(includeInstance, f),
+clientAssignmentUpdate: (f = msg.getClientAssignmentUpdate()) && proto.server2.ClientAssignmentUpdate.toObject(includeInstance, f),
+navigationUpdate: (f = msg.getNavigationUpdate()) && proto.server2.NavigationUpdate.toObject(includeInstance, f),
+signUpReply: (f = msg.getSignUpReply()) && proto.server2.SignUpReply.toObject(includeInstance, f),
+signInReply: (f = msg.getSignInReply()) && proto.server2.SignInReply.toObject(includeInstance, f),
+signOutReply: (f = msg.getSignOutReply()) && proto.server2.SignOutReply.toObject(includeInstance, f),
+myLobbyDetails: (f = msg.getMyLobbyDetails()) && proto.server2.MyLobbyDetails.toObject(includeInstance, f),
+myLobbyJoinerUpdate: (f = msg.getMyLobbyJoinerUpdate()) && proto.server2.MyLobbyJoinerUpdate.toObject(includeInstance, f),
+myLobbyLeaverUpdate: (f = msg.getMyLobbyLeaverUpdate()) && proto.server2.MyLobbyLeaverUpdate.toObject(includeInstance, f),
+createLobbyReply: (f = msg.getCreateLobbyReply()) && proto.server2.CreateLobbyReply.toObject(includeInstance, f),
+joinLobbyReply: (f = msg.getJoinLobbyReply()) && proto.server2.JoinLobbyReply.toObject(includeInstance, f),
+leaveMyLobbyReply: (f = msg.getLeaveMyLobbyReply()) && proto.server2.LeaveMyLobbyReply.toObject(includeInstance, f),
+createGameReply: (f = msg.getCreateGameReply()) && proto.server2.CreateGameReply.toObject(includeInstance, f),
+makeMoveReply: (f = msg.getMakeMoveReply()) && proto.server2.MakeMoveReply.toObject(includeInstance, f),
+moveUpdate: (f = msg.getMoveUpdate()) && proto.server2.MoveUpdate.toObject(includeInstance, f),
+winnerUpdate: (f = msg.getWinnerUpdate()) && proto.server2.WinnerUpdate.toObject(includeInstance, f),
+drawUpdate: (f = msg.getDrawUpdate()) && proto.server2.DrawUpdate.toObject(includeInstance, f),
+gameStartUpdate: (f = msg.getGameStartUpdate()) && proto.server2.GameStartUpdate.toObject(includeInstance, f),
+nextMoverUpdate: (f = msg.getNextMoverUpdate()) && proto.server2.NextMoverUpdate.toObject(includeInstance, f),
+playerClientUpdate: (f = msg.getPlayerClientUpdate()) && proto.server2.PlayerClientUpdate.toObject(includeInstance, f),
+playerDisplayNameUpdate: (f = msg.getPlayerDisplayNameUpdate()) && proto.server2.PlayerDisplayNameUpdate.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.server2.ServerUpdate}
+ */
+proto.server2.ServerUpdate.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.server2.ServerUpdate;
+  return proto.server2.ServerUpdate.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.server2.ServerUpdate} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.server2.ServerUpdate}
+ */
+proto.server2.ServerUpdate.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.server2.Ping;
+      reader.readMessage(value,proto.server2.Ping.deserializeBinaryFromReader);
+      msg.setPing(value);
+      break;
+    case 2:
+      var value = new proto.server2.ClientAssignmentUpdate;
+      reader.readMessage(value,proto.server2.ClientAssignmentUpdate.deserializeBinaryFromReader);
+      msg.setClientAssignmentUpdate(value);
+      break;
+    case 3:
+      var value = new proto.server2.NavigationUpdate;
+      reader.readMessage(value,proto.server2.NavigationUpdate.deserializeBinaryFromReader);
+      msg.setNavigationUpdate(value);
+      break;
+    case 4:
+      var value = new proto.server2.SignUpReply;
+      reader.readMessage(value,proto.server2.SignUpReply.deserializeBinaryFromReader);
+      msg.setSignUpReply(value);
+      break;
+    case 5:
+      var value = new proto.server2.SignInReply;
+      reader.readMessage(value,proto.server2.SignInReply.deserializeBinaryFromReader);
+      msg.setSignInReply(value);
+      break;
+    case 6:
+      var value = new proto.server2.SignOutReply;
+      reader.readMessage(value,proto.server2.SignOutReply.deserializeBinaryFromReader);
+      msg.setSignOutReply(value);
+      break;
+    case 7:
+      var value = new proto.server2.MyLobbyDetails;
+      reader.readMessage(value,proto.server2.MyLobbyDetails.deserializeBinaryFromReader);
+      msg.setMyLobbyDetails(value);
+      break;
+    case 8:
+      var value = new proto.server2.MyLobbyJoinerUpdate;
+      reader.readMessage(value,proto.server2.MyLobbyJoinerUpdate.deserializeBinaryFromReader);
+      msg.setMyLobbyJoinerUpdate(value);
+      break;
+    case 9:
+      var value = new proto.server2.MyLobbyLeaverUpdate;
+      reader.readMessage(value,proto.server2.MyLobbyLeaverUpdate.deserializeBinaryFromReader);
+      msg.setMyLobbyLeaverUpdate(value);
+      break;
+    case 10:
+      var value = new proto.server2.CreateLobbyReply;
+      reader.readMessage(value,proto.server2.CreateLobbyReply.deserializeBinaryFromReader);
+      msg.setCreateLobbyReply(value);
+      break;
+    case 11:
+      var value = new proto.server2.JoinLobbyReply;
+      reader.readMessage(value,proto.server2.JoinLobbyReply.deserializeBinaryFromReader);
+      msg.setJoinLobbyReply(value);
+      break;
+    case 12:
+      var value = new proto.server2.LeaveMyLobbyReply;
+      reader.readMessage(value,proto.server2.LeaveMyLobbyReply.deserializeBinaryFromReader);
+      msg.setLeaveMyLobbyReply(value);
+      break;
+    case 13:
+      var value = new proto.server2.CreateGameReply;
+      reader.readMessage(value,proto.server2.CreateGameReply.deserializeBinaryFromReader);
+      msg.setCreateGameReply(value);
+      break;
+    case 14:
+      var value = new proto.server2.MakeMoveReply;
+      reader.readMessage(value,proto.server2.MakeMoveReply.deserializeBinaryFromReader);
+      msg.setMakeMoveReply(value);
+      break;
+    case 15:
+      var value = new proto.server2.MoveUpdate;
+      reader.readMessage(value,proto.server2.MoveUpdate.deserializeBinaryFromReader);
+      msg.setMoveUpdate(value);
+      break;
+    case 16:
+      var value = new proto.server2.WinnerUpdate;
+      reader.readMessage(value,proto.server2.WinnerUpdate.deserializeBinaryFromReader);
+      msg.setWinnerUpdate(value);
+      break;
+    case 17:
+      var value = new proto.server2.DrawUpdate;
+      reader.readMessage(value,proto.server2.DrawUpdate.deserializeBinaryFromReader);
+      msg.setDrawUpdate(value);
+      break;
+    case 18:
+      var value = new proto.server2.GameStartUpdate;
+      reader.readMessage(value,proto.server2.GameStartUpdate.deserializeBinaryFromReader);
+      msg.setGameStartUpdate(value);
+      break;
+    case 19:
+      var value = new proto.server2.NextMoverUpdate;
+      reader.readMessage(value,proto.server2.NextMoverUpdate.deserializeBinaryFromReader);
+      msg.setNextMoverUpdate(value);
+      break;
+    case 20:
+      var value = new proto.server2.PlayerClientUpdate;
+      reader.readMessage(value,proto.server2.PlayerClientUpdate.deserializeBinaryFromReader);
+      msg.setPlayerClientUpdate(value);
+      break;
+    case 21:
+      var value = new proto.server2.PlayerDisplayNameUpdate;
+      reader.readMessage(value,proto.server2.PlayerDisplayNameUpdate.deserializeBinaryFromReader);
+      msg.setPlayerDisplayNameUpdate(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.server2.ServerUpdate.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.server2.ServerUpdate.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.server2.ServerUpdate} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.server2.ServerUpdate.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getPing();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.server2.Ping.serializeBinaryToWriter
+    );
+  }
+  f = message.getClientAssignmentUpdate();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      proto.server2.ClientAssignmentUpdate.serializeBinaryToWriter
+    );
+  }
+  f = message.getNavigationUpdate();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      proto.server2.NavigationUpdate.serializeBinaryToWriter
+    );
+  }
+  f = message.getSignUpReply();
+  if (f != null) {
+    writer.writeMessage(
+      4,
+      f,
+      proto.server2.SignUpReply.serializeBinaryToWriter
+    );
+  }
+  f = message.getSignInReply();
+  if (f != null) {
+    writer.writeMessage(
+      5,
+      f,
+      proto.server2.SignInReply.serializeBinaryToWriter
+    );
+  }
+  f = message.getSignOutReply();
+  if (f != null) {
+    writer.writeMessage(
+      6,
+      f,
+      proto.server2.SignOutReply.serializeBinaryToWriter
     );
   }
   f = message.getMyLobbyDetails();
@@ -1000,7 +1859,7 @@ proto.server.SubscriptionUpdateData.serializeBinaryToWriter = function(message, 
     writer.writeMessage(
       7,
       f,
-      proto.server.MyLobbyDetails.serializeBinaryToWriter
+      proto.server2.MyLobbyDetails.serializeBinaryToWriter
     );
   }
   f = message.getMyLobbyJoinerUpdate();
@@ -1008,7 +1867,7 @@ proto.server.SubscriptionUpdateData.serializeBinaryToWriter = function(message, 
     writer.writeMessage(
       8,
       f,
-      proto.server.MyLobbyJoinerUpdate.serializeBinaryToWriter
+      proto.server2.MyLobbyJoinerUpdate.serializeBinaryToWriter
     );
   }
   f = message.getMyLobbyLeaverUpdate();
@@ -1016,100 +1875,206 @@ proto.server.SubscriptionUpdateData.serializeBinaryToWriter = function(message, 
     writer.writeMessage(
       9,
       f,
-      proto.server.MyLobbyLeaverUpdate.serializeBinaryToWriter
+      proto.server2.MyLobbyLeaverUpdate.serializeBinaryToWriter
+    );
+  }
+  f = message.getCreateLobbyReply();
+  if (f != null) {
+    writer.writeMessage(
+      10,
+      f,
+      proto.server2.CreateLobbyReply.serializeBinaryToWriter
+    );
+  }
+  f = message.getJoinLobbyReply();
+  if (f != null) {
+    writer.writeMessage(
+      11,
+      f,
+      proto.server2.JoinLobbyReply.serializeBinaryToWriter
+    );
+  }
+  f = message.getLeaveMyLobbyReply();
+  if (f != null) {
+    writer.writeMessage(
+      12,
+      f,
+      proto.server2.LeaveMyLobbyReply.serializeBinaryToWriter
     );
   }
   f = message.getCreateGameReply();
   if (f != null) {
     writer.writeMessage(
-      10,
+      13,
       f,
-      proto.server.CreateGameReply.serializeBinaryToWriter
+      proto.server2.CreateGameReply.serializeBinaryToWriter
     );
   }
   f = message.getMakeMoveReply();
   if (f != null) {
     writer.writeMessage(
-      11,
+      14,
       f,
-      proto.server.MakeMoveReply.serializeBinaryToWriter
+      proto.server2.MakeMoveReply.serializeBinaryToWriter
     );
   }
   f = message.getMoveUpdate();
   if (f != null) {
     writer.writeMessage(
-      12,
+      15,
       f,
-      proto.server.MoveUpdate.serializeBinaryToWriter
+      proto.server2.MoveUpdate.serializeBinaryToWriter
     );
   }
   f = message.getWinnerUpdate();
   if (f != null) {
     writer.writeMessage(
-      13,
+      16,
       f,
-      proto.server.WinnerUpdate.serializeBinaryToWriter
+      proto.server2.WinnerUpdate.serializeBinaryToWriter
     );
   }
   f = message.getDrawUpdate();
   if (f != null) {
     writer.writeMessage(
-      14,
+      17,
       f,
-      proto.server.DrawUpdate.serializeBinaryToWriter
+      proto.server2.DrawUpdate.serializeBinaryToWriter
     );
   }
   f = message.getGameStartUpdate();
   if (f != null) {
     writer.writeMessage(
-      15,
+      18,
       f,
-      proto.server.GameStartUpdate.serializeBinaryToWriter
+      proto.server2.GameStartUpdate.serializeBinaryToWriter
     );
   }
   f = message.getNextMoverUpdate();
   if (f != null) {
     writer.writeMessage(
-      16,
+      19,
       f,
-      proto.server.NextMoverUpdate.serializeBinaryToWriter
+      proto.server2.NextMoverUpdate.serializeBinaryToWriter
     );
   }
   f = message.getPlayerClientUpdate();
   if (f != null) {
     writer.writeMessage(
-      17,
+      20,
       f,
-      proto.server.PlayerClientUpdate.serializeBinaryToWriter
+      proto.server2.PlayerClientUpdate.serializeBinaryToWriter
+    );
+  }
+  f = message.getPlayerDisplayNameUpdate();
+  if (f != null) {
+    writer.writeMessage(
+      21,
+      f,
+      proto.server2.PlayerDisplayNameUpdate.serializeBinaryToWriter
     );
   }
 };
 
 
 /**
- * optional NavigationUpdate navigation_update = 1;
- * @return {?proto.server.NavigationUpdate}
+ * optional Ping ping = 1;
+ * @return {?proto.server2.Ping}
  */
-proto.server.SubscriptionUpdateData.prototype.getNavigationUpdate = function() {
-  return /** @type{?proto.server.NavigationUpdate} */ (
-    jspb.Message.getWrapperField(this, proto.server.NavigationUpdate, 1));
+proto.server2.ServerUpdate.prototype.getPing = function() {
+  return /** @type{?proto.server2.Ping} */ (
+    jspb.Message.getWrapperField(this, proto.server2.Ping, 1));
 };
 
 
 /**
- * @param {?proto.server.NavigationUpdate|undefined} value
- * @return {!proto.server.SubscriptionUpdateData} returns this
+ * @param {?proto.server2.Ping|undefined} value
+ * @return {!proto.server2.ServerUpdate} returns this
 */
-proto.server.SubscriptionUpdateData.prototype.setNavigationUpdate = function(value) {
-  return jspb.Message.setOneofWrapperField(this, 1, proto.server.SubscriptionUpdateData.oneofGroups_[0], value);
+proto.server2.ServerUpdate.prototype.setPing = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 1, proto.server2.ServerUpdate.oneofGroups_[0], value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.server.SubscriptionUpdateData} returns this
+ * @return {!proto.server2.ServerUpdate} returns this
  */
-proto.server.SubscriptionUpdateData.prototype.clearNavigationUpdate = function() {
+proto.server2.ServerUpdate.prototype.clearPing = function() {
+  return this.setPing(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.server2.ServerUpdate.prototype.hasPing = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional ClientAssignmentUpdate client_assignment_update = 2;
+ * @return {?proto.server2.ClientAssignmentUpdate}
+ */
+proto.server2.ServerUpdate.prototype.getClientAssignmentUpdate = function() {
+  return /** @type{?proto.server2.ClientAssignmentUpdate} */ (
+    jspb.Message.getWrapperField(this, proto.server2.ClientAssignmentUpdate, 2));
+};
+
+
+/**
+ * @param {?proto.server2.ClientAssignmentUpdate|undefined} value
+ * @return {!proto.server2.ServerUpdate} returns this
+*/
+proto.server2.ServerUpdate.prototype.setClientAssignmentUpdate = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 2, proto.server2.ServerUpdate.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.server2.ServerUpdate} returns this
+ */
+proto.server2.ServerUpdate.prototype.clearClientAssignmentUpdate = function() {
+  return this.setClientAssignmentUpdate(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.server2.ServerUpdate.prototype.hasClientAssignmentUpdate = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * optional NavigationUpdate navigation_update = 3;
+ * @return {?proto.server2.NavigationUpdate}
+ */
+proto.server2.ServerUpdate.prototype.getNavigationUpdate = function() {
+  return /** @type{?proto.server2.NavigationUpdate} */ (
+    jspb.Message.getWrapperField(this, proto.server2.NavigationUpdate, 3));
+};
+
+
+/**
+ * @param {?proto.server2.NavigationUpdate|undefined} value
+ * @return {!proto.server2.ServerUpdate} returns this
+*/
+proto.server2.ServerUpdate.prototype.setNavigationUpdate = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 3, proto.server2.ServerUpdate.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.server2.ServerUpdate} returns this
+ */
+proto.server2.ServerUpdate.prototype.clearNavigationUpdate = function() {
   return this.setNavigationUpdate(undefined);
 };
 
@@ -1118,110 +2083,36 @@ proto.server.SubscriptionUpdateData.prototype.clearNavigationUpdate = function()
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.server.SubscriptionUpdateData.prototype.hasNavigationUpdate = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
-/**
- * optional HandshakeReply handshake_reply = 2;
- * @return {?proto.server.HandshakeReply}
- */
-proto.server.SubscriptionUpdateData.prototype.getHandshakeReply = function() {
-  return /** @type{?proto.server.HandshakeReply} */ (
-    jspb.Message.getWrapperField(this, proto.server.HandshakeReply, 2));
-};
-
-
-/**
- * @param {?proto.server.HandshakeReply|undefined} value
- * @return {!proto.server.SubscriptionUpdateData} returns this
-*/
-proto.server.SubscriptionUpdateData.prototype.setHandshakeReply = function(value) {
-  return jspb.Message.setOneofWrapperField(this, 2, proto.server.SubscriptionUpdateData.oneofGroups_[0], value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.server.SubscriptionUpdateData} returns this
- */
-proto.server.SubscriptionUpdateData.prototype.clearHandshakeReply = function() {
-  return this.setHandshakeReply(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.server.SubscriptionUpdateData.prototype.hasHandshakeReply = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
-
-/**
- * optional InvalidateReply invalidate_reply = 3;
- * @return {?proto.server.InvalidateReply}
- */
-proto.server.SubscriptionUpdateData.prototype.getInvalidateReply = function() {
-  return /** @type{?proto.server.InvalidateReply} */ (
-    jspb.Message.getWrapperField(this, proto.server.InvalidateReply, 3));
-};
-
-
-/**
- * @param {?proto.server.InvalidateReply|undefined} value
- * @return {!proto.server.SubscriptionUpdateData} returns this
-*/
-proto.server.SubscriptionUpdateData.prototype.setInvalidateReply = function(value) {
-  return jspb.Message.setOneofWrapperField(this, 3, proto.server.SubscriptionUpdateData.oneofGroups_[0], value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.server.SubscriptionUpdateData} returns this
- */
-proto.server.SubscriptionUpdateData.prototype.clearInvalidateReply = function() {
-  return this.setInvalidateReply(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.server.SubscriptionUpdateData.prototype.hasInvalidateReply = function() {
+proto.server2.ServerUpdate.prototype.hasNavigationUpdate = function() {
   return jspb.Message.getField(this, 3) != null;
 };
 
 
 /**
- * optional CreateLobbyReply create_lobby_reply = 4;
- * @return {?proto.server.CreateLobbyReply}
+ * optional SignUpReply sign_up_reply = 4;
+ * @return {?proto.server2.SignUpReply}
  */
-proto.server.SubscriptionUpdateData.prototype.getCreateLobbyReply = function() {
-  return /** @type{?proto.server.CreateLobbyReply} */ (
-    jspb.Message.getWrapperField(this, proto.server.CreateLobbyReply, 4));
+proto.server2.ServerUpdate.prototype.getSignUpReply = function() {
+  return /** @type{?proto.server2.SignUpReply} */ (
+    jspb.Message.getWrapperField(this, proto.server2.SignUpReply, 4));
 };
 
 
 /**
- * @param {?proto.server.CreateLobbyReply|undefined} value
- * @return {!proto.server.SubscriptionUpdateData} returns this
+ * @param {?proto.server2.SignUpReply|undefined} value
+ * @return {!proto.server2.ServerUpdate} returns this
 */
-proto.server.SubscriptionUpdateData.prototype.setCreateLobbyReply = function(value) {
-  return jspb.Message.setOneofWrapperField(this, 4, proto.server.SubscriptionUpdateData.oneofGroups_[0], value);
+proto.server2.ServerUpdate.prototype.setSignUpReply = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 4, proto.server2.ServerUpdate.oneofGroups_[0], value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.server.SubscriptionUpdateData} returns this
+ * @return {!proto.server2.ServerUpdate} returns this
  */
-proto.server.SubscriptionUpdateData.prototype.clearCreateLobbyReply = function() {
-  return this.setCreateLobbyReply(undefined);
+proto.server2.ServerUpdate.prototype.clearSignUpReply = function() {
+  return this.setSignUpReply(undefined);
 };
 
 
@@ -1229,36 +2120,36 @@ proto.server.SubscriptionUpdateData.prototype.clearCreateLobbyReply = function()
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.server.SubscriptionUpdateData.prototype.hasCreateLobbyReply = function() {
+proto.server2.ServerUpdate.prototype.hasSignUpReply = function() {
   return jspb.Message.getField(this, 4) != null;
 };
 
 
 /**
- * optional JoinLobbyReply join_lobby_reply = 5;
- * @return {?proto.server.JoinLobbyReply}
+ * optional SignInReply sign_in_reply = 5;
+ * @return {?proto.server2.SignInReply}
  */
-proto.server.SubscriptionUpdateData.prototype.getJoinLobbyReply = function() {
-  return /** @type{?proto.server.JoinLobbyReply} */ (
-    jspb.Message.getWrapperField(this, proto.server.JoinLobbyReply, 5));
+proto.server2.ServerUpdate.prototype.getSignInReply = function() {
+  return /** @type{?proto.server2.SignInReply} */ (
+    jspb.Message.getWrapperField(this, proto.server2.SignInReply, 5));
 };
 
 
 /**
- * @param {?proto.server.JoinLobbyReply|undefined} value
- * @return {!proto.server.SubscriptionUpdateData} returns this
+ * @param {?proto.server2.SignInReply|undefined} value
+ * @return {!proto.server2.ServerUpdate} returns this
 */
-proto.server.SubscriptionUpdateData.prototype.setJoinLobbyReply = function(value) {
-  return jspb.Message.setOneofWrapperField(this, 5, proto.server.SubscriptionUpdateData.oneofGroups_[0], value);
+proto.server2.ServerUpdate.prototype.setSignInReply = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 5, proto.server2.ServerUpdate.oneofGroups_[0], value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.server.SubscriptionUpdateData} returns this
+ * @return {!proto.server2.ServerUpdate} returns this
  */
-proto.server.SubscriptionUpdateData.prototype.clearJoinLobbyReply = function() {
-  return this.setJoinLobbyReply(undefined);
+proto.server2.ServerUpdate.prototype.clearSignInReply = function() {
+  return this.setSignInReply(undefined);
 };
 
 
@@ -1266,36 +2157,36 @@ proto.server.SubscriptionUpdateData.prototype.clearJoinLobbyReply = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.server.SubscriptionUpdateData.prototype.hasJoinLobbyReply = function() {
+proto.server2.ServerUpdate.prototype.hasSignInReply = function() {
   return jspb.Message.getField(this, 5) != null;
 };
 
 
 /**
- * optional LeaveMyLobbyReply leave_my_lobby_reply = 6;
- * @return {?proto.server.LeaveMyLobbyReply}
+ * optional SignOutReply sign_out_reply = 6;
+ * @return {?proto.server2.SignOutReply}
  */
-proto.server.SubscriptionUpdateData.prototype.getLeaveMyLobbyReply = function() {
-  return /** @type{?proto.server.LeaveMyLobbyReply} */ (
-    jspb.Message.getWrapperField(this, proto.server.LeaveMyLobbyReply, 6));
+proto.server2.ServerUpdate.prototype.getSignOutReply = function() {
+  return /** @type{?proto.server2.SignOutReply} */ (
+    jspb.Message.getWrapperField(this, proto.server2.SignOutReply, 6));
 };
 
 
 /**
- * @param {?proto.server.LeaveMyLobbyReply|undefined} value
- * @return {!proto.server.SubscriptionUpdateData} returns this
+ * @param {?proto.server2.SignOutReply|undefined} value
+ * @return {!proto.server2.ServerUpdate} returns this
 */
-proto.server.SubscriptionUpdateData.prototype.setLeaveMyLobbyReply = function(value) {
-  return jspb.Message.setOneofWrapperField(this, 6, proto.server.SubscriptionUpdateData.oneofGroups_[0], value);
+proto.server2.ServerUpdate.prototype.setSignOutReply = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 6, proto.server2.ServerUpdate.oneofGroups_[0], value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.server.SubscriptionUpdateData} returns this
+ * @return {!proto.server2.ServerUpdate} returns this
  */
-proto.server.SubscriptionUpdateData.prototype.clearLeaveMyLobbyReply = function() {
-  return this.setLeaveMyLobbyReply(undefined);
+proto.server2.ServerUpdate.prototype.clearSignOutReply = function() {
+  return this.setSignOutReply(undefined);
 };
 
 
@@ -1303,35 +2194,35 @@ proto.server.SubscriptionUpdateData.prototype.clearLeaveMyLobbyReply = function(
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.server.SubscriptionUpdateData.prototype.hasLeaveMyLobbyReply = function() {
+proto.server2.ServerUpdate.prototype.hasSignOutReply = function() {
   return jspb.Message.getField(this, 6) != null;
 };
 
 
 /**
  * optional MyLobbyDetails my_lobby_details = 7;
- * @return {?proto.server.MyLobbyDetails}
+ * @return {?proto.server2.MyLobbyDetails}
  */
-proto.server.SubscriptionUpdateData.prototype.getMyLobbyDetails = function() {
-  return /** @type{?proto.server.MyLobbyDetails} */ (
-    jspb.Message.getWrapperField(this, proto.server.MyLobbyDetails, 7));
+proto.server2.ServerUpdate.prototype.getMyLobbyDetails = function() {
+  return /** @type{?proto.server2.MyLobbyDetails} */ (
+    jspb.Message.getWrapperField(this, proto.server2.MyLobbyDetails, 7));
 };
 
 
 /**
- * @param {?proto.server.MyLobbyDetails|undefined} value
- * @return {!proto.server.SubscriptionUpdateData} returns this
+ * @param {?proto.server2.MyLobbyDetails|undefined} value
+ * @return {!proto.server2.ServerUpdate} returns this
 */
-proto.server.SubscriptionUpdateData.prototype.setMyLobbyDetails = function(value) {
-  return jspb.Message.setOneofWrapperField(this, 7, proto.server.SubscriptionUpdateData.oneofGroups_[0], value);
+proto.server2.ServerUpdate.prototype.setMyLobbyDetails = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 7, proto.server2.ServerUpdate.oneofGroups_[0], value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.server.SubscriptionUpdateData} returns this
+ * @return {!proto.server2.ServerUpdate} returns this
  */
-proto.server.SubscriptionUpdateData.prototype.clearMyLobbyDetails = function() {
+proto.server2.ServerUpdate.prototype.clearMyLobbyDetails = function() {
   return this.setMyLobbyDetails(undefined);
 };
 
@@ -1340,35 +2231,35 @@ proto.server.SubscriptionUpdateData.prototype.clearMyLobbyDetails = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.server.SubscriptionUpdateData.prototype.hasMyLobbyDetails = function() {
+proto.server2.ServerUpdate.prototype.hasMyLobbyDetails = function() {
   return jspb.Message.getField(this, 7) != null;
 };
 
 
 /**
  * optional MyLobbyJoinerUpdate my_lobby_joiner_update = 8;
- * @return {?proto.server.MyLobbyJoinerUpdate}
+ * @return {?proto.server2.MyLobbyJoinerUpdate}
  */
-proto.server.SubscriptionUpdateData.prototype.getMyLobbyJoinerUpdate = function() {
-  return /** @type{?proto.server.MyLobbyJoinerUpdate} */ (
-    jspb.Message.getWrapperField(this, proto.server.MyLobbyJoinerUpdate, 8));
+proto.server2.ServerUpdate.prototype.getMyLobbyJoinerUpdate = function() {
+  return /** @type{?proto.server2.MyLobbyJoinerUpdate} */ (
+    jspb.Message.getWrapperField(this, proto.server2.MyLobbyJoinerUpdate, 8));
 };
 
 
 /**
- * @param {?proto.server.MyLobbyJoinerUpdate|undefined} value
- * @return {!proto.server.SubscriptionUpdateData} returns this
+ * @param {?proto.server2.MyLobbyJoinerUpdate|undefined} value
+ * @return {!proto.server2.ServerUpdate} returns this
 */
-proto.server.SubscriptionUpdateData.prototype.setMyLobbyJoinerUpdate = function(value) {
-  return jspb.Message.setOneofWrapperField(this, 8, proto.server.SubscriptionUpdateData.oneofGroups_[0], value);
+proto.server2.ServerUpdate.prototype.setMyLobbyJoinerUpdate = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 8, proto.server2.ServerUpdate.oneofGroups_[0], value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.server.SubscriptionUpdateData} returns this
+ * @return {!proto.server2.ServerUpdate} returns this
  */
-proto.server.SubscriptionUpdateData.prototype.clearMyLobbyJoinerUpdate = function() {
+proto.server2.ServerUpdate.prototype.clearMyLobbyJoinerUpdate = function() {
   return this.setMyLobbyJoinerUpdate(undefined);
 };
 
@@ -1377,35 +2268,35 @@ proto.server.SubscriptionUpdateData.prototype.clearMyLobbyJoinerUpdate = functio
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.server.SubscriptionUpdateData.prototype.hasMyLobbyJoinerUpdate = function() {
+proto.server2.ServerUpdate.prototype.hasMyLobbyJoinerUpdate = function() {
   return jspb.Message.getField(this, 8) != null;
 };
 
 
 /**
  * optional MyLobbyLeaverUpdate my_lobby_leaver_update = 9;
- * @return {?proto.server.MyLobbyLeaverUpdate}
+ * @return {?proto.server2.MyLobbyLeaverUpdate}
  */
-proto.server.SubscriptionUpdateData.prototype.getMyLobbyLeaverUpdate = function() {
-  return /** @type{?proto.server.MyLobbyLeaverUpdate} */ (
-    jspb.Message.getWrapperField(this, proto.server.MyLobbyLeaverUpdate, 9));
+proto.server2.ServerUpdate.prototype.getMyLobbyLeaverUpdate = function() {
+  return /** @type{?proto.server2.MyLobbyLeaverUpdate} */ (
+    jspb.Message.getWrapperField(this, proto.server2.MyLobbyLeaverUpdate, 9));
 };
 
 
 /**
- * @param {?proto.server.MyLobbyLeaverUpdate|undefined} value
- * @return {!proto.server.SubscriptionUpdateData} returns this
+ * @param {?proto.server2.MyLobbyLeaverUpdate|undefined} value
+ * @return {!proto.server2.ServerUpdate} returns this
 */
-proto.server.SubscriptionUpdateData.prototype.setMyLobbyLeaverUpdate = function(value) {
-  return jspb.Message.setOneofWrapperField(this, 9, proto.server.SubscriptionUpdateData.oneofGroups_[0], value);
+proto.server2.ServerUpdate.prototype.setMyLobbyLeaverUpdate = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 9, proto.server2.ServerUpdate.oneofGroups_[0], value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.server.SubscriptionUpdateData} returns this
+ * @return {!proto.server2.ServerUpdate} returns this
  */
-proto.server.SubscriptionUpdateData.prototype.clearMyLobbyLeaverUpdate = function() {
+proto.server2.ServerUpdate.prototype.clearMyLobbyLeaverUpdate = function() {
   return this.setMyLobbyLeaverUpdate(undefined);
 };
 
@@ -1414,35 +2305,146 @@ proto.server.SubscriptionUpdateData.prototype.clearMyLobbyLeaverUpdate = functio
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.server.SubscriptionUpdateData.prototype.hasMyLobbyLeaverUpdate = function() {
+proto.server2.ServerUpdate.prototype.hasMyLobbyLeaverUpdate = function() {
   return jspb.Message.getField(this, 9) != null;
 };
 
 
 /**
- * optional CreateGameReply create_game_reply = 10;
- * @return {?proto.server.CreateGameReply}
+ * optional CreateLobbyReply create_lobby_reply = 10;
+ * @return {?proto.server2.CreateLobbyReply}
  */
-proto.server.SubscriptionUpdateData.prototype.getCreateGameReply = function() {
-  return /** @type{?proto.server.CreateGameReply} */ (
-    jspb.Message.getWrapperField(this, proto.server.CreateGameReply, 10));
+proto.server2.ServerUpdate.prototype.getCreateLobbyReply = function() {
+  return /** @type{?proto.server2.CreateLobbyReply} */ (
+    jspb.Message.getWrapperField(this, proto.server2.CreateLobbyReply, 10));
 };
 
 
 /**
- * @param {?proto.server.CreateGameReply|undefined} value
- * @return {!proto.server.SubscriptionUpdateData} returns this
+ * @param {?proto.server2.CreateLobbyReply|undefined} value
+ * @return {!proto.server2.ServerUpdate} returns this
 */
-proto.server.SubscriptionUpdateData.prototype.setCreateGameReply = function(value) {
-  return jspb.Message.setOneofWrapperField(this, 10, proto.server.SubscriptionUpdateData.oneofGroups_[0], value);
+proto.server2.ServerUpdate.prototype.setCreateLobbyReply = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 10, proto.server2.ServerUpdate.oneofGroups_[0], value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.server.SubscriptionUpdateData} returns this
+ * @return {!proto.server2.ServerUpdate} returns this
  */
-proto.server.SubscriptionUpdateData.prototype.clearCreateGameReply = function() {
+proto.server2.ServerUpdate.prototype.clearCreateLobbyReply = function() {
+  return this.setCreateLobbyReply(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.server2.ServerUpdate.prototype.hasCreateLobbyReply = function() {
+  return jspb.Message.getField(this, 10) != null;
+};
+
+
+/**
+ * optional JoinLobbyReply join_lobby_reply = 11;
+ * @return {?proto.server2.JoinLobbyReply}
+ */
+proto.server2.ServerUpdate.prototype.getJoinLobbyReply = function() {
+  return /** @type{?proto.server2.JoinLobbyReply} */ (
+    jspb.Message.getWrapperField(this, proto.server2.JoinLobbyReply, 11));
+};
+
+
+/**
+ * @param {?proto.server2.JoinLobbyReply|undefined} value
+ * @return {!proto.server2.ServerUpdate} returns this
+*/
+proto.server2.ServerUpdate.prototype.setJoinLobbyReply = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 11, proto.server2.ServerUpdate.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.server2.ServerUpdate} returns this
+ */
+proto.server2.ServerUpdate.prototype.clearJoinLobbyReply = function() {
+  return this.setJoinLobbyReply(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.server2.ServerUpdate.prototype.hasJoinLobbyReply = function() {
+  return jspb.Message.getField(this, 11) != null;
+};
+
+
+/**
+ * optional LeaveMyLobbyReply leave_my_lobby_reply = 12;
+ * @return {?proto.server2.LeaveMyLobbyReply}
+ */
+proto.server2.ServerUpdate.prototype.getLeaveMyLobbyReply = function() {
+  return /** @type{?proto.server2.LeaveMyLobbyReply} */ (
+    jspb.Message.getWrapperField(this, proto.server2.LeaveMyLobbyReply, 12));
+};
+
+
+/**
+ * @param {?proto.server2.LeaveMyLobbyReply|undefined} value
+ * @return {!proto.server2.ServerUpdate} returns this
+*/
+proto.server2.ServerUpdate.prototype.setLeaveMyLobbyReply = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 12, proto.server2.ServerUpdate.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.server2.ServerUpdate} returns this
+ */
+proto.server2.ServerUpdate.prototype.clearLeaveMyLobbyReply = function() {
+  return this.setLeaveMyLobbyReply(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.server2.ServerUpdate.prototype.hasLeaveMyLobbyReply = function() {
+  return jspb.Message.getField(this, 12) != null;
+};
+
+
+/**
+ * optional CreateGameReply create_game_reply = 13;
+ * @return {?proto.server2.CreateGameReply}
+ */
+proto.server2.ServerUpdate.prototype.getCreateGameReply = function() {
+  return /** @type{?proto.server2.CreateGameReply} */ (
+    jspb.Message.getWrapperField(this, proto.server2.CreateGameReply, 13));
+};
+
+
+/**
+ * @param {?proto.server2.CreateGameReply|undefined} value
+ * @return {!proto.server2.ServerUpdate} returns this
+*/
+proto.server2.ServerUpdate.prototype.setCreateGameReply = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 13, proto.server2.ServerUpdate.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.server2.ServerUpdate} returns this
+ */
+proto.server2.ServerUpdate.prototype.clearCreateGameReply = function() {
   return this.setCreateGameReply(undefined);
 };
 
@@ -1451,35 +2453,35 @@ proto.server.SubscriptionUpdateData.prototype.clearCreateGameReply = function() 
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.server.SubscriptionUpdateData.prototype.hasCreateGameReply = function() {
-  return jspb.Message.getField(this, 10) != null;
+proto.server2.ServerUpdate.prototype.hasCreateGameReply = function() {
+  return jspb.Message.getField(this, 13) != null;
 };
 
 
 /**
- * optional MakeMoveReply make_move_reply = 11;
- * @return {?proto.server.MakeMoveReply}
+ * optional MakeMoveReply make_move_reply = 14;
+ * @return {?proto.server2.MakeMoveReply}
  */
-proto.server.SubscriptionUpdateData.prototype.getMakeMoveReply = function() {
-  return /** @type{?proto.server.MakeMoveReply} */ (
-    jspb.Message.getWrapperField(this, proto.server.MakeMoveReply, 11));
+proto.server2.ServerUpdate.prototype.getMakeMoveReply = function() {
+  return /** @type{?proto.server2.MakeMoveReply} */ (
+    jspb.Message.getWrapperField(this, proto.server2.MakeMoveReply, 14));
 };
 
 
 /**
- * @param {?proto.server.MakeMoveReply|undefined} value
- * @return {!proto.server.SubscriptionUpdateData} returns this
+ * @param {?proto.server2.MakeMoveReply|undefined} value
+ * @return {!proto.server2.ServerUpdate} returns this
 */
-proto.server.SubscriptionUpdateData.prototype.setMakeMoveReply = function(value) {
-  return jspb.Message.setOneofWrapperField(this, 11, proto.server.SubscriptionUpdateData.oneofGroups_[0], value);
+proto.server2.ServerUpdate.prototype.setMakeMoveReply = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 14, proto.server2.ServerUpdate.oneofGroups_[0], value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.server.SubscriptionUpdateData} returns this
+ * @return {!proto.server2.ServerUpdate} returns this
  */
-proto.server.SubscriptionUpdateData.prototype.clearMakeMoveReply = function() {
+proto.server2.ServerUpdate.prototype.clearMakeMoveReply = function() {
   return this.setMakeMoveReply(undefined);
 };
 
@@ -1488,35 +2490,35 @@ proto.server.SubscriptionUpdateData.prototype.clearMakeMoveReply = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.server.SubscriptionUpdateData.prototype.hasMakeMoveReply = function() {
-  return jspb.Message.getField(this, 11) != null;
+proto.server2.ServerUpdate.prototype.hasMakeMoveReply = function() {
+  return jspb.Message.getField(this, 14) != null;
 };
 
 
 /**
- * optional MoveUpdate move_update = 12;
- * @return {?proto.server.MoveUpdate}
+ * optional MoveUpdate move_update = 15;
+ * @return {?proto.server2.MoveUpdate}
  */
-proto.server.SubscriptionUpdateData.prototype.getMoveUpdate = function() {
-  return /** @type{?proto.server.MoveUpdate} */ (
-    jspb.Message.getWrapperField(this, proto.server.MoveUpdate, 12));
+proto.server2.ServerUpdate.prototype.getMoveUpdate = function() {
+  return /** @type{?proto.server2.MoveUpdate} */ (
+    jspb.Message.getWrapperField(this, proto.server2.MoveUpdate, 15));
 };
 
 
 /**
- * @param {?proto.server.MoveUpdate|undefined} value
- * @return {!proto.server.SubscriptionUpdateData} returns this
+ * @param {?proto.server2.MoveUpdate|undefined} value
+ * @return {!proto.server2.ServerUpdate} returns this
 */
-proto.server.SubscriptionUpdateData.prototype.setMoveUpdate = function(value) {
-  return jspb.Message.setOneofWrapperField(this, 12, proto.server.SubscriptionUpdateData.oneofGroups_[0], value);
+proto.server2.ServerUpdate.prototype.setMoveUpdate = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 15, proto.server2.ServerUpdate.oneofGroups_[0], value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.server.SubscriptionUpdateData} returns this
+ * @return {!proto.server2.ServerUpdate} returns this
  */
-proto.server.SubscriptionUpdateData.prototype.clearMoveUpdate = function() {
+proto.server2.ServerUpdate.prototype.clearMoveUpdate = function() {
   return this.setMoveUpdate(undefined);
 };
 
@@ -1525,35 +2527,35 @@ proto.server.SubscriptionUpdateData.prototype.clearMoveUpdate = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.server.SubscriptionUpdateData.prototype.hasMoveUpdate = function() {
-  return jspb.Message.getField(this, 12) != null;
+proto.server2.ServerUpdate.prototype.hasMoveUpdate = function() {
+  return jspb.Message.getField(this, 15) != null;
 };
 
 
 /**
- * optional WinnerUpdate winner_update = 13;
- * @return {?proto.server.WinnerUpdate}
+ * optional WinnerUpdate winner_update = 16;
+ * @return {?proto.server2.WinnerUpdate}
  */
-proto.server.SubscriptionUpdateData.prototype.getWinnerUpdate = function() {
-  return /** @type{?proto.server.WinnerUpdate} */ (
-    jspb.Message.getWrapperField(this, proto.server.WinnerUpdate, 13));
+proto.server2.ServerUpdate.prototype.getWinnerUpdate = function() {
+  return /** @type{?proto.server2.WinnerUpdate} */ (
+    jspb.Message.getWrapperField(this, proto.server2.WinnerUpdate, 16));
 };
 
 
 /**
- * @param {?proto.server.WinnerUpdate|undefined} value
- * @return {!proto.server.SubscriptionUpdateData} returns this
+ * @param {?proto.server2.WinnerUpdate|undefined} value
+ * @return {!proto.server2.ServerUpdate} returns this
 */
-proto.server.SubscriptionUpdateData.prototype.setWinnerUpdate = function(value) {
-  return jspb.Message.setOneofWrapperField(this, 13, proto.server.SubscriptionUpdateData.oneofGroups_[0], value);
+proto.server2.ServerUpdate.prototype.setWinnerUpdate = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 16, proto.server2.ServerUpdate.oneofGroups_[0], value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.server.SubscriptionUpdateData} returns this
+ * @return {!proto.server2.ServerUpdate} returns this
  */
-proto.server.SubscriptionUpdateData.prototype.clearWinnerUpdate = function() {
+proto.server2.ServerUpdate.prototype.clearWinnerUpdate = function() {
   return this.setWinnerUpdate(undefined);
 };
 
@@ -1562,35 +2564,35 @@ proto.server.SubscriptionUpdateData.prototype.clearWinnerUpdate = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.server.SubscriptionUpdateData.prototype.hasWinnerUpdate = function() {
-  return jspb.Message.getField(this, 13) != null;
+proto.server2.ServerUpdate.prototype.hasWinnerUpdate = function() {
+  return jspb.Message.getField(this, 16) != null;
 };
 
 
 /**
- * optional DrawUpdate draw_update = 14;
- * @return {?proto.server.DrawUpdate}
+ * optional DrawUpdate draw_update = 17;
+ * @return {?proto.server2.DrawUpdate}
  */
-proto.server.SubscriptionUpdateData.prototype.getDrawUpdate = function() {
-  return /** @type{?proto.server.DrawUpdate} */ (
-    jspb.Message.getWrapperField(this, proto.server.DrawUpdate, 14));
+proto.server2.ServerUpdate.prototype.getDrawUpdate = function() {
+  return /** @type{?proto.server2.DrawUpdate} */ (
+    jspb.Message.getWrapperField(this, proto.server2.DrawUpdate, 17));
 };
 
 
 /**
- * @param {?proto.server.DrawUpdate|undefined} value
- * @return {!proto.server.SubscriptionUpdateData} returns this
+ * @param {?proto.server2.DrawUpdate|undefined} value
+ * @return {!proto.server2.ServerUpdate} returns this
 */
-proto.server.SubscriptionUpdateData.prototype.setDrawUpdate = function(value) {
-  return jspb.Message.setOneofWrapperField(this, 14, proto.server.SubscriptionUpdateData.oneofGroups_[0], value);
+proto.server2.ServerUpdate.prototype.setDrawUpdate = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 17, proto.server2.ServerUpdate.oneofGroups_[0], value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.server.SubscriptionUpdateData} returns this
+ * @return {!proto.server2.ServerUpdate} returns this
  */
-proto.server.SubscriptionUpdateData.prototype.clearDrawUpdate = function() {
+proto.server2.ServerUpdate.prototype.clearDrawUpdate = function() {
   return this.setDrawUpdate(undefined);
 };
 
@@ -1599,35 +2601,35 @@ proto.server.SubscriptionUpdateData.prototype.clearDrawUpdate = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.server.SubscriptionUpdateData.prototype.hasDrawUpdate = function() {
-  return jspb.Message.getField(this, 14) != null;
+proto.server2.ServerUpdate.prototype.hasDrawUpdate = function() {
+  return jspb.Message.getField(this, 17) != null;
 };
 
 
 /**
- * optional GameStartUpdate game_start_update = 15;
- * @return {?proto.server.GameStartUpdate}
+ * optional GameStartUpdate game_start_update = 18;
+ * @return {?proto.server2.GameStartUpdate}
  */
-proto.server.SubscriptionUpdateData.prototype.getGameStartUpdate = function() {
-  return /** @type{?proto.server.GameStartUpdate} */ (
-    jspb.Message.getWrapperField(this, proto.server.GameStartUpdate, 15));
+proto.server2.ServerUpdate.prototype.getGameStartUpdate = function() {
+  return /** @type{?proto.server2.GameStartUpdate} */ (
+    jspb.Message.getWrapperField(this, proto.server2.GameStartUpdate, 18));
 };
 
 
 /**
- * @param {?proto.server.GameStartUpdate|undefined} value
- * @return {!proto.server.SubscriptionUpdateData} returns this
+ * @param {?proto.server2.GameStartUpdate|undefined} value
+ * @return {!proto.server2.ServerUpdate} returns this
 */
-proto.server.SubscriptionUpdateData.prototype.setGameStartUpdate = function(value) {
-  return jspb.Message.setOneofWrapperField(this, 15, proto.server.SubscriptionUpdateData.oneofGroups_[0], value);
+proto.server2.ServerUpdate.prototype.setGameStartUpdate = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 18, proto.server2.ServerUpdate.oneofGroups_[0], value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.server.SubscriptionUpdateData} returns this
+ * @return {!proto.server2.ServerUpdate} returns this
  */
-proto.server.SubscriptionUpdateData.prototype.clearGameStartUpdate = function() {
+proto.server2.ServerUpdate.prototype.clearGameStartUpdate = function() {
   return this.setGameStartUpdate(undefined);
 };
 
@@ -1636,35 +2638,35 @@ proto.server.SubscriptionUpdateData.prototype.clearGameStartUpdate = function() 
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.server.SubscriptionUpdateData.prototype.hasGameStartUpdate = function() {
-  return jspb.Message.getField(this, 15) != null;
+proto.server2.ServerUpdate.prototype.hasGameStartUpdate = function() {
+  return jspb.Message.getField(this, 18) != null;
 };
 
 
 /**
- * optional NextMoverUpdate next_mover_update = 16;
- * @return {?proto.server.NextMoverUpdate}
+ * optional NextMoverUpdate next_mover_update = 19;
+ * @return {?proto.server2.NextMoverUpdate}
  */
-proto.server.SubscriptionUpdateData.prototype.getNextMoverUpdate = function() {
-  return /** @type{?proto.server.NextMoverUpdate} */ (
-    jspb.Message.getWrapperField(this, proto.server.NextMoverUpdate, 16));
+proto.server2.ServerUpdate.prototype.getNextMoverUpdate = function() {
+  return /** @type{?proto.server2.NextMoverUpdate} */ (
+    jspb.Message.getWrapperField(this, proto.server2.NextMoverUpdate, 19));
 };
 
 
 /**
- * @param {?proto.server.NextMoverUpdate|undefined} value
- * @return {!proto.server.SubscriptionUpdateData} returns this
+ * @param {?proto.server2.NextMoverUpdate|undefined} value
+ * @return {!proto.server2.ServerUpdate} returns this
 */
-proto.server.SubscriptionUpdateData.prototype.setNextMoverUpdate = function(value) {
-  return jspb.Message.setOneofWrapperField(this, 16, proto.server.SubscriptionUpdateData.oneofGroups_[0], value);
+proto.server2.ServerUpdate.prototype.setNextMoverUpdate = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 19, proto.server2.ServerUpdate.oneofGroups_[0], value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.server.SubscriptionUpdateData} returns this
+ * @return {!proto.server2.ServerUpdate} returns this
  */
-proto.server.SubscriptionUpdateData.prototype.clearNextMoverUpdate = function() {
+proto.server2.ServerUpdate.prototype.clearNextMoverUpdate = function() {
   return this.setNextMoverUpdate(undefined);
 };
 
@@ -1673,35 +2675,35 @@ proto.server.SubscriptionUpdateData.prototype.clearNextMoverUpdate = function() 
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.server.SubscriptionUpdateData.prototype.hasNextMoverUpdate = function() {
-  return jspb.Message.getField(this, 16) != null;
+proto.server2.ServerUpdate.prototype.hasNextMoverUpdate = function() {
+  return jspb.Message.getField(this, 19) != null;
 };
 
 
 /**
- * optional PlayerClientUpdate player_client_update = 17;
- * @return {?proto.server.PlayerClientUpdate}
+ * optional PlayerClientUpdate player_client_update = 20;
+ * @return {?proto.server2.PlayerClientUpdate}
  */
-proto.server.SubscriptionUpdateData.prototype.getPlayerClientUpdate = function() {
-  return /** @type{?proto.server.PlayerClientUpdate} */ (
-    jspb.Message.getWrapperField(this, proto.server.PlayerClientUpdate, 17));
+proto.server2.ServerUpdate.prototype.getPlayerClientUpdate = function() {
+  return /** @type{?proto.server2.PlayerClientUpdate} */ (
+    jspb.Message.getWrapperField(this, proto.server2.PlayerClientUpdate, 20));
 };
 
 
 /**
- * @param {?proto.server.PlayerClientUpdate|undefined} value
- * @return {!proto.server.SubscriptionUpdateData} returns this
+ * @param {?proto.server2.PlayerClientUpdate|undefined} value
+ * @return {!proto.server2.ServerUpdate} returns this
 */
-proto.server.SubscriptionUpdateData.prototype.setPlayerClientUpdate = function(value) {
-  return jspb.Message.setOneofWrapperField(this, 17, proto.server.SubscriptionUpdateData.oneofGroups_[0], value);
+proto.server2.ServerUpdate.prototype.setPlayerClientUpdate = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 20, proto.server2.ServerUpdate.oneofGroups_[0], value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.server.SubscriptionUpdateData} returns this
+ * @return {!proto.server2.ServerUpdate} returns this
  */
-proto.server.SubscriptionUpdateData.prototype.clearPlayerClientUpdate = function() {
+proto.server2.ServerUpdate.prototype.clearPlayerClientUpdate = function() {
   return this.setPlayerClientUpdate(undefined);
 };
 
@@ -1710,8 +2712,45 @@ proto.server.SubscriptionUpdateData.prototype.clearPlayerClientUpdate = function
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.server.SubscriptionUpdateData.prototype.hasPlayerClientUpdate = function() {
-  return jspb.Message.getField(this, 17) != null;
+proto.server2.ServerUpdate.prototype.hasPlayerClientUpdate = function() {
+  return jspb.Message.getField(this, 20) != null;
+};
+
+
+/**
+ * optional PlayerDisplayNameUpdate player_display_name_update = 21;
+ * @return {?proto.server2.PlayerDisplayNameUpdate}
+ */
+proto.server2.ServerUpdate.prototype.getPlayerDisplayNameUpdate = function() {
+  return /** @type{?proto.server2.PlayerDisplayNameUpdate} */ (
+    jspb.Message.getWrapperField(this, proto.server2.PlayerDisplayNameUpdate, 21));
+};
+
+
+/**
+ * @param {?proto.server2.PlayerDisplayNameUpdate|undefined} value
+ * @return {!proto.server2.ServerUpdate} returns this
+*/
+proto.server2.ServerUpdate.prototype.setPlayerDisplayNameUpdate = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 21, proto.server2.ServerUpdate.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.server2.ServerUpdate} returns this
+ */
+proto.server2.ServerUpdate.prototype.clearPlayerDisplayNameUpdate = function() {
+  return this.setPlayerDisplayNameUpdate(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.server2.ServerUpdate.prototype.hasPlayerDisplayNameUpdate = function() {
+  return jspb.Message.getField(this, 21) != null;
 };
 
 
@@ -1731,8 +2770,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.server.Empty.prototype.toObject = function(opt_includeInstance) {
-  return proto.server.Empty.toObject(opt_includeInstance, this);
+proto.server2.Ping.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.Ping.toObject(opt_includeInstance, this);
 };
 
 
@@ -1741,11 +2780,11 @@ proto.server.Empty.prototype.toObject = function(opt_includeInstance) {
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.server.Empty} msg The msg instance to transform.
+ * @param {!proto.server2.Ping} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.Empty.toObject = function(includeInstance, msg) {
+proto.server2.Ping.toObject = function(includeInstance, msg) {
   var f, obj = {
 
   };
@@ -1761,23 +2800,23 @@ proto.server.Empty.toObject = function(includeInstance, msg) {
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.server.Empty}
+ * @return {!proto.server2.Ping}
  */
-proto.server.Empty.deserializeBinary = function(bytes) {
+proto.server2.Ping.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.server.Empty;
-  return proto.server.Empty.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.server2.Ping;
+  return proto.server2.Ping.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.server.Empty} msg The message object to deserialize into.
+ * @param {!proto.server2.Ping} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.server.Empty}
+ * @return {!proto.server2.Ping}
  */
-proto.server.Empty.deserializeBinaryFromReader = function(msg, reader) {
+proto.server2.Ping.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -1797,9 +2836,9 @@ proto.server.Empty.deserializeBinaryFromReader = function(msg, reader) {
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.server.Empty.prototype.serializeBinary = function() {
+proto.server2.Ping.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.server.Empty.serializeBinaryToWriter(this, writer);
+  proto.server2.Ping.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -1807,11 +2846,1374 @@ proto.server.Empty.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.server.Empty} message
+ * @param {!proto.server2.Ping} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.Empty.serializeBinaryToWriter = function(message, writer) {
+proto.server2.Ping.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.server2.Lobby.repeatedFields_ = [2];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.server2.Lobby.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.Lobby.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.server2.Lobby} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.server2.Lobby.toObject = function(includeInstance, msg) {
+  var f, obj = {
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+playersList: jspb.Message.toObjectList(msg.getPlayersList(),
+    proto.server2.Player.toObject, includeInstance)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.server2.Lobby}
+ */
+proto.server2.Lobby.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.server2.Lobby;
+  return proto.server2.Lobby.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.server2.Lobby} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.server2.Lobby}
+ */
+proto.server2.Lobby.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
+      break;
+    case 2:
+      var value = new proto.server2.Player;
+      reader.readMessage(value,proto.server2.Player.deserializeBinaryFromReader);
+      msg.addPlayers(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.server2.Lobby.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.server2.Lobby.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.server2.Lobby} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.server2.Lobby.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getName();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getPlayersList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      2,
+      f,
+      proto.server2.Player.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional string name = 1;
+ * @return {string}
+ */
+proto.server2.Lobby.prototype.getName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.server2.Lobby} returns this
+ */
+proto.server2.Lobby.prototype.setName = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * repeated Player players = 2;
+ * @return {!Array<!proto.server2.Player>}
+ */
+proto.server2.Lobby.prototype.getPlayersList = function() {
+  return /** @type{!Array<!proto.server2.Player>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.server2.Player, 2));
+};
+
+
+/**
+ * @param {!Array<!proto.server2.Player>} value
+ * @return {!proto.server2.Lobby} returns this
+*/
+proto.server2.Lobby.prototype.setPlayersList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 2, value);
+};
+
+
+/**
+ * @param {!proto.server2.Player=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.server2.Player}
+ */
+proto.server2.Lobby.prototype.addPlayers = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.server2.Player, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.server2.Lobby} returns this
+ */
+proto.server2.Lobby.prototype.clearPlayersList = function() {
+  return this.setPlayersList([]);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.server2.Player.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.Player.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.server2.Player} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.server2.Player.toObject = function(includeInstance, msg) {
+  var f, obj = {
+id: jspb.Message.getFieldWithDefault(msg, 1, ""),
+name: jspb.Message.getFieldWithDefault(msg, 2, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.server2.Player}
+ */
+proto.server2.Player.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.server2.Player;
+  return proto.server2.Player.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.server2.Player} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.server2.Player}
+ */
+proto.server2.Player.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setId(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.server2.Player.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.server2.Player.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.server2.Player} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.server2.Player.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getId();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getName();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string id = 1;
+ * @return {string}
+ */
+proto.server2.Player.prototype.getId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.server2.Player} returns this
+ */
+proto.server2.Player.prototype.setId = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string name = 2;
+ * @return {string}
+ */
+proto.server2.Player.prototype.getName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.server2.Player} returns this
+ */
+proto.server2.Player.prototype.setName = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.server2.ClientAssignmentUpdate.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.ClientAssignmentUpdate.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.server2.ClientAssignmentUpdate} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.server2.ClientAssignmentUpdate.toObject = function(includeInstance, msg) {
+  var f, obj = {
+clientId: jspb.Message.getFieldWithDefault(msg, 1, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.server2.ClientAssignmentUpdate}
+ */
+proto.server2.ClientAssignmentUpdate.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.server2.ClientAssignmentUpdate;
+  return proto.server2.ClientAssignmentUpdate.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.server2.ClientAssignmentUpdate} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.server2.ClientAssignmentUpdate}
+ */
+proto.server2.ClientAssignmentUpdate.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setClientId(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.server2.ClientAssignmentUpdate.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.server2.ClientAssignmentUpdate.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.server2.ClientAssignmentUpdate} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.server2.ClientAssignmentUpdate.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getClientId();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string client_id = 1;
+ * @return {string}
+ */
+proto.server2.ClientAssignmentUpdate.prototype.getClientId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.server2.ClientAssignmentUpdate} returns this
+ */
+proto.server2.ClientAssignmentUpdate.prototype.setClientId = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.server2.NavigationUpdate.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.NavigationUpdate.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.server2.NavigationUpdate} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.server2.NavigationUpdate.toObject = function(includeInstance, msg) {
+  var f, obj = {
+path: jspb.Message.getFieldWithDefault(msg, 1, 0),
+refresh: jspb.Message.getBooleanFieldWithDefault(msg, 2, false)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.server2.NavigationUpdate}
+ */
+proto.server2.NavigationUpdate.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.server2.NavigationUpdate;
+  return proto.server2.NavigationUpdate.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.server2.NavigationUpdate} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.server2.NavigationUpdate}
+ */
+proto.server2.NavigationUpdate.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {!proto.server2.NavigationPath} */ (reader.readEnum());
+      msg.setPath(value);
+      break;
+    case 2:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setRefresh(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.server2.NavigationUpdate.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.server2.NavigationUpdate.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.server2.NavigationUpdate} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.server2.NavigationUpdate.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getPath();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      1,
+      f
+    );
+  }
+  f = message.getRefresh();
+  if (f) {
+    writer.writeBool(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional NavigationPath path = 1;
+ * @return {!proto.server2.NavigationPath}
+ */
+proto.server2.NavigationUpdate.prototype.getPath = function() {
+  return /** @type {!proto.server2.NavigationPath} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/**
+ * @param {!proto.server2.NavigationPath} value
+ * @return {!proto.server2.NavigationUpdate} returns this
+ */
+proto.server2.NavigationUpdate.prototype.setPath = function(value) {
+  return jspb.Message.setProto3EnumField(this, 1, value);
+};
+
+
+/**
+ * optional bool refresh = 2;
+ * @return {boolean}
+ */
+proto.server2.NavigationUpdate.prototype.getRefresh = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 2, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.server2.NavigationUpdate} returns this
+ */
+proto.server2.NavigationUpdate.prototype.setRefresh = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 2, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.server2.SignInRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.SignInRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.server2.SignInRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.server2.SignInRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+pass: jspb.Message.getFieldWithDefault(msg, 2, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.server2.SignInRequest}
+ */
+proto.server2.SignInRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.server2.SignInRequest;
+  return proto.server2.SignInRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.server2.SignInRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.server2.SignInRequest}
+ */
+proto.server2.SignInRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPass(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.server2.SignInRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.server2.SignInRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.server2.SignInRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.server2.SignInRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getName();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getPass();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string name = 1;
+ * @return {string}
+ */
+proto.server2.SignInRequest.prototype.getName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.server2.SignInRequest} returns this
+ */
+proto.server2.SignInRequest.prototype.setName = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string pass = 2;
+ * @return {string}
+ */
+proto.server2.SignInRequest.prototype.getPass = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.server2.SignInRequest} returns this
+ */
+proto.server2.SignInRequest.prototype.setPass = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.server2.SignInReply.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.SignInReply.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.server2.SignInReply} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.server2.SignInReply.toObject = function(includeInstance, msg) {
+  var f, obj = {
+outcome: (f = msg.getOutcome()) && proto.server2.Outcome.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.server2.SignInReply}
+ */
+proto.server2.SignInReply.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.server2.SignInReply;
+  return proto.server2.SignInReply.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.server2.SignInReply} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.server2.SignInReply}
+ */
+proto.server2.SignInReply.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.server2.Outcome;
+      reader.readMessage(value,proto.server2.Outcome.deserializeBinaryFromReader);
+      msg.setOutcome(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.server2.SignInReply.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.server2.SignInReply.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.server2.SignInReply} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.server2.SignInReply.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getOutcome();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.server2.Outcome.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional Outcome Outcome = 1;
+ * @return {?proto.server2.Outcome}
+ */
+proto.server2.SignInReply.prototype.getOutcome = function() {
+  return /** @type{?proto.server2.Outcome} */ (
+    jspb.Message.getWrapperField(this, proto.server2.Outcome, 1));
+};
+
+
+/**
+ * @param {?proto.server2.Outcome|undefined} value
+ * @return {!proto.server2.SignInReply} returns this
+*/
+proto.server2.SignInReply.prototype.setOutcome = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.server2.SignInReply} returns this
+ */
+proto.server2.SignInReply.prototype.clearOutcome = function() {
+  return this.setOutcome(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.server2.SignInReply.prototype.hasOutcome = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.server2.SignUpRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.SignUpRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.server2.SignUpRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.server2.SignUpRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+pass: jspb.Message.getFieldWithDefault(msg, 2, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.server2.SignUpRequest}
+ */
+proto.server2.SignUpRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.server2.SignUpRequest;
+  return proto.server2.SignUpRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.server2.SignUpRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.server2.SignUpRequest}
+ */
+proto.server2.SignUpRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPass(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.server2.SignUpRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.server2.SignUpRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.server2.SignUpRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.server2.SignUpRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getName();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getPass();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string name = 1;
+ * @return {string}
+ */
+proto.server2.SignUpRequest.prototype.getName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.server2.SignUpRequest} returns this
+ */
+proto.server2.SignUpRequest.prototype.setName = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string pass = 2;
+ * @return {string}
+ */
+proto.server2.SignUpRequest.prototype.getPass = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.server2.SignUpRequest} returns this
+ */
+proto.server2.SignUpRequest.prototype.setPass = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.server2.SignUpReply.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.SignUpReply.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.server2.SignUpReply} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.server2.SignUpReply.toObject = function(includeInstance, msg) {
+  var f, obj = {
+outcome: (f = msg.getOutcome()) && proto.server2.Outcome.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.server2.SignUpReply}
+ */
+proto.server2.SignUpReply.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.server2.SignUpReply;
+  return proto.server2.SignUpReply.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.server2.SignUpReply} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.server2.SignUpReply}
+ */
+proto.server2.SignUpReply.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.server2.Outcome;
+      reader.readMessage(value,proto.server2.Outcome.deserializeBinaryFromReader);
+      msg.setOutcome(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.server2.SignUpReply.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.server2.SignUpReply.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.server2.SignUpReply} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.server2.SignUpReply.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getOutcome();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.server2.Outcome.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional Outcome outcome = 1;
+ * @return {?proto.server2.Outcome}
+ */
+proto.server2.SignUpReply.prototype.getOutcome = function() {
+  return /** @type{?proto.server2.Outcome} */ (
+    jspb.Message.getWrapperField(this, proto.server2.Outcome, 1));
+};
+
+
+/**
+ * @param {?proto.server2.Outcome|undefined} value
+ * @return {!proto.server2.SignUpReply} returns this
+*/
+proto.server2.SignUpReply.prototype.setOutcome = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.server2.SignUpReply} returns this
+ */
+proto.server2.SignUpReply.prototype.clearOutcome = function() {
+  return this.setOutcome(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.server2.SignUpReply.prototype.hasOutcome = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.server2.SignOutRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.SignOutRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.server2.SignOutRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.server2.SignOutRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.server2.SignOutRequest}
+ */
+proto.server2.SignOutRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.server2.SignOutRequest;
+  return proto.server2.SignOutRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.server2.SignOutRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.server2.SignOutRequest}
+ */
+proto.server2.SignOutRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.server2.SignOutRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.server2.SignOutRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.server2.SignOutRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.server2.SignOutRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
 };
 
@@ -1832,8 +4234,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.server.Outcome.prototype.toObject = function(opt_includeInstance) {
-  return proto.server.Outcome.toObject(opt_includeInstance, this);
+proto.server2.SignOutReply.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.SignOutReply.toObject(opt_includeInstance, this);
 };
 
 
@@ -1842,11 +4244,162 @@ proto.server.Outcome.prototype.toObject = function(opt_includeInstance) {
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.server.Outcome} msg The msg instance to transform.
+ * @param {!proto.server2.SignOutReply} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.Outcome.toObject = function(includeInstance, msg) {
+proto.server2.SignOutReply.toObject = function(includeInstance, msg) {
+  var f, obj = {
+outcome: (f = msg.getOutcome()) && proto.server2.Outcome.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.server2.SignOutReply}
+ */
+proto.server2.SignOutReply.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.server2.SignOutReply;
+  return proto.server2.SignOutReply.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.server2.SignOutReply} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.server2.SignOutReply}
+ */
+proto.server2.SignOutReply.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.server2.Outcome;
+      reader.readMessage(value,proto.server2.Outcome.deserializeBinaryFromReader);
+      msg.setOutcome(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.server2.SignOutReply.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.server2.SignOutReply.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.server2.SignOutReply} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.server2.SignOutReply.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getOutcome();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.server2.Outcome.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional Outcome outcome = 1;
+ * @return {?proto.server2.Outcome}
+ */
+proto.server2.SignOutReply.prototype.getOutcome = function() {
+  return /** @type{?proto.server2.Outcome} */ (
+    jspb.Message.getWrapperField(this, proto.server2.Outcome, 1));
+};
+
+
+/**
+ * @param {?proto.server2.Outcome|undefined} value
+ * @return {!proto.server2.SignOutReply} returns this
+*/
+proto.server2.SignOutReply.prototype.setOutcome = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.server2.SignOutReply} returns this
+ */
+proto.server2.SignOutReply.prototype.clearOutcome = function() {
+  return this.setOutcome(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.server2.SignOutReply.prototype.hasOutcome = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.server2.Outcome.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.Outcome.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.server2.Outcome} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.server2.Outcome.toObject = function(includeInstance, msg) {
   var f, obj = {
 ok: jspb.Message.getBooleanFieldWithDefault(msg, 1, false),
 errorCode: jspb.Message.getFieldWithDefault(msg, 2, 0),
@@ -1864,23 +4417,23 @@ errorMessage: jspb.Message.getFieldWithDefault(msg, 3, "")
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.server.Outcome}
+ * @return {!proto.server2.Outcome}
  */
-proto.server.Outcome.deserializeBinary = function(bytes) {
+proto.server2.Outcome.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.server.Outcome;
-  return proto.server.Outcome.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.server2.Outcome;
+  return proto.server2.Outcome.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.server.Outcome} msg The message object to deserialize into.
+ * @param {!proto.server2.Outcome} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.server.Outcome}
+ * @return {!proto.server2.Outcome}
  */
-proto.server.Outcome.deserializeBinaryFromReader = function(msg, reader) {
+proto.server2.Outcome.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -1912,9 +4465,9 @@ proto.server.Outcome.deserializeBinaryFromReader = function(msg, reader) {
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.server.Outcome.prototype.serializeBinary = function() {
+proto.server2.Outcome.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.server.Outcome.serializeBinaryToWriter(this, writer);
+  proto.server2.Outcome.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -1922,11 +4475,11 @@ proto.server.Outcome.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.server.Outcome} message
+ * @param {!proto.server2.Outcome} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.Outcome.serializeBinaryToWriter = function(message, writer) {
+proto.server2.Outcome.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getOk();
   if (f) {
@@ -1956,16 +4509,16 @@ proto.server.Outcome.serializeBinaryToWriter = function(message, writer) {
  * optional bool ok = 1;
  * @return {boolean}
  */
-proto.server.Outcome.prototype.getOk = function() {
+proto.server2.Outcome.prototype.getOk = function() {
   return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 1, false));
 };
 
 
 /**
  * @param {boolean} value
- * @return {!proto.server.Outcome} returns this
+ * @return {!proto.server2.Outcome} returns this
  */
-proto.server.Outcome.prototype.setOk = function(value) {
+proto.server2.Outcome.prototype.setOk = function(value) {
   return jspb.Message.setProto3BooleanField(this, 1, value);
 };
 
@@ -1974,16 +4527,16 @@ proto.server.Outcome.prototype.setOk = function(value) {
  * optional int32 error_code = 2;
  * @return {number}
  */
-proto.server.Outcome.prototype.getErrorCode = function() {
+proto.server2.Outcome.prototype.getErrorCode = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
 /**
  * @param {number} value
- * @return {!proto.server.Outcome} returns this
+ * @return {!proto.server2.Outcome} returns this
  */
-proto.server.Outcome.prototype.setErrorCode = function(value) {
+proto.server2.Outcome.prototype.setErrorCode = function(value) {
   return jspb.Message.setProto3IntField(this, 2, value);
 };
 
@@ -1992,28 +4545,21 @@ proto.server.Outcome.prototype.setErrorCode = function(value) {
  * optional string error_message = 3;
  * @return {string}
  */
-proto.server.Outcome.prototype.getErrorMessage = function() {
+proto.server2.Outcome.prototype.getErrorMessage = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
 
 /**
  * @param {string} value
- * @return {!proto.server.Outcome} returns this
+ * @return {!proto.server2.Outcome} returns this
  */
-proto.server.Outcome.prototype.setErrorMessage = function(value) {
+proto.server2.Outcome.prototype.setErrorMessage = function(value) {
   return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
 
-/**
- * List of repeated fields within this message type.
- * @private {!Array<number>}
- * @const
- */
-proto.server.Lobby.repeatedFields_ = [2];
-
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -2029,8 +4575,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.server.Lobby.prototype.toObject = function(opt_includeInstance) {
-  return proto.server.Lobby.toObject(opt_includeInstance, this);
+proto.server2.MyLobbyDetails.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.MyLobbyDetails.toObject(opt_includeInstance, this);
 };
 
 
@@ -2039,15 +4585,13 @@ proto.server.Lobby.prototype.toObject = function(opt_includeInstance) {
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.server.Lobby} msg The msg instance to transform.
+ * @param {!proto.server2.MyLobbyDetails} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.Lobby.toObject = function(includeInstance, msg) {
+proto.server2.MyLobbyDetails.toObject = function(includeInstance, msg) {
   var f, obj = {
-name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-playersList: jspb.Message.toObjectList(msg.getPlayersList(),
-    proto.server.Player.toObject, includeInstance)
+lobby: (f = msg.getLobby()) && proto.server2.Lobby.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2061,23 +4605,23 @@ playersList: jspb.Message.toObjectList(msg.getPlayersList(),
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.server.Lobby}
+ * @return {!proto.server2.MyLobbyDetails}
  */
-proto.server.Lobby.deserializeBinary = function(bytes) {
+proto.server2.MyLobbyDetails.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.server.Lobby;
-  return proto.server.Lobby.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.server2.MyLobbyDetails;
+  return proto.server2.MyLobbyDetails.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.server.Lobby} msg The message object to deserialize into.
+ * @param {!proto.server2.MyLobbyDetails} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.server.Lobby}
+ * @return {!proto.server2.MyLobbyDetails}
  */
-proto.server.Lobby.deserializeBinaryFromReader = function(msg, reader) {
+proto.server2.MyLobbyDetails.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -2085,609 +4629,8 @@ proto.server.Lobby.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setName(value);
-      break;
-    case 2:
-      var value = new proto.server.Player;
-      reader.readMessage(value,proto.server.Player.deserializeBinaryFromReader);
-      msg.addPlayers(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.server.Lobby.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.server.Lobby.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.server.Lobby} message
- * @param {!jspb.BinaryWriter} writer
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.server.Lobby.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getName();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
-  }
-  f = message.getPlayersList();
-  if (f.length > 0) {
-    writer.writeRepeatedMessage(
-      2,
-      f,
-      proto.server.Player.serializeBinaryToWriter
-    );
-  }
-};
-
-
-/**
- * optional string name = 1;
- * @return {string}
- */
-proto.server.Lobby.prototype.getName = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.server.Lobby} returns this
- */
-proto.server.Lobby.prototype.setName = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
-
-/**
- * repeated Player players = 2;
- * @return {!Array<!proto.server.Player>}
- */
-proto.server.Lobby.prototype.getPlayersList = function() {
-  return /** @type{!Array<!proto.server.Player>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.server.Player, 2));
-};
-
-
-/**
- * @param {!Array<!proto.server.Player>} value
- * @return {!proto.server.Lobby} returns this
-*/
-proto.server.Lobby.prototype.setPlayersList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 2, value);
-};
-
-
-/**
- * @param {!proto.server.Player=} opt_value
- * @param {number=} opt_index
- * @return {!proto.server.Player}
- */
-proto.server.Lobby.prototype.addPlayers = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.server.Player, opt_index);
-};
-
-
-/**
- * Clears the list making it empty but non-null.
- * @return {!proto.server.Lobby} returns this
- */
-proto.server.Lobby.prototype.clearPlayersList = function() {
-  return this.setPlayersList([]);
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.server.Player.prototype.toObject = function(opt_includeInstance) {
-  return proto.server.Player.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.server.Player} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.server.Player.toObject = function(includeInstance, msg) {
-  var f, obj = {
-id: jspb.Message.getFieldWithDefault(msg, 1, ""),
-name: jspb.Message.getFieldWithDefault(msg, 2, "")
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.server.Player}
- */
-proto.server.Player.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.server.Player;
-  return proto.server.Player.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.server.Player} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.server.Player}
- */
-proto.server.Player.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setId(value);
-      break;
-    case 2:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setName(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.server.Player.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.server.Player.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.server.Player} message
- * @param {!jspb.BinaryWriter} writer
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.server.Player.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getId();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
-  }
-  f = message.getName();
-  if (f.length > 0) {
-    writer.writeString(
-      2,
-      f
-    );
-  }
-};
-
-
-/**
- * optional string id = 1;
- * @return {string}
- */
-proto.server.Player.prototype.getId = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.server.Player} returns this
- */
-proto.server.Player.prototype.setId = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
-
-/**
- * optional string name = 2;
- * @return {string}
- */
-proto.server.Player.prototype.getName = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.server.Player} returns this
- */
-proto.server.Player.prototype.setName = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.server.ExchangeRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.server.ExchangeRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.server.ExchangeRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.server.ExchangeRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-publicKey: jspb.Message.getFieldWithDefault(msg, 1, "")
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.server.ExchangeRequest}
- */
-proto.server.ExchangeRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.server.ExchangeRequest;
-  return proto.server.ExchangeRequest.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.server.ExchangeRequest} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.server.ExchangeRequest}
- */
-proto.server.ExchangeRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setPublicKey(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.server.ExchangeRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.server.ExchangeRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.server.ExchangeRequest} message
- * @param {!jspb.BinaryWriter} writer
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.server.ExchangeRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getPublicKey();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
-  }
-};
-
-
-/**
- * optional string public_key = 1;
- * @return {string}
- */
-proto.server.ExchangeRequest.prototype.getPublicKey = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.server.ExchangeRequest} returns this
- */
-proto.server.ExchangeRequest.prototype.setPublicKey = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.server.ExchangeReply.prototype.toObject = function(opt_includeInstance) {
-  return proto.server.ExchangeReply.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.server.ExchangeReply} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.server.ExchangeReply.toObject = function(includeInstance, msg) {
-  var f, obj = {
-clientId: jspb.Message.getFieldWithDefault(msg, 1, "")
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.server.ExchangeReply}
- */
-proto.server.ExchangeReply.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.server.ExchangeReply;
-  return proto.server.ExchangeReply.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.server.ExchangeReply} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.server.ExchangeReply}
- */
-proto.server.ExchangeReply.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setClientId(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.server.ExchangeReply.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.server.ExchangeReply.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.server.ExchangeReply} message
- * @param {!jspb.BinaryWriter} writer
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.server.ExchangeReply.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getClientId();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
-  }
-};
-
-
-/**
- * optional string client_id = 1;
- * @return {string}
- */
-proto.server.ExchangeReply.prototype.getClientId = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.server.ExchangeReply} returns this
- */
-proto.server.ExchangeReply.prototype.setClientId = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.server.MyLobbyDetails.prototype.toObject = function(opt_includeInstance) {
-  return proto.server.MyLobbyDetails.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.server.MyLobbyDetails} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.server.MyLobbyDetails.toObject = function(includeInstance, msg) {
-  var f, obj = {
-lobby: (f = msg.getLobby()) && proto.server.Lobby.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.server.MyLobbyDetails}
- */
-proto.server.MyLobbyDetails.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.server.MyLobbyDetails;
-  return proto.server.MyLobbyDetails.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.server.MyLobbyDetails} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.server.MyLobbyDetails}
- */
-proto.server.MyLobbyDetails.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new proto.server.Lobby;
-      reader.readMessage(value,proto.server.Lobby.deserializeBinaryFromReader);
+      var value = new proto.server2.Lobby;
+      reader.readMessage(value,proto.server2.Lobby.deserializeBinaryFromReader);
       msg.setLobby(value);
       break;
     default:
@@ -2703,9 +4646,9 @@ proto.server.MyLobbyDetails.deserializeBinaryFromReader = function(msg, reader) 
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.server.MyLobbyDetails.prototype.serializeBinary = function() {
+proto.server2.MyLobbyDetails.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.server.MyLobbyDetails.serializeBinaryToWriter(this, writer);
+  proto.server2.MyLobbyDetails.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -2713,18 +4656,18 @@ proto.server.MyLobbyDetails.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.server.MyLobbyDetails} message
+ * @param {!proto.server2.MyLobbyDetails} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.MyLobbyDetails.serializeBinaryToWriter = function(message, writer) {
+proto.server2.MyLobbyDetails.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getLobby();
   if (f != null) {
     writer.writeMessage(
       1,
       f,
-      proto.server.Lobby.serializeBinaryToWriter
+      proto.server2.Lobby.serializeBinaryToWriter
     );
   }
 };
@@ -2732,28 +4675,28 @@ proto.server.MyLobbyDetails.serializeBinaryToWriter = function(message, writer) 
 
 /**
  * optional Lobby lobby = 1;
- * @return {?proto.server.Lobby}
+ * @return {?proto.server2.Lobby}
  */
-proto.server.MyLobbyDetails.prototype.getLobby = function() {
-  return /** @type{?proto.server.Lobby} */ (
-    jspb.Message.getWrapperField(this, proto.server.Lobby, 1));
+proto.server2.MyLobbyDetails.prototype.getLobby = function() {
+  return /** @type{?proto.server2.Lobby} */ (
+    jspb.Message.getWrapperField(this, proto.server2.Lobby, 1));
 };
 
 
 /**
- * @param {?proto.server.Lobby|undefined} value
- * @return {!proto.server.MyLobbyDetails} returns this
+ * @param {?proto.server2.Lobby|undefined} value
+ * @return {!proto.server2.MyLobbyDetails} returns this
 */
-proto.server.MyLobbyDetails.prototype.setLobby = function(value) {
+proto.server2.MyLobbyDetails.prototype.setLobby = function(value) {
   return jspb.Message.setWrapperField(this, 1, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.server.MyLobbyDetails} returns this
+ * @return {!proto.server2.MyLobbyDetails} returns this
  */
-proto.server.MyLobbyDetails.prototype.clearLobby = function() {
+proto.server2.MyLobbyDetails.prototype.clearLobby = function() {
   return this.setLobby(undefined);
 };
 
@@ -2762,7 +4705,7 @@ proto.server.MyLobbyDetails.prototype.clearLobby = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.server.MyLobbyDetails.prototype.hasLobby = function() {
+proto.server2.MyLobbyDetails.prototype.hasLobby = function() {
   return jspb.Message.getField(this, 1) != null;
 };
 
@@ -2783,8 +4726,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.server.MyLobbyJoinerUpdate.prototype.toObject = function(opt_includeInstance) {
-  return proto.server.MyLobbyJoinerUpdate.toObject(opt_includeInstance, this);
+proto.server2.MyLobbyJoinerUpdate.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.MyLobbyJoinerUpdate.toObject(opt_includeInstance, this);
 };
 
 
@@ -2793,13 +4736,13 @@ proto.server.MyLobbyJoinerUpdate.prototype.toObject = function(opt_includeInstan
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.server.MyLobbyJoinerUpdate} msg The msg instance to transform.
+ * @param {!proto.server2.MyLobbyJoinerUpdate} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.MyLobbyJoinerUpdate.toObject = function(includeInstance, msg) {
+proto.server2.MyLobbyJoinerUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-player: (f = msg.getPlayer()) && proto.server.Player.toObject(includeInstance, f)
+player: (f = msg.getPlayer()) && proto.server2.Player.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2813,23 +4756,23 @@ player: (f = msg.getPlayer()) && proto.server.Player.toObject(includeInstance, f
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.server.MyLobbyJoinerUpdate}
+ * @return {!proto.server2.MyLobbyJoinerUpdate}
  */
-proto.server.MyLobbyJoinerUpdate.deserializeBinary = function(bytes) {
+proto.server2.MyLobbyJoinerUpdate.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.server.MyLobbyJoinerUpdate;
-  return proto.server.MyLobbyJoinerUpdate.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.server2.MyLobbyJoinerUpdate;
+  return proto.server2.MyLobbyJoinerUpdate.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.server.MyLobbyJoinerUpdate} msg The message object to deserialize into.
+ * @param {!proto.server2.MyLobbyJoinerUpdate} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.server.MyLobbyJoinerUpdate}
+ * @return {!proto.server2.MyLobbyJoinerUpdate}
  */
-proto.server.MyLobbyJoinerUpdate.deserializeBinaryFromReader = function(msg, reader) {
+proto.server2.MyLobbyJoinerUpdate.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -2837,8 +4780,8 @@ proto.server.MyLobbyJoinerUpdate.deserializeBinaryFromReader = function(msg, rea
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new proto.server.Player;
-      reader.readMessage(value,proto.server.Player.deserializeBinaryFromReader);
+      var value = new proto.server2.Player;
+      reader.readMessage(value,proto.server2.Player.deserializeBinaryFromReader);
       msg.setPlayer(value);
       break;
     default:
@@ -2854,9 +4797,9 @@ proto.server.MyLobbyJoinerUpdate.deserializeBinaryFromReader = function(msg, rea
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.server.MyLobbyJoinerUpdate.prototype.serializeBinary = function() {
+proto.server2.MyLobbyJoinerUpdate.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.server.MyLobbyJoinerUpdate.serializeBinaryToWriter(this, writer);
+  proto.server2.MyLobbyJoinerUpdate.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -2864,18 +4807,18 @@ proto.server.MyLobbyJoinerUpdate.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.server.MyLobbyJoinerUpdate} message
+ * @param {!proto.server2.MyLobbyJoinerUpdate} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.MyLobbyJoinerUpdate.serializeBinaryToWriter = function(message, writer) {
+proto.server2.MyLobbyJoinerUpdate.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getPlayer();
   if (f != null) {
     writer.writeMessage(
       1,
       f,
-      proto.server.Player.serializeBinaryToWriter
+      proto.server2.Player.serializeBinaryToWriter
     );
   }
 };
@@ -2883,28 +4826,28 @@ proto.server.MyLobbyJoinerUpdate.serializeBinaryToWriter = function(message, wri
 
 /**
  * optional Player player = 1;
- * @return {?proto.server.Player}
+ * @return {?proto.server2.Player}
  */
-proto.server.MyLobbyJoinerUpdate.prototype.getPlayer = function() {
-  return /** @type{?proto.server.Player} */ (
-    jspb.Message.getWrapperField(this, proto.server.Player, 1));
+proto.server2.MyLobbyJoinerUpdate.prototype.getPlayer = function() {
+  return /** @type{?proto.server2.Player} */ (
+    jspb.Message.getWrapperField(this, proto.server2.Player, 1));
 };
 
 
 /**
- * @param {?proto.server.Player|undefined} value
- * @return {!proto.server.MyLobbyJoinerUpdate} returns this
+ * @param {?proto.server2.Player|undefined} value
+ * @return {!proto.server2.MyLobbyJoinerUpdate} returns this
 */
-proto.server.MyLobbyJoinerUpdate.prototype.setPlayer = function(value) {
+proto.server2.MyLobbyJoinerUpdate.prototype.setPlayer = function(value) {
   return jspb.Message.setWrapperField(this, 1, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.server.MyLobbyJoinerUpdate} returns this
+ * @return {!proto.server2.MyLobbyJoinerUpdate} returns this
  */
-proto.server.MyLobbyJoinerUpdate.prototype.clearPlayer = function() {
+proto.server2.MyLobbyJoinerUpdate.prototype.clearPlayer = function() {
   return this.setPlayer(undefined);
 };
 
@@ -2913,7 +4856,7 @@ proto.server.MyLobbyJoinerUpdate.prototype.clearPlayer = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.server.MyLobbyJoinerUpdate.prototype.hasPlayer = function() {
+proto.server2.MyLobbyJoinerUpdate.prototype.hasPlayer = function() {
   return jspb.Message.getField(this, 1) != null;
 };
 
@@ -2934,8 +4877,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.server.MyLobbyLeaverUpdate.prototype.toObject = function(opt_includeInstance) {
-  return proto.server.MyLobbyLeaverUpdate.toObject(opt_includeInstance, this);
+proto.server2.MyLobbyLeaverUpdate.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.MyLobbyLeaverUpdate.toObject(opt_includeInstance, this);
 };
 
 
@@ -2944,13 +4887,13 @@ proto.server.MyLobbyLeaverUpdate.prototype.toObject = function(opt_includeInstan
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.server.MyLobbyLeaverUpdate} msg The msg instance to transform.
+ * @param {!proto.server2.MyLobbyLeaverUpdate} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.MyLobbyLeaverUpdate.toObject = function(includeInstance, msg) {
+proto.server2.MyLobbyLeaverUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-player: (f = msg.getPlayer()) && proto.server.Player.toObject(includeInstance, f)
+player: (f = msg.getPlayer()) && proto.server2.Player.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -2964,23 +4907,23 @@ player: (f = msg.getPlayer()) && proto.server.Player.toObject(includeInstance, f
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.server.MyLobbyLeaverUpdate}
+ * @return {!proto.server2.MyLobbyLeaverUpdate}
  */
-proto.server.MyLobbyLeaverUpdate.deserializeBinary = function(bytes) {
+proto.server2.MyLobbyLeaverUpdate.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.server.MyLobbyLeaverUpdate;
-  return proto.server.MyLobbyLeaverUpdate.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.server2.MyLobbyLeaverUpdate;
+  return proto.server2.MyLobbyLeaverUpdate.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.server.MyLobbyLeaverUpdate} msg The message object to deserialize into.
+ * @param {!proto.server2.MyLobbyLeaverUpdate} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.server.MyLobbyLeaverUpdate}
+ * @return {!proto.server2.MyLobbyLeaverUpdate}
  */
-proto.server.MyLobbyLeaverUpdate.deserializeBinaryFromReader = function(msg, reader) {
+proto.server2.MyLobbyLeaverUpdate.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -2988,8 +4931,8 @@ proto.server.MyLobbyLeaverUpdate.deserializeBinaryFromReader = function(msg, rea
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new proto.server.Player;
-      reader.readMessage(value,proto.server.Player.deserializeBinaryFromReader);
+      var value = new proto.server2.Player;
+      reader.readMessage(value,proto.server2.Player.deserializeBinaryFromReader);
       msg.setPlayer(value);
       break;
     default:
@@ -3005,9 +4948,9 @@ proto.server.MyLobbyLeaverUpdate.deserializeBinaryFromReader = function(msg, rea
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.server.MyLobbyLeaverUpdate.prototype.serializeBinary = function() {
+proto.server2.MyLobbyLeaverUpdate.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.server.MyLobbyLeaverUpdate.serializeBinaryToWriter(this, writer);
+  proto.server2.MyLobbyLeaverUpdate.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -3015,18 +4958,18 @@ proto.server.MyLobbyLeaverUpdate.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.server.MyLobbyLeaverUpdate} message
+ * @param {!proto.server2.MyLobbyLeaverUpdate} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.MyLobbyLeaverUpdate.serializeBinaryToWriter = function(message, writer) {
+proto.server2.MyLobbyLeaverUpdate.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getPlayer();
   if (f != null) {
     writer.writeMessage(
       1,
       f,
-      proto.server.Player.serializeBinaryToWriter
+      proto.server2.Player.serializeBinaryToWriter
     );
   }
 };
@@ -3034,28 +4977,28 @@ proto.server.MyLobbyLeaverUpdate.serializeBinaryToWriter = function(message, wri
 
 /**
  * optional Player player = 1;
- * @return {?proto.server.Player}
+ * @return {?proto.server2.Player}
  */
-proto.server.MyLobbyLeaverUpdate.prototype.getPlayer = function() {
-  return /** @type{?proto.server.Player} */ (
-    jspb.Message.getWrapperField(this, proto.server.Player, 1));
+proto.server2.MyLobbyLeaverUpdate.prototype.getPlayer = function() {
+  return /** @type{?proto.server2.Player} */ (
+    jspb.Message.getWrapperField(this, proto.server2.Player, 1));
 };
 
 
 /**
- * @param {?proto.server.Player|undefined} value
- * @return {!proto.server.MyLobbyLeaverUpdate} returns this
+ * @param {?proto.server2.Player|undefined} value
+ * @return {!proto.server2.MyLobbyLeaverUpdate} returns this
 */
-proto.server.MyLobbyLeaverUpdate.prototype.setPlayer = function(value) {
+proto.server2.MyLobbyLeaverUpdate.prototype.setPlayer = function(value) {
   return jspb.Message.setWrapperField(this, 1, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.server.MyLobbyLeaverUpdate} returns this
+ * @return {!proto.server2.MyLobbyLeaverUpdate} returns this
  */
-proto.server.MyLobbyLeaverUpdate.prototype.clearPlayer = function() {
+proto.server2.MyLobbyLeaverUpdate.prototype.clearPlayer = function() {
   return this.setPlayer(undefined);
 };
 
@@ -3064,7 +5007,7 @@ proto.server.MyLobbyLeaverUpdate.prototype.clearPlayer = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.server.MyLobbyLeaverUpdate.prototype.hasPlayer = function() {
+proto.server2.MyLobbyLeaverUpdate.prototype.hasPlayer = function() {
   return jspb.Message.getField(this, 1) != null;
 };
 
@@ -3085,8 +5028,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.server.LeaveMyLobbyReply.prototype.toObject = function(opt_includeInstance) {
-  return proto.server.LeaveMyLobbyReply.toObject(opt_includeInstance, this);
+proto.server2.LeaveMyLobbyReply.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.LeaveMyLobbyReply.toObject(opt_includeInstance, this);
 };
 
 
@@ -3095,13 +5038,13 @@ proto.server.LeaveMyLobbyReply.prototype.toObject = function(opt_includeInstance
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.server.LeaveMyLobbyReply} msg The msg instance to transform.
+ * @param {!proto.server2.LeaveMyLobbyReply} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.LeaveMyLobbyReply.toObject = function(includeInstance, msg) {
+proto.server2.LeaveMyLobbyReply.toObject = function(includeInstance, msg) {
   var f, obj = {
-outcome: (f = msg.getOutcome()) && proto.server.Outcome.toObject(includeInstance, f)
+outcome: (f = msg.getOutcome()) && proto.server2.Outcome.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3115,23 +5058,23 @@ outcome: (f = msg.getOutcome()) && proto.server.Outcome.toObject(includeInstance
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.server.LeaveMyLobbyReply}
+ * @return {!proto.server2.LeaveMyLobbyReply}
  */
-proto.server.LeaveMyLobbyReply.deserializeBinary = function(bytes) {
+proto.server2.LeaveMyLobbyReply.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.server.LeaveMyLobbyReply;
-  return proto.server.LeaveMyLobbyReply.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.server2.LeaveMyLobbyReply;
+  return proto.server2.LeaveMyLobbyReply.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.server.LeaveMyLobbyReply} msg The message object to deserialize into.
+ * @param {!proto.server2.LeaveMyLobbyReply} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.server.LeaveMyLobbyReply}
+ * @return {!proto.server2.LeaveMyLobbyReply}
  */
-proto.server.LeaveMyLobbyReply.deserializeBinaryFromReader = function(msg, reader) {
+proto.server2.LeaveMyLobbyReply.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -3139,8 +5082,8 @@ proto.server.LeaveMyLobbyReply.deserializeBinaryFromReader = function(msg, reade
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new proto.server.Outcome;
-      reader.readMessage(value,proto.server.Outcome.deserializeBinaryFromReader);
+      var value = new proto.server2.Outcome;
+      reader.readMessage(value,proto.server2.Outcome.deserializeBinaryFromReader);
       msg.setOutcome(value);
       break;
     default:
@@ -3156,9 +5099,9 @@ proto.server.LeaveMyLobbyReply.deserializeBinaryFromReader = function(msg, reade
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.server.LeaveMyLobbyReply.prototype.serializeBinary = function() {
+proto.server2.LeaveMyLobbyReply.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.server.LeaveMyLobbyReply.serializeBinaryToWriter(this, writer);
+  proto.server2.LeaveMyLobbyReply.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -3166,18 +5109,18 @@ proto.server.LeaveMyLobbyReply.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.server.LeaveMyLobbyReply} message
+ * @param {!proto.server2.LeaveMyLobbyReply} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.LeaveMyLobbyReply.serializeBinaryToWriter = function(message, writer) {
+proto.server2.LeaveMyLobbyReply.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getOutcome();
   if (f != null) {
     writer.writeMessage(
       1,
       f,
-      proto.server.Outcome.serializeBinaryToWriter
+      proto.server2.Outcome.serializeBinaryToWriter
     );
   }
 };
@@ -3185,28 +5128,28 @@ proto.server.LeaveMyLobbyReply.serializeBinaryToWriter = function(message, write
 
 /**
  * optional Outcome outcome = 1;
- * @return {?proto.server.Outcome}
+ * @return {?proto.server2.Outcome}
  */
-proto.server.LeaveMyLobbyReply.prototype.getOutcome = function() {
-  return /** @type{?proto.server.Outcome} */ (
-    jspb.Message.getWrapperField(this, proto.server.Outcome, 1));
+proto.server2.LeaveMyLobbyReply.prototype.getOutcome = function() {
+  return /** @type{?proto.server2.Outcome} */ (
+    jspb.Message.getWrapperField(this, proto.server2.Outcome, 1));
 };
 
 
 /**
- * @param {?proto.server.Outcome|undefined} value
- * @return {!proto.server.LeaveMyLobbyReply} returns this
+ * @param {?proto.server2.Outcome|undefined} value
+ * @return {!proto.server2.LeaveMyLobbyReply} returns this
 */
-proto.server.LeaveMyLobbyReply.prototype.setOutcome = function(value) {
+proto.server2.LeaveMyLobbyReply.prototype.setOutcome = function(value) {
   return jspb.Message.setWrapperField(this, 1, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.server.LeaveMyLobbyReply} returns this
+ * @return {!proto.server2.LeaveMyLobbyReply} returns this
  */
-proto.server.LeaveMyLobbyReply.prototype.clearOutcome = function() {
+proto.server2.LeaveMyLobbyReply.prototype.clearOutcome = function() {
   return this.setOutcome(undefined);
 };
 
@@ -3215,7 +5158,7 @@ proto.server.LeaveMyLobbyReply.prototype.clearOutcome = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.server.LeaveMyLobbyReply.prototype.hasOutcome = function() {
+proto.server2.LeaveMyLobbyReply.prototype.hasOutcome = function() {
   return jspb.Message.getField(this, 1) != null;
 };
 
@@ -3236,8 +5179,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.server.JoinLobbyRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.server.JoinLobbyRequest.toObject(opt_includeInstance, this);
+proto.server2.JoinLobbyRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.JoinLobbyRequest.toObject(opt_includeInstance, this);
 };
 
 
@@ -3246,11 +5189,11 @@ proto.server.JoinLobbyRequest.prototype.toObject = function(opt_includeInstance)
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.server.JoinLobbyRequest} msg The msg instance to transform.
+ * @param {!proto.server2.JoinLobbyRequest} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.JoinLobbyRequest.toObject = function(includeInstance, msg) {
+proto.server2.JoinLobbyRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
 lobbyId: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
@@ -3266,23 +5209,23 @@ lobbyId: jspb.Message.getFieldWithDefault(msg, 1, "")
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.server.JoinLobbyRequest}
+ * @return {!proto.server2.JoinLobbyRequest}
  */
-proto.server.JoinLobbyRequest.deserializeBinary = function(bytes) {
+proto.server2.JoinLobbyRequest.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.server.JoinLobbyRequest;
-  return proto.server.JoinLobbyRequest.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.server2.JoinLobbyRequest;
+  return proto.server2.JoinLobbyRequest.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.server.JoinLobbyRequest} msg The message object to deserialize into.
+ * @param {!proto.server2.JoinLobbyRequest} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.server.JoinLobbyRequest}
+ * @return {!proto.server2.JoinLobbyRequest}
  */
-proto.server.JoinLobbyRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.server2.JoinLobbyRequest.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -3306,9 +5249,9 @@ proto.server.JoinLobbyRequest.deserializeBinaryFromReader = function(msg, reader
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.server.JoinLobbyRequest.prototype.serializeBinary = function() {
+proto.server2.JoinLobbyRequest.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.server.JoinLobbyRequest.serializeBinaryToWriter(this, writer);
+  proto.server2.JoinLobbyRequest.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -3316,11 +5259,11 @@ proto.server.JoinLobbyRequest.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.server.JoinLobbyRequest} message
+ * @param {!proto.server2.JoinLobbyRequest} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.JoinLobbyRequest.serializeBinaryToWriter = function(message, writer) {
+proto.server2.JoinLobbyRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getLobbyId();
   if (f.length > 0) {
@@ -3336,16 +5279,16 @@ proto.server.JoinLobbyRequest.serializeBinaryToWriter = function(message, writer
  * optional string lobby_id = 1;
  * @return {string}
  */
-proto.server.JoinLobbyRequest.prototype.getLobbyId = function() {
+proto.server2.JoinLobbyRequest.prototype.getLobbyId = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
  * @param {string} value
- * @return {!proto.server.JoinLobbyRequest} returns this
+ * @return {!proto.server2.JoinLobbyRequest} returns this
  */
-proto.server.JoinLobbyRequest.prototype.setLobbyId = function(value) {
+proto.server2.JoinLobbyRequest.prototype.setLobbyId = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
@@ -3366,8 +5309,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.server.JoinLobbyReply.prototype.toObject = function(opt_includeInstance) {
-  return proto.server.JoinLobbyReply.toObject(opt_includeInstance, this);
+proto.server2.JoinLobbyReply.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.JoinLobbyReply.toObject(opt_includeInstance, this);
 };
 
 
@@ -3376,13 +5319,13 @@ proto.server.JoinLobbyReply.prototype.toObject = function(opt_includeInstance) {
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.server.JoinLobbyReply} msg The msg instance to transform.
+ * @param {!proto.server2.JoinLobbyReply} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.JoinLobbyReply.toObject = function(includeInstance, msg) {
+proto.server2.JoinLobbyReply.toObject = function(includeInstance, msg) {
   var f, obj = {
-outcome: (f = msg.getOutcome()) && proto.server.Outcome.toObject(includeInstance, f)
+outcome: (f = msg.getOutcome()) && proto.server2.Outcome.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3396,23 +5339,23 @@ outcome: (f = msg.getOutcome()) && proto.server.Outcome.toObject(includeInstance
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.server.JoinLobbyReply}
+ * @return {!proto.server2.JoinLobbyReply}
  */
-proto.server.JoinLobbyReply.deserializeBinary = function(bytes) {
+proto.server2.JoinLobbyReply.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.server.JoinLobbyReply;
-  return proto.server.JoinLobbyReply.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.server2.JoinLobbyReply;
+  return proto.server2.JoinLobbyReply.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.server.JoinLobbyReply} msg The message object to deserialize into.
+ * @param {!proto.server2.JoinLobbyReply} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.server.JoinLobbyReply}
+ * @return {!proto.server2.JoinLobbyReply}
  */
-proto.server.JoinLobbyReply.deserializeBinaryFromReader = function(msg, reader) {
+proto.server2.JoinLobbyReply.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -3420,8 +5363,8 @@ proto.server.JoinLobbyReply.deserializeBinaryFromReader = function(msg, reader) 
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new proto.server.Outcome;
-      reader.readMessage(value,proto.server.Outcome.deserializeBinaryFromReader);
+      var value = new proto.server2.Outcome;
+      reader.readMessage(value,proto.server2.Outcome.deserializeBinaryFromReader);
       msg.setOutcome(value);
       break;
     default:
@@ -3437,9 +5380,9 @@ proto.server.JoinLobbyReply.deserializeBinaryFromReader = function(msg, reader) 
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.server.JoinLobbyReply.prototype.serializeBinary = function() {
+proto.server2.JoinLobbyReply.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.server.JoinLobbyReply.serializeBinaryToWriter(this, writer);
+  proto.server2.JoinLobbyReply.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -3447,18 +5390,18 @@ proto.server.JoinLobbyReply.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.server.JoinLobbyReply} message
+ * @param {!proto.server2.JoinLobbyReply} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.JoinLobbyReply.serializeBinaryToWriter = function(message, writer) {
+proto.server2.JoinLobbyReply.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getOutcome();
   if (f != null) {
     writer.writeMessage(
       1,
       f,
-      proto.server.Outcome.serializeBinaryToWriter
+      proto.server2.Outcome.serializeBinaryToWriter
     );
   }
 };
@@ -3466,28 +5409,28 @@ proto.server.JoinLobbyReply.serializeBinaryToWriter = function(message, writer) 
 
 /**
  * optional Outcome outcome = 1;
- * @return {?proto.server.Outcome}
+ * @return {?proto.server2.Outcome}
  */
-proto.server.JoinLobbyReply.prototype.getOutcome = function() {
-  return /** @type{?proto.server.Outcome} */ (
-    jspb.Message.getWrapperField(this, proto.server.Outcome, 1));
+proto.server2.JoinLobbyReply.prototype.getOutcome = function() {
+  return /** @type{?proto.server2.Outcome} */ (
+    jspb.Message.getWrapperField(this, proto.server2.Outcome, 1));
 };
 
 
 /**
- * @param {?proto.server.Outcome|undefined} value
- * @return {!proto.server.JoinLobbyReply} returns this
+ * @param {?proto.server2.Outcome|undefined} value
+ * @return {!proto.server2.JoinLobbyReply} returns this
 */
-proto.server.JoinLobbyReply.prototype.setOutcome = function(value) {
+proto.server2.JoinLobbyReply.prototype.setOutcome = function(value) {
   return jspb.Message.setWrapperField(this, 1, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.server.JoinLobbyReply} returns this
+ * @return {!proto.server2.JoinLobbyReply} returns this
  */
-proto.server.JoinLobbyReply.prototype.clearOutcome = function() {
+proto.server2.JoinLobbyReply.prototype.clearOutcome = function() {
   return this.setOutcome(undefined);
 };
 
@@ -3496,7 +5439,7 @@ proto.server.JoinLobbyReply.prototype.clearOutcome = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.server.JoinLobbyReply.prototype.hasOutcome = function() {
+proto.server2.JoinLobbyReply.prototype.hasOutcome = function() {
   return jspb.Message.getField(this, 1) != null;
 };
 
@@ -3517,8 +5460,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.server.InvalidateReply.prototype.toObject = function(opt_includeInstance) {
-  return proto.server.InvalidateReply.toObject(opt_includeInstance, this);
+proto.server2.CreateLobbyReply.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.CreateLobbyReply.toObject(opt_includeInstance, this);
 };
 
 
@@ -3527,13 +5470,13 @@ proto.server.InvalidateReply.prototype.toObject = function(opt_includeInstance) 
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.server.InvalidateReply} msg The msg instance to transform.
+ * @param {!proto.server2.CreateLobbyReply} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.InvalidateReply.toObject = function(includeInstance, msg) {
+proto.server2.CreateLobbyReply.toObject = function(includeInstance, msg) {
   var f, obj = {
-outcome: (f = msg.getOutcome()) && proto.server.Outcome.toObject(includeInstance, f)
+outcome: (f = msg.getOutcome()) && proto.server2.Outcome.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3547,23 +5490,23 @@ outcome: (f = msg.getOutcome()) && proto.server.Outcome.toObject(includeInstance
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.server.InvalidateReply}
+ * @return {!proto.server2.CreateLobbyReply}
  */
-proto.server.InvalidateReply.deserializeBinary = function(bytes) {
+proto.server2.CreateLobbyReply.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.server.InvalidateReply;
-  return proto.server.InvalidateReply.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.server2.CreateLobbyReply;
+  return proto.server2.CreateLobbyReply.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.server.InvalidateReply} msg The message object to deserialize into.
+ * @param {!proto.server2.CreateLobbyReply} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.server.InvalidateReply}
+ * @return {!proto.server2.CreateLobbyReply}
  */
-proto.server.InvalidateReply.deserializeBinaryFromReader = function(msg, reader) {
+proto.server2.CreateLobbyReply.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -3571,8 +5514,8 @@ proto.server.InvalidateReply.deserializeBinaryFromReader = function(msg, reader)
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new proto.server.Outcome;
-      reader.readMessage(value,proto.server.Outcome.deserializeBinaryFromReader);
+      var value = new proto.server2.Outcome;
+      reader.readMessage(value,proto.server2.Outcome.deserializeBinaryFromReader);
       msg.setOutcome(value);
       break;
     default:
@@ -3588,9 +5531,9 @@ proto.server.InvalidateReply.deserializeBinaryFromReader = function(msg, reader)
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.server.InvalidateReply.prototype.serializeBinary = function() {
+proto.server2.CreateLobbyReply.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.server.InvalidateReply.serializeBinaryToWriter(this, writer);
+  proto.server2.CreateLobbyReply.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -3598,18 +5541,18 @@ proto.server.InvalidateReply.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.server.InvalidateReply} message
+ * @param {!proto.server2.CreateLobbyReply} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.InvalidateReply.serializeBinaryToWriter = function(message, writer) {
+proto.server2.CreateLobbyReply.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getOutcome();
   if (f != null) {
     writer.writeMessage(
       1,
       f,
-      proto.server.Outcome.serializeBinaryToWriter
+      proto.server2.Outcome.serializeBinaryToWriter
     );
   }
 };
@@ -3617,28 +5560,28 @@ proto.server.InvalidateReply.serializeBinaryToWriter = function(message, writer)
 
 /**
  * optional Outcome outcome = 1;
- * @return {?proto.server.Outcome}
+ * @return {?proto.server2.Outcome}
  */
-proto.server.InvalidateReply.prototype.getOutcome = function() {
-  return /** @type{?proto.server.Outcome} */ (
-    jspb.Message.getWrapperField(this, proto.server.Outcome, 1));
+proto.server2.CreateLobbyReply.prototype.getOutcome = function() {
+  return /** @type{?proto.server2.Outcome} */ (
+    jspb.Message.getWrapperField(this, proto.server2.Outcome, 1));
 };
 
 
 /**
- * @param {?proto.server.Outcome|undefined} value
- * @return {!proto.server.InvalidateReply} returns this
+ * @param {?proto.server2.Outcome|undefined} value
+ * @return {!proto.server2.CreateLobbyReply} returns this
 */
-proto.server.InvalidateReply.prototype.setOutcome = function(value) {
+proto.server2.CreateLobbyReply.prototype.setOutcome = function(value) {
   return jspb.Message.setWrapperField(this, 1, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.server.InvalidateReply} returns this
+ * @return {!proto.server2.CreateLobbyReply} returns this
  */
-proto.server.InvalidateReply.prototype.clearOutcome = function() {
+proto.server2.CreateLobbyReply.prototype.clearOutcome = function() {
   return this.setOutcome(undefined);
 };
 
@@ -3647,7 +5590,7 @@ proto.server.InvalidateReply.prototype.clearOutcome = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.server.InvalidateReply.prototype.hasOutcome = function() {
+proto.server2.CreateLobbyReply.prototype.hasOutcome = function() {
   return jspb.Message.getField(this, 1) != null;
 };
 
@@ -3668,8 +5611,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.server.SubscriptionUpdate.prototype.toObject = function(opt_includeInstance) {
-  return proto.server.SubscriptionUpdate.toObject(opt_includeInstance, this);
+proto.server2.Move.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.Move.toObject(opt_includeInstance, this);
 };
 
 
@@ -3678,603 +5621,11 @@ proto.server.SubscriptionUpdate.prototype.toObject = function(opt_includeInstanc
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.server.SubscriptionUpdate} msg The msg instance to transform.
+ * @param {!proto.server2.Move} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.SubscriptionUpdate.toObject = function(includeInstance, msg) {
-  var f, obj = {
-data: (f = msg.getData()) && proto.server.SubscriptionUpdateData.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.server.SubscriptionUpdate}
- */
-proto.server.SubscriptionUpdate.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.server.SubscriptionUpdate;
-  return proto.server.SubscriptionUpdate.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.server.SubscriptionUpdate} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.server.SubscriptionUpdate}
- */
-proto.server.SubscriptionUpdate.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new proto.server.SubscriptionUpdateData;
-      reader.readMessage(value,proto.server.SubscriptionUpdateData.deserializeBinaryFromReader);
-      msg.setData(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.server.SubscriptionUpdate.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.server.SubscriptionUpdate.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.server.SubscriptionUpdate} message
- * @param {!jspb.BinaryWriter} writer
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.server.SubscriptionUpdate.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getData();
-  if (f != null) {
-    writer.writeMessage(
-      1,
-      f,
-      proto.server.SubscriptionUpdateData.serializeBinaryToWriter
-    );
-  }
-};
-
-
-/**
- * optional SubscriptionUpdateData data = 1;
- * @return {?proto.server.SubscriptionUpdateData}
- */
-proto.server.SubscriptionUpdate.prototype.getData = function() {
-  return /** @type{?proto.server.SubscriptionUpdateData} */ (
-    jspb.Message.getWrapperField(this, proto.server.SubscriptionUpdateData, 1));
-};
-
-
-/**
- * @param {?proto.server.SubscriptionUpdateData|undefined} value
- * @return {!proto.server.SubscriptionUpdate} returns this
-*/
-proto.server.SubscriptionUpdate.prototype.setData = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.server.SubscriptionUpdate} returns this
- */
-proto.server.SubscriptionUpdate.prototype.clearData = function() {
-  return this.setData(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.server.SubscriptionUpdate.prototype.hasData = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.server.HandshakeRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.server.HandshakeRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.server.HandshakeRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.server.HandshakeRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-playerName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-playerPass: jspb.Message.getFieldWithDefault(msg, 2, "")
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.server.HandshakeRequest}
- */
-proto.server.HandshakeRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.server.HandshakeRequest;
-  return proto.server.HandshakeRequest.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.server.HandshakeRequest} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.server.HandshakeRequest}
- */
-proto.server.HandshakeRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setPlayerName(value);
-      break;
-    case 2:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setPlayerPass(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.server.HandshakeRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.server.HandshakeRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.server.HandshakeRequest} message
- * @param {!jspb.BinaryWriter} writer
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.server.HandshakeRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getPlayerName();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
-  }
-  f = message.getPlayerPass();
-  if (f.length > 0) {
-    writer.writeString(
-      2,
-      f
-    );
-  }
-};
-
-
-/**
- * optional string player_name = 1;
- * @return {string}
- */
-proto.server.HandshakeRequest.prototype.getPlayerName = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.server.HandshakeRequest} returns this
- */
-proto.server.HandshakeRequest.prototype.setPlayerName = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
-
-/**
- * optional string player_pass = 2;
- * @return {string}
- */
-proto.server.HandshakeRequest.prototype.getPlayerPass = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.server.HandshakeRequest} returns this
- */
-proto.server.HandshakeRequest.prototype.setPlayerPass = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.server.HandshakeReply.prototype.toObject = function(opt_includeInstance) {
-  return proto.server.HandshakeReply.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.server.HandshakeReply} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.server.HandshakeReply.toObject = function(includeInstance, msg) {
-  var f, obj = {
-outcome: (f = msg.getOutcome()) && proto.server.Outcome.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.server.HandshakeReply}
- */
-proto.server.HandshakeReply.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.server.HandshakeReply;
-  return proto.server.HandshakeReply.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.server.HandshakeReply} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.server.HandshakeReply}
- */
-proto.server.HandshakeReply.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new proto.server.Outcome;
-      reader.readMessage(value,proto.server.Outcome.deserializeBinaryFromReader);
-      msg.setOutcome(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.server.HandshakeReply.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.server.HandshakeReply.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.server.HandshakeReply} message
- * @param {!jspb.BinaryWriter} writer
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.server.HandshakeReply.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getOutcome();
-  if (f != null) {
-    writer.writeMessage(
-      1,
-      f,
-      proto.server.Outcome.serializeBinaryToWriter
-    );
-  }
-};
-
-
-/**
- * optional Outcome outcome = 1;
- * @return {?proto.server.Outcome}
- */
-proto.server.HandshakeReply.prototype.getOutcome = function() {
-  return /** @type{?proto.server.Outcome} */ (
-    jspb.Message.getWrapperField(this, proto.server.Outcome, 1));
-};
-
-
-/**
- * @param {?proto.server.Outcome|undefined} value
- * @return {!proto.server.HandshakeReply} returns this
-*/
-proto.server.HandshakeReply.prototype.setOutcome = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.server.HandshakeReply} returns this
- */
-proto.server.HandshakeReply.prototype.clearOutcome = function() {
-  return this.setOutcome(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.server.HandshakeReply.prototype.hasOutcome = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.server.NavigationUpdate.prototype.toObject = function(opt_includeInstance) {
-  return proto.server.NavigationUpdate.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.server.NavigationUpdate} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.server.NavigationUpdate.toObject = function(includeInstance, msg) {
-  var f, obj = {
-path: jspb.Message.getFieldWithDefault(msg, 1, 0)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.server.NavigationUpdate}
- */
-proto.server.NavigationUpdate.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.server.NavigationUpdate;
-  return proto.server.NavigationUpdate.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.server.NavigationUpdate} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.server.NavigationUpdate}
- */
-proto.server.NavigationUpdate.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {!proto.server.NavigationPath} */ (reader.readEnum());
-      msg.setPath(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.server.NavigationUpdate.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.server.NavigationUpdate.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.server.NavigationUpdate} message
- * @param {!jspb.BinaryWriter} writer
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.server.NavigationUpdate.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getPath();
-  if (f !== 0.0) {
-    writer.writeEnum(
-      1,
-      f
-    );
-  }
-};
-
-
-/**
- * optional NavigationPath path = 1;
- * @return {!proto.server.NavigationPath}
- */
-proto.server.NavigationUpdate.prototype.getPath = function() {
-  return /** @type {!proto.server.NavigationPath} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
-};
-
-
-/**
- * @param {!proto.server.NavigationPath} value
- * @return {!proto.server.NavigationUpdate} returns this
- */
-proto.server.NavigationUpdate.prototype.setPath = function(value) {
-  return jspb.Message.setProto3EnumField(this, 1, value);
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.server.Move.prototype.toObject = function(opt_includeInstance) {
-  return proto.server.Move.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.server.Move} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.server.Move.toObject = function(includeInstance, msg) {
+proto.server2.Move.toObject = function(includeInstance, msg) {
   var f, obj = {
 mover: jspb.Message.getFieldWithDefault(msg, 1, 0),
 position: jspb.Message.getFieldWithDefault(msg, 2, 0)
@@ -4291,23 +5642,23 @@ position: jspb.Message.getFieldWithDefault(msg, 2, 0)
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.server.Move}
+ * @return {!proto.server2.Move}
  */
-proto.server.Move.deserializeBinary = function(bytes) {
+proto.server2.Move.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.server.Move;
-  return proto.server.Move.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.server2.Move;
+  return proto.server2.Move.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.server.Move} msg The message object to deserialize into.
+ * @param {!proto.server2.Move} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.server.Move}
+ * @return {!proto.server2.Move}
  */
-proto.server.Move.deserializeBinaryFromReader = function(msg, reader) {
+proto.server2.Move.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -4315,7 +5666,7 @@ proto.server.Move.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {!proto.server.Mover} */ (reader.readEnum());
+      var value = /** @type {!proto.server2.Mover} */ (reader.readEnum());
       msg.setMover(value);
       break;
     case 2:
@@ -4335,9 +5686,9 @@ proto.server.Move.deserializeBinaryFromReader = function(msg, reader) {
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.server.Move.prototype.serializeBinary = function() {
+proto.server2.Move.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.server.Move.serializeBinaryToWriter(this, writer);
+  proto.server2.Move.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -4345,11 +5696,11 @@ proto.server.Move.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.server.Move} message
+ * @param {!proto.server2.Move} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.Move.serializeBinaryToWriter = function(message, writer) {
+proto.server2.Move.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getMover();
   if (f !== 0.0) {
@@ -4370,18 +5721,18 @@ proto.server.Move.serializeBinaryToWriter = function(message, writer) {
 
 /**
  * optional Mover mover = 1;
- * @return {!proto.server.Mover}
+ * @return {!proto.server2.Mover}
  */
-proto.server.Move.prototype.getMover = function() {
-  return /** @type {!proto.server.Mover} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+proto.server2.Move.prototype.getMover = function() {
+  return /** @type {!proto.server2.Mover} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /**
- * @param {!proto.server.Mover} value
- * @return {!proto.server.Move} returns this
+ * @param {!proto.server2.Mover} value
+ * @return {!proto.server2.Move} returns this
  */
-proto.server.Move.prototype.setMover = function(value) {
+proto.server2.Move.prototype.setMover = function(value) {
   return jspb.Message.setProto3EnumField(this, 1, value);
 };
 
@@ -4390,16 +5741,16 @@ proto.server.Move.prototype.setMover = function(value) {
  * optional int32 position = 2;
  * @return {number}
  */
-proto.server.Move.prototype.getPosition = function() {
+proto.server2.Move.prototype.getPosition = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
 /**
  * @param {number} value
- * @return {!proto.server.Move} returns this
+ * @return {!proto.server2.Move} returns this
  */
-proto.server.Move.prototype.setPosition = function(value) {
+proto.server2.Move.prototype.setPosition = function(value) {
   return jspb.Message.setProto3IntField(this, 2, value);
 };
 
@@ -4420,8 +5771,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.server.MoveUpdate.prototype.toObject = function(opt_includeInstance) {
-  return proto.server.MoveUpdate.toObject(opt_includeInstance, this);
+proto.server2.MoveUpdate.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.MoveUpdate.toObject(opt_includeInstance, this);
 };
 
 
@@ -4430,13 +5781,13 @@ proto.server.MoveUpdate.prototype.toObject = function(opt_includeInstance) {
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.server.MoveUpdate} msg The msg instance to transform.
+ * @param {!proto.server2.MoveUpdate} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.MoveUpdate.toObject = function(includeInstance, msg) {
+proto.server2.MoveUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
-move: (f = msg.getMove()) && proto.server.Move.toObject(includeInstance, f)
+move: (f = msg.getMove()) && proto.server2.Move.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -4450,23 +5801,23 @@ move: (f = msg.getMove()) && proto.server.Move.toObject(includeInstance, f)
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.server.MoveUpdate}
+ * @return {!proto.server2.MoveUpdate}
  */
-proto.server.MoveUpdate.deserializeBinary = function(bytes) {
+proto.server2.MoveUpdate.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.server.MoveUpdate;
-  return proto.server.MoveUpdate.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.server2.MoveUpdate;
+  return proto.server2.MoveUpdate.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.server.MoveUpdate} msg The message object to deserialize into.
+ * @param {!proto.server2.MoveUpdate} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.server.MoveUpdate}
+ * @return {!proto.server2.MoveUpdate}
  */
-proto.server.MoveUpdate.deserializeBinaryFromReader = function(msg, reader) {
+proto.server2.MoveUpdate.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -4474,8 +5825,8 @@ proto.server.MoveUpdate.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new proto.server.Move;
-      reader.readMessage(value,proto.server.Move.deserializeBinaryFromReader);
+      var value = new proto.server2.Move;
+      reader.readMessage(value,proto.server2.Move.deserializeBinaryFromReader);
       msg.setMove(value);
       break;
     default:
@@ -4491,9 +5842,9 @@ proto.server.MoveUpdate.deserializeBinaryFromReader = function(msg, reader) {
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.server.MoveUpdate.prototype.serializeBinary = function() {
+proto.server2.MoveUpdate.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.server.MoveUpdate.serializeBinaryToWriter(this, writer);
+  proto.server2.MoveUpdate.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -4501,18 +5852,18 @@ proto.server.MoveUpdate.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.server.MoveUpdate} message
+ * @param {!proto.server2.MoveUpdate} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.MoveUpdate.serializeBinaryToWriter = function(message, writer) {
+proto.server2.MoveUpdate.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getMove();
   if (f != null) {
     writer.writeMessage(
       1,
       f,
-      proto.server.Move.serializeBinaryToWriter
+      proto.server2.Move.serializeBinaryToWriter
     );
   }
 };
@@ -4520,28 +5871,28 @@ proto.server.MoveUpdate.serializeBinaryToWriter = function(message, writer) {
 
 /**
  * optional Move move = 1;
- * @return {?proto.server.Move}
+ * @return {?proto.server2.Move}
  */
-proto.server.MoveUpdate.prototype.getMove = function() {
-  return /** @type{?proto.server.Move} */ (
-    jspb.Message.getWrapperField(this, proto.server.Move, 1));
+proto.server2.MoveUpdate.prototype.getMove = function() {
+  return /** @type{?proto.server2.Move} */ (
+    jspb.Message.getWrapperField(this, proto.server2.Move, 1));
 };
 
 
 /**
- * @param {?proto.server.Move|undefined} value
- * @return {!proto.server.MoveUpdate} returns this
+ * @param {?proto.server2.Move|undefined} value
+ * @return {!proto.server2.MoveUpdate} returns this
 */
-proto.server.MoveUpdate.prototype.setMove = function(value) {
+proto.server2.MoveUpdate.prototype.setMove = function(value) {
   return jspb.Message.setWrapperField(this, 1, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.server.MoveUpdate} returns this
+ * @return {!proto.server2.MoveUpdate} returns this
  */
-proto.server.MoveUpdate.prototype.clearMove = function() {
+proto.server2.MoveUpdate.prototype.clearMove = function() {
   return this.setMove(undefined);
 };
 
@@ -4550,7 +5901,7 @@ proto.server.MoveUpdate.prototype.clearMove = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.server.MoveUpdate.prototype.hasMove = function() {
+proto.server2.MoveUpdate.prototype.hasMove = function() {
   return jspb.Message.getField(this, 1) != null;
 };
 
@@ -4571,8 +5922,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.server.NextMoverUpdate.prototype.toObject = function(opt_includeInstance) {
-  return proto.server.NextMoverUpdate.toObject(opt_includeInstance, this);
+proto.server2.NextMoverUpdate.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.NextMoverUpdate.toObject(opt_includeInstance, this);
 };
 
 
@@ -4581,11 +5932,11 @@ proto.server.NextMoverUpdate.prototype.toObject = function(opt_includeInstance) 
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.server.NextMoverUpdate} msg The msg instance to transform.
+ * @param {!proto.server2.NextMoverUpdate} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.NextMoverUpdate.toObject = function(includeInstance, msg) {
+proto.server2.NextMoverUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
 mover: jspb.Message.getFieldWithDefault(msg, 1, 0)
   };
@@ -4601,23 +5952,23 @@ mover: jspb.Message.getFieldWithDefault(msg, 1, 0)
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.server.NextMoverUpdate}
+ * @return {!proto.server2.NextMoverUpdate}
  */
-proto.server.NextMoverUpdate.deserializeBinary = function(bytes) {
+proto.server2.NextMoverUpdate.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.server.NextMoverUpdate;
-  return proto.server.NextMoverUpdate.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.server2.NextMoverUpdate;
+  return proto.server2.NextMoverUpdate.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.server.NextMoverUpdate} msg The message object to deserialize into.
+ * @param {!proto.server2.NextMoverUpdate} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.server.NextMoverUpdate}
+ * @return {!proto.server2.NextMoverUpdate}
  */
-proto.server.NextMoverUpdate.deserializeBinaryFromReader = function(msg, reader) {
+proto.server2.NextMoverUpdate.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -4625,7 +5976,7 @@ proto.server.NextMoverUpdate.deserializeBinaryFromReader = function(msg, reader)
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {!proto.server.Mover} */ (reader.readEnum());
+      var value = /** @type {!proto.server2.Mover} */ (reader.readEnum());
       msg.setMover(value);
       break;
     default:
@@ -4641,9 +5992,9 @@ proto.server.NextMoverUpdate.deserializeBinaryFromReader = function(msg, reader)
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.server.NextMoverUpdate.prototype.serializeBinary = function() {
+proto.server2.NextMoverUpdate.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.server.NextMoverUpdate.serializeBinaryToWriter(this, writer);
+  proto.server2.NextMoverUpdate.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -4651,11 +6002,11 @@ proto.server.NextMoverUpdate.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.server.NextMoverUpdate} message
+ * @param {!proto.server2.NextMoverUpdate} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.NextMoverUpdate.serializeBinaryToWriter = function(message, writer) {
+proto.server2.NextMoverUpdate.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getMover();
   if (f !== 0.0) {
@@ -4669,18 +6020,18 @@ proto.server.NextMoverUpdate.serializeBinaryToWriter = function(message, writer)
 
 /**
  * optional Mover mover = 1;
- * @return {!proto.server.Mover}
+ * @return {!proto.server2.Mover}
  */
-proto.server.NextMoverUpdate.prototype.getMover = function() {
-  return /** @type {!proto.server.Mover} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+proto.server2.NextMoverUpdate.prototype.getMover = function() {
+  return /** @type {!proto.server2.Mover} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /**
- * @param {!proto.server.Mover} value
- * @return {!proto.server.NextMoverUpdate} returns this
+ * @param {!proto.server2.Mover} value
+ * @return {!proto.server2.NextMoverUpdate} returns this
  */
-proto.server.NextMoverUpdate.prototype.setMover = function(value) {
+proto.server2.NextMoverUpdate.prototype.setMover = function(value) {
   return jspb.Message.setProto3EnumField(this, 1, value);
 };
 
@@ -4701,8 +6052,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.server.MakeMoveRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.server.MakeMoveRequest.toObject(opt_includeInstance, this);
+proto.server2.MakeMoveRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.MakeMoveRequest.toObject(opt_includeInstance, this);
 };
 
 
@@ -4711,11 +6062,11 @@ proto.server.MakeMoveRequest.prototype.toObject = function(opt_includeInstance) 
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.server.MakeMoveRequest} msg The msg instance to transform.
+ * @param {!proto.server2.MakeMoveRequest} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.MakeMoveRequest.toObject = function(includeInstance, msg) {
+proto.server2.MakeMoveRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
 position: jspb.Message.getFieldWithDefault(msg, 1, 0)
   };
@@ -4731,23 +6082,23 @@ position: jspb.Message.getFieldWithDefault(msg, 1, 0)
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.server.MakeMoveRequest}
+ * @return {!proto.server2.MakeMoveRequest}
  */
-proto.server.MakeMoveRequest.deserializeBinary = function(bytes) {
+proto.server2.MakeMoveRequest.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.server.MakeMoveRequest;
-  return proto.server.MakeMoveRequest.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.server2.MakeMoveRequest;
+  return proto.server2.MakeMoveRequest.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.server.MakeMoveRequest} msg The message object to deserialize into.
+ * @param {!proto.server2.MakeMoveRequest} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.server.MakeMoveRequest}
+ * @return {!proto.server2.MakeMoveRequest}
  */
-proto.server.MakeMoveRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.server2.MakeMoveRequest.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -4771,9 +6122,9 @@ proto.server.MakeMoveRequest.deserializeBinaryFromReader = function(msg, reader)
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.server.MakeMoveRequest.prototype.serializeBinary = function() {
+proto.server2.MakeMoveRequest.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.server.MakeMoveRequest.serializeBinaryToWriter(this, writer);
+  proto.server2.MakeMoveRequest.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -4781,11 +6132,11 @@ proto.server.MakeMoveRequest.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.server.MakeMoveRequest} message
+ * @param {!proto.server2.MakeMoveRequest} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.MakeMoveRequest.serializeBinaryToWriter = function(message, writer) {
+proto.server2.MakeMoveRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getPosition();
   if (f !== 0) {
@@ -4801,16 +6152,16 @@ proto.server.MakeMoveRequest.serializeBinaryToWriter = function(message, writer)
  * optional int32 position = 1;
  * @return {number}
  */
-proto.server.MakeMoveRequest.prototype.getPosition = function() {
+proto.server2.MakeMoveRequest.prototype.getPosition = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /**
  * @param {number} value
- * @return {!proto.server.MakeMoveRequest} returns this
+ * @return {!proto.server2.MakeMoveRequest} returns this
  */
-proto.server.MakeMoveRequest.prototype.setPosition = function(value) {
+proto.server2.MakeMoveRequest.prototype.setPosition = function(value) {
   return jspb.Message.setProto3IntField(this, 1, value);
 };
 
@@ -4831,8 +6182,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.server.MakeMoveReply.prototype.toObject = function(opt_includeInstance) {
-  return proto.server.MakeMoveReply.toObject(opt_includeInstance, this);
+proto.server2.MakeMoveReply.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.MakeMoveReply.toObject(opt_includeInstance, this);
 };
 
 
@@ -4841,13 +6192,13 @@ proto.server.MakeMoveReply.prototype.toObject = function(opt_includeInstance) {
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.server.MakeMoveReply} msg The msg instance to transform.
+ * @param {!proto.server2.MakeMoveReply} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.MakeMoveReply.toObject = function(includeInstance, msg) {
+proto.server2.MakeMoveReply.toObject = function(includeInstance, msg) {
   var f, obj = {
-outcome: (f = msg.getOutcome()) && proto.server.Outcome.toObject(includeInstance, f)
+outcome: (f = msg.getOutcome()) && proto.server2.Outcome.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -4861,23 +6212,23 @@ outcome: (f = msg.getOutcome()) && proto.server.Outcome.toObject(includeInstance
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.server.MakeMoveReply}
+ * @return {!proto.server2.MakeMoveReply}
  */
-proto.server.MakeMoveReply.deserializeBinary = function(bytes) {
+proto.server2.MakeMoveReply.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.server.MakeMoveReply;
-  return proto.server.MakeMoveReply.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.server2.MakeMoveReply;
+  return proto.server2.MakeMoveReply.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.server.MakeMoveReply} msg The message object to deserialize into.
+ * @param {!proto.server2.MakeMoveReply} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.server.MakeMoveReply}
+ * @return {!proto.server2.MakeMoveReply}
  */
-proto.server.MakeMoveReply.deserializeBinaryFromReader = function(msg, reader) {
+proto.server2.MakeMoveReply.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -4885,8 +6236,8 @@ proto.server.MakeMoveReply.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new proto.server.Outcome;
-      reader.readMessage(value,proto.server.Outcome.deserializeBinaryFromReader);
+      var value = new proto.server2.Outcome;
+      reader.readMessage(value,proto.server2.Outcome.deserializeBinaryFromReader);
       msg.setOutcome(value);
       break;
     default:
@@ -4902,9 +6253,9 @@ proto.server.MakeMoveReply.deserializeBinaryFromReader = function(msg, reader) {
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.server.MakeMoveReply.prototype.serializeBinary = function() {
+proto.server2.MakeMoveReply.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.server.MakeMoveReply.serializeBinaryToWriter(this, writer);
+  proto.server2.MakeMoveReply.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -4912,18 +6263,18 @@ proto.server.MakeMoveReply.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.server.MakeMoveReply} message
+ * @param {!proto.server2.MakeMoveReply} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.MakeMoveReply.serializeBinaryToWriter = function(message, writer) {
+proto.server2.MakeMoveReply.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getOutcome();
   if (f != null) {
     writer.writeMessage(
       1,
       f,
-      proto.server.Outcome.serializeBinaryToWriter
+      proto.server2.Outcome.serializeBinaryToWriter
     );
   }
 };
@@ -4931,28 +6282,28 @@ proto.server.MakeMoveReply.serializeBinaryToWriter = function(message, writer) {
 
 /**
  * optional Outcome outcome = 1;
- * @return {?proto.server.Outcome}
+ * @return {?proto.server2.Outcome}
  */
-proto.server.MakeMoveReply.prototype.getOutcome = function() {
-  return /** @type{?proto.server.Outcome} */ (
-    jspb.Message.getWrapperField(this, proto.server.Outcome, 1));
+proto.server2.MakeMoveReply.prototype.getOutcome = function() {
+  return /** @type{?proto.server2.Outcome} */ (
+    jspb.Message.getWrapperField(this, proto.server2.Outcome, 1));
 };
 
 
 /**
- * @param {?proto.server.Outcome|undefined} value
- * @return {!proto.server.MakeMoveReply} returns this
+ * @param {?proto.server2.Outcome|undefined} value
+ * @return {!proto.server2.MakeMoveReply} returns this
 */
-proto.server.MakeMoveReply.prototype.setOutcome = function(value) {
+proto.server2.MakeMoveReply.prototype.setOutcome = function(value) {
   return jspb.Message.setWrapperField(this, 1, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.server.MakeMoveReply} returns this
+ * @return {!proto.server2.MakeMoveReply} returns this
  */
-proto.server.MakeMoveReply.prototype.clearOutcome = function() {
+proto.server2.MakeMoveReply.prototype.clearOutcome = function() {
   return this.setOutcome(undefined);
 };
 
@@ -4961,7 +6312,7 @@ proto.server.MakeMoveReply.prototype.clearOutcome = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.server.MakeMoveReply.prototype.hasOutcome = function() {
+proto.server2.MakeMoveReply.prototype.hasOutcome = function() {
   return jspb.Message.getField(this, 1) != null;
 };
 
@@ -4982,8 +6333,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.server.CreateLobbyRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.server.CreateLobbyRequest.toObject(opt_includeInstance, this);
+proto.server2.CreateLobbyRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.CreateLobbyRequest.toObject(opt_includeInstance, this);
 };
 
 
@@ -4992,11 +6343,11 @@ proto.server.CreateLobbyRequest.prototype.toObject = function(opt_includeInstanc
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.server.CreateLobbyRequest} msg The msg instance to transform.
+ * @param {!proto.server2.CreateLobbyRequest} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.CreateLobbyRequest.toObject = function(includeInstance, msg) {
+proto.server2.CreateLobbyRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
 name: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
@@ -5012,23 +6363,23 @@ name: jspb.Message.getFieldWithDefault(msg, 1, "")
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.server.CreateLobbyRequest}
+ * @return {!proto.server2.CreateLobbyRequest}
  */
-proto.server.CreateLobbyRequest.deserializeBinary = function(bytes) {
+proto.server2.CreateLobbyRequest.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.server.CreateLobbyRequest;
-  return proto.server.CreateLobbyRequest.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.server2.CreateLobbyRequest;
+  return proto.server2.CreateLobbyRequest.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.server.CreateLobbyRequest} msg The message object to deserialize into.
+ * @param {!proto.server2.CreateLobbyRequest} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.server.CreateLobbyRequest}
+ * @return {!proto.server2.CreateLobbyRequest}
  */
-proto.server.CreateLobbyRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.server2.CreateLobbyRequest.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -5052,9 +6403,9 @@ proto.server.CreateLobbyRequest.deserializeBinaryFromReader = function(msg, read
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.server.CreateLobbyRequest.prototype.serializeBinary = function() {
+proto.server2.CreateLobbyRequest.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.server.CreateLobbyRequest.serializeBinaryToWriter(this, writer);
+  proto.server2.CreateLobbyRequest.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -5062,11 +6413,11 @@ proto.server.CreateLobbyRequest.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.server.CreateLobbyRequest} message
+ * @param {!proto.server2.CreateLobbyRequest} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.CreateLobbyRequest.serializeBinaryToWriter = function(message, writer) {
+proto.server2.CreateLobbyRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getName();
   if (f.length > 0) {
@@ -5082,16 +6433,16 @@ proto.server.CreateLobbyRequest.serializeBinaryToWriter = function(message, writ
  * optional string name = 1;
  * @return {string}
  */
-proto.server.CreateLobbyRequest.prototype.getName = function() {
+proto.server2.CreateLobbyRequest.prototype.getName = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
  * @param {string} value
- * @return {!proto.server.CreateLobbyRequest} returns this
+ * @return {!proto.server2.CreateLobbyRequest} returns this
  */
-proto.server.CreateLobbyRequest.prototype.setName = function(value) {
+proto.server2.CreateLobbyRequest.prototype.setName = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
@@ -5112,8 +6463,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.server.CreateLobbyReply.prototype.toObject = function(opt_includeInstance) {
-  return proto.server.CreateLobbyReply.toObject(opt_includeInstance, this);
+proto.server2.CreateGameRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.CreateGameRequest.toObject(opt_includeInstance, this);
 };
 
 
@@ -5122,162 +6473,11 @@ proto.server.CreateLobbyReply.prototype.toObject = function(opt_includeInstance)
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.server.CreateLobbyReply} msg The msg instance to transform.
+ * @param {!proto.server2.CreateGameRequest} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.CreateLobbyReply.toObject = function(includeInstance, msg) {
-  var f, obj = {
-outcome: (f = msg.getOutcome()) && proto.server.Outcome.toObject(includeInstance, f)
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.server.CreateLobbyReply}
- */
-proto.server.CreateLobbyReply.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.server.CreateLobbyReply;
-  return proto.server.CreateLobbyReply.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.server.CreateLobbyReply} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.server.CreateLobbyReply}
- */
-proto.server.CreateLobbyReply.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = new proto.server.Outcome;
-      reader.readMessage(value,proto.server.Outcome.deserializeBinaryFromReader);
-      msg.setOutcome(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.server.CreateLobbyReply.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.server.CreateLobbyReply.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.server.CreateLobbyReply} message
- * @param {!jspb.BinaryWriter} writer
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.server.CreateLobbyReply.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getOutcome();
-  if (f != null) {
-    writer.writeMessage(
-      1,
-      f,
-      proto.server.Outcome.serializeBinaryToWriter
-    );
-  }
-};
-
-
-/**
- * optional Outcome outcome = 1;
- * @return {?proto.server.Outcome}
- */
-proto.server.CreateLobbyReply.prototype.getOutcome = function() {
-  return /** @type{?proto.server.Outcome} */ (
-    jspb.Message.getWrapperField(this, proto.server.Outcome, 1));
-};
-
-
-/**
- * @param {?proto.server.Outcome|undefined} value
- * @return {!proto.server.CreateLobbyReply} returns this
-*/
-proto.server.CreateLobbyReply.prototype.setOutcome = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.server.CreateLobbyReply} returns this
- */
-proto.server.CreateLobbyReply.prototype.clearOutcome = function() {
-  return this.setOutcome(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.server.CreateLobbyReply.prototype.hasOutcome = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.server.CreateGameRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.server.CreateGameRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.server.CreateGameRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.server.CreateGameRequest.toObject = function(includeInstance, msg) {
+proto.server2.CreateGameRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
 player1Id: jspb.Message.getFieldWithDefault(msg, 1, ""),
 player2Id: jspb.Message.getFieldWithDefault(msg, 2, "")
@@ -5294,23 +6494,23 @@ player2Id: jspb.Message.getFieldWithDefault(msg, 2, "")
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.server.CreateGameRequest}
+ * @return {!proto.server2.CreateGameRequest}
  */
-proto.server.CreateGameRequest.deserializeBinary = function(bytes) {
+proto.server2.CreateGameRequest.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.server.CreateGameRequest;
-  return proto.server.CreateGameRequest.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.server2.CreateGameRequest;
+  return proto.server2.CreateGameRequest.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.server.CreateGameRequest} msg The message object to deserialize into.
+ * @param {!proto.server2.CreateGameRequest} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.server.CreateGameRequest}
+ * @return {!proto.server2.CreateGameRequest}
  */
-proto.server.CreateGameRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.server2.CreateGameRequest.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -5338,9 +6538,9 @@ proto.server.CreateGameRequest.deserializeBinaryFromReader = function(msg, reade
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.server.CreateGameRequest.prototype.serializeBinary = function() {
+proto.server2.CreateGameRequest.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.server.CreateGameRequest.serializeBinaryToWriter(this, writer);
+  proto.server2.CreateGameRequest.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -5348,11 +6548,11 @@ proto.server.CreateGameRequest.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.server.CreateGameRequest} message
+ * @param {!proto.server2.CreateGameRequest} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.CreateGameRequest.serializeBinaryToWriter = function(message, writer) {
+proto.server2.CreateGameRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getPlayer1Id();
   if (f.length > 0) {
@@ -5375,16 +6575,16 @@ proto.server.CreateGameRequest.serializeBinaryToWriter = function(message, write
  * optional string player1_id = 1;
  * @return {string}
  */
-proto.server.CreateGameRequest.prototype.getPlayer1Id = function() {
+proto.server2.CreateGameRequest.prototype.getPlayer1Id = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
  * @param {string} value
- * @return {!proto.server.CreateGameRequest} returns this
+ * @return {!proto.server2.CreateGameRequest} returns this
  */
-proto.server.CreateGameRequest.prototype.setPlayer1Id = function(value) {
+proto.server2.CreateGameRequest.prototype.setPlayer1Id = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
@@ -5393,16 +6593,16 @@ proto.server.CreateGameRequest.prototype.setPlayer1Id = function(value) {
  * optional string player2_id = 2;
  * @return {string}
  */
-proto.server.CreateGameRequest.prototype.getPlayer2Id = function() {
+proto.server2.CreateGameRequest.prototype.getPlayer2Id = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /**
  * @param {string} value
- * @return {!proto.server.CreateGameRequest} returns this
+ * @return {!proto.server2.CreateGameRequest} returns this
  */
-proto.server.CreateGameRequest.prototype.setPlayer2Id = function(value) {
+proto.server2.CreateGameRequest.prototype.setPlayer2Id = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
 
@@ -5423,8 +6623,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.server.CreateGameReply.prototype.toObject = function(opt_includeInstance) {
-  return proto.server.CreateGameReply.toObject(opt_includeInstance, this);
+proto.server2.CreateGameReply.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.CreateGameReply.toObject(opt_includeInstance, this);
 };
 
 
@@ -5433,13 +6633,13 @@ proto.server.CreateGameReply.prototype.toObject = function(opt_includeInstance) 
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.server.CreateGameReply} msg The msg instance to transform.
+ * @param {!proto.server2.CreateGameReply} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.CreateGameReply.toObject = function(includeInstance, msg) {
+proto.server2.CreateGameReply.toObject = function(includeInstance, msg) {
   var f, obj = {
-outcome: (f = msg.getOutcome()) && proto.server.Outcome.toObject(includeInstance, f)
+outcome: (f = msg.getOutcome()) && proto.server2.Outcome.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -5453,23 +6653,23 @@ outcome: (f = msg.getOutcome()) && proto.server.Outcome.toObject(includeInstance
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.server.CreateGameReply}
+ * @return {!proto.server2.CreateGameReply}
  */
-proto.server.CreateGameReply.deserializeBinary = function(bytes) {
+proto.server2.CreateGameReply.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.server.CreateGameReply;
-  return proto.server.CreateGameReply.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.server2.CreateGameReply;
+  return proto.server2.CreateGameReply.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.server.CreateGameReply} msg The message object to deserialize into.
+ * @param {!proto.server2.CreateGameReply} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.server.CreateGameReply}
+ * @return {!proto.server2.CreateGameReply}
  */
-proto.server.CreateGameReply.deserializeBinaryFromReader = function(msg, reader) {
+proto.server2.CreateGameReply.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -5477,8 +6677,8 @@ proto.server.CreateGameReply.deserializeBinaryFromReader = function(msg, reader)
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new proto.server.Outcome;
-      reader.readMessage(value,proto.server.Outcome.deserializeBinaryFromReader);
+      var value = new proto.server2.Outcome;
+      reader.readMessage(value,proto.server2.Outcome.deserializeBinaryFromReader);
       msg.setOutcome(value);
       break;
     default:
@@ -5494,9 +6694,9 @@ proto.server.CreateGameReply.deserializeBinaryFromReader = function(msg, reader)
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.server.CreateGameReply.prototype.serializeBinary = function() {
+proto.server2.CreateGameReply.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.server.CreateGameReply.serializeBinaryToWriter(this, writer);
+  proto.server2.CreateGameReply.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -5504,18 +6704,18 @@ proto.server.CreateGameReply.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.server.CreateGameReply} message
+ * @param {!proto.server2.CreateGameReply} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.CreateGameReply.serializeBinaryToWriter = function(message, writer) {
+proto.server2.CreateGameReply.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getOutcome();
   if (f != null) {
     writer.writeMessage(
       1,
       f,
-      proto.server.Outcome.serializeBinaryToWriter
+      proto.server2.Outcome.serializeBinaryToWriter
     );
   }
 };
@@ -5523,28 +6723,28 @@ proto.server.CreateGameReply.serializeBinaryToWriter = function(message, writer)
 
 /**
  * optional Outcome outcome = 1;
- * @return {?proto.server.Outcome}
+ * @return {?proto.server2.Outcome}
  */
-proto.server.CreateGameReply.prototype.getOutcome = function() {
-  return /** @type{?proto.server.Outcome} */ (
-    jspb.Message.getWrapperField(this, proto.server.Outcome, 1));
+proto.server2.CreateGameReply.prototype.getOutcome = function() {
+  return /** @type{?proto.server2.Outcome} */ (
+    jspb.Message.getWrapperField(this, proto.server2.Outcome, 1));
 };
 
 
 /**
- * @param {?proto.server.Outcome|undefined} value
- * @return {!proto.server.CreateGameReply} returns this
+ * @param {?proto.server2.Outcome|undefined} value
+ * @return {!proto.server2.CreateGameReply} returns this
 */
-proto.server.CreateGameReply.prototype.setOutcome = function(value) {
+proto.server2.CreateGameReply.prototype.setOutcome = function(value) {
   return jspb.Message.setWrapperField(this, 1, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.server.CreateGameReply} returns this
+ * @return {!proto.server2.CreateGameReply} returns this
  */
-proto.server.CreateGameReply.prototype.clearOutcome = function() {
+proto.server2.CreateGameReply.prototype.clearOutcome = function() {
   return this.setOutcome(undefined);
 };
 
@@ -5553,7 +6753,7 @@ proto.server.CreateGameReply.prototype.clearOutcome = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.server.CreateGameReply.prototype.hasOutcome = function() {
+proto.server2.CreateGameReply.prototype.hasOutcome = function() {
   return jspb.Message.getField(this, 1) != null;
 };
 
@@ -5574,8 +6774,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.server.WinnerUpdate.prototype.toObject = function(opt_includeInstance) {
-  return proto.server.WinnerUpdate.toObject(opt_includeInstance, this);
+proto.server2.WinnerUpdate.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.WinnerUpdate.toObject(opt_includeInstance, this);
 };
 
 
@@ -5584,11 +6784,11 @@ proto.server.WinnerUpdate.prototype.toObject = function(opt_includeInstance) {
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.server.WinnerUpdate} msg The msg instance to transform.
+ * @param {!proto.server2.WinnerUpdate} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.WinnerUpdate.toObject = function(includeInstance, msg) {
+proto.server2.WinnerUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
 winner: jspb.Message.getFieldWithDefault(msg, 1, 0),
 mover: jspb.Message.getFieldWithDefault(msg, 2, 0)
@@ -5605,23 +6805,23 @@ mover: jspb.Message.getFieldWithDefault(msg, 2, 0)
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.server.WinnerUpdate}
+ * @return {!proto.server2.WinnerUpdate}
  */
-proto.server.WinnerUpdate.deserializeBinary = function(bytes) {
+proto.server2.WinnerUpdate.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.server.WinnerUpdate;
-  return proto.server.WinnerUpdate.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.server2.WinnerUpdate;
+  return proto.server2.WinnerUpdate.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.server.WinnerUpdate} msg The message object to deserialize into.
+ * @param {!proto.server2.WinnerUpdate} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.server.WinnerUpdate}
+ * @return {!proto.server2.WinnerUpdate}
  */
-proto.server.WinnerUpdate.deserializeBinaryFromReader = function(msg, reader) {
+proto.server2.WinnerUpdate.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -5629,11 +6829,11 @@ proto.server.WinnerUpdate.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {!proto.server.Winner} */ (reader.readEnum());
+      var value = /** @type {!proto.server2.Winner} */ (reader.readEnum());
       msg.setWinner(value);
       break;
     case 2:
-      var value = /** @type {!proto.server.Mover} */ (reader.readEnum());
+      var value = /** @type {!proto.server2.Mover} */ (reader.readEnum());
       msg.setMover(value);
       break;
     default:
@@ -5649,9 +6849,9 @@ proto.server.WinnerUpdate.deserializeBinaryFromReader = function(msg, reader) {
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.server.WinnerUpdate.prototype.serializeBinary = function() {
+proto.server2.WinnerUpdate.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.server.WinnerUpdate.serializeBinaryToWriter(this, writer);
+  proto.server2.WinnerUpdate.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -5659,11 +6859,11 @@ proto.server.WinnerUpdate.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.server.WinnerUpdate} message
+ * @param {!proto.server2.WinnerUpdate} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.WinnerUpdate.serializeBinaryToWriter = function(message, writer) {
+proto.server2.WinnerUpdate.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getWinner();
   if (f !== 0.0) {
@@ -5684,36 +6884,36 @@ proto.server.WinnerUpdate.serializeBinaryToWriter = function(message, writer) {
 
 /**
  * optional Winner winner = 1;
- * @return {!proto.server.Winner}
+ * @return {!proto.server2.Winner}
  */
-proto.server.WinnerUpdate.prototype.getWinner = function() {
-  return /** @type {!proto.server.Winner} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+proto.server2.WinnerUpdate.prototype.getWinner = function() {
+  return /** @type {!proto.server2.Winner} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /**
- * @param {!proto.server.Winner} value
- * @return {!proto.server.WinnerUpdate} returns this
+ * @param {!proto.server2.Winner} value
+ * @return {!proto.server2.WinnerUpdate} returns this
  */
-proto.server.WinnerUpdate.prototype.setWinner = function(value) {
+proto.server2.WinnerUpdate.prototype.setWinner = function(value) {
   return jspb.Message.setProto3EnumField(this, 1, value);
 };
 
 
 /**
  * optional Mover mover = 2;
- * @return {!proto.server.Mover}
+ * @return {!proto.server2.Mover}
  */
-proto.server.WinnerUpdate.prototype.getMover = function() {
-  return /** @type {!proto.server.Mover} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+proto.server2.WinnerUpdate.prototype.getMover = function() {
+  return /** @type {!proto.server2.Mover} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
 /**
- * @param {!proto.server.Mover} value
- * @return {!proto.server.WinnerUpdate} returns this
+ * @param {!proto.server2.Mover} value
+ * @return {!proto.server2.WinnerUpdate} returns this
  */
-proto.server.WinnerUpdate.prototype.setMover = function(value) {
+proto.server2.WinnerUpdate.prototype.setMover = function(value) {
   return jspb.Message.setProto3EnumField(this, 2, value);
 };
 
@@ -5734,8 +6934,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.server.DrawUpdate.prototype.toObject = function(opt_includeInstance) {
-  return proto.server.DrawUpdate.toObject(opt_includeInstance, this);
+proto.server2.DrawUpdate.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.DrawUpdate.toObject(opt_includeInstance, this);
 };
 
 
@@ -5744,11 +6944,11 @@ proto.server.DrawUpdate.prototype.toObject = function(opt_includeInstance) {
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.server.DrawUpdate} msg The msg instance to transform.
+ * @param {!proto.server2.DrawUpdate} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.DrawUpdate.toObject = function(includeInstance, msg) {
+proto.server2.DrawUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
 
   };
@@ -5764,23 +6964,23 @@ proto.server.DrawUpdate.toObject = function(includeInstance, msg) {
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.server.DrawUpdate}
+ * @return {!proto.server2.DrawUpdate}
  */
-proto.server.DrawUpdate.deserializeBinary = function(bytes) {
+proto.server2.DrawUpdate.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.server.DrawUpdate;
-  return proto.server.DrawUpdate.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.server2.DrawUpdate;
+  return proto.server2.DrawUpdate.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.server.DrawUpdate} msg The message object to deserialize into.
+ * @param {!proto.server2.DrawUpdate} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.server.DrawUpdate}
+ * @return {!proto.server2.DrawUpdate}
  */
-proto.server.DrawUpdate.deserializeBinaryFromReader = function(msg, reader) {
+proto.server2.DrawUpdate.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -5800,9 +7000,9 @@ proto.server.DrawUpdate.deserializeBinaryFromReader = function(msg, reader) {
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.server.DrawUpdate.prototype.serializeBinary = function() {
+proto.server2.DrawUpdate.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.server.DrawUpdate.serializeBinaryToWriter(this, writer);
+  proto.server2.DrawUpdate.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -5810,11 +7010,11 @@ proto.server.DrawUpdate.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.server.DrawUpdate} message
+ * @param {!proto.server2.DrawUpdate} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.DrawUpdate.serializeBinaryToWriter = function(message, writer) {
+proto.server2.DrawUpdate.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
 };
 
@@ -5835,8 +7035,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.server.GameStartUpdate.prototype.toObject = function(opt_includeInstance) {
-  return proto.server.GameStartUpdate.toObject(opt_includeInstance, this);
+proto.server2.GameStartUpdate.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.GameStartUpdate.toObject(opt_includeInstance, this);
 };
 
 
@@ -5845,11 +7045,11 @@ proto.server.GameStartUpdate.prototype.toObject = function(opt_includeInstance) 
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.server.GameStartUpdate} msg The msg instance to transform.
+ * @param {!proto.server2.GameStartUpdate} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.GameStartUpdate.toObject = function(includeInstance, msg) {
+proto.server2.GameStartUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
 you: jspb.Message.getFieldWithDefault(msg, 1, 0),
 other: jspb.Message.getFieldWithDefault(msg, 2, 0)
@@ -5866,23 +7066,23 @@ other: jspb.Message.getFieldWithDefault(msg, 2, 0)
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.server.GameStartUpdate}
+ * @return {!proto.server2.GameStartUpdate}
  */
-proto.server.GameStartUpdate.deserializeBinary = function(bytes) {
+proto.server2.GameStartUpdate.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.server.GameStartUpdate;
-  return proto.server.GameStartUpdate.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.server2.GameStartUpdate;
+  return proto.server2.GameStartUpdate.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.server.GameStartUpdate} msg The message object to deserialize into.
+ * @param {!proto.server2.GameStartUpdate} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.server.GameStartUpdate}
+ * @return {!proto.server2.GameStartUpdate}
  */
-proto.server.GameStartUpdate.deserializeBinaryFromReader = function(msg, reader) {
+proto.server2.GameStartUpdate.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -5890,11 +7090,11 @@ proto.server.GameStartUpdate.deserializeBinaryFromReader = function(msg, reader)
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {!proto.server.Mover} */ (reader.readEnum());
+      var value = /** @type {!proto.server2.Mover} */ (reader.readEnum());
       msg.setYou(value);
       break;
     case 2:
-      var value = /** @type {!proto.server.Mover} */ (reader.readEnum());
+      var value = /** @type {!proto.server2.Mover} */ (reader.readEnum());
       msg.setOther(value);
       break;
     default:
@@ -5910,9 +7110,9 @@ proto.server.GameStartUpdate.deserializeBinaryFromReader = function(msg, reader)
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.server.GameStartUpdate.prototype.serializeBinary = function() {
+proto.server2.GameStartUpdate.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.server.GameStartUpdate.serializeBinaryToWriter(this, writer);
+  proto.server2.GameStartUpdate.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -5920,11 +7120,11 @@ proto.server.GameStartUpdate.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.server.GameStartUpdate} message
+ * @param {!proto.server2.GameStartUpdate} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.GameStartUpdate.serializeBinaryToWriter = function(message, writer) {
+proto.server2.GameStartUpdate.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getYou();
   if (f !== 0.0) {
@@ -5945,36 +7145,36 @@ proto.server.GameStartUpdate.serializeBinaryToWriter = function(message, writer)
 
 /**
  * optional Mover you = 1;
- * @return {!proto.server.Mover}
+ * @return {!proto.server2.Mover}
  */
-proto.server.GameStartUpdate.prototype.getYou = function() {
-  return /** @type {!proto.server.Mover} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+proto.server2.GameStartUpdate.prototype.getYou = function() {
+  return /** @type {!proto.server2.Mover} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
 /**
- * @param {!proto.server.Mover} value
- * @return {!proto.server.GameStartUpdate} returns this
+ * @param {!proto.server2.Mover} value
+ * @return {!proto.server2.GameStartUpdate} returns this
  */
-proto.server.GameStartUpdate.prototype.setYou = function(value) {
+proto.server2.GameStartUpdate.prototype.setYou = function(value) {
   return jspb.Message.setProto3EnumField(this, 1, value);
 };
 
 
 /**
  * optional Mover other = 2;
- * @return {!proto.server.Mover}
+ * @return {!proto.server2.Mover}
  */
-proto.server.GameStartUpdate.prototype.getOther = function() {
-  return /** @type {!proto.server.Mover} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+proto.server2.GameStartUpdate.prototype.getOther = function() {
+  return /** @type {!proto.server2.Mover} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
 /**
- * @param {!proto.server.Mover} value
- * @return {!proto.server.GameStartUpdate} returns this
+ * @param {!proto.server2.Mover} value
+ * @return {!proto.server2.GameStartUpdate} returns this
  */
-proto.server.GameStartUpdate.prototype.setOther = function(value) {
+proto.server2.GameStartUpdate.prototype.setOther = function(value) {
   return jspb.Message.setProto3EnumField(this, 2, value);
 };
 
@@ -5995,8 +7195,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.server.PlayerClientUpdate.prototype.toObject = function(opt_includeInstance) {
-  return proto.server.PlayerClientUpdate.toObject(opt_includeInstance, this);
+proto.server2.PlayerClientUpdate.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.PlayerClientUpdate.toObject(opt_includeInstance, this);
 };
 
 
@@ -6005,11 +7205,11 @@ proto.server.PlayerClientUpdate.prototype.toObject = function(opt_includeInstanc
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.server.PlayerClientUpdate} msg The msg instance to transform.
+ * @param {!proto.server2.PlayerClientUpdate} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.PlayerClientUpdate.toObject = function(includeInstance, msg) {
+proto.server2.PlayerClientUpdate.toObject = function(includeInstance, msg) {
   var f, obj = {
 message: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
@@ -6025,23 +7225,23 @@ message: jspb.Message.getFieldWithDefault(msg, 1, "")
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.server.PlayerClientUpdate}
+ * @return {!proto.server2.PlayerClientUpdate}
  */
-proto.server.PlayerClientUpdate.deserializeBinary = function(bytes) {
+proto.server2.PlayerClientUpdate.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.server.PlayerClientUpdate;
-  return proto.server.PlayerClientUpdate.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.server2.PlayerClientUpdate;
+  return proto.server2.PlayerClientUpdate.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.server.PlayerClientUpdate} msg The message object to deserialize into.
+ * @param {!proto.server2.PlayerClientUpdate} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.server.PlayerClientUpdate}
+ * @return {!proto.server2.PlayerClientUpdate}
  */
-proto.server.PlayerClientUpdate.deserializeBinaryFromReader = function(msg, reader) {
+proto.server2.PlayerClientUpdate.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -6065,9 +7265,9 @@ proto.server.PlayerClientUpdate.deserializeBinaryFromReader = function(msg, read
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.server.PlayerClientUpdate.prototype.serializeBinary = function() {
+proto.server2.PlayerClientUpdate.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.server.PlayerClientUpdate.serializeBinaryToWriter(this, writer);
+  proto.server2.PlayerClientUpdate.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -6075,11 +7275,11 @@ proto.server.PlayerClientUpdate.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.server.PlayerClientUpdate} message
+ * @param {!proto.server2.PlayerClientUpdate} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.server.PlayerClientUpdate.serializeBinaryToWriter = function(message, writer) {
+proto.server2.PlayerClientUpdate.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getMessage();
   if (f.length > 0) {
@@ -6095,16 +7295,146 @@ proto.server.PlayerClientUpdate.serializeBinaryToWriter = function(message, writ
  * optional string message = 1;
  * @return {string}
  */
-proto.server.PlayerClientUpdate.prototype.getMessage = function() {
+proto.server2.PlayerClientUpdate.prototype.getMessage = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
  * @param {string} value
- * @return {!proto.server.PlayerClientUpdate} returns this
+ * @return {!proto.server2.PlayerClientUpdate} returns this
  */
-proto.server.PlayerClientUpdate.prototype.setMessage = function(value) {
+proto.server2.PlayerClientUpdate.prototype.setMessage = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.server2.PlayerDisplayNameUpdate.prototype.toObject = function(opt_includeInstance) {
+  return proto.server2.PlayerDisplayNameUpdate.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.server2.PlayerDisplayNameUpdate} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.server2.PlayerDisplayNameUpdate.toObject = function(includeInstance, msg) {
+  var f, obj = {
+displayname: jspb.Message.getFieldWithDefault(msg, 1, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.server2.PlayerDisplayNameUpdate}
+ */
+proto.server2.PlayerDisplayNameUpdate.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.server2.PlayerDisplayNameUpdate;
+  return proto.server2.PlayerDisplayNameUpdate.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.server2.PlayerDisplayNameUpdate} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.server2.PlayerDisplayNameUpdate}
+ */
+proto.server2.PlayerDisplayNameUpdate.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDisplayname(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.server2.PlayerDisplayNameUpdate.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.server2.PlayerDisplayNameUpdate.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.server2.PlayerDisplayNameUpdate} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.server2.PlayerDisplayNameUpdate.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getDisplayname();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string displayName = 1;
+ * @return {string}
+ */
+proto.server2.PlayerDisplayNameUpdate.prototype.getDisplayname = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.server2.PlayerDisplayNameUpdate} returns this
+ */
+proto.server2.PlayerDisplayNameUpdate.prototype.setDisplayname = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
@@ -6112,8 +7442,8 @@ proto.server.PlayerClientUpdate.prototype.setMessage = function(value) {
 /**
  * @enum {number}
  */
-proto.server.NavigationPath = {
-  LOGIN: 0,
+proto.server2.NavigationPath = {
+  WELCOME: 0,
   HOME: 1,
   MY_LOBBY: 2,
   GAME: 3
@@ -6122,7 +7452,7 @@ proto.server.NavigationPath = {
 /**
  * @enum {number}
  */
-proto.server.Mover = {
+proto.server2.Mover = {
   UNSPECIFIED: 0,
   X: 1,
   O: 2
@@ -6131,9 +7461,17 @@ proto.server.Mover = {
 /**
  * @enum {number}
  */
-proto.server.Winner = {
+proto.server2.Winner = {
   YOU: 0,
   OTHER: 1
 };
 
-goog.object.extend(exports, proto.server);
+/**
+ * @enum {number}
+ */
+proto.server2.SubscriptionAction = {
+  INITIAL: 0,
+  RE_SUBSCRIBE: 1
+};
+
+goog.object.extend(exports, proto.server2);

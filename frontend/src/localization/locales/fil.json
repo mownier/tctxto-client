@@ -15,5 +15,22 @@
     "Please enter lobby id": "Pakilagay ang lobby id",
     "Enter lobby id": "Ilagay ang lobby id",
     "Join": "Sumali",
-    "Invalidate": "Walang bisa"
+    "Invalidate": "Walang bisa",
+    "No session": "Walang session",
+    "Sign In": "Mag-sign In",
+    "Enter name": "Ilagay ang pangalan",
+    "Enter pass": "Ipasok ang pass",
+    "With session": "Merong session",
+    "Sign Out": "Mag-sign Out",
+    "Enter lobby name": "Ilagay ang pangalan ng lobby",
+    "My Lobby": "Aking Lobby",
+    "Encountered error while signing in. Please try again.": "Nakaranas ng error habang nagsa-sign in. Pakisubukang muli.",
+    "Home": "Bahay",
+    "Error": "Error",
+    "Unable to sign up. Please try again.": "Hindi makapag-sign up. Pakisubukang muli.",
+    "Please refresh page": "Paki-refresh ang page",
+    "Encountered error while signing up. Please try again.": "Nakaranas ng error habang nagsa-sign up. Pakisubukang muli.",
+    "Sign Up": "Mag-sign Up",
+    "You are using another client": "Gumagamit ka ng ibang kliyente",
+    "Encountered error while signing out. Please try again.": "Nakaranas ng error habang nagsa-sign out. Pakisubukang muli."
 }

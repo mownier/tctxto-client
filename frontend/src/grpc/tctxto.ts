@@ -5,9 +5,9 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as pb_1 from "google-protobuf";
 import * as grpc_1 from "@grpc/grpc-js";
-export namespace server {
+export namespace server2 {
     export enum NavigationPath {
-        LOGIN = 0,
+        WELCOME = 0,
         HOME = 1,
         MY_LOBBY = 2,
         GAME = 3
@@ -21,804 +21,9 @@ export namespace server {
         you = 0,
         other = 1
     }
-    export class SubscriptionUpdateData extends pb_1.Message {
-        #one_of_decls: number[][] = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]];
-        constructor(data?: any[] | ({} & (({
-            navigation_update?: NavigationUpdate;
-            handshake_reply?: never;
-            invalidate_reply?: never;
-            create_lobby_reply?: never;
-            join_lobby_reply?: never;
-            leave_my_lobby_reply?: never;
-            my_lobby_details?: never;
-            my_lobby_joiner_update?: never;
-            my_lobby_leaver_update?: never;
-            create_game_reply?: never;
-            make_move_reply?: never;
-            move_update?: never;
-            winner_update?: never;
-            draw_update?: never;
-            game_start_update?: never;
-            next_mover_update?: never;
-            player_client_update?: never;
-        } | {
-            navigation_update?: never;
-            handshake_reply?: HandshakeReply;
-            invalidate_reply?: never;
-            create_lobby_reply?: never;
-            join_lobby_reply?: never;
-            leave_my_lobby_reply?: never;
-            my_lobby_details?: never;
-            my_lobby_joiner_update?: never;
-            my_lobby_leaver_update?: never;
-            create_game_reply?: never;
-            make_move_reply?: never;
-            move_update?: never;
-            winner_update?: never;
-            draw_update?: never;
-            game_start_update?: never;
-            next_mover_update?: never;
-            player_client_update?: never;
-        } | {
-            navigation_update?: never;
-            handshake_reply?: never;
-            invalidate_reply?: InvalidateReply;
-            create_lobby_reply?: never;
-            join_lobby_reply?: never;
-            leave_my_lobby_reply?: never;
-            my_lobby_details?: never;
-            my_lobby_joiner_update?: never;
-            my_lobby_leaver_update?: never;
-            create_game_reply?: never;
-            make_move_reply?: never;
-            move_update?: never;
-            winner_update?: never;
-            draw_update?: never;
-            game_start_update?: never;
-            next_mover_update?: never;
-            player_client_update?: never;
-        } | {
-            navigation_update?: never;
-            handshake_reply?: never;
-            invalidate_reply?: never;
-            create_lobby_reply?: CreateLobbyReply;
-            join_lobby_reply?: never;
-            leave_my_lobby_reply?: never;
-            my_lobby_details?: never;
-            my_lobby_joiner_update?: never;
-            my_lobby_leaver_update?: never;
-            create_game_reply?: never;
-            make_move_reply?: never;
-            move_update?: never;
-            winner_update?: never;
-            draw_update?: never;
-            game_start_update?: never;
-            next_mover_update?: never;
-            player_client_update?: never;
-        } | {
-            navigation_update?: never;
-            handshake_reply?: never;
-            invalidate_reply?: never;
-            create_lobby_reply?: never;
-            join_lobby_reply?: JoinLobbyReply;
-            leave_my_lobby_reply?: never;
-            my_lobby_details?: never;
-            my_lobby_joiner_update?: never;
-            my_lobby_leaver_update?: never;
-            create_game_reply?: never;
-            make_move_reply?: never;
-            move_update?: never;
-            winner_update?: never;
-            draw_update?: never;
-            game_start_update?: never;
-            next_mover_update?: never;
-            player_client_update?: never;
-        } | {
-            navigation_update?: never;
-            handshake_reply?: never;
-            invalidate_reply?: never;
-            create_lobby_reply?: never;
-            join_lobby_reply?: never;
-            leave_my_lobby_reply?: LeaveMyLobbyReply;
-            my_lobby_details?: never;
-            my_lobby_joiner_update?: never;
-            my_lobby_leaver_update?: never;
-            create_game_reply?: never;
-            make_move_reply?: never;
-            move_update?: never;
-            winner_update?: never;
-            draw_update?: never;
-            game_start_update?: never;
-            next_mover_update?: never;
-            player_client_update?: never;
-        } | {
-            navigation_update?: never;
-            handshake_reply?: never;
-            invalidate_reply?: never;
-            create_lobby_reply?: never;
-            join_lobby_reply?: never;
-            leave_my_lobby_reply?: never;
-            my_lobby_details?: MyLobbyDetails;
-            my_lobby_joiner_update?: never;
-            my_lobby_leaver_update?: never;
-            create_game_reply?: never;
-            make_move_reply?: never;
-            move_update?: never;
-            winner_update?: never;
-            draw_update?: never;
-            game_start_update?: never;
-            next_mover_update?: never;
-            player_client_update?: never;
-        } | {
-            navigation_update?: never;
-            handshake_reply?: never;
-            invalidate_reply?: never;
-            create_lobby_reply?: never;
-            join_lobby_reply?: never;
-            leave_my_lobby_reply?: never;
-            my_lobby_details?: never;
-            my_lobby_joiner_update?: MyLobbyJoinerUpdate;
-            my_lobby_leaver_update?: never;
-            create_game_reply?: never;
-            make_move_reply?: never;
-            move_update?: never;
-            winner_update?: never;
-            draw_update?: never;
-            game_start_update?: never;
-            next_mover_update?: never;
-            player_client_update?: never;
-        } | {
-            navigation_update?: never;
-            handshake_reply?: never;
-            invalidate_reply?: never;
-            create_lobby_reply?: never;
-            join_lobby_reply?: never;
-            leave_my_lobby_reply?: never;
-            my_lobby_details?: never;
-            my_lobby_joiner_update?: never;
-            my_lobby_leaver_update?: MyLobbyLeaverUpdate;
-            create_game_reply?: never;
-            make_move_reply?: never;
-            move_update?: never;
-            winner_update?: never;
-            draw_update?: never;
-            game_start_update?: never;
-            next_mover_update?: never;
-            player_client_update?: never;
-        } | {
-            navigation_update?: never;
-            handshake_reply?: never;
-            invalidate_reply?: never;
-            create_lobby_reply?: never;
-            join_lobby_reply?: never;
-            leave_my_lobby_reply?: never;
-            my_lobby_details?: never;
-            my_lobby_joiner_update?: never;
-            my_lobby_leaver_update?: never;
-            create_game_reply?: CreateGameReply;
-            make_move_reply?: never;
-            move_update?: never;
-            winner_update?: never;
-            draw_update?: never;
-            game_start_update?: never;
-            next_mover_update?: never;
-            player_client_update?: never;
-        } | {
-            navigation_update?: never;
-            handshake_reply?: never;
-            invalidate_reply?: never;
-            create_lobby_reply?: never;
-            join_lobby_reply?: never;
-            leave_my_lobby_reply?: never;
-            my_lobby_details?: never;
-            my_lobby_joiner_update?: never;
-            my_lobby_leaver_update?: never;
-            create_game_reply?: never;
-            make_move_reply?: MakeMoveReply;
-            move_update?: never;
-            winner_update?: never;
-            draw_update?: never;
-            game_start_update?: never;
-            next_mover_update?: never;
-            player_client_update?: never;
-        } | {
-            navigation_update?: never;
-            handshake_reply?: never;
-            invalidate_reply?: never;
-            create_lobby_reply?: never;
-            join_lobby_reply?: never;
-            leave_my_lobby_reply?: never;
-            my_lobby_details?: never;
-            my_lobby_joiner_update?: never;
-            my_lobby_leaver_update?: never;
-            create_game_reply?: never;
-            make_move_reply?: never;
-            move_update?: MoveUpdate;
-            winner_update?: never;
-            draw_update?: never;
-            game_start_update?: never;
-            next_mover_update?: never;
-            player_client_update?: never;
-        } | {
-            navigation_update?: never;
-            handshake_reply?: never;
-            invalidate_reply?: never;
-            create_lobby_reply?: never;
-            join_lobby_reply?: never;
-            leave_my_lobby_reply?: never;
-            my_lobby_details?: never;
-            my_lobby_joiner_update?: never;
-            my_lobby_leaver_update?: never;
-            create_game_reply?: never;
-            make_move_reply?: never;
-            move_update?: never;
-            winner_update?: WinnerUpdate;
-            draw_update?: never;
-            game_start_update?: never;
-            next_mover_update?: never;
-            player_client_update?: never;
-        } | {
-            navigation_update?: never;
-            handshake_reply?: never;
-            invalidate_reply?: never;
-            create_lobby_reply?: never;
-            join_lobby_reply?: never;
-            leave_my_lobby_reply?: never;
-            my_lobby_details?: never;
-            my_lobby_joiner_update?: never;
-            my_lobby_leaver_update?: never;
-            create_game_reply?: never;
-            make_move_reply?: never;
-            move_update?: never;
-            winner_update?: never;
-            draw_update?: DrawUpdate;
-            game_start_update?: never;
-            next_mover_update?: never;
-            player_client_update?: never;
-        } | {
-            navigation_update?: never;
-            handshake_reply?: never;
-            invalidate_reply?: never;
-            create_lobby_reply?: never;
-            join_lobby_reply?: never;
-            leave_my_lobby_reply?: never;
-            my_lobby_details?: never;
-            my_lobby_joiner_update?: never;
-            my_lobby_leaver_update?: never;
-            create_game_reply?: never;
-            make_move_reply?: never;
-            move_update?: never;
-            winner_update?: never;
-            draw_update?: never;
-            game_start_update?: GameStartUpdate;
-            next_mover_update?: never;
-            player_client_update?: never;
-        } | {
-            navigation_update?: never;
-            handshake_reply?: never;
-            invalidate_reply?: never;
-            create_lobby_reply?: never;
-            join_lobby_reply?: never;
-            leave_my_lobby_reply?: never;
-            my_lobby_details?: never;
-            my_lobby_joiner_update?: never;
-            my_lobby_leaver_update?: never;
-            create_game_reply?: never;
-            make_move_reply?: never;
-            move_update?: never;
-            winner_update?: never;
-            draw_update?: never;
-            game_start_update?: never;
-            next_mover_update?: NextMoverUpdate;
-            player_client_update?: never;
-        } | {
-            navigation_update?: never;
-            handshake_reply?: never;
-            invalidate_reply?: never;
-            create_lobby_reply?: never;
-            join_lobby_reply?: never;
-            leave_my_lobby_reply?: never;
-            my_lobby_details?: never;
-            my_lobby_joiner_update?: never;
-            my_lobby_leaver_update?: never;
-            create_game_reply?: never;
-            make_move_reply?: never;
-            move_update?: never;
-            winner_update?: never;
-            draw_update?: never;
-            game_start_update?: never;
-            next_mover_update?: never;
-            player_client_update?: PlayerClientUpdate;
-        })))) {
-            super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
-            if (!Array.isArray(data) && typeof data == "object") {
-                if ("navigation_update" in data && data.navigation_update != undefined) {
-                    this.navigation_update = data.navigation_update;
-                }
-                if ("handshake_reply" in data && data.handshake_reply != undefined) {
-                    this.handshake_reply = data.handshake_reply;
-                }
-                if ("invalidate_reply" in data && data.invalidate_reply != undefined) {
-                    this.invalidate_reply = data.invalidate_reply;
-                }
-                if ("create_lobby_reply" in data && data.create_lobby_reply != undefined) {
-                    this.create_lobby_reply = data.create_lobby_reply;
-                }
-                if ("join_lobby_reply" in data && data.join_lobby_reply != undefined) {
-                    this.join_lobby_reply = data.join_lobby_reply;
-                }
-                if ("leave_my_lobby_reply" in data && data.leave_my_lobby_reply != undefined) {
-                    this.leave_my_lobby_reply = data.leave_my_lobby_reply;
-                }
-                if ("my_lobby_details" in data && data.my_lobby_details != undefined) {
-                    this.my_lobby_details = data.my_lobby_details;
-                }
-                if ("my_lobby_joiner_update" in data && data.my_lobby_joiner_update != undefined) {
-                    this.my_lobby_joiner_update = data.my_lobby_joiner_update;
-                }
-                if ("my_lobby_leaver_update" in data && data.my_lobby_leaver_update != undefined) {
-                    this.my_lobby_leaver_update = data.my_lobby_leaver_update;
-                }
-                if ("create_game_reply" in data && data.create_game_reply != undefined) {
-                    this.create_game_reply = data.create_game_reply;
-                }
-                if ("make_move_reply" in data && data.make_move_reply != undefined) {
-                    this.make_move_reply = data.make_move_reply;
-                }
-                if ("move_update" in data && data.move_update != undefined) {
-                    this.move_update = data.move_update;
-                }
-                if ("winner_update" in data && data.winner_update != undefined) {
-                    this.winner_update = data.winner_update;
-                }
-                if ("draw_update" in data && data.draw_update != undefined) {
-                    this.draw_update = data.draw_update;
-                }
-                if ("game_start_update" in data && data.game_start_update != undefined) {
-                    this.game_start_update = data.game_start_update;
-                }
-                if ("next_mover_update" in data && data.next_mover_update != undefined) {
-                    this.next_mover_update = data.next_mover_update;
-                }
-                if ("player_client_update" in data && data.player_client_update != undefined) {
-                    this.player_client_update = data.player_client_update;
-                }
-            }
-        }
-        get navigation_update() {
-            return pb_1.Message.getWrapperField(this, NavigationUpdate, 1) as NavigationUpdate;
-        }
-        set navigation_update(value: NavigationUpdate) {
-            pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
-        }
-        get has_navigation_update() {
-            return pb_1.Message.getField(this, 1) != null;
-        }
-        get handshake_reply() {
-            return pb_1.Message.getWrapperField(this, HandshakeReply, 2) as HandshakeReply;
-        }
-        set handshake_reply(value: HandshakeReply) {
-            pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
-        }
-        get has_handshake_reply() {
-            return pb_1.Message.getField(this, 2) != null;
-        }
-        get invalidate_reply() {
-            return pb_1.Message.getWrapperField(this, InvalidateReply, 3) as InvalidateReply;
-        }
-        set invalidate_reply(value: InvalidateReply) {
-            pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0], value);
-        }
-        get has_invalidate_reply() {
-            return pb_1.Message.getField(this, 3) != null;
-        }
-        get create_lobby_reply() {
-            return pb_1.Message.getWrapperField(this, CreateLobbyReply, 4) as CreateLobbyReply;
-        }
-        set create_lobby_reply(value: CreateLobbyReply) {
-            pb_1.Message.setOneofWrapperField(this, 4, this.#one_of_decls[0], value);
-        }
-        get has_create_lobby_reply() {
-            return pb_1.Message.getField(this, 4) != null;
-        }
-        get join_lobby_reply() {
-            return pb_1.Message.getWrapperField(this, JoinLobbyReply, 5) as JoinLobbyReply;
-        }
-        set join_lobby_reply(value: JoinLobbyReply) {
-            pb_1.Message.setOneofWrapperField(this, 5, this.#one_of_decls[0], value);
-        }
-        get has_join_lobby_reply() {
-            return pb_1.Message.getField(this, 5) != null;
-        }
-        get leave_my_lobby_reply() {
-            return pb_1.Message.getWrapperField(this, LeaveMyLobbyReply, 6) as LeaveMyLobbyReply;
-        }
-        set leave_my_lobby_reply(value: LeaveMyLobbyReply) {
-            pb_1.Message.setOneofWrapperField(this, 6, this.#one_of_decls[0], value);
-        }
-        get has_leave_my_lobby_reply() {
-            return pb_1.Message.getField(this, 6) != null;
-        }
-        get my_lobby_details() {
-            return pb_1.Message.getWrapperField(this, MyLobbyDetails, 7) as MyLobbyDetails;
-        }
-        set my_lobby_details(value: MyLobbyDetails) {
-            pb_1.Message.setOneofWrapperField(this, 7, this.#one_of_decls[0], value);
-        }
-        get has_my_lobby_details() {
-            return pb_1.Message.getField(this, 7) != null;
-        }
-        get my_lobby_joiner_update() {
-            return pb_1.Message.getWrapperField(this, MyLobbyJoinerUpdate, 8) as MyLobbyJoinerUpdate;
-        }
-        set my_lobby_joiner_update(value: MyLobbyJoinerUpdate) {
-            pb_1.Message.setOneofWrapperField(this, 8, this.#one_of_decls[0], value);
-        }
-        get has_my_lobby_joiner_update() {
-            return pb_1.Message.getField(this, 8) != null;
-        }
-        get my_lobby_leaver_update() {
-            return pb_1.Message.getWrapperField(this, MyLobbyLeaverUpdate, 9) as MyLobbyLeaverUpdate;
-        }
-        set my_lobby_leaver_update(value: MyLobbyLeaverUpdate) {
-            pb_1.Message.setOneofWrapperField(this, 9, this.#one_of_decls[0], value);
-        }
-        get has_my_lobby_leaver_update() {
-            return pb_1.Message.getField(this, 9) != null;
-        }
-        get create_game_reply() {
-            return pb_1.Message.getWrapperField(this, CreateGameReply, 10) as CreateGameReply;
-        }
-        set create_game_reply(value: CreateGameReply) {
-            pb_1.Message.setOneofWrapperField(this, 10, this.#one_of_decls[0], value);
-        }
-        get has_create_game_reply() {
-            return pb_1.Message.getField(this, 10) != null;
-        }
-        get make_move_reply() {
-            return pb_1.Message.getWrapperField(this, MakeMoveReply, 11) as MakeMoveReply;
-        }
-        set make_move_reply(value: MakeMoveReply) {
-            pb_1.Message.setOneofWrapperField(this, 11, this.#one_of_decls[0], value);
-        }
-        get has_make_move_reply() {
-            return pb_1.Message.getField(this, 11) != null;
-        }
-        get move_update() {
-            return pb_1.Message.getWrapperField(this, MoveUpdate, 12) as MoveUpdate;
-        }
-        set move_update(value: MoveUpdate) {
-            pb_1.Message.setOneofWrapperField(this, 12, this.#one_of_decls[0], value);
-        }
-        get has_move_update() {
-            return pb_1.Message.getField(this, 12) != null;
-        }
-        get winner_update() {
-            return pb_1.Message.getWrapperField(this, WinnerUpdate, 13) as WinnerUpdate;
-        }
-        set winner_update(value: WinnerUpdate) {
-            pb_1.Message.setOneofWrapperField(this, 13, this.#one_of_decls[0], value);
-        }
-        get has_winner_update() {
-            return pb_1.Message.getField(this, 13) != null;
-        }
-        get draw_update() {
-            return pb_1.Message.getWrapperField(this, DrawUpdate, 14) as DrawUpdate;
-        }
-        set draw_update(value: DrawUpdate) {
-            pb_1.Message.setOneofWrapperField(this, 14, this.#one_of_decls[0], value);
-        }
-        get has_draw_update() {
-            return pb_1.Message.getField(this, 14) != null;
-        }
-        get game_start_update() {
-            return pb_1.Message.getWrapperField(this, GameStartUpdate, 15) as GameStartUpdate;
-        }
-        set game_start_update(value: GameStartUpdate) {
-            pb_1.Message.setOneofWrapperField(this, 15, this.#one_of_decls[0], value);
-        }
-        get has_game_start_update() {
-            return pb_1.Message.getField(this, 15) != null;
-        }
-        get next_mover_update() {
-            return pb_1.Message.getWrapperField(this, NextMoverUpdate, 16) as NextMoverUpdate;
-        }
-        set next_mover_update(value: NextMoverUpdate) {
-            pb_1.Message.setOneofWrapperField(this, 16, this.#one_of_decls[0], value);
-        }
-        get has_next_mover_update() {
-            return pb_1.Message.getField(this, 16) != null;
-        }
-        get player_client_update() {
-            return pb_1.Message.getWrapperField(this, PlayerClientUpdate, 17) as PlayerClientUpdate;
-        }
-        set player_client_update(value: PlayerClientUpdate) {
-            pb_1.Message.setOneofWrapperField(this, 17, this.#one_of_decls[0], value);
-        }
-        get has_player_client_update() {
-            return pb_1.Message.getField(this, 17) != null;
-        }
-        get subscription_update_data_type() {
-            const cases: {
-                [index: number]: "none" | "navigation_update" | "handshake_reply" | "invalidate_reply" | "create_lobby_reply" | "join_lobby_reply" | "leave_my_lobby_reply" | "my_lobby_details" | "my_lobby_joiner_update" | "my_lobby_leaver_update" | "create_game_reply" | "make_move_reply" | "move_update" | "winner_update" | "draw_update" | "game_start_update" | "next_mover_update" | "player_client_update";
-            } = {
-                0: "none",
-                1: "navigation_update",
-                2: "handshake_reply",
-                3: "invalidate_reply",
-                4: "create_lobby_reply",
-                5: "join_lobby_reply",
-                6: "leave_my_lobby_reply",
-                7: "my_lobby_details",
-                8: "my_lobby_joiner_update",
-                9: "my_lobby_leaver_update",
-                10: "create_game_reply",
-                11: "make_move_reply",
-                12: "move_update",
-                13: "winner_update",
-                14: "draw_update",
-                15: "game_start_update",
-                16: "next_mover_update",
-                17: "player_client_update"
-            };
-            return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17])];
-        }
-        static fromObject(data: {
-            navigation_update?: ReturnType<typeof NavigationUpdate.prototype.toObject>;
-            handshake_reply?: ReturnType<typeof HandshakeReply.prototype.toObject>;
-            invalidate_reply?: ReturnType<typeof InvalidateReply.prototype.toObject>;
-            create_lobby_reply?: ReturnType<typeof CreateLobbyReply.prototype.toObject>;
-            join_lobby_reply?: ReturnType<typeof JoinLobbyReply.prototype.toObject>;
-            leave_my_lobby_reply?: ReturnType<typeof LeaveMyLobbyReply.prototype.toObject>;
-            my_lobby_details?: ReturnType<typeof MyLobbyDetails.prototype.toObject>;
-            my_lobby_joiner_update?: ReturnType<typeof MyLobbyJoinerUpdate.prototype.toObject>;
-            my_lobby_leaver_update?: ReturnType<typeof MyLobbyLeaverUpdate.prototype.toObject>;
-            create_game_reply?: ReturnType<typeof CreateGameReply.prototype.toObject>;
-            make_move_reply?: ReturnType<typeof MakeMoveReply.prototype.toObject>;
-            move_update?: ReturnType<typeof MoveUpdate.prototype.toObject>;
-            winner_update?: ReturnType<typeof WinnerUpdate.prototype.toObject>;
-            draw_update?: ReturnType<typeof DrawUpdate.prototype.toObject>;
-            game_start_update?: ReturnType<typeof GameStartUpdate.prototype.toObject>;
-            next_mover_update?: ReturnType<typeof NextMoverUpdate.prototype.toObject>;
-            player_client_update?: ReturnType<typeof PlayerClientUpdate.prototype.toObject>;
-        }): SubscriptionUpdateData {
-            const message = new SubscriptionUpdateData({});
-            if (data.navigation_update != null) {
-                message.navigation_update = NavigationUpdate.fromObject(data.navigation_update);
-            }
-            if (data.handshake_reply != null) {
-                message.handshake_reply = HandshakeReply.fromObject(data.handshake_reply);
-            }
-            if (data.invalidate_reply != null) {
-                message.invalidate_reply = InvalidateReply.fromObject(data.invalidate_reply);
-            }
-            if (data.create_lobby_reply != null) {
-                message.create_lobby_reply = CreateLobbyReply.fromObject(data.create_lobby_reply);
-            }
-            if (data.join_lobby_reply != null) {
-                message.join_lobby_reply = JoinLobbyReply.fromObject(data.join_lobby_reply);
-            }
-            if (data.leave_my_lobby_reply != null) {
-                message.leave_my_lobby_reply = LeaveMyLobbyReply.fromObject(data.leave_my_lobby_reply);
-            }
-            if (data.my_lobby_details != null) {
-                message.my_lobby_details = MyLobbyDetails.fromObject(data.my_lobby_details);
-            }
-            if (data.my_lobby_joiner_update != null) {
-                message.my_lobby_joiner_update = MyLobbyJoinerUpdate.fromObject(data.my_lobby_joiner_update);
-            }
-            if (data.my_lobby_leaver_update != null) {
-                message.my_lobby_leaver_update = MyLobbyLeaverUpdate.fromObject(data.my_lobby_leaver_update);
-            }
-            if (data.create_game_reply != null) {
-                message.create_game_reply = CreateGameReply.fromObject(data.create_game_reply);
-            }
-            if (data.make_move_reply != null) {
-                message.make_move_reply = MakeMoveReply.fromObject(data.make_move_reply);
-            }
-            if (data.move_update != null) {
-                message.move_update = MoveUpdate.fromObject(data.move_update);
-            }
-            if (data.winner_update != null) {
-                message.winner_update = WinnerUpdate.fromObject(data.winner_update);
-            }
-            if (data.draw_update != null) {
-                message.draw_update = DrawUpdate.fromObject(data.draw_update);
-            }
-            if (data.game_start_update != null) {
-                message.game_start_update = GameStartUpdate.fromObject(data.game_start_update);
-            }
-            if (data.next_mover_update != null) {
-                message.next_mover_update = NextMoverUpdate.fromObject(data.next_mover_update);
-            }
-            if (data.player_client_update != null) {
-                message.player_client_update = PlayerClientUpdate.fromObject(data.player_client_update);
-            }
-            return message;
-        }
-        toObject() {
-            const data: {
-                navigation_update?: ReturnType<typeof NavigationUpdate.prototype.toObject>;
-                handshake_reply?: ReturnType<typeof HandshakeReply.prototype.toObject>;
-                invalidate_reply?: ReturnType<typeof InvalidateReply.prototype.toObject>;
-                create_lobby_reply?: ReturnType<typeof CreateLobbyReply.prototype.toObject>;
-                join_lobby_reply?: ReturnType<typeof JoinLobbyReply.prototype.toObject>;
-                leave_my_lobby_reply?: ReturnType<typeof LeaveMyLobbyReply.prototype.toObject>;
-                my_lobby_details?: ReturnType<typeof MyLobbyDetails.prototype.toObject>;
-                my_lobby_joiner_update?: ReturnType<typeof MyLobbyJoinerUpdate.prototype.toObject>;
-                my_lobby_leaver_update?: ReturnType<typeof MyLobbyLeaverUpdate.prototype.toObject>;
-                create_game_reply?: ReturnType<typeof CreateGameReply.prototype.toObject>;
-                make_move_reply?: ReturnType<typeof MakeMoveReply.prototype.toObject>;
-                move_update?: ReturnType<typeof MoveUpdate.prototype.toObject>;
-                winner_update?: ReturnType<typeof WinnerUpdate.prototype.toObject>;
-                draw_update?: ReturnType<typeof DrawUpdate.prototype.toObject>;
-                game_start_update?: ReturnType<typeof GameStartUpdate.prototype.toObject>;
-                next_mover_update?: ReturnType<typeof NextMoverUpdate.prototype.toObject>;
-                player_client_update?: ReturnType<typeof PlayerClientUpdate.prototype.toObject>;
-            } = {};
-            if (this.navigation_update != null) {
-                data.navigation_update = this.navigation_update.toObject();
-            }
-            if (this.handshake_reply != null) {
-                data.handshake_reply = this.handshake_reply.toObject();
-            }
-            if (this.invalidate_reply != null) {
-                data.invalidate_reply = this.invalidate_reply.toObject();
-            }
-            if (this.create_lobby_reply != null) {
-                data.create_lobby_reply = this.create_lobby_reply.toObject();
-            }
-            if (this.join_lobby_reply != null) {
-                data.join_lobby_reply = this.join_lobby_reply.toObject();
-            }
-            if (this.leave_my_lobby_reply != null) {
-                data.leave_my_lobby_reply = this.leave_my_lobby_reply.toObject();
-            }
-            if (this.my_lobby_details != null) {
-                data.my_lobby_details = this.my_lobby_details.toObject();
-            }
-            if (this.my_lobby_joiner_update != null) {
-                data.my_lobby_joiner_update = this.my_lobby_joiner_update.toObject();
-            }
-            if (this.my_lobby_leaver_update != null) {
-                data.my_lobby_leaver_update = this.my_lobby_leaver_update.toObject();
-            }
-            if (this.create_game_reply != null) {
-                data.create_game_reply = this.create_game_reply.toObject();
-            }
-            if (this.make_move_reply != null) {
-                data.make_move_reply = this.make_move_reply.toObject();
-            }
-            if (this.move_update != null) {
-                data.move_update = this.move_update.toObject();
-            }
-            if (this.winner_update != null) {
-                data.winner_update = this.winner_update.toObject();
-            }
-            if (this.draw_update != null) {
-                data.draw_update = this.draw_update.toObject();
-            }
-            if (this.game_start_update != null) {
-                data.game_start_update = this.game_start_update.toObject();
-            }
-            if (this.next_mover_update != null) {
-                data.next_mover_update = this.next_mover_update.toObject();
-            }
-            if (this.player_client_update != null) {
-                data.player_client_update = this.player_client_update.toObject();
-            }
-            return data;
-        }
-        serialize(): Uint8Array;
-        serialize(w: pb_1.BinaryWriter): void;
-        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
-            const writer = w || new pb_1.BinaryWriter();
-            if (this.has_navigation_update)
-                writer.writeMessage(1, this.navigation_update, () => this.navigation_update.serialize(writer));
-            if (this.has_handshake_reply)
-                writer.writeMessage(2, this.handshake_reply, () => this.handshake_reply.serialize(writer));
-            if (this.has_invalidate_reply)
-                writer.writeMessage(3, this.invalidate_reply, () => this.invalidate_reply.serialize(writer));
-            if (this.has_create_lobby_reply)
-                writer.writeMessage(4, this.create_lobby_reply, () => this.create_lobby_reply.serialize(writer));
-            if (this.has_join_lobby_reply)
-                writer.writeMessage(5, this.join_lobby_reply, () => this.join_lobby_reply.serialize(writer));
-            if (this.has_leave_my_lobby_reply)
-                writer.writeMessage(6, this.leave_my_lobby_reply, () => this.leave_my_lobby_reply.serialize(writer));
-            if (this.has_my_lobby_details)
-                writer.writeMessage(7, this.my_lobby_details, () => this.my_lobby_details.serialize(writer));
-            if (this.has_my_lobby_joiner_update)
-                writer.writeMessage(8, this.my_lobby_joiner_update, () => this.my_lobby_joiner_update.serialize(writer));
-            if (this.has_my_lobby_leaver_update)
-                writer.writeMessage(9, this.my_lobby_leaver_update, () => this.my_lobby_leaver_update.serialize(writer));
-            if (this.has_create_game_reply)
-                writer.writeMessage(10, this.create_game_reply, () => this.create_game_reply.serialize(writer));
-            if (this.has_make_move_reply)
-                writer.writeMessage(11, this.make_move_reply, () => this.make_move_reply.serialize(writer));
-            if (this.has_move_update)
-                writer.writeMessage(12, this.move_update, () => this.move_update.serialize(writer));
-            if (this.has_winner_update)
-                writer.writeMessage(13, this.winner_update, () => this.winner_update.serialize(writer));
-            if (this.has_draw_update)
-                writer.writeMessage(14, this.draw_update, () => this.draw_update.serialize(writer));
-            if (this.has_game_start_update)
-                writer.writeMessage(15, this.game_start_update, () => this.game_start_update.serialize(writer));
-            if (this.has_next_mover_update)
-                writer.writeMessage(16, this.next_mover_update, () => this.next_mover_update.serialize(writer));
-            if (this.has_player_client_update)
-                writer.writeMessage(17, this.player_client_update, () => this.player_client_update.serialize(writer));
-            if (!w)
-                return writer.getResultBuffer();
-        }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): SubscriptionUpdateData {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new SubscriptionUpdateData();
-            while (reader.nextField()) {
-                if (reader.isEndGroup())
-                    break;
-                switch (reader.getFieldNumber()) {
-                    case 1:
-                        reader.readMessage(message.navigation_update, () => message.navigation_update = NavigationUpdate.deserialize(reader));
-                        break;
-                    case 2:
-                        reader.readMessage(message.handshake_reply, () => message.handshake_reply = HandshakeReply.deserialize(reader));
-                        break;
-                    case 3:
-                        reader.readMessage(message.invalidate_reply, () => message.invalidate_reply = InvalidateReply.deserialize(reader));
-                        break;
-                    case 4:
-                        reader.readMessage(message.create_lobby_reply, () => message.create_lobby_reply = CreateLobbyReply.deserialize(reader));
-                        break;
-                    case 5:
-                        reader.readMessage(message.join_lobby_reply, () => message.join_lobby_reply = JoinLobbyReply.deserialize(reader));
-                        break;
-                    case 6:
-                        reader.readMessage(message.leave_my_lobby_reply, () => message.leave_my_lobby_reply = LeaveMyLobbyReply.deserialize(reader));
-                        break;
-                    case 7:
-                        reader.readMessage(message.my_lobby_details, () => message.my_lobby_details = MyLobbyDetails.deserialize(reader));
-                        break;
-                    case 8:
-                        reader.readMessage(message.my_lobby_joiner_update, () => message.my_lobby_joiner_update = MyLobbyJoinerUpdate.deserialize(reader));
-                        break;
-                    case 9:
-                        reader.readMessage(message.my_lobby_leaver_update, () => message.my_lobby_leaver_update = MyLobbyLeaverUpdate.deserialize(reader));
-                        break;
-                    case 10:
-                        reader.readMessage(message.create_game_reply, () => message.create_game_reply = CreateGameReply.deserialize(reader));
-                        break;
-                    case 11:
-                        reader.readMessage(message.make_move_reply, () => message.make_move_reply = MakeMoveReply.deserialize(reader));
-                        break;
-                    case 12:
-                        reader.readMessage(message.move_update, () => message.move_update = MoveUpdate.deserialize(reader));
-                        break;
-                    case 13:
-                        reader.readMessage(message.winner_update, () => message.winner_update = WinnerUpdate.deserialize(reader));
-                        break;
-                    case 14:
-                        reader.readMessage(message.draw_update, () => message.draw_update = DrawUpdate.deserialize(reader));
-                        break;
-                    case 15:
-                        reader.readMessage(message.game_start_update, () => message.game_start_update = GameStartUpdate.deserialize(reader));
-                        break;
-                    case 16:
-                        reader.readMessage(message.next_mover_update, () => message.next_mover_update = NextMoverUpdate.deserialize(reader));
-                        break;
-                    case 17:
-                        reader.readMessage(message.player_client_update, () => message.player_client_update = PlayerClientUpdate.deserialize(reader));
-                        break;
-                    default: reader.skipField();
-                }
-            }
-            return message;
-        }
-        serializeBinary(): Uint8Array {
-            return this.serialize();
-        }
-        static deserializeBinary(bytes: Uint8Array): SubscriptionUpdateData {
-            return SubscriptionUpdateData.deserialize(bytes);
-        }
+    export enum SubscriptionAction {
+        INITIAL = 0,
+        RE_SUBSCRIBE = 1
     }
     export class Empty extends pb_1.Message {
         #one_of_decls: number[][] = [];
@@ -860,76 +65,40 @@ export namespace server {
             return Empty.deserialize(bytes);
         }
     }
-    export class Outcome extends pb_1.Message {
+    export class SubscribeRequest extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
-            ok?: boolean;
-            error_code?: number;
-            error_message?: string;
+            action?: SubscriptionAction;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
-                if ("ok" in data && data.ok != undefined) {
-                    this.ok = data.ok;
-                }
-                if ("error_code" in data && data.error_code != undefined) {
-                    this.error_code = data.error_code;
-                }
-                if ("error_message" in data && data.error_message != undefined) {
-                    this.error_message = data.error_message;
+                if ("action" in data && data.action != undefined) {
+                    this.action = data.action;
                 }
             }
         }
-        get ok() {
-            return pb_1.Message.getFieldWithDefault(this, 1, false) as boolean;
+        get action() {
+            return pb_1.Message.getFieldWithDefault(this, 1, SubscriptionAction.INITIAL) as SubscriptionAction;
         }
-        set ok(value: boolean) {
+        set action(value: SubscriptionAction) {
             pb_1.Message.setField(this, 1, value);
         }
-        get error_code() {
-            return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
-        }
-        set error_code(value: number) {
-            pb_1.Message.setField(this, 2, value);
-        }
-        get error_message() {
-            return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
-        }
-        set error_message(value: string) {
-            pb_1.Message.setField(this, 3, value);
-        }
         static fromObject(data: {
-            ok?: boolean;
-            error_code?: number;
-            error_message?: string;
-        }): Outcome {
-            const message = new Outcome({});
-            if (data.ok != null) {
-                message.ok = data.ok;
-            }
-            if (data.error_code != null) {
-                message.error_code = data.error_code;
-            }
-            if (data.error_message != null) {
-                message.error_message = data.error_message;
+            action?: SubscriptionAction;
+        }): SubscribeRequest {
+            const message = new SubscribeRequest({});
+            if (data.action != null) {
+                message.action = data.action;
             }
             return message;
         }
         toObject() {
             const data: {
-                ok?: boolean;
-                error_code?: number;
-                error_message?: string;
+                action?: SubscriptionAction;
             } = {};
-            if (this.ok != null) {
-                data.ok = this.ok;
-            }
-            if (this.error_code != null) {
-                data.error_code = this.error_code;
-            }
-            if (this.error_message != null) {
-                data.error_message = this.error_message;
+            if (this.action != null) {
+                data.action = this.action;
             }
             return data;
         }
@@ -937,29 +106,19 @@ export namespace server {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (this.ok != false)
-                writer.writeBool(1, this.ok);
-            if (this.error_code != 0)
-                writer.writeInt32(2, this.error_code);
-            if (this.error_message.length)
-                writer.writeString(3, this.error_message);
+            if (this.action != SubscriptionAction.INITIAL)
+                writer.writeEnum(1, this.action);
             if (!w)
                 return writer.getResultBuffer();
         }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): Outcome {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new Outcome();
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): SubscribeRequest {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new SubscribeRequest();
             while (reader.nextField()) {
                 if (reader.isEndGroup())
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
-                        message.ok = reader.readBool();
-                        break;
-                    case 2:
-                        message.error_code = reader.readInt32();
-                        break;
-                    case 3:
-                        message.error_message = reader.readString();
+                        message.action = reader.readEnum();
                         break;
                     default: reader.skipField();
                 }
@@ -969,8 +128,1396 @@ export namespace server {
         serializeBinary(): Uint8Array {
             return this.serialize();
         }
-        static deserializeBinary(bytes: Uint8Array): Outcome {
-            return Outcome.deserialize(bytes);
+        static deserializeBinary(bytes: Uint8Array): SubscribeRequest {
+            return SubscribeRequest.deserialize(bytes);
+        }
+    }
+    export class ClientUpdate extends pb_1.Message {
+        #one_of_decls: number[][] = [[1, 2, 3, 4, 5, 6, 7]];
+        constructor(data?: any[] | ({} & (({
+            sign_up_request?: SignUpRequest;
+            sign_in_request?: never;
+            sign_out_request?: never;
+            create_lobby_request?: never;
+            join_lobby_request?: never;
+            create_game_request?: never;
+            make_move_request?: never;
+        } | {
+            sign_up_request?: never;
+            sign_in_request?: SignInRequest;
+            sign_out_request?: never;
+            create_lobby_request?: never;
+            join_lobby_request?: never;
+            create_game_request?: never;
+            make_move_request?: never;
+        } | {
+            sign_up_request?: never;
+            sign_in_request?: never;
+            sign_out_request?: SignOutRequest;
+            create_lobby_request?: never;
+            join_lobby_request?: never;
+            create_game_request?: never;
+            make_move_request?: never;
+        } | {
+            sign_up_request?: never;
+            sign_in_request?: never;
+            sign_out_request?: never;
+            create_lobby_request?: CreateLobbyRequest;
+            join_lobby_request?: never;
+            create_game_request?: never;
+            make_move_request?: never;
+        } | {
+            sign_up_request?: never;
+            sign_in_request?: never;
+            sign_out_request?: never;
+            create_lobby_request?: never;
+            join_lobby_request?: JoinLobbyRequest;
+            create_game_request?: never;
+            make_move_request?: never;
+        } | {
+            sign_up_request?: never;
+            sign_in_request?: never;
+            sign_out_request?: never;
+            create_lobby_request?: never;
+            join_lobby_request?: never;
+            create_game_request?: CreateGameRequest;
+            make_move_request?: never;
+        } | {
+            sign_up_request?: never;
+            sign_in_request?: never;
+            sign_out_request?: never;
+            create_lobby_request?: never;
+            join_lobby_request?: never;
+            create_game_request?: never;
+            make_move_request?: MakeMoveRequest;
+        })))) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("sign_up_request" in data && data.sign_up_request != undefined) {
+                    this.sign_up_request = data.sign_up_request;
+                }
+                if ("sign_in_request" in data && data.sign_in_request != undefined) {
+                    this.sign_in_request = data.sign_in_request;
+                }
+                if ("sign_out_request" in data && data.sign_out_request != undefined) {
+                    this.sign_out_request = data.sign_out_request;
+                }
+                if ("create_lobby_request" in data && data.create_lobby_request != undefined) {
+                    this.create_lobby_request = data.create_lobby_request;
+                }
+                if ("join_lobby_request" in data && data.join_lobby_request != undefined) {
+                    this.join_lobby_request = data.join_lobby_request;
+                }
+                if ("create_game_request" in data && data.create_game_request != undefined) {
+                    this.create_game_request = data.create_game_request;
+                }
+                if ("make_move_request" in data && data.make_move_request != undefined) {
+                    this.make_move_request = data.make_move_request;
+                }
+            }
+        }
+        get sign_up_request() {
+            return pb_1.Message.getWrapperField(this, SignUpRequest, 1) as SignUpRequest;
+        }
+        set sign_up_request(value: SignUpRequest) {
+            pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
+        }
+        get has_sign_up_request() {
+            return pb_1.Message.getField(this, 1) != null;
+        }
+        get sign_in_request() {
+            return pb_1.Message.getWrapperField(this, SignInRequest, 2) as SignInRequest;
+        }
+        set sign_in_request(value: SignInRequest) {
+            pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
+        }
+        get has_sign_in_request() {
+            return pb_1.Message.getField(this, 2) != null;
+        }
+        get sign_out_request() {
+            return pb_1.Message.getWrapperField(this, SignOutRequest, 3) as SignOutRequest;
+        }
+        set sign_out_request(value: SignOutRequest) {
+            pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0], value);
+        }
+        get has_sign_out_request() {
+            return pb_1.Message.getField(this, 3) != null;
+        }
+        get create_lobby_request() {
+            return pb_1.Message.getWrapperField(this, CreateLobbyRequest, 4) as CreateLobbyRequest;
+        }
+        set create_lobby_request(value: CreateLobbyRequest) {
+            pb_1.Message.setOneofWrapperField(this, 4, this.#one_of_decls[0], value);
+        }
+        get has_create_lobby_request() {
+            return pb_1.Message.getField(this, 4) != null;
+        }
+        get join_lobby_request() {
+            return pb_1.Message.getWrapperField(this, JoinLobbyRequest, 5) as JoinLobbyRequest;
+        }
+        set join_lobby_request(value: JoinLobbyRequest) {
+            pb_1.Message.setOneofWrapperField(this, 5, this.#one_of_decls[0], value);
+        }
+        get has_join_lobby_request() {
+            return pb_1.Message.getField(this, 5) != null;
+        }
+        get create_game_request() {
+            return pb_1.Message.getWrapperField(this, CreateGameRequest, 6) as CreateGameRequest;
+        }
+        set create_game_request(value: CreateGameRequest) {
+            pb_1.Message.setOneofWrapperField(this, 6, this.#one_of_decls[0], value);
+        }
+        get has_create_game_request() {
+            return pb_1.Message.getField(this, 6) != null;
+        }
+        get make_move_request() {
+            return pb_1.Message.getWrapperField(this, MakeMoveRequest, 7) as MakeMoveRequest;
+        }
+        set make_move_request(value: MakeMoveRequest) {
+            pb_1.Message.setOneofWrapperField(this, 7, this.#one_of_decls[0], value);
+        }
+        get has_make_move_request() {
+            return pb_1.Message.getField(this, 7) != null;
+        }
+        get type() {
+            const cases: {
+                [index: number]: "none" | "sign_up_request" | "sign_in_request" | "sign_out_request" | "create_lobby_request" | "join_lobby_request" | "create_game_request" | "make_move_request";
+            } = {
+                0: "none",
+                1: "sign_up_request",
+                2: "sign_in_request",
+                3: "sign_out_request",
+                4: "create_lobby_request",
+                5: "join_lobby_request",
+                6: "create_game_request",
+                7: "make_move_request"
+            };
+            return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3, 4, 5, 6, 7])];
+        }
+        static fromObject(data: {
+            sign_up_request?: ReturnType<typeof SignUpRequest.prototype.toObject>;
+            sign_in_request?: ReturnType<typeof SignInRequest.prototype.toObject>;
+            sign_out_request?: ReturnType<typeof SignOutRequest.prototype.toObject>;
+            create_lobby_request?: ReturnType<typeof CreateLobbyRequest.prototype.toObject>;
+            join_lobby_request?: ReturnType<typeof JoinLobbyRequest.prototype.toObject>;
+            create_game_request?: ReturnType<typeof CreateGameRequest.prototype.toObject>;
+            make_move_request?: ReturnType<typeof MakeMoveRequest.prototype.toObject>;
+        }): ClientUpdate {
+            const message = new ClientUpdate({});
+            if (data.sign_up_request != null) {
+                message.sign_up_request = SignUpRequest.fromObject(data.sign_up_request);
+            }
+            if (data.sign_in_request != null) {
+                message.sign_in_request = SignInRequest.fromObject(data.sign_in_request);
+            }
+            if (data.sign_out_request != null) {
+                message.sign_out_request = SignOutRequest.fromObject(data.sign_out_request);
+            }
+            if (data.create_lobby_request != null) {
+                message.create_lobby_request = CreateLobbyRequest.fromObject(data.create_lobby_request);
+            }
+            if (data.join_lobby_request != null) {
+                message.join_lobby_request = JoinLobbyRequest.fromObject(data.join_lobby_request);
+            }
+            if (data.create_game_request != null) {
+                message.create_game_request = CreateGameRequest.fromObject(data.create_game_request);
+            }
+            if (data.make_move_request != null) {
+                message.make_move_request = MakeMoveRequest.fromObject(data.make_move_request);
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                sign_up_request?: ReturnType<typeof SignUpRequest.prototype.toObject>;
+                sign_in_request?: ReturnType<typeof SignInRequest.prototype.toObject>;
+                sign_out_request?: ReturnType<typeof SignOutRequest.prototype.toObject>;
+                create_lobby_request?: ReturnType<typeof CreateLobbyRequest.prototype.toObject>;
+                join_lobby_request?: ReturnType<typeof JoinLobbyRequest.prototype.toObject>;
+                create_game_request?: ReturnType<typeof CreateGameRequest.prototype.toObject>;
+                make_move_request?: ReturnType<typeof MakeMoveRequest.prototype.toObject>;
+            } = {};
+            if (this.sign_up_request != null) {
+                data.sign_up_request = this.sign_up_request.toObject();
+            }
+            if (this.sign_in_request != null) {
+                data.sign_in_request = this.sign_in_request.toObject();
+            }
+            if (this.sign_out_request != null) {
+                data.sign_out_request = this.sign_out_request.toObject();
+            }
+            if (this.create_lobby_request != null) {
+                data.create_lobby_request = this.create_lobby_request.toObject();
+            }
+            if (this.join_lobby_request != null) {
+                data.join_lobby_request = this.join_lobby_request.toObject();
+            }
+            if (this.create_game_request != null) {
+                data.create_game_request = this.create_game_request.toObject();
+            }
+            if (this.make_move_request != null) {
+                data.make_move_request = this.make_move_request.toObject();
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.has_sign_up_request)
+                writer.writeMessage(1, this.sign_up_request, () => this.sign_up_request.serialize(writer));
+            if (this.has_sign_in_request)
+                writer.writeMessage(2, this.sign_in_request, () => this.sign_in_request.serialize(writer));
+            if (this.has_sign_out_request)
+                writer.writeMessage(3, this.sign_out_request, () => this.sign_out_request.serialize(writer));
+            if (this.has_create_lobby_request)
+                writer.writeMessage(4, this.create_lobby_request, () => this.create_lobby_request.serialize(writer));
+            if (this.has_join_lobby_request)
+                writer.writeMessage(5, this.join_lobby_request, () => this.join_lobby_request.serialize(writer));
+            if (this.has_create_game_request)
+                writer.writeMessage(6, this.create_game_request, () => this.create_game_request.serialize(writer));
+            if (this.has_make_move_request)
+                writer.writeMessage(7, this.make_move_request, () => this.make_move_request.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): ClientUpdate {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new ClientUpdate();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        reader.readMessage(message.sign_up_request, () => message.sign_up_request = SignUpRequest.deserialize(reader));
+                        break;
+                    case 2:
+                        reader.readMessage(message.sign_in_request, () => message.sign_in_request = SignInRequest.deserialize(reader));
+                        break;
+                    case 3:
+                        reader.readMessage(message.sign_out_request, () => message.sign_out_request = SignOutRequest.deserialize(reader));
+                        break;
+                    case 4:
+                        reader.readMessage(message.create_lobby_request, () => message.create_lobby_request = CreateLobbyRequest.deserialize(reader));
+                        break;
+                    case 5:
+                        reader.readMessage(message.join_lobby_request, () => message.join_lobby_request = JoinLobbyRequest.deserialize(reader));
+                        break;
+                    case 6:
+                        reader.readMessage(message.create_game_request, () => message.create_game_request = CreateGameRequest.deserialize(reader));
+                        break;
+                    case 7:
+                        reader.readMessage(message.make_move_request, () => message.make_move_request = MakeMoveRequest.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): ClientUpdate {
+            return ClientUpdate.deserialize(bytes);
+        }
+    }
+    export class ServerUpdate extends pb_1.Message {
+        #one_of_decls: number[][] = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]];
+        constructor(data?: any[] | ({} & (({
+            ping?: Ping;
+            client_assignment_update?: never;
+            navigation_update?: never;
+            sign_up_reply?: never;
+            sign_in_reply?: never;
+            sign_out_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+            player_display_name_update?: never;
+        } | {
+            ping?: never;
+            client_assignment_update?: ClientAssignmentUpdate;
+            navigation_update?: never;
+            sign_up_reply?: never;
+            sign_in_reply?: never;
+            sign_out_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+            player_display_name_update?: never;
+        } | {
+            ping?: never;
+            client_assignment_update?: never;
+            navigation_update?: NavigationUpdate;
+            sign_up_reply?: never;
+            sign_in_reply?: never;
+            sign_out_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+            player_display_name_update?: never;
+        } | {
+            ping?: never;
+            client_assignment_update?: never;
+            navigation_update?: never;
+            sign_up_reply?: SignUpReply;
+            sign_in_reply?: never;
+            sign_out_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+            player_display_name_update?: never;
+        } | {
+            ping?: never;
+            client_assignment_update?: never;
+            navigation_update?: never;
+            sign_up_reply?: never;
+            sign_in_reply?: SignInReply;
+            sign_out_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+            player_display_name_update?: never;
+        } | {
+            ping?: never;
+            client_assignment_update?: never;
+            navigation_update?: never;
+            sign_up_reply?: never;
+            sign_in_reply?: never;
+            sign_out_reply?: SignOutReply;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+            player_display_name_update?: never;
+        } | {
+            ping?: never;
+            client_assignment_update?: never;
+            navigation_update?: never;
+            sign_up_reply?: never;
+            sign_in_reply?: never;
+            sign_out_reply?: never;
+            my_lobby_details?: MyLobbyDetails;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+            player_display_name_update?: never;
+        } | {
+            ping?: never;
+            client_assignment_update?: never;
+            navigation_update?: never;
+            sign_up_reply?: never;
+            sign_in_reply?: never;
+            sign_out_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: MyLobbyJoinerUpdate;
+            my_lobby_leaver_update?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+            player_display_name_update?: never;
+        } | {
+            ping?: never;
+            client_assignment_update?: never;
+            navigation_update?: never;
+            sign_up_reply?: never;
+            sign_in_reply?: never;
+            sign_out_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: MyLobbyLeaverUpdate;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+            player_display_name_update?: never;
+        } | {
+            ping?: never;
+            client_assignment_update?: never;
+            navigation_update?: never;
+            sign_up_reply?: never;
+            sign_in_reply?: never;
+            sign_out_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_lobby_reply?: CreateLobbyReply;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+            player_display_name_update?: never;
+        } | {
+            ping?: never;
+            client_assignment_update?: never;
+            navigation_update?: never;
+            sign_up_reply?: never;
+            sign_in_reply?: never;
+            sign_out_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: JoinLobbyReply;
+            leave_my_lobby_reply?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+            player_display_name_update?: never;
+        } | {
+            ping?: never;
+            client_assignment_update?: never;
+            navigation_update?: never;
+            sign_up_reply?: never;
+            sign_in_reply?: never;
+            sign_out_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: LeaveMyLobbyReply;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+            player_display_name_update?: never;
+        } | {
+            ping?: never;
+            client_assignment_update?: never;
+            navigation_update?: never;
+            sign_up_reply?: never;
+            sign_in_reply?: never;
+            sign_out_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            create_game_reply?: CreateGameReply;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+            player_display_name_update?: never;
+        } | {
+            ping?: never;
+            client_assignment_update?: never;
+            navigation_update?: never;
+            sign_up_reply?: never;
+            sign_in_reply?: never;
+            sign_out_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            create_game_reply?: never;
+            make_move_reply?: MakeMoveReply;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+            player_display_name_update?: never;
+        } | {
+            ping?: never;
+            client_assignment_update?: never;
+            navigation_update?: never;
+            sign_up_reply?: never;
+            sign_in_reply?: never;
+            sign_out_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: MoveUpdate;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+            player_display_name_update?: never;
+        } | {
+            ping?: never;
+            client_assignment_update?: never;
+            navigation_update?: never;
+            sign_up_reply?: never;
+            sign_in_reply?: never;
+            sign_out_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: WinnerUpdate;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+            player_display_name_update?: never;
+        } | {
+            ping?: never;
+            client_assignment_update?: never;
+            navigation_update?: never;
+            sign_up_reply?: never;
+            sign_in_reply?: never;
+            sign_out_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: DrawUpdate;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+            player_display_name_update?: never;
+        } | {
+            ping?: never;
+            client_assignment_update?: never;
+            navigation_update?: never;
+            sign_up_reply?: never;
+            sign_in_reply?: never;
+            sign_out_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: GameStartUpdate;
+            next_mover_update?: never;
+            player_client_update?: never;
+            player_display_name_update?: never;
+        } | {
+            ping?: never;
+            client_assignment_update?: never;
+            navigation_update?: never;
+            sign_up_reply?: never;
+            sign_in_reply?: never;
+            sign_out_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: NextMoverUpdate;
+            player_client_update?: never;
+            player_display_name_update?: never;
+        } | {
+            ping?: never;
+            client_assignment_update?: never;
+            navigation_update?: never;
+            sign_up_reply?: never;
+            sign_in_reply?: never;
+            sign_out_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: PlayerClientUpdate;
+            player_display_name_update?: never;
+        } | {
+            ping?: never;
+            client_assignment_update?: never;
+            navigation_update?: never;
+            sign_up_reply?: never;
+            sign_in_reply?: never;
+            sign_out_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+            player_display_name_update?: PlayerDisplayNameUpdate;
+        })))) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("ping" in data && data.ping != undefined) {
+                    this.ping = data.ping;
+                }
+                if ("client_assignment_update" in data && data.client_assignment_update != undefined) {
+                    this.client_assignment_update = data.client_assignment_update;
+                }
+                if ("navigation_update" in data && data.navigation_update != undefined) {
+                    this.navigation_update = data.navigation_update;
+                }
+                if ("sign_up_reply" in data && data.sign_up_reply != undefined) {
+                    this.sign_up_reply = data.sign_up_reply;
+                }
+                if ("sign_in_reply" in data && data.sign_in_reply != undefined) {
+                    this.sign_in_reply = data.sign_in_reply;
+                }
+                if ("sign_out_reply" in data && data.sign_out_reply != undefined) {
+                    this.sign_out_reply = data.sign_out_reply;
+                }
+                if ("my_lobby_details" in data && data.my_lobby_details != undefined) {
+                    this.my_lobby_details = data.my_lobby_details;
+                }
+                if ("my_lobby_joiner_update" in data && data.my_lobby_joiner_update != undefined) {
+                    this.my_lobby_joiner_update = data.my_lobby_joiner_update;
+                }
+                if ("my_lobby_leaver_update" in data && data.my_lobby_leaver_update != undefined) {
+                    this.my_lobby_leaver_update = data.my_lobby_leaver_update;
+                }
+                if ("create_lobby_reply" in data && data.create_lobby_reply != undefined) {
+                    this.create_lobby_reply = data.create_lobby_reply;
+                }
+                if ("join_lobby_reply" in data && data.join_lobby_reply != undefined) {
+                    this.join_lobby_reply = data.join_lobby_reply;
+                }
+                if ("leave_my_lobby_reply" in data && data.leave_my_lobby_reply != undefined) {
+                    this.leave_my_lobby_reply = data.leave_my_lobby_reply;
+                }
+                if ("create_game_reply" in data && data.create_game_reply != undefined) {
+                    this.create_game_reply = data.create_game_reply;
+                }
+                if ("make_move_reply" in data && data.make_move_reply != undefined) {
+                    this.make_move_reply = data.make_move_reply;
+                }
+                if ("move_update" in data && data.move_update != undefined) {
+                    this.move_update = data.move_update;
+                }
+                if ("winner_update" in data && data.winner_update != undefined) {
+                    this.winner_update = data.winner_update;
+                }
+                if ("draw_update" in data && data.draw_update != undefined) {
+                    this.draw_update = data.draw_update;
+                }
+                if ("game_start_update" in data && data.game_start_update != undefined) {
+                    this.game_start_update = data.game_start_update;
+                }
+                if ("next_mover_update" in data && data.next_mover_update != undefined) {
+                    this.next_mover_update = data.next_mover_update;
+                }
+                if ("player_client_update" in data && data.player_client_update != undefined) {
+                    this.player_client_update = data.player_client_update;
+                }
+                if ("player_display_name_update" in data && data.player_display_name_update != undefined) {
+                    this.player_display_name_update = data.player_display_name_update;
+                }
+            }
+        }
+        get ping() {
+            return pb_1.Message.getWrapperField(this, Ping, 1) as Ping;
+        }
+        set ping(value: Ping) {
+            pb_1.Message.setOneofWrapperField(this, 1, this.#one_of_decls[0], value);
+        }
+        get has_ping() {
+            return pb_1.Message.getField(this, 1) != null;
+        }
+        get client_assignment_update() {
+            return pb_1.Message.getWrapperField(this, ClientAssignmentUpdate, 2) as ClientAssignmentUpdate;
+        }
+        set client_assignment_update(value: ClientAssignmentUpdate) {
+            pb_1.Message.setOneofWrapperField(this, 2, this.#one_of_decls[0], value);
+        }
+        get has_client_assignment_update() {
+            return pb_1.Message.getField(this, 2) != null;
+        }
+        get navigation_update() {
+            return pb_1.Message.getWrapperField(this, NavigationUpdate, 3) as NavigationUpdate;
+        }
+        set navigation_update(value: NavigationUpdate) {
+            pb_1.Message.setOneofWrapperField(this, 3, this.#one_of_decls[0], value);
+        }
+        get has_navigation_update() {
+            return pb_1.Message.getField(this, 3) != null;
+        }
+        get sign_up_reply() {
+            return pb_1.Message.getWrapperField(this, SignUpReply, 4) as SignUpReply;
+        }
+        set sign_up_reply(value: SignUpReply) {
+            pb_1.Message.setOneofWrapperField(this, 4, this.#one_of_decls[0], value);
+        }
+        get has_sign_up_reply() {
+            return pb_1.Message.getField(this, 4) != null;
+        }
+        get sign_in_reply() {
+            return pb_1.Message.getWrapperField(this, SignInReply, 5) as SignInReply;
+        }
+        set sign_in_reply(value: SignInReply) {
+            pb_1.Message.setOneofWrapperField(this, 5, this.#one_of_decls[0], value);
+        }
+        get has_sign_in_reply() {
+            return pb_1.Message.getField(this, 5) != null;
+        }
+        get sign_out_reply() {
+            return pb_1.Message.getWrapperField(this, SignOutReply, 6) as SignOutReply;
+        }
+        set sign_out_reply(value: SignOutReply) {
+            pb_1.Message.setOneofWrapperField(this, 6, this.#one_of_decls[0], value);
+        }
+        get has_sign_out_reply() {
+            return pb_1.Message.getField(this, 6) != null;
+        }
+        get my_lobby_details() {
+            return pb_1.Message.getWrapperField(this, MyLobbyDetails, 7) as MyLobbyDetails;
+        }
+        set my_lobby_details(value: MyLobbyDetails) {
+            pb_1.Message.setOneofWrapperField(this, 7, this.#one_of_decls[0], value);
+        }
+        get has_my_lobby_details() {
+            return pb_1.Message.getField(this, 7) != null;
+        }
+        get my_lobby_joiner_update() {
+            return pb_1.Message.getWrapperField(this, MyLobbyJoinerUpdate, 8) as MyLobbyJoinerUpdate;
+        }
+        set my_lobby_joiner_update(value: MyLobbyJoinerUpdate) {
+            pb_1.Message.setOneofWrapperField(this, 8, this.#one_of_decls[0], value);
+        }
+        get has_my_lobby_joiner_update() {
+            return pb_1.Message.getField(this, 8) != null;
+        }
+        get my_lobby_leaver_update() {
+            return pb_1.Message.getWrapperField(this, MyLobbyLeaverUpdate, 9) as MyLobbyLeaverUpdate;
+        }
+        set my_lobby_leaver_update(value: MyLobbyLeaverUpdate) {
+            pb_1.Message.setOneofWrapperField(this, 9, this.#one_of_decls[0], value);
+        }
+        get has_my_lobby_leaver_update() {
+            return pb_1.Message.getField(this, 9) != null;
+        }
+        get create_lobby_reply() {
+            return pb_1.Message.getWrapperField(this, CreateLobbyReply, 10) as CreateLobbyReply;
+        }
+        set create_lobby_reply(value: CreateLobbyReply) {
+            pb_1.Message.setOneofWrapperField(this, 10, this.#one_of_decls[0], value);
+        }
+        get has_create_lobby_reply() {
+            return pb_1.Message.getField(this, 10) != null;
+        }
+        get join_lobby_reply() {
+            return pb_1.Message.getWrapperField(this, JoinLobbyReply, 11) as JoinLobbyReply;
+        }
+        set join_lobby_reply(value: JoinLobbyReply) {
+            pb_1.Message.setOneofWrapperField(this, 11, this.#one_of_decls[0], value);
+        }
+        get has_join_lobby_reply() {
+            return pb_1.Message.getField(this, 11) != null;
+        }
+        get leave_my_lobby_reply() {
+            return pb_1.Message.getWrapperField(this, LeaveMyLobbyReply, 12) as LeaveMyLobbyReply;
+        }
+        set leave_my_lobby_reply(value: LeaveMyLobbyReply) {
+            pb_1.Message.setOneofWrapperField(this, 12, this.#one_of_decls[0], value);
+        }
+        get has_leave_my_lobby_reply() {
+            return pb_1.Message.getField(this, 12) != null;
+        }
+        get create_game_reply() {
+            return pb_1.Message.getWrapperField(this, CreateGameReply, 13) as CreateGameReply;
+        }
+        set create_game_reply(value: CreateGameReply) {
+            pb_1.Message.setOneofWrapperField(this, 13, this.#one_of_decls[0], value);
+        }
+        get has_create_game_reply() {
+            return pb_1.Message.getField(this, 13) != null;
+        }
+        get make_move_reply() {
+            return pb_1.Message.getWrapperField(this, MakeMoveReply, 14) as MakeMoveReply;
+        }
+        set make_move_reply(value: MakeMoveReply) {
+            pb_1.Message.setOneofWrapperField(this, 14, this.#one_of_decls[0], value);
+        }
+        get has_make_move_reply() {
+            return pb_1.Message.getField(this, 14) != null;
+        }
+        get move_update() {
+            return pb_1.Message.getWrapperField(this, MoveUpdate, 15) as MoveUpdate;
+        }
+        set move_update(value: MoveUpdate) {
+            pb_1.Message.setOneofWrapperField(this, 15, this.#one_of_decls[0], value);
+        }
+        get has_move_update() {
+            return pb_1.Message.getField(this, 15) != null;
+        }
+        get winner_update() {
+            return pb_1.Message.getWrapperField(this, WinnerUpdate, 16) as WinnerUpdate;
+        }
+        set winner_update(value: WinnerUpdate) {
+            pb_1.Message.setOneofWrapperField(this, 16, this.#one_of_decls[0], value);
+        }
+        get has_winner_update() {
+            return pb_1.Message.getField(this, 16) != null;
+        }
+        get draw_update() {
+            return pb_1.Message.getWrapperField(this, DrawUpdate, 17) as DrawUpdate;
+        }
+        set draw_update(value: DrawUpdate) {
+            pb_1.Message.setOneofWrapperField(this, 17, this.#one_of_decls[0], value);
+        }
+        get has_draw_update() {
+            return pb_1.Message.getField(this, 17) != null;
+        }
+        get game_start_update() {
+            return pb_1.Message.getWrapperField(this, GameStartUpdate, 18) as GameStartUpdate;
+        }
+        set game_start_update(value: GameStartUpdate) {
+            pb_1.Message.setOneofWrapperField(this, 18, this.#one_of_decls[0], value);
+        }
+        get has_game_start_update() {
+            return pb_1.Message.getField(this, 18) != null;
+        }
+        get next_mover_update() {
+            return pb_1.Message.getWrapperField(this, NextMoverUpdate, 19) as NextMoverUpdate;
+        }
+        set next_mover_update(value: NextMoverUpdate) {
+            pb_1.Message.setOneofWrapperField(this, 19, this.#one_of_decls[0], value);
+        }
+        get has_next_mover_update() {
+            return pb_1.Message.getField(this, 19) != null;
+        }
+        get player_client_update() {
+            return pb_1.Message.getWrapperField(this, PlayerClientUpdate, 20) as PlayerClientUpdate;
+        }
+        set player_client_update(value: PlayerClientUpdate) {
+            pb_1.Message.setOneofWrapperField(this, 20, this.#one_of_decls[0], value);
+        }
+        get has_player_client_update() {
+            return pb_1.Message.getField(this, 20) != null;
+        }
+        get player_display_name_update() {
+            return pb_1.Message.getWrapperField(this, PlayerDisplayNameUpdate, 21) as PlayerDisplayNameUpdate;
+        }
+        set player_display_name_update(value: PlayerDisplayNameUpdate) {
+            pb_1.Message.setOneofWrapperField(this, 21, this.#one_of_decls[0], value);
+        }
+        get has_player_display_name_update() {
+            return pb_1.Message.getField(this, 21) != null;
+        }
+        get type() {
+            const cases: {
+                [index: number]: "none" | "ping" | "client_assignment_update" | "navigation_update" | "sign_up_reply" | "sign_in_reply" | "sign_out_reply" | "my_lobby_details" | "my_lobby_joiner_update" | "my_lobby_leaver_update" | "create_lobby_reply" | "join_lobby_reply" | "leave_my_lobby_reply" | "create_game_reply" | "make_move_reply" | "move_update" | "winner_update" | "draw_update" | "game_start_update" | "next_mover_update" | "player_client_update" | "player_display_name_update";
+            } = {
+                0: "none",
+                1: "ping",
+                2: "client_assignment_update",
+                3: "navigation_update",
+                4: "sign_up_reply",
+                5: "sign_in_reply",
+                6: "sign_out_reply",
+                7: "my_lobby_details",
+                8: "my_lobby_joiner_update",
+                9: "my_lobby_leaver_update",
+                10: "create_lobby_reply",
+                11: "join_lobby_reply",
+                12: "leave_my_lobby_reply",
+                13: "create_game_reply",
+                14: "make_move_reply",
+                15: "move_update",
+                16: "winner_update",
+                17: "draw_update",
+                18: "game_start_update",
+                19: "next_mover_update",
+                20: "player_client_update",
+                21: "player_display_name_update"
+            };
+            return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21])];
+        }
+        static fromObject(data: {
+            ping?: ReturnType<typeof Ping.prototype.toObject>;
+            client_assignment_update?: ReturnType<typeof ClientAssignmentUpdate.prototype.toObject>;
+            navigation_update?: ReturnType<typeof NavigationUpdate.prototype.toObject>;
+            sign_up_reply?: ReturnType<typeof SignUpReply.prototype.toObject>;
+            sign_in_reply?: ReturnType<typeof SignInReply.prototype.toObject>;
+            sign_out_reply?: ReturnType<typeof SignOutReply.prototype.toObject>;
+            my_lobby_details?: ReturnType<typeof MyLobbyDetails.prototype.toObject>;
+            my_lobby_joiner_update?: ReturnType<typeof MyLobbyJoinerUpdate.prototype.toObject>;
+            my_lobby_leaver_update?: ReturnType<typeof MyLobbyLeaverUpdate.prototype.toObject>;
+            create_lobby_reply?: ReturnType<typeof CreateLobbyReply.prototype.toObject>;
+            join_lobby_reply?: ReturnType<typeof JoinLobbyReply.prototype.toObject>;
+            leave_my_lobby_reply?: ReturnType<typeof LeaveMyLobbyReply.prototype.toObject>;
+            create_game_reply?: ReturnType<typeof CreateGameReply.prototype.toObject>;
+            make_move_reply?: ReturnType<typeof MakeMoveReply.prototype.toObject>;
+            move_update?: ReturnType<typeof MoveUpdate.prototype.toObject>;
+            winner_update?: ReturnType<typeof WinnerUpdate.prototype.toObject>;
+            draw_update?: ReturnType<typeof DrawUpdate.prototype.toObject>;
+            game_start_update?: ReturnType<typeof GameStartUpdate.prototype.toObject>;
+            next_mover_update?: ReturnType<typeof NextMoverUpdate.prototype.toObject>;
+            player_client_update?: ReturnType<typeof PlayerClientUpdate.prototype.toObject>;
+            player_display_name_update?: ReturnType<typeof PlayerDisplayNameUpdate.prototype.toObject>;
+        }): ServerUpdate {
+            const message = new ServerUpdate({});
+            if (data.ping != null) {
+                message.ping = Ping.fromObject(data.ping);
+            }
+            if (data.client_assignment_update != null) {
+                message.client_assignment_update = ClientAssignmentUpdate.fromObject(data.client_assignment_update);
+            }
+            if (data.navigation_update != null) {
+                message.navigation_update = NavigationUpdate.fromObject(data.navigation_update);
+            }
+            if (data.sign_up_reply != null) {
+                message.sign_up_reply = SignUpReply.fromObject(data.sign_up_reply);
+            }
+            if (data.sign_in_reply != null) {
+                message.sign_in_reply = SignInReply.fromObject(data.sign_in_reply);
+            }
+            if (data.sign_out_reply != null) {
+                message.sign_out_reply = SignOutReply.fromObject(data.sign_out_reply);
+            }
+            if (data.my_lobby_details != null) {
+                message.my_lobby_details = MyLobbyDetails.fromObject(data.my_lobby_details);
+            }
+            if (data.my_lobby_joiner_update != null) {
+                message.my_lobby_joiner_update = MyLobbyJoinerUpdate.fromObject(data.my_lobby_joiner_update);
+            }
+            if (data.my_lobby_leaver_update != null) {
+                message.my_lobby_leaver_update = MyLobbyLeaverUpdate.fromObject(data.my_lobby_leaver_update);
+            }
+            if (data.create_lobby_reply != null) {
+                message.create_lobby_reply = CreateLobbyReply.fromObject(data.create_lobby_reply);
+            }
+            if (data.join_lobby_reply != null) {
+                message.join_lobby_reply = JoinLobbyReply.fromObject(data.join_lobby_reply);
+            }
+            if (data.leave_my_lobby_reply != null) {
+                message.leave_my_lobby_reply = LeaveMyLobbyReply.fromObject(data.leave_my_lobby_reply);
+            }
+            if (data.create_game_reply != null) {
+                message.create_game_reply = CreateGameReply.fromObject(data.create_game_reply);
+            }
+            if (data.make_move_reply != null) {
+                message.make_move_reply = MakeMoveReply.fromObject(data.make_move_reply);
+            }
+            if (data.move_update != null) {
+                message.move_update = MoveUpdate.fromObject(data.move_update);
+            }
+            if (data.winner_update != null) {
+                message.winner_update = WinnerUpdate.fromObject(data.winner_update);
+            }
+            if (data.draw_update != null) {
+                message.draw_update = DrawUpdate.fromObject(data.draw_update);
+            }
+            if (data.game_start_update != null) {
+                message.game_start_update = GameStartUpdate.fromObject(data.game_start_update);
+            }
+            if (data.next_mover_update != null) {
+                message.next_mover_update = NextMoverUpdate.fromObject(data.next_mover_update);
+            }
+            if (data.player_client_update != null) {
+                message.player_client_update = PlayerClientUpdate.fromObject(data.player_client_update);
+            }
+            if (data.player_display_name_update != null) {
+                message.player_display_name_update = PlayerDisplayNameUpdate.fromObject(data.player_display_name_update);
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                ping?: ReturnType<typeof Ping.prototype.toObject>;
+                client_assignment_update?: ReturnType<typeof ClientAssignmentUpdate.prototype.toObject>;
+                navigation_update?: ReturnType<typeof NavigationUpdate.prototype.toObject>;
+                sign_up_reply?: ReturnType<typeof SignUpReply.prototype.toObject>;
+                sign_in_reply?: ReturnType<typeof SignInReply.prototype.toObject>;
+                sign_out_reply?: ReturnType<typeof SignOutReply.prototype.toObject>;
+                my_lobby_details?: ReturnType<typeof MyLobbyDetails.prototype.toObject>;
+                my_lobby_joiner_update?: ReturnType<typeof MyLobbyJoinerUpdate.prototype.toObject>;
+                my_lobby_leaver_update?: ReturnType<typeof MyLobbyLeaverUpdate.prototype.toObject>;
+                create_lobby_reply?: ReturnType<typeof CreateLobbyReply.prototype.toObject>;
+                join_lobby_reply?: ReturnType<typeof JoinLobbyReply.prototype.toObject>;
+                leave_my_lobby_reply?: ReturnType<typeof LeaveMyLobbyReply.prototype.toObject>;
+                create_game_reply?: ReturnType<typeof CreateGameReply.prototype.toObject>;
+                make_move_reply?: ReturnType<typeof MakeMoveReply.prototype.toObject>;
+                move_update?: ReturnType<typeof MoveUpdate.prototype.toObject>;
+                winner_update?: ReturnType<typeof WinnerUpdate.prototype.toObject>;
+                draw_update?: ReturnType<typeof DrawUpdate.prototype.toObject>;
+                game_start_update?: ReturnType<typeof GameStartUpdate.prototype.toObject>;
+                next_mover_update?: ReturnType<typeof NextMoverUpdate.prototype.toObject>;
+                player_client_update?: ReturnType<typeof PlayerClientUpdate.prototype.toObject>;
+                player_display_name_update?: ReturnType<typeof PlayerDisplayNameUpdate.prototype.toObject>;
+            } = {};
+            if (this.ping != null) {
+                data.ping = this.ping.toObject();
+            }
+            if (this.client_assignment_update != null) {
+                data.client_assignment_update = this.client_assignment_update.toObject();
+            }
+            if (this.navigation_update != null) {
+                data.navigation_update = this.navigation_update.toObject();
+            }
+            if (this.sign_up_reply != null) {
+                data.sign_up_reply = this.sign_up_reply.toObject();
+            }
+            if (this.sign_in_reply != null) {
+                data.sign_in_reply = this.sign_in_reply.toObject();
+            }
+            if (this.sign_out_reply != null) {
+                data.sign_out_reply = this.sign_out_reply.toObject();
+            }
+            if (this.my_lobby_details != null) {
+                data.my_lobby_details = this.my_lobby_details.toObject();
+            }
+            if (this.my_lobby_joiner_update != null) {
+                data.my_lobby_joiner_update = this.my_lobby_joiner_update.toObject();
+            }
+            if (this.my_lobby_leaver_update != null) {
+                data.my_lobby_leaver_update = this.my_lobby_leaver_update.toObject();
+            }
+            if (this.create_lobby_reply != null) {
+                data.create_lobby_reply = this.create_lobby_reply.toObject();
+            }
+            if (this.join_lobby_reply != null) {
+                data.join_lobby_reply = this.join_lobby_reply.toObject();
+            }
+            if (this.leave_my_lobby_reply != null) {
+                data.leave_my_lobby_reply = this.leave_my_lobby_reply.toObject();
+            }
+            if (this.create_game_reply != null) {
+                data.create_game_reply = this.create_game_reply.toObject();
+            }
+            if (this.make_move_reply != null) {
+                data.make_move_reply = this.make_move_reply.toObject();
+            }
+            if (this.move_update != null) {
+                data.move_update = this.move_update.toObject();
+            }
+            if (this.winner_update != null) {
+                data.winner_update = this.winner_update.toObject();
+            }
+            if (this.draw_update != null) {
+                data.draw_update = this.draw_update.toObject();
+            }
+            if (this.game_start_update != null) {
+                data.game_start_update = this.game_start_update.toObject();
+            }
+            if (this.next_mover_update != null) {
+                data.next_mover_update = this.next_mover_update.toObject();
+            }
+            if (this.player_client_update != null) {
+                data.player_client_update = this.player_client_update.toObject();
+            }
+            if (this.player_display_name_update != null) {
+                data.player_display_name_update = this.player_display_name_update.toObject();
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.has_ping)
+                writer.writeMessage(1, this.ping, () => this.ping.serialize(writer));
+            if (this.has_client_assignment_update)
+                writer.writeMessage(2, this.client_assignment_update, () => this.client_assignment_update.serialize(writer));
+            if (this.has_navigation_update)
+                writer.writeMessage(3, this.navigation_update, () => this.navigation_update.serialize(writer));
+            if (this.has_sign_up_reply)
+                writer.writeMessage(4, this.sign_up_reply, () => this.sign_up_reply.serialize(writer));
+            if (this.has_sign_in_reply)
+                writer.writeMessage(5, this.sign_in_reply, () => this.sign_in_reply.serialize(writer));
+            if (this.has_sign_out_reply)
+                writer.writeMessage(6, this.sign_out_reply, () => this.sign_out_reply.serialize(writer));
+            if (this.has_my_lobby_details)
+                writer.writeMessage(7, this.my_lobby_details, () => this.my_lobby_details.serialize(writer));
+            if (this.has_my_lobby_joiner_update)
+                writer.writeMessage(8, this.my_lobby_joiner_update, () => this.my_lobby_joiner_update.serialize(writer));
+            if (this.has_my_lobby_leaver_update)
+                writer.writeMessage(9, this.my_lobby_leaver_update, () => this.my_lobby_leaver_update.serialize(writer));
+            if (this.has_create_lobby_reply)
+                writer.writeMessage(10, this.create_lobby_reply, () => this.create_lobby_reply.serialize(writer));
+            if (this.has_join_lobby_reply)
+                writer.writeMessage(11, this.join_lobby_reply, () => this.join_lobby_reply.serialize(writer));
+            if (this.has_leave_my_lobby_reply)
+                writer.writeMessage(12, this.leave_my_lobby_reply, () => this.leave_my_lobby_reply.serialize(writer));
+            if (this.has_create_game_reply)
+                writer.writeMessage(13, this.create_game_reply, () => this.create_game_reply.serialize(writer));
+            if (this.has_make_move_reply)
+                writer.writeMessage(14, this.make_move_reply, () => this.make_move_reply.serialize(writer));
+            if (this.has_move_update)
+                writer.writeMessage(15, this.move_update, () => this.move_update.serialize(writer));
+            if (this.has_winner_update)
+                writer.writeMessage(16, this.winner_update, () => this.winner_update.serialize(writer));
+            if (this.has_draw_update)
+                writer.writeMessage(17, this.draw_update, () => this.draw_update.serialize(writer));
+            if (this.has_game_start_update)
+                writer.writeMessage(18, this.game_start_update, () => this.game_start_update.serialize(writer));
+            if (this.has_next_mover_update)
+                writer.writeMessage(19, this.next_mover_update, () => this.next_mover_update.serialize(writer));
+            if (this.has_player_client_update)
+                writer.writeMessage(20, this.player_client_update, () => this.player_client_update.serialize(writer));
+            if (this.has_player_display_name_update)
+                writer.writeMessage(21, this.player_display_name_update, () => this.player_display_name_update.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): ServerUpdate {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new ServerUpdate();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        reader.readMessage(message.ping, () => message.ping = Ping.deserialize(reader));
+                        break;
+                    case 2:
+                        reader.readMessage(message.client_assignment_update, () => message.client_assignment_update = ClientAssignmentUpdate.deserialize(reader));
+                        break;
+                    case 3:
+                        reader.readMessage(message.navigation_update, () => message.navigation_update = NavigationUpdate.deserialize(reader));
+                        break;
+                    case 4:
+                        reader.readMessage(message.sign_up_reply, () => message.sign_up_reply = SignUpReply.deserialize(reader));
+                        break;
+                    case 5:
+                        reader.readMessage(message.sign_in_reply, () => message.sign_in_reply = SignInReply.deserialize(reader));
+                        break;
+                    case 6:
+                        reader.readMessage(message.sign_out_reply, () => message.sign_out_reply = SignOutReply.deserialize(reader));
+                        break;
+                    case 7:
+                        reader.readMessage(message.my_lobby_details, () => message.my_lobby_details = MyLobbyDetails.deserialize(reader));
+                        break;
+                    case 8:
+                        reader.readMessage(message.my_lobby_joiner_update, () => message.my_lobby_joiner_update = MyLobbyJoinerUpdate.deserialize(reader));
+                        break;
+                    case 9:
+                        reader.readMessage(message.my_lobby_leaver_update, () => message.my_lobby_leaver_update = MyLobbyLeaverUpdate.deserialize(reader));
+                        break;
+                    case 10:
+                        reader.readMessage(message.create_lobby_reply, () => message.create_lobby_reply = CreateLobbyReply.deserialize(reader));
+                        break;
+                    case 11:
+                        reader.readMessage(message.join_lobby_reply, () => message.join_lobby_reply = JoinLobbyReply.deserialize(reader));
+                        break;
+                    case 12:
+                        reader.readMessage(message.leave_my_lobby_reply, () => message.leave_my_lobby_reply = LeaveMyLobbyReply.deserialize(reader));
+                        break;
+                    case 13:
+                        reader.readMessage(message.create_game_reply, () => message.create_game_reply = CreateGameReply.deserialize(reader));
+                        break;
+                    case 14:
+                        reader.readMessage(message.make_move_reply, () => message.make_move_reply = MakeMoveReply.deserialize(reader));
+                        break;
+                    case 15:
+                        reader.readMessage(message.move_update, () => message.move_update = MoveUpdate.deserialize(reader));
+                        break;
+                    case 16:
+                        reader.readMessage(message.winner_update, () => message.winner_update = WinnerUpdate.deserialize(reader));
+                        break;
+                    case 17:
+                        reader.readMessage(message.draw_update, () => message.draw_update = DrawUpdate.deserialize(reader));
+                        break;
+                    case 18:
+                        reader.readMessage(message.game_start_update, () => message.game_start_update = GameStartUpdate.deserialize(reader));
+                        break;
+                    case 19:
+                        reader.readMessage(message.next_mover_update, () => message.next_mover_update = NextMoverUpdate.deserialize(reader));
+                        break;
+                    case 20:
+                        reader.readMessage(message.player_client_update, () => message.player_client_update = PlayerClientUpdate.deserialize(reader));
+                        break;
+                    case 21:
+                        reader.readMessage(message.player_display_name_update, () => message.player_display_name_update = PlayerDisplayNameUpdate.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): ServerUpdate {
+            return ServerUpdate.deserialize(bytes);
+        }
+    }
+    export class Ping extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {}) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") { }
+        }
+        static fromObject(data: {}): Ping {
+            const message = new Ping({});
+            return message;
+        }
+        toObject() {
+            const data: {} = {};
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): Ping {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new Ping();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): Ping {
+            return Ping.deserialize(bytes);
         }
     }
     export class Lobby extends pb_1.Message {
@@ -1153,74 +1700,7 @@ export namespace server {
             return Player.deserialize(bytes);
         }
     }
-    export class ExchangeRequest extends pb_1.Message {
-        #one_of_decls: number[][] = [];
-        constructor(data?: any[] | {
-            public_key?: string;
-        }) {
-            super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
-            if (!Array.isArray(data) && typeof data == "object") {
-                if ("public_key" in data && data.public_key != undefined) {
-                    this.public_key = data.public_key;
-                }
-            }
-        }
-        get public_key() {
-            return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
-        }
-        set public_key(value: string) {
-            pb_1.Message.setField(this, 1, value);
-        }
-        static fromObject(data: {
-            public_key?: string;
-        }): ExchangeRequest {
-            const message = new ExchangeRequest({});
-            if (data.public_key != null) {
-                message.public_key = data.public_key;
-            }
-            return message;
-        }
-        toObject() {
-            const data: {
-                public_key?: string;
-            } = {};
-            if (this.public_key != null) {
-                data.public_key = this.public_key;
-            }
-            return data;
-        }
-        serialize(): Uint8Array;
-        serialize(w: pb_1.BinaryWriter): void;
-        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
-            const writer = w || new pb_1.BinaryWriter();
-            if (this.public_key.length)
-                writer.writeString(1, this.public_key);
-            if (!w)
-                return writer.getResultBuffer();
-        }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): ExchangeRequest {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new ExchangeRequest();
-            while (reader.nextField()) {
-                if (reader.isEndGroup())
-                    break;
-                switch (reader.getFieldNumber()) {
-                    case 1:
-                        message.public_key = reader.readString();
-                        break;
-                    default: reader.skipField();
-                }
-            }
-            return message;
-        }
-        serializeBinary(): Uint8Array {
-            return this.serialize();
-        }
-        static deserializeBinary(bytes: Uint8Array): ExchangeRequest {
-            return ExchangeRequest.deserialize(bytes);
-        }
-    }
-    export class ExchangeReply extends pb_1.Message {
+    export class ClientAssignmentUpdate extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
             client_id?: string;
@@ -1241,8 +1721,8 @@ export namespace server {
         }
         static fromObject(data: {
             client_id?: string;
-        }): ExchangeReply {
-            const message = new ExchangeReply({});
+        }): ClientAssignmentUpdate {
+            const message = new ClientAssignmentUpdate({});
             if (data.client_id != null) {
                 message.client_id = data.client_id;
             }
@@ -1266,8 +1746,8 @@ export namespace server {
             if (!w)
                 return writer.getResultBuffer();
         }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): ExchangeReply {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new ExchangeReply();
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): ClientAssignmentUpdate {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new ClientAssignmentUpdate();
             while (reader.nextField()) {
                 if (reader.isEndGroup())
                     break;
@@ -1283,8 +1763,641 @@ export namespace server {
         serializeBinary(): Uint8Array {
             return this.serialize();
         }
-        static deserializeBinary(bytes: Uint8Array): ExchangeReply {
-            return ExchangeReply.deserialize(bytes);
+        static deserializeBinary(bytes: Uint8Array): ClientAssignmentUpdate {
+            return ClientAssignmentUpdate.deserialize(bytes);
+        }
+    }
+    export class NavigationUpdate extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            path?: NavigationPath;
+            refresh?: boolean;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("path" in data && data.path != undefined) {
+                    this.path = data.path;
+                }
+                if ("refresh" in data && data.refresh != undefined) {
+                    this.refresh = data.refresh;
+                }
+            }
+        }
+        get path() {
+            return pb_1.Message.getFieldWithDefault(this, 1, NavigationPath.WELCOME) as NavigationPath;
+        }
+        set path(value: NavigationPath) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        get refresh() {
+            return pb_1.Message.getFieldWithDefault(this, 2, false) as boolean;
+        }
+        set refresh(value: boolean) {
+            pb_1.Message.setField(this, 2, value);
+        }
+        static fromObject(data: {
+            path?: NavigationPath;
+            refresh?: boolean;
+        }): NavigationUpdate {
+            const message = new NavigationUpdate({});
+            if (data.path != null) {
+                message.path = data.path;
+            }
+            if (data.refresh != null) {
+                message.refresh = data.refresh;
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                path?: NavigationPath;
+                refresh?: boolean;
+            } = {};
+            if (this.path != null) {
+                data.path = this.path;
+            }
+            if (this.refresh != null) {
+                data.refresh = this.refresh;
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.path != NavigationPath.WELCOME)
+                writer.writeEnum(1, this.path);
+            if (this.refresh != false)
+                writer.writeBool(2, this.refresh);
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): NavigationUpdate {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new NavigationUpdate();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.path = reader.readEnum();
+                        break;
+                    case 2:
+                        message.refresh = reader.readBool();
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): NavigationUpdate {
+            return NavigationUpdate.deserialize(bytes);
+        }
+    }
+    export class SignInRequest extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            name?: string;
+            pass?: string;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("name" in data && data.name != undefined) {
+                    this.name = data.name;
+                }
+                if ("pass" in data && data.pass != undefined) {
+                    this.pass = data.pass;
+                }
+            }
+        }
+        get name() {
+            return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
+        }
+        set name(value: string) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        get pass() {
+            return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
+        }
+        set pass(value: string) {
+            pb_1.Message.setField(this, 2, value);
+        }
+        static fromObject(data: {
+            name?: string;
+            pass?: string;
+        }): SignInRequest {
+            const message = new SignInRequest({});
+            if (data.name != null) {
+                message.name = data.name;
+            }
+            if (data.pass != null) {
+                message.pass = data.pass;
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                name?: string;
+                pass?: string;
+            } = {};
+            if (this.name != null) {
+                data.name = this.name;
+            }
+            if (this.pass != null) {
+                data.pass = this.pass;
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.name.length)
+                writer.writeString(1, this.name);
+            if (this.pass.length)
+                writer.writeString(2, this.pass);
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): SignInRequest {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new SignInRequest();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.name = reader.readString();
+                        break;
+                    case 2:
+                        message.pass = reader.readString();
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): SignInRequest {
+            return SignInRequest.deserialize(bytes);
+        }
+    }
+    export class SignInReply extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            Outcome?: Outcome;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("Outcome" in data && data.Outcome != undefined) {
+                    this.Outcome = data.Outcome;
+                }
+            }
+        }
+        get Outcome() {
+            return pb_1.Message.getWrapperField(this, Outcome, 1) as Outcome;
+        }
+        set Outcome(value: Outcome) {
+            pb_1.Message.setWrapperField(this, 1, value);
+        }
+        get has_Outcome() {
+            return pb_1.Message.getField(this, 1) != null;
+        }
+        static fromObject(data: {
+            Outcome?: ReturnType<typeof Outcome.prototype.toObject>;
+        }): SignInReply {
+            const message = new SignInReply({});
+            if (data.Outcome != null) {
+                message.Outcome = Outcome.fromObject(data.Outcome);
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                Outcome?: ReturnType<typeof Outcome.prototype.toObject>;
+            } = {};
+            if (this.Outcome != null) {
+                data.Outcome = this.Outcome.toObject();
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.has_Outcome)
+                writer.writeMessage(1, this.Outcome, () => this.Outcome.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): SignInReply {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new SignInReply();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        reader.readMessage(message.Outcome, () => message.Outcome = Outcome.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): SignInReply {
+            return SignInReply.deserialize(bytes);
+        }
+    }
+    export class SignUpRequest extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            name?: string;
+            pass?: string;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("name" in data && data.name != undefined) {
+                    this.name = data.name;
+                }
+                if ("pass" in data && data.pass != undefined) {
+                    this.pass = data.pass;
+                }
+            }
+        }
+        get name() {
+            return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
+        }
+        set name(value: string) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        get pass() {
+            return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
+        }
+        set pass(value: string) {
+            pb_1.Message.setField(this, 2, value);
+        }
+        static fromObject(data: {
+            name?: string;
+            pass?: string;
+        }): SignUpRequest {
+            const message = new SignUpRequest({});
+            if (data.name != null) {
+                message.name = data.name;
+            }
+            if (data.pass != null) {
+                message.pass = data.pass;
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                name?: string;
+                pass?: string;
+            } = {};
+            if (this.name != null) {
+                data.name = this.name;
+            }
+            if (this.pass != null) {
+                data.pass = this.pass;
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.name.length)
+                writer.writeString(1, this.name);
+            if (this.pass.length)
+                writer.writeString(2, this.pass);
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): SignUpRequest {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new SignUpRequest();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.name = reader.readString();
+                        break;
+                    case 2:
+                        message.pass = reader.readString();
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): SignUpRequest {
+            return SignUpRequest.deserialize(bytes);
+        }
+    }
+    export class SignUpReply extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            outcome?: Outcome;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("outcome" in data && data.outcome != undefined) {
+                    this.outcome = data.outcome;
+                }
+            }
+        }
+        get outcome() {
+            return pb_1.Message.getWrapperField(this, Outcome, 1) as Outcome;
+        }
+        set outcome(value: Outcome) {
+            pb_1.Message.setWrapperField(this, 1, value);
+        }
+        get has_outcome() {
+            return pb_1.Message.getField(this, 1) != null;
+        }
+        static fromObject(data: {
+            outcome?: ReturnType<typeof Outcome.prototype.toObject>;
+        }): SignUpReply {
+            const message = new SignUpReply({});
+            if (data.outcome != null) {
+                message.outcome = Outcome.fromObject(data.outcome);
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                outcome?: ReturnType<typeof Outcome.prototype.toObject>;
+            } = {};
+            if (this.outcome != null) {
+                data.outcome = this.outcome.toObject();
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.has_outcome)
+                writer.writeMessage(1, this.outcome, () => this.outcome.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): SignUpReply {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new SignUpReply();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        reader.readMessage(message.outcome, () => message.outcome = Outcome.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): SignUpReply {
+            return SignUpReply.deserialize(bytes);
+        }
+    }
+    export class SignOutRequest extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {}) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") { }
+        }
+        static fromObject(data: {}): SignOutRequest {
+            const message = new SignOutRequest({});
+            return message;
+        }
+        toObject() {
+            const data: {} = {};
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): SignOutRequest {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new SignOutRequest();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): SignOutRequest {
+            return SignOutRequest.deserialize(bytes);
+        }
+    }
+    export class SignOutReply extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            outcome?: Outcome;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("outcome" in data && data.outcome != undefined) {
+                    this.outcome = data.outcome;
+                }
+            }
+        }
+        get outcome() {
+            return pb_1.Message.getWrapperField(this, Outcome, 1) as Outcome;
+        }
+        set outcome(value: Outcome) {
+            pb_1.Message.setWrapperField(this, 1, value);
+        }
+        get has_outcome() {
+            return pb_1.Message.getField(this, 1) != null;
+        }
+        static fromObject(data: {
+            outcome?: ReturnType<typeof Outcome.prototype.toObject>;
+        }): SignOutReply {
+            const message = new SignOutReply({});
+            if (data.outcome != null) {
+                message.outcome = Outcome.fromObject(data.outcome);
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                outcome?: ReturnType<typeof Outcome.prototype.toObject>;
+            } = {};
+            if (this.outcome != null) {
+                data.outcome = this.outcome.toObject();
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.has_outcome)
+                writer.writeMessage(1, this.outcome, () => this.outcome.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): SignOutReply {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new SignOutReply();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        reader.readMessage(message.outcome, () => message.outcome = Outcome.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): SignOutReply {
+            return SignOutReply.deserialize(bytes);
+        }
+    }
+    export class Outcome extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            ok?: boolean;
+            error_code?: number;
+            error_message?: string;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("ok" in data && data.ok != undefined) {
+                    this.ok = data.ok;
+                }
+                if ("error_code" in data && data.error_code != undefined) {
+                    this.error_code = data.error_code;
+                }
+                if ("error_message" in data && data.error_message != undefined) {
+                    this.error_message = data.error_message;
+                }
+            }
+        }
+        get ok() {
+            return pb_1.Message.getFieldWithDefault(this, 1, false) as boolean;
+        }
+        set ok(value: boolean) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        get error_code() {
+            return pb_1.Message.getFieldWithDefault(this, 2, 0) as number;
+        }
+        set error_code(value: number) {
+            pb_1.Message.setField(this, 2, value);
+        }
+        get error_message() {
+            return pb_1.Message.getFieldWithDefault(this, 3, "") as string;
+        }
+        set error_message(value: string) {
+            pb_1.Message.setField(this, 3, value);
+        }
+        static fromObject(data: {
+            ok?: boolean;
+            error_code?: number;
+            error_message?: string;
+        }): Outcome {
+            const message = new Outcome({});
+            if (data.ok != null) {
+                message.ok = data.ok;
+            }
+            if (data.error_code != null) {
+                message.error_code = data.error_code;
+            }
+            if (data.error_message != null) {
+                message.error_message = data.error_message;
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                ok?: boolean;
+                error_code?: number;
+                error_message?: string;
+            } = {};
+            if (this.ok != null) {
+                data.ok = this.ok;
+            }
+            if (this.error_code != null) {
+                data.error_code = this.error_code;
+            }
+            if (this.error_message != null) {
+                data.error_message = this.error_message;
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.ok != false)
+                writer.writeBool(1, this.ok);
+            if (this.error_code != 0)
+                writer.writeInt32(2, this.error_code);
+            if (this.error_message.length)
+                writer.writeString(3, this.error_message);
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): Outcome {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new Outcome();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.ok = reader.readBool();
+                        break;
+                    case 2:
+                        message.error_code = reader.readInt32();
+                        break;
+                    case 3:
+                        message.error_message = reader.readString();
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): Outcome {
+            return Outcome.deserialize(bytes);
         }
     }
     export class MyLobbyDetails extends pb_1.Message {
@@ -1704,7 +2817,7 @@ export namespace server {
             return JoinLobbyReply.deserialize(bytes);
         }
     }
-    export class InvalidateReply extends pb_1.Message {
+    export class CreateLobbyReply extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
             outcome?: Outcome;
@@ -1728,8 +2841,8 @@ export namespace server {
         }
         static fromObject(data: {
             outcome?: ReturnType<typeof Outcome.prototype.toObject>;
-        }): InvalidateReply {
-            const message = new InvalidateReply({});
+        }): CreateLobbyReply {
+            const message = new CreateLobbyReply({});
             if (data.outcome != null) {
                 message.outcome = Outcome.fromObject(data.outcome);
             }
@@ -1753,8 +2866,8 @@ export namespace server {
             if (!w)
                 return writer.getResultBuffer();
         }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): InvalidateReply {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new InvalidateReply();
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): CreateLobbyReply {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new CreateLobbyReply();
             while (reader.nextField()) {
                 if (reader.isEndGroup())
                     break;
@@ -1770,305 +2883,8 @@ export namespace server {
         serializeBinary(): Uint8Array {
             return this.serialize();
         }
-        static deserializeBinary(bytes: Uint8Array): InvalidateReply {
-            return InvalidateReply.deserialize(bytes);
-        }
-    }
-    export class SubscriptionUpdate extends pb_1.Message {
-        #one_of_decls: number[][] = [];
-        constructor(data?: any[] | {
-            data?: SubscriptionUpdateData;
-        }) {
-            super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
-            if (!Array.isArray(data) && typeof data == "object") {
-                if ("data" in data && data.data != undefined) {
-                    this.data = data.data;
-                }
-            }
-        }
-        get data() {
-            return pb_1.Message.getWrapperField(this, SubscriptionUpdateData, 1) as SubscriptionUpdateData;
-        }
-        set data(value: SubscriptionUpdateData) {
-            pb_1.Message.setWrapperField(this, 1, value);
-        }
-        get has_data() {
-            return pb_1.Message.getField(this, 1) != null;
-        }
-        static fromObject(data: {
-            data?: ReturnType<typeof SubscriptionUpdateData.prototype.toObject>;
-        }): SubscriptionUpdate {
-            const message = new SubscriptionUpdate({});
-            if (data.data != null) {
-                message.data = SubscriptionUpdateData.fromObject(data.data);
-            }
-            return message;
-        }
-        toObject() {
-            const data: {
-                data?: ReturnType<typeof SubscriptionUpdateData.prototype.toObject>;
-            } = {};
-            if (this.data != null) {
-                data.data = this.data.toObject();
-            }
-            return data;
-        }
-        serialize(): Uint8Array;
-        serialize(w: pb_1.BinaryWriter): void;
-        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
-            const writer = w || new pb_1.BinaryWriter();
-            if (this.has_data)
-                writer.writeMessage(1, this.data, () => this.data.serialize(writer));
-            if (!w)
-                return writer.getResultBuffer();
-        }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): SubscriptionUpdate {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new SubscriptionUpdate();
-            while (reader.nextField()) {
-                if (reader.isEndGroup())
-                    break;
-                switch (reader.getFieldNumber()) {
-                    case 1:
-                        reader.readMessage(message.data, () => message.data = SubscriptionUpdateData.deserialize(reader));
-                        break;
-                    default: reader.skipField();
-                }
-            }
-            return message;
-        }
-        serializeBinary(): Uint8Array {
-            return this.serialize();
-        }
-        static deserializeBinary(bytes: Uint8Array): SubscriptionUpdate {
-            return SubscriptionUpdate.deserialize(bytes);
-        }
-    }
-    export class HandshakeRequest extends pb_1.Message {
-        #one_of_decls: number[][] = [];
-        constructor(data?: any[] | {
-            player_name?: string;
-            player_pass?: string;
-        }) {
-            super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
-            if (!Array.isArray(data) && typeof data == "object") {
-                if ("player_name" in data && data.player_name != undefined) {
-                    this.player_name = data.player_name;
-                }
-                if ("player_pass" in data && data.player_pass != undefined) {
-                    this.player_pass = data.player_pass;
-                }
-            }
-        }
-        get player_name() {
-            return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
-        }
-        set player_name(value: string) {
-            pb_1.Message.setField(this, 1, value);
-        }
-        get player_pass() {
-            return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
-        }
-        set player_pass(value: string) {
-            pb_1.Message.setField(this, 2, value);
-        }
-        static fromObject(data: {
-            player_name?: string;
-            player_pass?: string;
-        }): HandshakeRequest {
-            const message = new HandshakeRequest({});
-            if (data.player_name != null) {
-                message.player_name = data.player_name;
-            }
-            if (data.player_pass != null) {
-                message.player_pass = data.player_pass;
-            }
-            return message;
-        }
-        toObject() {
-            const data: {
-                player_name?: string;
-                player_pass?: string;
-            } = {};
-            if (this.player_name != null) {
-                data.player_name = this.player_name;
-            }
-            if (this.player_pass != null) {
-                data.player_pass = this.player_pass;
-            }
-            return data;
-        }
-        serialize(): Uint8Array;
-        serialize(w: pb_1.BinaryWriter): void;
-        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
-            const writer = w || new pb_1.BinaryWriter();
-            if (this.player_name.length)
-                writer.writeString(1, this.player_name);
-            if (this.player_pass.length)
-                writer.writeString(2, this.player_pass);
-            if (!w)
-                return writer.getResultBuffer();
-        }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): HandshakeRequest {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new HandshakeRequest();
-            while (reader.nextField()) {
-                if (reader.isEndGroup())
-                    break;
-                switch (reader.getFieldNumber()) {
-                    case 1:
-                        message.player_name = reader.readString();
-                        break;
-                    case 2:
-                        message.player_pass = reader.readString();
-                        break;
-                    default: reader.skipField();
-                }
-            }
-            return message;
-        }
-        serializeBinary(): Uint8Array {
-            return this.serialize();
-        }
-        static deserializeBinary(bytes: Uint8Array): HandshakeRequest {
-            return HandshakeRequest.deserialize(bytes);
-        }
-    }
-    export class HandshakeReply extends pb_1.Message {
-        #one_of_decls: number[][] = [];
-        constructor(data?: any[] | {
-            outcome?: Outcome;
-        }) {
-            super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
-            if (!Array.isArray(data) && typeof data == "object") {
-                if ("outcome" in data && data.outcome != undefined) {
-                    this.outcome = data.outcome;
-                }
-            }
-        }
-        get outcome() {
-            return pb_1.Message.getWrapperField(this, Outcome, 1) as Outcome;
-        }
-        set outcome(value: Outcome) {
-            pb_1.Message.setWrapperField(this, 1, value);
-        }
-        get has_outcome() {
-            return pb_1.Message.getField(this, 1) != null;
-        }
-        static fromObject(data: {
-            outcome?: ReturnType<typeof Outcome.prototype.toObject>;
-        }): HandshakeReply {
-            const message = new HandshakeReply({});
-            if (data.outcome != null) {
-                message.outcome = Outcome.fromObject(data.outcome);
-            }
-            return message;
-        }
-        toObject() {
-            const data: {
-                outcome?: ReturnType<typeof Outcome.prototype.toObject>;
-            } = {};
-            if (this.outcome != null) {
-                data.outcome = this.outcome.toObject();
-            }
-            return data;
-        }
-        serialize(): Uint8Array;
-        serialize(w: pb_1.BinaryWriter): void;
-        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
-            const writer = w || new pb_1.BinaryWriter();
-            if (this.has_outcome)
-                writer.writeMessage(1, this.outcome, () => this.outcome.serialize(writer));
-            if (!w)
-                return writer.getResultBuffer();
-        }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): HandshakeReply {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new HandshakeReply();
-            while (reader.nextField()) {
-                if (reader.isEndGroup())
-                    break;
-                switch (reader.getFieldNumber()) {
-                    case 1:
-                        reader.readMessage(message.outcome, () => message.outcome = Outcome.deserialize(reader));
-                        break;
-                    default: reader.skipField();
-                }
-            }
-            return message;
-        }
-        serializeBinary(): Uint8Array {
-            return this.serialize();
-        }
-        static deserializeBinary(bytes: Uint8Array): HandshakeReply {
-            return HandshakeReply.deserialize(bytes);
-        }
-    }
-    export class NavigationUpdate extends pb_1.Message {
-        #one_of_decls: number[][] = [];
-        constructor(data?: any[] | {
-            path?: NavigationPath;
-        }) {
-            super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
-            if (!Array.isArray(data) && typeof data == "object") {
-                if ("path" in data && data.path != undefined) {
-                    this.path = data.path;
-                }
-            }
-        }
-        get path() {
-            return pb_1.Message.getFieldWithDefault(this, 1, NavigationPath.LOGIN) as NavigationPath;
-        }
-        set path(value: NavigationPath) {
-            pb_1.Message.setField(this, 1, value);
-        }
-        static fromObject(data: {
-            path?: NavigationPath;
-        }): NavigationUpdate {
-            const message = new NavigationUpdate({});
-            if (data.path != null) {
-                message.path = data.path;
-            }
-            return message;
-        }
-        toObject() {
-            const data: {
-                path?: NavigationPath;
-            } = {};
-            if (this.path != null) {
-                data.path = this.path;
-            }
-            return data;
-        }
-        serialize(): Uint8Array;
-        serialize(w: pb_1.BinaryWriter): void;
-        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
-            const writer = w || new pb_1.BinaryWriter();
-            if (this.path != NavigationPath.LOGIN)
-                writer.writeEnum(1, this.path);
-            if (!w)
-                return writer.getResultBuffer();
-        }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): NavigationUpdate {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new NavigationUpdate();
-            while (reader.nextField()) {
-                if (reader.isEndGroup())
-                    break;
-                switch (reader.getFieldNumber()) {
-                    case 1:
-                        message.path = reader.readEnum();
-                        break;
-                    default: reader.skipField();
-                }
-            }
-            return message;
-        }
-        serializeBinary(): Uint8Array {
-            return this.serialize();
-        }
-        static deserializeBinary(bytes: Uint8Array): NavigationUpdate {
-            return NavigationUpdate.deserialize(bytes);
+        static deserializeBinary(bytes: Uint8Array): CreateLobbyReply {
+            return CreateLobbyReply.deserialize(bytes);
         }
     }
     export class Move extends pb_1.Message {
@@ -2500,76 +3316,6 @@ export namespace server {
         }
         static deserializeBinary(bytes: Uint8Array): CreateLobbyRequest {
             return CreateLobbyRequest.deserialize(bytes);
-        }
-    }
-    export class CreateLobbyReply extends pb_1.Message {
-        #one_of_decls: number[][] = [];
-        constructor(data?: any[] | {
-            outcome?: Outcome;
-        }) {
-            super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
-            if (!Array.isArray(data) && typeof data == "object") {
-                if ("outcome" in data && data.outcome != undefined) {
-                    this.outcome = data.outcome;
-                }
-            }
-        }
-        get outcome() {
-            return pb_1.Message.getWrapperField(this, Outcome, 1) as Outcome;
-        }
-        set outcome(value: Outcome) {
-            pb_1.Message.setWrapperField(this, 1, value);
-        }
-        get has_outcome() {
-            return pb_1.Message.getField(this, 1) != null;
-        }
-        static fromObject(data: {
-            outcome?: ReturnType<typeof Outcome.prototype.toObject>;
-        }): CreateLobbyReply {
-            const message = new CreateLobbyReply({});
-            if (data.outcome != null) {
-                message.outcome = Outcome.fromObject(data.outcome);
-            }
-            return message;
-        }
-        toObject() {
-            const data: {
-                outcome?: ReturnType<typeof Outcome.prototype.toObject>;
-            } = {};
-            if (this.outcome != null) {
-                data.outcome = this.outcome.toObject();
-            }
-            return data;
-        }
-        serialize(): Uint8Array;
-        serialize(w: pb_1.BinaryWriter): void;
-        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
-            const writer = w || new pb_1.BinaryWriter();
-            if (this.has_outcome)
-                writer.writeMessage(1, this.outcome, () => this.outcome.serialize(writer));
-            if (!w)
-                return writer.getResultBuffer();
-        }
-        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): CreateLobbyReply {
-            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new CreateLobbyReply();
-            while (reader.nextField()) {
-                if (reader.isEndGroup())
-                    break;
-                switch (reader.getFieldNumber()) {
-                    case 1:
-                        reader.readMessage(message.outcome, () => message.outcome = Outcome.deserialize(reader));
-                        break;
-                    default: reader.skipField();
-                }
-            }
-            return message;
-        }
-        serializeBinary(): Uint8Array {
-            return this.serialize();
-        }
-        static deserializeBinary(bytes: Uint8Array): CreateLobbyReply {
-            return CreateLobbyReply.deserialize(bytes);
         }
     }
     export class CreateGameRequest extends pb_1.Message {
@@ -3019,6 +3765,73 @@ export namespace server {
             return PlayerClientUpdate.deserialize(bytes);
         }
     }
+    export class PlayerDisplayNameUpdate extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            displayName?: string;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("displayName" in data && data.displayName != undefined) {
+                    this.displayName = data.displayName;
+                }
+            }
+        }
+        get displayName() {
+            return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
+        }
+        set displayName(value: string) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        static fromObject(data: {
+            displayName?: string;
+        }): PlayerDisplayNameUpdate {
+            const message = new PlayerDisplayNameUpdate({});
+            if (data.displayName != null) {
+                message.displayName = data.displayName;
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                displayName?: string;
+            } = {};
+            if (this.displayName != null) {
+                data.displayName = this.displayName;
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.displayName.length)
+                writer.writeString(1, this.displayName);
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): PlayerDisplayNameUpdate {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new PlayerDisplayNameUpdate();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.displayName = reader.readString();
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): PlayerDisplayNameUpdate {
+            return PlayerDisplayNameUpdate.deserialize(bytes);
+        }
+    }
     interface GrpcUnaryServiceInterface<P, R> {
         (message: P, metadata: grpc_1.Metadata, options: grpc_1.CallOptions, callback: grpc_1.requestCallback<R>): grpc_1.ClientUnaryCall;
         (message: P, metadata: grpc_1.Metadata, callback: grpc_1.requestCallback<R>): grpc_1.ClientUnaryCall;
@@ -3045,129 +3858,38 @@ export namespace server {
     }
     export abstract class UnimplementedTicTacToeService {
         static definition = {
-            Exchange: {
-                path: "/server.TicTacToe/Exchange",
-                requestStream: false,
-                responseStream: false,
-                requestSerialize: (message: ExchangeRequest) => Buffer.from(message.serialize()),
-                requestDeserialize: (bytes: Buffer) => ExchangeRequest.deserialize(new Uint8Array(bytes)),
-                responseSerialize: (message: ExchangeReply) => Buffer.from(message.serialize()),
-                responseDeserialize: (bytes: Buffer) => ExchangeReply.deserialize(new Uint8Array(bytes))
-            },
             Subscribe: {
-                path: "/server.TicTacToe/Subscribe",
+                path: "/server2.TicTacToe/Subscribe",
                 requestStream: false,
                 responseStream: true,
-                requestSerialize: (message: Empty) => Buffer.from(message.serialize()),
-                requestDeserialize: (bytes: Buffer) => Empty.deserialize(new Uint8Array(bytes)),
-                responseSerialize: (message: SubscriptionUpdate) => Buffer.from(message.serialize()),
-                responseDeserialize: (bytes: Buffer) => SubscriptionUpdate.deserialize(new Uint8Array(bytes))
+                requestSerialize: (message: SubscribeRequest) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => SubscribeRequest.deserialize(new Uint8Array(bytes)),
+                responseSerialize: (message: ServerUpdate) => Buffer.from(message.serialize()),
+                responseDeserialize: (bytes: Buffer) => ServerUpdate.deserialize(new Uint8Array(bytes))
             },
-            Handshake: {
-                path: "/server.TicTacToe/Handshake",
+            Notify: {
+                path: "/server2.TicTacToe/Notify",
                 requestStream: false,
                 responseStream: false,
-                requestSerialize: (message: HandshakeRequest) => Buffer.from(message.serialize()),
-                requestDeserialize: (bytes: Buffer) => HandshakeRequest.deserialize(new Uint8Array(bytes)),
-                responseSerialize: (message: Empty) => Buffer.from(message.serialize()),
-                responseDeserialize: (bytes: Buffer) => Empty.deserialize(new Uint8Array(bytes))
-            },
-            Invalidate: {
-                path: "/server.TicTacToe/Invalidate",
-                requestStream: false,
-                responseStream: false,
-                requestSerialize: (message: Empty) => Buffer.from(message.serialize()),
-                requestDeserialize: (bytes: Buffer) => Empty.deserialize(new Uint8Array(bytes)),
-                responseSerialize: (message: Empty) => Buffer.from(message.serialize()),
-                responseDeserialize: (bytes: Buffer) => Empty.deserialize(new Uint8Array(bytes))
-            },
-            CreateLobby: {
-                path: "/server.TicTacToe/CreateLobby",
-                requestStream: false,
-                responseStream: false,
-                requestSerialize: (message: CreateLobbyRequest) => Buffer.from(message.serialize()),
-                requestDeserialize: (bytes: Buffer) => CreateLobbyRequest.deserialize(new Uint8Array(bytes)),
-                responseSerialize: (message: Empty) => Buffer.from(message.serialize()),
-                responseDeserialize: (bytes: Buffer) => Empty.deserialize(new Uint8Array(bytes))
-            },
-            JoinLobby: {
-                path: "/server.TicTacToe/JoinLobby",
-                requestStream: false,
-                responseStream: false,
-                requestSerialize: (message: JoinLobbyRequest) => Buffer.from(message.serialize()),
-                requestDeserialize: (bytes: Buffer) => JoinLobbyRequest.deserialize(new Uint8Array(bytes)),
-                responseSerialize: (message: Empty) => Buffer.from(message.serialize()),
-                responseDeserialize: (bytes: Buffer) => Empty.deserialize(new Uint8Array(bytes))
-            },
-            LeaveMyLobby: {
-                path: "/server.TicTacToe/LeaveMyLobby",
-                requestStream: false,
-                responseStream: false,
-                requestSerialize: (message: Empty) => Buffer.from(message.serialize()),
-                requestDeserialize: (bytes: Buffer) => Empty.deserialize(new Uint8Array(bytes)),
-                responseSerialize: (message: Empty) => Buffer.from(message.serialize()),
-                responseDeserialize: (bytes: Buffer) => Empty.deserialize(new Uint8Array(bytes))
-            },
-            CreateGame: {
-                path: "/server.TicTacToe/CreateGame",
-                requestStream: false,
-                responseStream: false,
-                requestSerialize: (message: CreateGameRequest) => Buffer.from(message.serialize()),
-                requestDeserialize: (bytes: Buffer) => CreateGameRequest.deserialize(new Uint8Array(bytes)),
-                responseSerialize: (message: Empty) => Buffer.from(message.serialize()),
-                responseDeserialize: (bytes: Buffer) => Empty.deserialize(new Uint8Array(bytes))
-            },
-            MakeMove: {
-                path: "/server.TicTacToe/MakeMove",
-                requestStream: false,
-                responseStream: false,
-                requestSerialize: (message: MakeMoveRequest) => Buffer.from(message.serialize()),
-                requestDeserialize: (bytes: Buffer) => MakeMoveRequest.deserialize(new Uint8Array(bytes)),
+                requestSerialize: (message: ClientUpdate) => Buffer.from(message.serialize()),
+                requestDeserialize: (bytes: Buffer) => ClientUpdate.deserialize(new Uint8Array(bytes)),
                 responseSerialize: (message: Empty) => Buffer.from(message.serialize()),
                 responseDeserialize: (bytes: Buffer) => Empty.deserialize(new Uint8Array(bytes))
             }
         };
         [method: string]: grpc_1.UntypedHandleCall;
-        abstract Exchange(call: grpc_1.ServerUnaryCall<ExchangeRequest, ExchangeReply>, callback: grpc_1.sendUnaryData<ExchangeReply>): void;
-        abstract Subscribe(call: grpc_1.ServerWritableStream<Empty, SubscriptionUpdate>): void;
-        abstract Handshake(call: grpc_1.ServerUnaryCall<HandshakeRequest, Empty>, callback: grpc_1.sendUnaryData<Empty>): void;
-        abstract Invalidate(call: grpc_1.ServerUnaryCall<Empty, Empty>, callback: grpc_1.sendUnaryData<Empty>): void;
-        abstract CreateLobby(call: grpc_1.ServerUnaryCall<CreateLobbyRequest, Empty>, callback: grpc_1.sendUnaryData<Empty>): void;
-        abstract JoinLobby(call: grpc_1.ServerUnaryCall<JoinLobbyRequest, Empty>, callback: grpc_1.sendUnaryData<Empty>): void;
-        abstract LeaveMyLobby(call: grpc_1.ServerUnaryCall<Empty, Empty>, callback: grpc_1.sendUnaryData<Empty>): void;
-        abstract CreateGame(call: grpc_1.ServerUnaryCall<CreateGameRequest, Empty>, callback: grpc_1.sendUnaryData<Empty>): void;
-        abstract MakeMove(call: grpc_1.ServerUnaryCall<MakeMoveRequest, Empty>, callback: grpc_1.sendUnaryData<Empty>): void;
+        abstract Subscribe(call: grpc_1.ServerWritableStream<SubscribeRequest, ServerUpdate>): void;
+        abstract Notify(call: grpc_1.ServerUnaryCall<ClientUpdate, Empty>, callback: grpc_1.sendUnaryData<Empty>): void;
     }
     export class TicTacToeClient extends grpc_1.makeGenericClientConstructor(UnimplementedTicTacToeService.definition, "TicTacToe", {}) {
         constructor(address: string, credentials: grpc_1.ChannelCredentials, options?: Partial<grpc_1.ChannelOptions>) {
             super(address, credentials, options);
         }
-        Exchange: GrpcUnaryServiceInterface<ExchangeRequest, ExchangeReply> = (message: ExchangeRequest, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<ExchangeReply>, options?: grpc_1.CallOptions | grpc_1.requestCallback<ExchangeReply>, callback?: grpc_1.requestCallback<ExchangeReply>): grpc_1.ClientUnaryCall => {
-            return super.Exchange(message, metadata, options, callback);
-        };
-        Subscribe: GrpcStreamServiceInterface<Empty, SubscriptionUpdate> = (message: Empty, metadata?: grpc_1.Metadata | grpc_1.CallOptions, options?: grpc_1.CallOptions): grpc_1.ClientReadableStream<SubscriptionUpdate> => {
+        Subscribe: GrpcStreamServiceInterface<SubscribeRequest, ServerUpdate> = (message: SubscribeRequest, metadata?: grpc_1.Metadata | grpc_1.CallOptions, options?: grpc_1.CallOptions): grpc_1.ClientReadableStream<ServerUpdate> => {
             return super.Subscribe(message, metadata, options);
         };
-        Handshake: GrpcUnaryServiceInterface<HandshakeRequest, Empty> = (message: HandshakeRequest, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<Empty>, options?: grpc_1.CallOptions | grpc_1.requestCallback<Empty>, callback?: grpc_1.requestCallback<Empty>): grpc_1.ClientUnaryCall => {
-            return super.Handshake(message, metadata, options, callback);
-        };
-        Invalidate: GrpcUnaryServiceInterface<Empty, Empty> = (message: Empty, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<Empty>, options?: grpc_1.CallOptions | grpc_1.requestCallback<Empty>, callback?: grpc_1.requestCallback<Empty>): grpc_1.ClientUnaryCall => {
-            return super.Invalidate(message, metadata, options, callback);
-        };
-        CreateLobby: GrpcUnaryServiceInterface<CreateLobbyRequest, Empty> = (message: CreateLobbyRequest, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<Empty>, options?: grpc_1.CallOptions | grpc_1.requestCallback<Empty>, callback?: grpc_1.requestCallback<Empty>): grpc_1.ClientUnaryCall => {
-            return super.CreateLobby(message, metadata, options, callback);
-        };
-        JoinLobby: GrpcUnaryServiceInterface<JoinLobbyRequest, Empty> = (message: JoinLobbyRequest, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<Empty>, options?: grpc_1.CallOptions | grpc_1.requestCallback<Empty>, callback?: grpc_1.requestCallback<Empty>): grpc_1.ClientUnaryCall => {
-            return super.JoinLobby(message, metadata, options, callback);
-        };
-        LeaveMyLobby: GrpcUnaryServiceInterface<Empty, Empty> = (message: Empty, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<Empty>, options?: grpc_1.CallOptions | grpc_1.requestCallback<Empty>, callback?: grpc_1.requestCallback<Empty>): grpc_1.ClientUnaryCall => {
-            return super.LeaveMyLobby(message, metadata, options, callback);
-        };
-        CreateGame: GrpcUnaryServiceInterface<CreateGameRequest, Empty> = (message: CreateGameRequest, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<Empty>, options?: grpc_1.CallOptions | grpc_1.requestCallback<Empty>, callback?: grpc_1.requestCallback<Empty>): grpc_1.ClientUnaryCall => {
-            return super.CreateGame(message, metadata, options, callback);
-        };
-        MakeMove: GrpcUnaryServiceInterface<MakeMoveRequest, Empty> = (message: MakeMoveRequest, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<Empty>, options?: grpc_1.CallOptions | grpc_1.requestCallback<Empty>, callback?: grpc_1.requestCallback<Empty>): grpc_1.ClientUnaryCall => {
-            return super.MakeMove(message, metadata, options, callback);
+        Notify: GrpcUnaryServiceInterface<ClientUpdate, Empty> = (message: ClientUpdate, metadata: grpc_1.Metadata | grpc_1.CallOptions | grpc_1.requestCallback<Empty>, options?: grpc_1.CallOptions | grpc_1.requestCallback<Empty>, callback?: grpc_1.requestCallback<Empty>): grpc_1.ClientUnaryCall => {
+            return super.Notify(message, metadata, options, callback);
         };
     }
 }
