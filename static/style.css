@@ -1,146 +1,261 @@
-/* Simple Dark Theme CSS */
+/* Tic Tac Toe Dark Theme CSS */
 
 body {
-    background-color: #121212;
-    /* Dark background */
-    color: #e0e0e0;
-    /* Light text color */
-    font-family: sans-serif;
-    /* Basic font */
-    line-height: 1.6;
+    background-color: #1a1a1a; /* Deeper dark background */
+    color: #f0f0f0; /* Slightly lighter text */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+    line-height: 1.5;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
 }
 
-a {
-    color: #8ab4f8;
-    /* Light blue link color */
-    text-decoration: none;
+#main-root {
+    background-color: #252525; /* Darker container background */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Deeper shadow */
+    padding: 30px;
+    width: 90%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-a:hover {
-    text-decoration: underline;
-    /* Underline on hover */
+/* Style for the header of the Sign In/Up page */
+#main-root-header {
+    display: flex;
+    flex-direction: column; /* Vertically stack items */
+    gap: 10px; /* Space between stacked items */
+    padding-bottom: 15px;
+    border-bottom: 1px solid #333;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    color: #bb86fc;
-    /* Purple heading color */
+/* More specific styling for input elements in the header */
+#main-root-header > input[type="text"],
+#main-root-header > input[type="password"] {
+    background-color: #444 !important; /* Darker input background - !important to override */
+    color: #f0f0f0 !important; /* Light input text - !important to override */
+    border: 1px solid #666 !important; /* Darker border - !important to override */
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1em;
+    width: 100%; /* Make inputs full width */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
 }
 
-hr {
-    border-color: #333;
-    /* Darker horizontal rule */
+/* Apply dark theme to all input placeholders */
+#main-root-header > input::placeholder {
+    color: #999 !important; /* Light gray placeholder text - !important to override */
 }
 
-pre,
-code {
-    background-color: #282828;
-    /* Darker background for code blocks */
+#main-root-header > input:focus {
+    outline: none;
+    border-color: #8ab4f8 !important; /* Blue focus highlight - !important to override */
+}
+
+#main-root-header button {
+    background-color: #333; /* Darker button */
+    color: #f0f0f0;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Make buttons full width */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+#main-root-header button:hover {
+    background-color: #555;
+}
+
+/* Style for the Sign In button to distinguish it */
+#main-root-header button:last-child {
+    background-color: #bb86fc; /* Purple for Sign In */
+    color: white;
+}
+
+#main-root-header button:last-child:hover {
+    background-color: #9c68e7;
+}
+
+/* Style for the header of the Lobby page */
+#main-root-header.lobby-header {
+    display: flex;
+    justify-content: space-between; /* Keep existing spacing */
+    align-items: center;
+}
+
+#main-root-header.lobby-header button {
+    margin-left: auto; /* Push the Sign Out button to the right */
+}
+
+#player-display-name {
+    font-size: 1.2em;
     color: #d4d4d4;
-    /* Light code text */
-    padding: 5px 10px;
-    border-radius: 3px;
-    overflow-x: auto;
-    /* Enable horizontal scrolling for long code lines */
+    margin: 0;
 }
 
-input,
-textarea,
-select,
-button {
-    background-color: #333;
-    /* Darker input background */
-    color: #e0e0e0;
-    /* Light input text */
-    border: 1px solid #555;
-    /* Darker border */
-    padding: 5px;
-    border-radius: 3px;
+#with-session-status,
+#no-session-status {
+    font-size: 0.9em;
+    color: #999;
 }
 
-input:focus,
-textarea:focus,
+#no-session-status {
+    color: #d32f2f; /* Red for error/status on Sign In/Up */
+    text-align: center;
+}
+
+#main-root-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+h1 {
+    color: #bb86fc; /* Purple heading */
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+h2#my-lobby-name {
+    color: #8ab4f8; /* Blue secondary heading */
+    text-align: center;
+    margin-top: 0;
+}
+
+p#my-lobby-status {
+    color: #689f38; /* Green status text */
+    font-size: 0.95em;
+    text-align: center;
+}
+
+#main-root-content button {
+    background-color: #333; /* Darker content button */
+    color: #f0f0f0;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+#main-root-content button:hover {
+    background-color: #555;
+}
+
+label {
+    color: #d4d4d4;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.95em;
+}
+
+select {
+    background-color: #444; /* Darker select background */
+    color: #f0f0f0;
+    border: 1px solid #666;
+    padding: 8px;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 0.95em;
+}
+
+select option {
+    background-color: #252525; /* Darker option background */
+    color: #f0f0f0;
+}
+
 select:focus {
     outline: none;
-    /* Remove default focus outline */
-    border-color: #8ab4f8;
-    /* Highlighted border on focus */
+    border-color: #8ab4f8; /* Blue focus highlight */
 }
 
-button {
-    background-color: #bb86fc;
-    /* Purple button background */
-    color: white;
-    border: none;
-    cursor: pointer;
+h3 {
+    color: #bb86fc; /* Purple tertiary heading */
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
-button:hover {
-    background-color: #9c68e7;
-    /* Slightly lighter purple on hover */
-}
-
-table {
+table#my-lobby-players-table {
     width: 100%;
     border-collapse: collapse;
+    background-color: #333; /* Darker table background */
+    border-radius: 5px;
+    overflow: hidden; /* To contain the border-radius for cells */
 }
 
-th,
-td {
-    border: 1px solid #333;
-    padding: 8px;
+#my-lobby-players-table thead th {
+    background-color: #444; /* Darker header background */
+    color: #d4d4d4;
+    padding: 10px;
     text-align: left;
+    border-bottom: 1px solid #555;
 }
 
-th {
-    background-color: #282828;
+#my-lobby-players-table tbody td {
+    color: #f0f0f0;
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #444;
 }
 
-/* Optional: Add scrollbar styling for webkit browsers */
+#my-lobby-players-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+#main-root-footer {
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    text-align: center;
+    color: #999;
+    font-size: 0.9em;
+}
+
+#main-root-content input[type="text"] {
+    background-color: #444;
+    color: #f0f0f0;
+    border: 1px solid #666;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1em;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#main-root-content input::placeholder {
+    color: #999;
+}
+
+/* Optional: Improved scrollbar styling for WebKit */
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #121212;
+    background: #252525;
+    border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
     background: #555;
-    border-radius: 4px;
+    border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
     background: #777;
 }
 
-/* Optional: Add scrollbar styling for Firefox */
+/* Optional: Improved scrollbar styling for Firefox */
 html {
     scrollbar-width: thin;
-    /* Firefox */
-    scrollbar-color: #555 #121212;
-    /* Firefox */
-}
-
-#game-container {
-    display: grid;
-    grid-template-columns: repeat(3, 100px);
-    grid-gap: 5px;
-    margin: 20px auto;
-    width: 315px;
-}
-
-.cell {
-    width: 100px;
-    height: 100px;
-    border: 2px solid #555;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2em;
-    cursor: pointer;
+    scrollbar-color: #555 #252525;
 }

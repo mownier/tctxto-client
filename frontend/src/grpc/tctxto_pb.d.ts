@@ -42,6 +42,11 @@ export class ClientUpdate extends jspb.Message {
   hasJoinLobbyRequest(): boolean;
   clearJoinLobbyRequest(): ClientUpdate;
 
+  getLeaveMyLobbyRequest(): LeaveMyLobbyRequest | undefined;
+  setLeaveMyLobbyRequest(value?: LeaveMyLobbyRequest): ClientUpdate;
+  hasLeaveMyLobbyRequest(): boolean;
+  clearLeaveMyLobbyRequest(): ClientUpdate;
+
   getCreateGameRequest(): CreateGameRequest | undefined;
   setCreateGameRequest(value?: CreateGameRequest): ClientUpdate;
   hasCreateGameRequest(): boolean;
@@ -69,6 +74,7 @@ export namespace ClientUpdate {
     signOutRequest?: SignOutRequest.AsObject,
     createLobbyRequest?: CreateLobbyRequest.AsObject,
     joinLobbyRequest?: JoinLobbyRequest.AsObject,
+    leaveMyLobbyRequest?: LeaveMyLobbyRequest.AsObject,
     createGameRequest?: CreateGameRequest.AsObject,
     makeMoveRequest?: MakeMoveRequest.AsObject,
   }
@@ -80,8 +86,9 @@ export namespace ClientUpdate {
     SIGN_OUT_REQUEST = 3,
     CREATE_LOBBY_REQUEST = 4,
     JOIN_LOBBY_REQUEST = 5,
-    CREATE_GAME_REQUEST = 6,
-    MAKE_MOVE_REQUEST = 7,
+    LEAVE_MY_LOBBY_REQUEST = 6,
+    CREATE_GAME_REQUEST = 7,
+    MAKE_MOVE_REQUEST = 8,
   }
 }
 
@@ -553,6 +560,20 @@ export class MyLobbyLeaverUpdate extends jspb.Message {
 export namespace MyLobbyLeaverUpdate {
   export type AsObject = {
     player?: Player.AsObject,
+  }
+}
+
+export class LeaveMyLobbyRequest extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): LeaveMyLobbyRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: LeaveMyLobbyRequest): LeaveMyLobbyRequest.AsObject;
+  static serializeBinaryToWriter(message: LeaveMyLobbyRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): LeaveMyLobbyRequest;
+  static deserializeBinaryFromReader(message: LeaveMyLobbyRequest, reader: jspb.BinaryReader): LeaveMyLobbyRequest;
+}
+
+export namespace LeaveMyLobbyRequest {
+  export type AsObject = {
   }
 }
 

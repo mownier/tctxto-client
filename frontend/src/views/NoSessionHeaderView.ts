@@ -39,6 +39,7 @@ export class NoSessionHeaderView {
         this.rootElement.append(this.statusParagraph)
 
         this.statusParagraph.id = ElementIds.NO_SESSION_STATUS_ID
+        this.nameInput.type = 'text'
         this.passInput.type = 'password'
 
         this.signInButton.addEventListener('click', () => {

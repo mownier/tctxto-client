@@ -1,8 +1,7 @@
 import { TicTacToeClient } from './TctxtoServiceClientPb';
 import * as GrpcConst from "../constants/grpc"
-import { ClientUpdate, NavigationPath, NavigationUpdate, ServerUpdate, SignInRequest, SignUpRequest, SignOutRequest, CreateLobbyRequest, Lobby, Empty, Player, JoinLobbyRequest } from "./tctxto_pb"
+import { ClientUpdate, NavigationPath, NavigationUpdate, ServerUpdate, SignInRequest, SignUpRequest, SignOutRequest, CreateLobbyRequest, Lobby, Empty, Player, JoinLobbyRequest, LeaveMyLobbyRequest } from "./tctxto_pb"
 import { ClientReadableStream, Metadata } from "grpc-web"
-import { Server } from '@grpc/grpc-js';
 
 const CLIENT_ID_STORAGE_KEY: string = 'TicTacToeClient_clientId'
 const SUBSCRIBE_MAX_ATTEMPTS: number = 3
@@ -44,6 +43,9 @@ export interface ClientCallback {
     displayMyLobbyDetails(lobby: Lobby): void
     updatePlayerDisplayName(name: string): void
     joinLobbyNotOkay(): void
+    leaveMyLobbyNotOkay(): void
+    someoneJoinedMyLobby(id: string, name: string): void
+    someoneLeftMyLobby(id: string): void
 }
 
 class ClientCallbackDefaultImp implements ClientCallback {
@@ -96,6 +98,18 @@ class ClientCallbackDefaultImp implements ClientCallback {
     }
 
     joinLobbyNotOkay(): void {
+        throw new Error("Method not implemented.")
+    }
+
+    leaveMyLobbyNotOkay(): void {
+        throw new Error("Method not implemented.")
+    }
+
+    someoneJoinedMyLobby(id: string, name: string): void {
+        throw new Error("Method not implemented.")
+    }
+
+    someoneLeftMyLobby(id: string): void {
         throw new Error("Method not implemented.")
     }
 }
@@ -228,6 +242,23 @@ export async function joinLobby(lobbyId: string): Promise<void> {
     })
 }
 
+export async function leaveMyLobby(): Promise<void> {
+    return new Promise((resolve, reject) => {
+        try {
+            const update = new ClientUpdate()
+            const request = new LeaveMyLobbyRequest()
+            update.setLeaveMyLobbyRequest(request)
+            const client = createClient()
+            client.notify(update, metadataWithClientId())
+            resolve()
+        } catch (error) {
+            clientCallback.leaveMyLobbyNotOkay()
+            reject(error)
+        }
+    })
+}
+
+
 function handleStreamData(update: ServerUpdate) {
     console.log(`[STREAM] server update received`)
     subscribeAttempts = 0
@@ -309,28 +340,67 @@ function handleStreamData(update: ServerUpdate) {
                 }
             }
             break
+        case ServerUpdate.TypeCase.LEAVE_MY_LOBBY_REPLY:
+            if (update.getLeaveMyLobbyReply()) {
+                if (update.getLeaveMyLobbyReply()!.getOutcome()) {
+                    if (update.getLeaveMyLobbyReply()!.getOutcome()!.getOk()) {
+                        latestData.lobby = null
+                    } else {
+                        clientCallback.leaveMyLobbyNotOkay()
+                    }
+                }
+            }
+            break
+        case ServerUpdate.TypeCase.MY_LOBBY_JOINER_UPDATE:
+            if (update.getMyLobbyJoinerUpdate()) {
+                if (update.getMyLobbyJoinerUpdate()!.getPlayer()) {
+                    if (latestData.lobby) {
+                        const playerJoinedLobby = update.getMyLobbyJoinerUpdate()!.getPlayer()!
+                        addPlayerToLobby(latestData.lobby!, playerJoinedLobby)
+                        clientCallback.someoneJoinedMyLobby(playerJoinedLobby.getId(), playerJoinedLobby.getName())
+                    }
+                }
+            }
+            break
+        case ServerUpdate.TypeCase.MY_LOBBY_LEAVER_UPDATE:
+            if (update.getMyLobbyLeaverUpdate()) {
+                if (update.getMyLobbyLeaverUpdate()!.getPlayer()) {
+                    if (latestData.lobby) {
+                        const playerLeftLobby = update.getMyLobbyLeaverUpdate()!.getPlayer()!
+                        addPlayerToLobby(latestData.lobby!, playerLeftLobby)
+                        clientCallback.someoneLeftMyLobby(playerLeftLobby.getId())
+                    }
+                }
+            }
+            break
     }
 }
 
-function deepCompareLobby(lobby1: Lobby | null, lobby2: Lobby | null): boolean {
-    if (lobby1 === lobby2) {
-        return true // Both are null or the same object reference
+function addPlayerToLobby(lobby: Lobby, newPlayer: Player): boolean {
+    const currentPlayers = lobby.getPlayersList()
+    // Check if the player with the same ID already exists in the lobby
+    const playerExists = currentPlayers.some(player => player.getId() === newPlayer.getId())
+
+    if (!playerExists) {
+        const updatedPlayers = [...currentPlayers, newPlayer]
+        lobby.setPlayersList(updatedPlayers)
+        return true // Player was added successfully
+    } else {
+        return false // Player with the same ID already exists
     }
-    if (!lobby1 || !lobby2) {
-        return false // One is null and the other isn't
+}
+
+
+function removePlayerById(lobby: Lobby, playerIdToRemove: string): boolean {
+    const initialPlayers = lobby.getPlayersList()
+    const updatedPlayers = initialPlayers.filter(player => player.getId() !== playerIdToRemove)
+
+    if (updatedPlayers.length < initialPlayers.length) {
+        lobby.setPlayersList(updatedPlayers)
+        return true // Player was found and removed
+    } else {
+        return false // Player with the given ID was not found
     }
-    if (lobby1.getName() !== lobby2.getName()) {
-        return false
-    }
-    if (lobby1.getPlayersList().length !== lobby2.getPlayersList().length) {
-        return false
-    }
-    for (let i = 0; i < lobby1.getPlayersList().length; i++) {
-        if (!deepComparePlayer(lobby1.getPlayersList()[i] || null, lobby2.getPlayersList()[i] || null)) {
-            return false
-        }
-    }
-    return true
 }
 
 function deepComparePlayer(player1: Player | null, player2: Player | null): boolean {
@@ -341,6 +411,40 @@ function deepComparePlayer(player1: Player | null, player2: Player | null): bool
         return false // One is null and the other isn't
     }
     return player1.getId() === player2.getId() && player1.getName() === player2.getName()
+}
+
+function deepCompareLobby(lobby1: Lobby | null, lobby2: Lobby | null): boolean {
+    if (lobby1 === lobby2) {
+        return true
+    }
+    if (!lobby1 || !lobby2) {
+        return false
+    }
+
+    if (lobby1.getName() !== lobby2.getName()) {
+        return false
+    }
+
+    const players1 = lobby1.getPlayersList()
+    const players2 = lobby2.getPlayersList()
+
+    if (players1.length !== players2.length) {
+        return false
+    }
+
+    const players2Map = new Map<string, Player>()
+    for (const player of players2) {
+        players2Map.set(player.getId(), player)
+    }
+
+    for (const player1 of players1) {
+        const matchingPlayer2 = players2Map.get(player1.getId())
+        if (!matchingPlayer2 || !deepComparePlayer(player1, matchingPlayer2)) {
+            return false
+        }
+    }
+
+    return true
 }
 
 function handleStreamError(error: Error) {

@@ -43,6 +43,9 @@ export class HomeView {
 
         this.statusParagraph.id = ElementIds.HOME_STATUS_ID
 
+        this.joinLobbyIdInput.type = 'text'
+        this.createLobbyNameInput.type = 'text'
+
         this.joinLobbyButton.addEventListener('click', () => {
             const id = this.joinLobbyIdInput.value
             if (id.length > 0) {

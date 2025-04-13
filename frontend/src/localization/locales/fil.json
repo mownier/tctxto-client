@@ -42,5 +42,6 @@
     "Copy Lobby ID": "Kopyahin ang Lobby ID",
     "Copied lobby ID to clipboard": "Kinopya ang lobby ID sa clipboard",
     "Unable to copy lobby ID": "Hindi makopya ang lobby ID",
-    "Unable to join lobby": "Hindi makasali sa lobby"
+    "Unable to join lobby": "Hindi makasali sa lobby",
+    "Unable to leave lobby": "Hindi makaalis sa lobby"
 }

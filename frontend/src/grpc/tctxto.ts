@@ -62,13 +62,14 @@ export namespace server2 {
         }
     }
     export class ClientUpdate extends pb_1.Message {
-        #one_of_decls: number[][] = [[1, 2, 3, 4, 5, 6, 7]];
+        #one_of_decls: number[][] = [[1, 2, 3, 4, 5, 6, 7, 8]];
         constructor(data?: any[] | ({} & (({
             sign_up_request?: SignUpRequest;
             sign_in_request?: never;
             sign_out_request?: never;
             create_lobby_request?: never;
             join_lobby_request?: never;
+            leave_my_lobby_request?: never;
             create_game_request?: never;
             make_move_request?: never;
         } | {
@@ -77,6 +78,7 @@ export namespace server2 {
             sign_out_request?: never;
             create_lobby_request?: never;
             join_lobby_request?: never;
+            leave_my_lobby_request?: never;
             create_game_request?: never;
             make_move_request?: never;
         } | {
@@ -85,6 +87,7 @@ export namespace server2 {
             sign_out_request?: SignOutRequest;
             create_lobby_request?: never;
             join_lobby_request?: never;
+            leave_my_lobby_request?: never;
             create_game_request?: never;
             make_move_request?: never;
         } | {
@@ -93,6 +96,7 @@ export namespace server2 {
             sign_out_request?: never;
             create_lobby_request?: CreateLobbyRequest;
             join_lobby_request?: never;
+            leave_my_lobby_request?: never;
             create_game_request?: never;
             make_move_request?: never;
         } | {
@@ -101,6 +105,7 @@ export namespace server2 {
             sign_out_request?: never;
             create_lobby_request?: never;
             join_lobby_request?: JoinLobbyRequest;
+            leave_my_lobby_request?: never;
             create_game_request?: never;
             make_move_request?: never;
         } | {
@@ -109,6 +114,16 @@ export namespace server2 {
             sign_out_request?: never;
             create_lobby_request?: never;
             join_lobby_request?: never;
+            leave_my_lobby_request?: LeaveMyLobbyRequest;
+            create_game_request?: never;
+            make_move_request?: never;
+        } | {
+            sign_up_request?: never;
+            sign_in_request?: never;
+            sign_out_request?: never;
+            create_lobby_request?: never;
+            join_lobby_request?: never;
+            leave_my_lobby_request?: never;
             create_game_request?: CreateGameRequest;
             make_move_request?: never;
         } | {
@@ -117,6 +132,7 @@ export namespace server2 {
             sign_out_request?: never;
             create_lobby_request?: never;
             join_lobby_request?: never;
+            leave_my_lobby_request?: never;
             create_game_request?: never;
             make_move_request?: MakeMoveRequest;
         })))) {
@@ -137,6 +153,9 @@ export namespace server2 {
                 }
                 if ("join_lobby_request" in data && data.join_lobby_request != undefined) {
                     this.join_lobby_request = data.join_lobby_request;
+                }
+                if ("leave_my_lobby_request" in data && data.leave_my_lobby_request != undefined) {
+                    this.leave_my_lobby_request = data.leave_my_lobby_request;
                 }
                 if ("create_game_request" in data && data.create_game_request != undefined) {
                     this.create_game_request = data.create_game_request;
@@ -191,27 +210,36 @@ export namespace server2 {
         get has_join_lobby_request() {
             return pb_1.Message.getField(this, 5) != null;
         }
-        get create_game_request() {
-            return pb_1.Message.getWrapperField(this, CreateGameRequest, 6) as CreateGameRequest;
+        get leave_my_lobby_request() {
+            return pb_1.Message.getWrapperField(this, LeaveMyLobbyRequest, 6) as LeaveMyLobbyRequest;
         }
-        set create_game_request(value: CreateGameRequest) {
+        set leave_my_lobby_request(value: LeaveMyLobbyRequest) {
             pb_1.Message.setOneofWrapperField(this, 6, this.#one_of_decls[0], value);
         }
-        get has_create_game_request() {
+        get has_leave_my_lobby_request() {
             return pb_1.Message.getField(this, 6) != null;
         }
-        get make_move_request() {
-            return pb_1.Message.getWrapperField(this, MakeMoveRequest, 7) as MakeMoveRequest;
+        get create_game_request() {
+            return pb_1.Message.getWrapperField(this, CreateGameRequest, 7) as CreateGameRequest;
         }
-        set make_move_request(value: MakeMoveRequest) {
+        set create_game_request(value: CreateGameRequest) {
             pb_1.Message.setOneofWrapperField(this, 7, this.#one_of_decls[0], value);
         }
-        get has_make_move_request() {
+        get has_create_game_request() {
             return pb_1.Message.getField(this, 7) != null;
+        }
+        get make_move_request() {
+            return pb_1.Message.getWrapperField(this, MakeMoveRequest, 8) as MakeMoveRequest;
+        }
+        set make_move_request(value: MakeMoveRequest) {
+            pb_1.Message.setOneofWrapperField(this, 8, this.#one_of_decls[0], value);
+        }
+        get has_make_move_request() {
+            return pb_1.Message.getField(this, 8) != null;
         }
         get type() {
             const cases: {
-                [index: number]: "none" | "sign_up_request" | "sign_in_request" | "sign_out_request" | "create_lobby_request" | "join_lobby_request" | "create_game_request" | "make_move_request";
+                [index: number]: "none" | "sign_up_request" | "sign_in_request" | "sign_out_request" | "create_lobby_request" | "join_lobby_request" | "leave_my_lobby_request" | "create_game_request" | "make_move_request";
             } = {
                 0: "none",
                 1: "sign_up_request",
@@ -219,10 +247,11 @@ export namespace server2 {
                 3: "sign_out_request",
                 4: "create_lobby_request",
                 5: "join_lobby_request",
-                6: "create_game_request",
-                7: "make_move_request"
+                6: "leave_my_lobby_request",
+                7: "create_game_request",
+                8: "make_move_request"
             };
-            return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3, 4, 5, 6, 7])];
+            return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3, 4, 5, 6, 7, 8])];
         }
         static fromObject(data: {
             sign_up_request?: ReturnType<typeof SignUpRequest.prototype.toObject>;
@@ -230,6 +259,7 @@ export namespace server2 {
             sign_out_request?: ReturnType<typeof SignOutRequest.prototype.toObject>;
             create_lobby_request?: ReturnType<typeof CreateLobbyRequest.prototype.toObject>;
             join_lobby_request?: ReturnType<typeof JoinLobbyRequest.prototype.toObject>;
+            leave_my_lobby_request?: ReturnType<typeof LeaveMyLobbyRequest.prototype.toObject>;
             create_game_request?: ReturnType<typeof CreateGameRequest.prototype.toObject>;
             make_move_request?: ReturnType<typeof MakeMoveRequest.prototype.toObject>;
         }): ClientUpdate {
@@ -249,6 +279,9 @@ export namespace server2 {
             if (data.join_lobby_request != null) {
                 message.join_lobby_request = JoinLobbyRequest.fromObject(data.join_lobby_request);
             }
+            if (data.leave_my_lobby_request != null) {
+                message.leave_my_lobby_request = LeaveMyLobbyRequest.fromObject(data.leave_my_lobby_request);
+            }
             if (data.create_game_request != null) {
                 message.create_game_request = CreateGameRequest.fromObject(data.create_game_request);
             }
@@ -264,6 +297,7 @@ export namespace server2 {
                 sign_out_request?: ReturnType<typeof SignOutRequest.prototype.toObject>;
                 create_lobby_request?: ReturnType<typeof CreateLobbyRequest.prototype.toObject>;
                 join_lobby_request?: ReturnType<typeof JoinLobbyRequest.prototype.toObject>;
+                leave_my_lobby_request?: ReturnType<typeof LeaveMyLobbyRequest.prototype.toObject>;
                 create_game_request?: ReturnType<typeof CreateGameRequest.prototype.toObject>;
                 make_move_request?: ReturnType<typeof MakeMoveRequest.prototype.toObject>;
             } = {};
@@ -281,6 +315,9 @@ export namespace server2 {
             }
             if (this.join_lobby_request != null) {
                 data.join_lobby_request = this.join_lobby_request.toObject();
+            }
+            if (this.leave_my_lobby_request != null) {
+                data.leave_my_lobby_request = this.leave_my_lobby_request.toObject();
             }
             if (this.create_game_request != null) {
                 data.create_game_request = this.create_game_request.toObject();
@@ -304,10 +341,12 @@ export namespace server2 {
                 writer.writeMessage(4, this.create_lobby_request, () => this.create_lobby_request.serialize(writer));
             if (this.has_join_lobby_request)
                 writer.writeMessage(5, this.join_lobby_request, () => this.join_lobby_request.serialize(writer));
+            if (this.has_leave_my_lobby_request)
+                writer.writeMessage(6, this.leave_my_lobby_request, () => this.leave_my_lobby_request.serialize(writer));
             if (this.has_create_game_request)
-                writer.writeMessage(6, this.create_game_request, () => this.create_game_request.serialize(writer));
+                writer.writeMessage(7, this.create_game_request, () => this.create_game_request.serialize(writer));
             if (this.has_make_move_request)
-                writer.writeMessage(7, this.make_move_request, () => this.make_move_request.serialize(writer));
+                writer.writeMessage(8, this.make_move_request, () => this.make_move_request.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -333,9 +372,12 @@ export namespace server2 {
                         reader.readMessage(message.join_lobby_request, () => message.join_lobby_request = JoinLobbyRequest.deserialize(reader));
                         break;
                     case 6:
-                        reader.readMessage(message.create_game_request, () => message.create_game_request = CreateGameRequest.deserialize(reader));
+                        reader.readMessage(message.leave_my_lobby_request, () => message.leave_my_lobby_request = LeaveMyLobbyRequest.deserialize(reader));
                         break;
                     case 7:
+                        reader.readMessage(message.create_game_request, () => message.create_game_request = CreateGameRequest.deserialize(reader));
+                        break;
+                    case 8:
                         reader.readMessage(message.make_move_request, () => message.make_move_request = MakeMoveRequest.deserialize(reader));
                         break;
                     default: reader.skipField();
@@ -2537,6 +2579,46 @@ export namespace server2 {
         }
         static deserializeBinary(bytes: Uint8Array): MyLobbyLeaverUpdate {
             return MyLobbyLeaverUpdate.deserialize(bytes);
+        }
+    }
+    export class LeaveMyLobbyRequest extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {}) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") { }
+        }
+        static fromObject(data: {}): LeaveMyLobbyRequest {
+            const message = new LeaveMyLobbyRequest({});
+            return message;
+        }
+        toObject() {
+            const data: {} = {};
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): LeaveMyLobbyRequest {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new LeaveMyLobbyRequest();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): LeaveMyLobbyRequest {
+            return LeaveMyLobbyRequest.deserialize(bytes);
         }
     }
     export class LeaveMyLobbyReply extends pb_1.Message {

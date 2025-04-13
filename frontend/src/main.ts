@@ -3,7 +3,7 @@ import { MainRootView } from './views/MainRootView'
 import * as ElementIds from './constants/element-ids'
 import { NoSessionHeaderView } from './views/NoSessionHeaderView'
 import { WelcomeView } from './views/WelcomeView'
-import { ClientCallback, createLobby, getLatestData, joinLobby, setClientCallback, signIn, signOut, signUp, subscribe } from './grpc/client'
+import { ClientCallback, createLobby, getLatestData, joinLobby, leaveMyLobby, setClientCallback, signIn, signOut, signUp, subscribe } from './grpc/client'
 import { WithSessionHeaderView } from './views/WithSessionHeaderView'
 import { EmptytView } from './views/EmptyView'
 import { HomeView } from './views/HomeView'
@@ -113,7 +113,14 @@ class MyClientCallback implements ClientCallback {
                 if (lobbyId) {
                     this.copyTextToClipboard(lobbyId)
                         .then(() => this.updateMyLobbyStatus("Copied lobby ID to clipboard"))
-                        .catch((error) => this.updateMyLobbyStatus("Unable to copy lobby ID" ))
+                        .catch((error) => this.updateMyLobbyStatus("Unable to copy lobby ID"))
+                }
+            })
+            .setLeaveCallback(async () => {
+                try {
+                    await leaveMyLobby()
+                } catch {
+                    this.leaveMyLobbyNotOkay()
                 }
             })
     }
@@ -167,14 +174,7 @@ class MyClientCallback implements ClientCallback {
     }
 
     createLobbyNotOkay(): void {
-        const element = document.getElementById(ElementIds.HOME_STATUS_ID) as HTMLElement
-        if (!element) {
-            return
-        }
-        const localizableElements: LocalizableElement[] = [
-            { element: element, key: "Encountered error while creating a lobby. Please try again." },
-        ]
-        renderLocalizedTexts(localizableElements)
+        this.updateHomeStatus("Encountered error while creating a lobby. Please try again.")
     }
 
     displayMyLobbyDetails(lobby: Lobby): void {
@@ -246,7 +246,53 @@ class MyClientCallback implements ClientCallback {
     }
 
     joinLobbyNotOkay(): void {
-        this.updateMyLobbyStatus("Unable to join lobby")
+        this.updateHomeStatus("Unable to join lobby")
+    }
+
+    leaveMyLobbyNotOkay(): void {
+        this.updateMyLobbyStatus("Unable to leave lobby")
+    }
+
+    someoneJoinedMyLobby(id: string, name: string): void {
+        const player1Select = document.getElementById(ElementIds.PLAYER_1_SELECT_ID) as HTMLSelectElement
+        const player2Select = document.getElementById(ElementIds.PLAYER_2_SELECT_ID) as HTMLSelectElement
+        const insertOption = (select: HTMLSelectElement | null, id: string, name: string) => {
+            if (select) {
+                const option = document.createElement('option')
+                option.value = id
+                option.textContent = name
+                select.appendChild(option)
+            }
+        }
+        insertOption(player1Select, id, name)
+        insertOption(player2Select, id, name)
+    }
+
+    someoneLeftMyLobby(id: string): void {
+        const player1Select = document.getElementById(ElementIds.PLAYER_1_SELECT_ID) as HTMLSelectElement
+        const player2Select = document.getElementById(ElementIds.PLAYER_2_SELECT_ID) as HTMLSelectElement
+        const removeOption = (select: HTMLSelectElement | null, id: string) => {
+            if (select) {
+                const options = select.querySelectorAll('option')
+                for (let i = 0; i < options.length; i++) {
+                    if (options[i].value === id) {
+                        select.removeChild(options[i])
+                    }
+                }
+            }
+        }
+        removeOption(player1Select, id)
+        removeOption(player2Select, id)
+    }
+
+    private updateHomeStatus(text: string): void {
+        const element = document.getElementById(ElementIds.HOME_STATUS_ID) as HTMLParagraphElement
+        if (!element) {
+            return
+        }
+        renderLocalizedTexts([
+            { element: element, key: text },
+        ])
     }
 
     private updateMyLobbyStatus(text: string): void {

@@ -3,6 +3,7 @@ import * as ElementIds from "../constants/element-ids"
 
 type CreateGameCallback = (player1: string, player2: string) => void
 type CopyLobbyIdCallback = () => void
+type LeaveCallback = () => void
 
 export class MyLobbyView {
     private rootElement: HTMLElement
@@ -22,6 +23,7 @@ export class MyLobbyView {
 
     private createGameCallback: CreateGameCallback | null = null
     private copyLobbyIdCallback: CopyLobbyIdCallback | null = null
+    private leaveCallback: LeaveCallback | null = null
 
     private localizableElements: LocalizableElement[] = [
         { element: this.titleHeading, key: "My Lobby" },
@@ -71,6 +73,10 @@ export class MyLobbyView {
         this.copyLobbyIdButton.addEventListener('click', () => {
             this.copyLobbyIdCallback?.()
         })
+
+        this.leaveButton.addEventListener('click', () => {
+            this.leaveCallback?.()
+        })
     }
 
     setCreateGameCallback(value: CreateGameCallback | null): MyLobbyView {
@@ -80,6 +86,11 @@ export class MyLobbyView {
 
     setCopyLobbyIdCallback(value: CopyLobbyIdCallback | null): MyLobbyView {
         this.copyLobbyIdCallback = value
+        return this
+    }
+
+    setLeaveCallback(value: LeaveCallback | null): MyLobbyView {
+        this.leaveCallback = value
         return this
     }
 }
