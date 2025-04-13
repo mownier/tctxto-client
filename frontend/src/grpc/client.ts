@@ -1,7 +1,8 @@
 import { TicTacToeClient } from './TctxtoServiceClientPb';
 import * as GrpcConst from "../constants/grpc"
-import { ClientUpdate, NavigationPath, NavigationUpdate, ServerUpdate, SignInRequest, SignUpRequest, SignOutRequest, CreateLobbyRequest, Lobby, Empty, Player } from "./tctxto_pb"
+import { ClientUpdate, NavigationPath, NavigationUpdate, ServerUpdate, SignInRequest, SignUpRequest, SignOutRequest, CreateLobbyRequest, Lobby, Empty, Player, JoinLobbyRequest } from "./tctxto_pb"
 import { ClientReadableStream, Metadata } from "grpc-web"
+import { Server } from '@grpc/grpc-js';
 
 const CLIENT_ID_STORAGE_KEY: string = 'TicTacToeClient_clientId'
 const SUBSCRIBE_MAX_ATTEMPTS: number = 3
@@ -42,6 +43,7 @@ export interface ClientCallback {
     createLobbyNotOkay(): void
     displayMyLobbyDetails(lobby: Lobby): void
     updatePlayerDisplayName(name: string): void
+    joinLobbyNotOkay(): void
 }
 
 class ClientCallbackDefaultImp implements ClientCallback {
@@ -90,6 +92,10 @@ class ClientCallbackDefaultImp implements ClientCallback {
     }
 
     updatePlayerDisplayName(name: string): void {
+        throw new Error("Method not implemented.")
+    }
+
+    joinLobbyNotOkay(): void {
         throw new Error("Method not implemented.")
     }
 }
@@ -205,6 +211,23 @@ export async function createLobby(name: string): Promise<void> {
     })
 }
 
+export async function joinLobby(lobbyId: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+        try {
+            const update = new ClientUpdate()
+            const request = new JoinLobbyRequest()
+            request.setLobbyId(lobbyId)
+            update.setJoinLobbyRequest(request)
+            const client = createClient()
+            client.notify(update, metadataWithClientId())
+            resolve()
+        } catch (error) {
+            clientCallback.joinLobbyNotOkay()
+            reject(error)
+        }
+    })
+}
+
 function handleStreamData(update: ServerUpdate) {
     console.log(`[STREAM] server update received`)
     subscribeAttempts = 0
@@ -273,6 +296,15 @@ function handleStreamData(update: ServerUpdate) {
                     if (!deepCompareLobby(latestData.lobby, update.getMyLobbyDetails()!.getLobby()!)) {
                         latestData.lobby = update.getMyLobbyDetails()!.getLobby()!
                         clientCallback.displayMyLobbyDetails(latestData.lobby!)
+                    }
+                }
+            }
+            break
+        case ServerUpdate.TypeCase.JOIN_LOBBY_REPLY:
+            if (update.getJoinLobbyReply()) {
+                if (update.getJoinLobbyReply()!.getOutcome()) {
+                    if (!update.getJoinLobbyReply()!.getOutcome()!.getOk()) {
+                        clientCallback.joinLobbyNotOkay()
                     }
                 }
             }

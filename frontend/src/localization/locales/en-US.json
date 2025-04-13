@@ -38,5 +38,9 @@
     "Encountered error while creating a lobby. Please try again.": "Encountered error while creating a lobby. Please try again.",
     "Name": "Name",
     "Select Player 1": "Select Player 1", 
-    "Select Player 2": "Select Player 2"
+    "Select Player 2": "Select Player 2",
+    "Copy Lobby ID": "Copy Lobby ID",
+    "Copied lobby ID to clipboard": "Copied lobby ID to clipboard",
+    "Unable to copy lobby ID": "Unable to copy lobby ID",
+    "Unable to join lobby": "Unable to join lobby"
 }

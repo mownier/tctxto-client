@@ -3,7 +3,7 @@ import { MainRootView } from './views/MainRootView'
 import * as ElementIds from './constants/element-ids'
 import { NoSessionHeaderView } from './views/NoSessionHeaderView'
 import { WelcomeView } from './views/WelcomeView'
-import { ClientCallback, createLobby, getLatestData, setClientCallback, signIn, signOut, signUp, subscribe } from './grpc/client'
+import { ClientCallback, createLobby, getLatestData, joinLobby, setClientCallback, signIn, signOut, signUp, subscribe } from './grpc/client'
 import { WithSessionHeaderView } from './views/WithSessionHeaderView'
 import { EmptytView } from './views/EmptyView'
 import { HomeView } from './views/HomeView'
@@ -17,7 +17,7 @@ async function main() {
     } catch (error) {
         console.error("locale not set automatically:", error)
     }
-    
+
     const mainRootElement = document.getElementById(ElementIds.MAIN_ROOT_ID) as HTMLElement
 
     if (!mainRootElement) {
@@ -69,8 +69,12 @@ class MyClientCallback implements ClientCallback {
                     this.createLobbyNotOkay()
                 }
             })
-            .setJoinLobbyCallback((lobbyId: string) => {
-                console.log("lobby id to join:", lobbyId)
+            .setJoinLobbyCallback(async (lobbyId: string) => {
+                try {
+                    await joinLobby(lobbyId)
+                } catch {
+                    this.joinLobbyNotOkay()
+                }
             })
     }
 
@@ -103,6 +107,14 @@ class MyClientCallback implements ClientCallback {
         const contentView = new MyLobbyView(this.mainRootContentElement)
             .setCreateGameCallback((player1, player2) => {
                 console.log(`todo: create game for player1 = ${player1}, player2 = ${player2}`)
+            })
+            .setCopyLobbyIdCallback(() => {
+                const lobbyId = getLatestData().lobby?.getId()
+                if (lobbyId) {
+                    this.copyTextToClipboard(lobbyId)
+                        .then(() => this.updateMyLobbyStatus("Copied lobby ID to clipboard"))
+                        .catch((error) => this.updateMyLobbyStatus("Unable to copy lobby ID" ))
+                }
             })
     }
 
@@ -185,7 +197,7 @@ class MyClientCallback implements ClientCallback {
             })
             playersTable.appendChild(thead)
             renderLocalizedTexts(localizableElements)
-        
+
             const tbody: HTMLTableSectionElement = document.createElement('tbody')
             lobby.getPlayersList().forEach(player => {
                 if (player) {
@@ -195,7 +207,7 @@ class MyClientCallback implements ClientCallback {
                         const cell: HTMLTableCellElement = row.insertCell()
                         cell.textContent = cellData
                     })
-                }   
+                }
             })
             playersTable.appendChild(tbody)
         }
@@ -231,6 +243,27 @@ class MyClientCallback implements ClientCallback {
             return
         }
         element.textContent = name
+    }
+
+    joinLobbyNotOkay(): void {
+        this.updateMyLobbyStatus("Unable to join lobby")
+    }
+
+    private updateMyLobbyStatus(text: string): void {
+        const element = document.getElementById(ElementIds.MY_LOBBY_STATUS_ID) as HTMLParagraphElement
+        if (!element) {
+            return
+        }
+        renderLocalizedTexts([
+            { element: element, key: text },
+        ])
+    }
+
+    private async copyTextToClipboard(text: string): Promise<void> {
+        if (!navigator.clipboard) {
+            return Promise.reject(new Error("Clipboard API is not available in this environment."));
+        }
+        return navigator.clipboard.writeText(text);
     }
 
     private newWithSessionHeaderView(): WithSessionHeaderView {

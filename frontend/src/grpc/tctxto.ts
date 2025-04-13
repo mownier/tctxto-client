@@ -1452,12 +1452,16 @@ export namespace server2 {
     export class Lobby extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
+            id?: string;
             name?: string;
             players?: Player[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
+                if ("id" in data && data.id != undefined) {
+                    this.id = data.id;
+                }
                 if ("name" in data && data.name != undefined) {
                     this.name = data.name;
                 }
@@ -1466,23 +1470,33 @@ export namespace server2 {
                 }
             }
         }
-        get name() {
+        get id() {
             return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
         }
-        set name(value: string) {
+        set id(value: string) {
             pb_1.Message.setField(this, 1, value);
         }
+        get name() {
+            return pb_1.Message.getFieldWithDefault(this, 2, "") as string;
+        }
+        set name(value: string) {
+            pb_1.Message.setField(this, 2, value);
+        }
         get players() {
-            return pb_1.Message.getRepeatedWrapperField(this, Player, 2) as Player[];
+            return pb_1.Message.getRepeatedWrapperField(this, Player, 3) as Player[];
         }
         set players(value: Player[]) {
-            pb_1.Message.setRepeatedWrapperField(this, 2, value);
+            pb_1.Message.setRepeatedWrapperField(this, 3, value);
         }
         static fromObject(data: {
+            id?: string;
             name?: string;
             players?: ReturnType<typeof Player.prototype.toObject>[];
         }): Lobby {
             const message = new Lobby({});
+            if (data.id != null) {
+                message.id = data.id;
+            }
             if (data.name != null) {
                 message.name = data.name;
             }
@@ -1493,9 +1507,13 @@ export namespace server2 {
         }
         toObject() {
             const data: {
+                id?: string;
                 name?: string;
                 players?: ReturnType<typeof Player.prototype.toObject>[];
             } = {};
+            if (this.id != null) {
+                data.id = this.id;
+            }
             if (this.name != null) {
                 data.name = this.name;
             }
@@ -1508,10 +1526,12 @@ export namespace server2 {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
+            if (this.id.length)
+                writer.writeString(1, this.id);
             if (this.name.length)
-                writer.writeString(1, this.name);
+                writer.writeString(2, this.name);
             if (this.players.length)
-                writer.writeRepeatedMessage(2, this.players, (item: Player) => item.serialize(writer));
+                writer.writeRepeatedMessage(3, this.players, (item: Player) => item.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -1522,10 +1542,13 @@ export namespace server2 {
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
-                        message.name = reader.readString();
+                        message.id = reader.readString();
                         break;
                     case 2:
-                        reader.readMessage(message.players, () => pb_1.Message.addToRepeatedWrapperField(message, 2, Player.deserialize(reader), Player));
+                        message.name = reader.readString();
+                        break;
+                    case 3:
+                        reader.readMessage(message.players, () => pb_1.Message.addToRepeatedWrapperField(message, 3, Player.deserialize(reader), Player));
                         break;
                     default: reader.skipField();
                 }

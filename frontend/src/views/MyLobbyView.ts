@@ -2,6 +2,7 @@ import { LocalizableElement, renderLocalizedTexts } from "../localization/locali
 import * as ElementIds from "../constants/element-ids"
 
 type CreateGameCallback = (player1: string, player2: string) => void
+type CopyLobbyIdCallback = () => void
 
 export class MyLobbyView {
     private rootElement: HTMLElement
@@ -17,8 +18,10 @@ export class MyLobbyView {
     private player2SelectLabel: HTMLLabelElement = document.createElement('label')
     private player1Select: HTMLSelectElement = document.createElement('select')
     private player2Select: HTMLSelectElement = document.createElement('select')
+    private copyLobbyIdButton: HTMLButtonElement = document.createElement('button')
 
     private createGameCallback: CreateGameCallback | null = null
+    private copyLobbyIdCallback: CopyLobbyIdCallback | null = null
 
     private localizableElements: LocalizableElement[] = [
         { element: this.titleHeading, key: "My Lobby" },
@@ -27,6 +30,7 @@ export class MyLobbyView {
         { element: this.player1SelectLabel, key: "Enter player 1" },
         { element: this.player2SelectLabel, key: "Enter player 2" },
         { element: this.createGameButton, key: "Create Game" },
+        { element: this.copyLobbyIdButton, key: "Copy Lobby ID" },
     ]
 
     constructor(rootElement: HTMLElement) {
@@ -42,6 +46,7 @@ export class MyLobbyView {
         this.rootElement.appendChild(this.nameHeading)
         this.rootElement.appendChild(this.statusParagraph)
         this.rootElement.appendChild(this.leaveButton)
+        this.rootElement.appendChild(this.copyLobbyIdButton)
         this.rootElement.appendChild(this.player1SelectLabel)
         this.rootElement.appendChild(this.player1Select)
         this.rootElement.appendChild(this.player2SelectLabel)
@@ -62,10 +67,19 @@ export class MyLobbyView {
             const player2 = this.player2Select.value
             this.createGameCallback?.(player1, player2)
         })
+
+        this.copyLobbyIdButton.addEventListener('click', () => {
+            this.copyLobbyIdCallback?.()
+        })
     }
 
     setCreateGameCallback(value: CreateGameCallback | null): MyLobbyView {
         this.createGameCallback = value
+        return this
+    }
+
+    setCopyLobbyIdCallback(value: CopyLobbyIdCallback | null): MyLobbyView {
+        this.copyLobbyIdCallback = value
         return this
     }
 }

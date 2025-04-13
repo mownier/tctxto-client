@@ -2708,7 +2708,7 @@ proto.server2.Ping.serializeBinaryToWriter = function(message, writer) {
  * @private {!Array<number>}
  * @const
  */
-proto.server2.Lobby.repeatedFields_ = [2];
+proto.server2.Lobby.repeatedFields_ = [3];
 
 
 
@@ -2741,7 +2741,8 @@ proto.server2.Lobby.prototype.toObject = function(opt_includeInstance) {
  */
 proto.server2.Lobby.toObject = function(includeInstance, msg) {
   var f, obj = {
-name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+id: jspb.Message.getFieldWithDefault(msg, 1, ""),
+name: jspb.Message.getFieldWithDefault(msg, 2, ""),
 playersList: jspb.Message.toObjectList(msg.getPlayersList(),
     proto.server2.Player.toObject, includeInstance)
   };
@@ -2782,9 +2783,13 @@ proto.server2.Lobby.deserializeBinaryFromReader = function(msg, reader) {
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setName(value);
+      msg.setId(value);
       break;
     case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
+      break;
+    case 3:
       var value = new proto.server2.Player;
       reader.readMessage(value,proto.server2.Player.deserializeBinaryFromReader);
       msg.addPlayers(value);
@@ -2818,17 +2823,24 @@ proto.server2.Lobby.prototype.serializeBinary = function() {
  */
 proto.server2.Lobby.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getName();
+  f = message.getId();
   if (f.length > 0) {
     writer.writeString(
       1,
       f
     );
   }
+  f = message.getName();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
   f = message.getPlayersList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
-      2,
+      3,
       f,
       proto.server2.Player.serializeBinaryToWriter
     );
@@ -2837,10 +2849,10 @@ proto.server2.Lobby.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional string name = 1;
+ * optional string id = 1;
  * @return {string}
  */
-proto.server2.Lobby.prototype.getName = function() {
+proto.server2.Lobby.prototype.getId = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
@@ -2849,18 +2861,36 @@ proto.server2.Lobby.prototype.getName = function() {
  * @param {string} value
  * @return {!proto.server2.Lobby} returns this
  */
-proto.server2.Lobby.prototype.setName = function(value) {
+proto.server2.Lobby.prototype.setId = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
 /**
- * repeated Player players = 2;
+ * optional string name = 2;
+ * @return {string}
+ */
+proto.server2.Lobby.prototype.getName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.server2.Lobby} returns this
+ */
+proto.server2.Lobby.prototype.setName = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * repeated Player players = 3;
  * @return {!Array<!proto.server2.Player>}
  */
 proto.server2.Lobby.prototype.getPlayersList = function() {
   return /** @type{!Array<!proto.server2.Player>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.server2.Player, 2));
+    jspb.Message.getRepeatedWrapperField(this, proto.server2.Player, 3));
 };
 
 
@@ -2869,7 +2899,7 @@ proto.server2.Lobby.prototype.getPlayersList = function() {
  * @return {!proto.server2.Lobby} returns this
 */
 proto.server2.Lobby.prototype.setPlayersList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 2, value);
+  return jspb.Message.setRepeatedWrapperField(this, 3, value);
 };
 
 
@@ -2879,7 +2909,7 @@ proto.server2.Lobby.prototype.setPlayersList = function(value) {
  * @return {!proto.server2.Player}
  */
 proto.server2.Lobby.prototype.addPlayers = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.server2.Player, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.server2.Player, opt_index);
 };
 
 

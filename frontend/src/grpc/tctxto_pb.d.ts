@@ -267,6 +267,9 @@ export namespace Ping {
 }
 
 export class Lobby extends jspb.Message {
+  getId(): string;
+  setId(value: string): Lobby;
+
   getName(): string;
   setName(value: string): Lobby;
 
@@ -285,6 +288,7 @@ export class Lobby extends jspb.Message {
 
 export namespace Lobby {
   export type AsObject = {
+    id: string,
     name: string,
     playersList: Array<Player.AsObject>,
   }
