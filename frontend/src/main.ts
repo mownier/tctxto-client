@@ -205,6 +205,7 @@ class MyClientCallback implements ClientCallback {
                     const cellsData: string[] = [player.getName()]
                     cellsData.forEach(cellData => {
                         const cell: HTMLTableCellElement = row.insertCell()
+                        cell.id = player.getId()
                         cell.textContent = cellData
                     })
                 }
@@ -266,6 +267,15 @@ class MyClientCallback implements ClientCallback {
         }
         insertOption(player1Select, id, name)
         insertOption(player2Select, id, name)
+
+        const playersTable = document.getElementById(ElementIds.MY_LOBBY_PLAYERS_TABLE_ID) as HTMLTableElement
+        if (playersTable) {
+            const newRow: HTMLTableRowElement = playersTable.insertRow()
+            const newCell = newRow.insertCell()
+            newCell.id = id
+            newCell.textContent = name
+            console.log(`cell ${id} is inserted`)
+        }
     }
 
     someoneLeftMyLobby(id: string): void {
@@ -283,6 +293,19 @@ class MyClientCallback implements ClientCallback {
         }
         removeOption(player1Select, id)
         removeOption(player2Select, id)
+
+        const playersTable = document.getElementById(ElementIds.MY_LOBBY_PLAYERS_TABLE_ID) as HTMLTableElement
+        const cellToRemove = document.getElementById(id) as HTMLTableCellElement;
+        if (playersTable && cellToRemove) {
+            const row = cellToRemove.parentNode as HTMLTableRowElement;
+            if (row) {
+                const cellIndex = Array.from(row.cells).indexOf(cellToRemove);
+                if (cellIndex >= -1) {
+                    console.log(`cell ${id} is removed`)
+                    row.deleteCell(cellIndex)
+                }
+            }
+        }
     }
 
     private updateHomeStatus(text: string): void {

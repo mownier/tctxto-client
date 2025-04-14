@@ -367,7 +367,7 @@ function handleStreamData(update: ServerUpdate) {
                 if (update.getMyLobbyLeaverUpdate()!.getPlayer()) {
                     if (latestData.lobby) {
                         const playerLeftLobby = update.getMyLobbyLeaverUpdate()!.getPlayer()!
-                        addPlayerToLobby(latestData.lobby!, playerLeftLobby)
+                        removeLobbyPlayerById(latestData.lobby!, playerLeftLobby.getId())
                         clientCallback.someoneLeftMyLobby(playerLeftLobby.getId())
                     }
                 }
@@ -391,7 +391,7 @@ function addPlayerToLobby(lobby: Lobby, newPlayer: Player): boolean {
 }
 
 
-function removePlayerById(lobby: Lobby, playerIdToRemove: string): boolean {
+function removeLobbyPlayerById(lobby: Lobby, playerIdToRemove: string): boolean {
     const initialPlayers = lobby.getPlayersList()
     const updatedPlayers = initialPlayers.filter(player => player.getId() !== playerIdToRemove)
 
