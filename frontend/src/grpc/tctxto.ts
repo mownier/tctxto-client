@@ -18,8 +18,12 @@ export namespace server2 {
         O = 2
     }
     export enum Winner {
-        you = 0,
-        other = 1
+        YOU = 0,
+        OTHER = 1
+    }
+    export enum Technicality {
+        NO_PROBLEM = 0,
+        BY_FORFEIT = 1
     }
     export class Empty extends pb_1.Message {
         #one_of_decls: number[][] = [];
@@ -62,7 +66,7 @@ export namespace server2 {
         }
     }
     export class ClientUpdate extends pb_1.Message {
-        #one_of_decls: number[][] = [[1, 2, 3, 4, 5, 6, 7, 8]];
+        #one_of_decls: number[][] = [[1, 2, 3, 4, 5, 6, 7, 8, 9]];
         constructor(data?: any[] | ({} & (({
             sign_up_request?: SignUpRequest;
             sign_in_request?: never;
@@ -72,6 +76,7 @@ export namespace server2 {
             leave_my_lobby_request?: never;
             create_game_request?: never;
             make_move_request?: never;
+            rematch_request?: never;
         } | {
             sign_up_request?: never;
             sign_in_request?: SignInRequest;
@@ -81,6 +86,7 @@ export namespace server2 {
             leave_my_lobby_request?: never;
             create_game_request?: never;
             make_move_request?: never;
+            rematch_request?: never;
         } | {
             sign_up_request?: never;
             sign_in_request?: never;
@@ -90,6 +96,7 @@ export namespace server2 {
             leave_my_lobby_request?: never;
             create_game_request?: never;
             make_move_request?: never;
+            rematch_request?: never;
         } | {
             sign_up_request?: never;
             sign_in_request?: never;
@@ -99,6 +106,7 @@ export namespace server2 {
             leave_my_lobby_request?: never;
             create_game_request?: never;
             make_move_request?: never;
+            rematch_request?: never;
         } | {
             sign_up_request?: never;
             sign_in_request?: never;
@@ -108,6 +116,7 @@ export namespace server2 {
             leave_my_lobby_request?: never;
             create_game_request?: never;
             make_move_request?: never;
+            rematch_request?: never;
         } | {
             sign_up_request?: never;
             sign_in_request?: never;
@@ -117,6 +126,7 @@ export namespace server2 {
             leave_my_lobby_request?: LeaveMyLobbyRequest;
             create_game_request?: never;
             make_move_request?: never;
+            rematch_request?: never;
         } | {
             sign_up_request?: never;
             sign_in_request?: never;
@@ -126,6 +136,7 @@ export namespace server2 {
             leave_my_lobby_request?: never;
             create_game_request?: CreateGameRequest;
             make_move_request?: never;
+            rematch_request?: never;
         } | {
             sign_up_request?: never;
             sign_in_request?: never;
@@ -135,6 +146,17 @@ export namespace server2 {
             leave_my_lobby_request?: never;
             create_game_request?: never;
             make_move_request?: MakeMoveRequest;
+            rematch_request?: never;
+        } | {
+            sign_up_request?: never;
+            sign_in_request?: never;
+            sign_out_request?: never;
+            create_lobby_request?: never;
+            join_lobby_request?: never;
+            leave_my_lobby_request?: never;
+            create_game_request?: never;
+            make_move_request?: never;
+            rematch_request?: RematchRequest;
         })))) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
@@ -162,6 +184,9 @@ export namespace server2 {
                 }
                 if ("make_move_request" in data && data.make_move_request != undefined) {
                     this.make_move_request = data.make_move_request;
+                }
+                if ("rematch_request" in data && data.rematch_request != undefined) {
+                    this.rematch_request = data.rematch_request;
                 }
             }
         }
@@ -237,9 +262,18 @@ export namespace server2 {
         get has_make_move_request() {
             return pb_1.Message.getField(this, 8) != null;
         }
+        get rematch_request() {
+            return pb_1.Message.getWrapperField(this, RematchRequest, 9) as RematchRequest;
+        }
+        set rematch_request(value: RematchRequest) {
+            pb_1.Message.setOneofWrapperField(this, 9, this.#one_of_decls[0], value);
+        }
+        get has_rematch_request() {
+            return pb_1.Message.getField(this, 9) != null;
+        }
         get type() {
             const cases: {
-                [index: number]: "none" | "sign_up_request" | "sign_in_request" | "sign_out_request" | "create_lobby_request" | "join_lobby_request" | "leave_my_lobby_request" | "create_game_request" | "make_move_request";
+                [index: number]: "none" | "sign_up_request" | "sign_in_request" | "sign_out_request" | "create_lobby_request" | "join_lobby_request" | "leave_my_lobby_request" | "create_game_request" | "make_move_request" | "rematch_request";
             } = {
                 0: "none",
                 1: "sign_up_request",
@@ -249,9 +283,10 @@ export namespace server2 {
                 5: "join_lobby_request",
                 6: "leave_my_lobby_request",
                 7: "create_game_request",
-                8: "make_move_request"
+                8: "make_move_request",
+                9: "rematch_request"
             };
-            return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3, 4, 5, 6, 7, 8])];
+            return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3, 4, 5, 6, 7, 8, 9])];
         }
         static fromObject(data: {
             sign_up_request?: ReturnType<typeof SignUpRequest.prototype.toObject>;
@@ -262,6 +297,7 @@ export namespace server2 {
             leave_my_lobby_request?: ReturnType<typeof LeaveMyLobbyRequest.prototype.toObject>;
             create_game_request?: ReturnType<typeof CreateGameRequest.prototype.toObject>;
             make_move_request?: ReturnType<typeof MakeMoveRequest.prototype.toObject>;
+            rematch_request?: ReturnType<typeof RematchRequest.prototype.toObject>;
         }): ClientUpdate {
             const message = new ClientUpdate({});
             if (data.sign_up_request != null) {
@@ -288,6 +324,9 @@ export namespace server2 {
             if (data.make_move_request != null) {
                 message.make_move_request = MakeMoveRequest.fromObject(data.make_move_request);
             }
+            if (data.rematch_request != null) {
+                message.rematch_request = RematchRequest.fromObject(data.rematch_request);
+            }
             return message;
         }
         toObject() {
@@ -300,6 +339,7 @@ export namespace server2 {
                 leave_my_lobby_request?: ReturnType<typeof LeaveMyLobbyRequest.prototype.toObject>;
                 create_game_request?: ReturnType<typeof CreateGameRequest.prototype.toObject>;
                 make_move_request?: ReturnType<typeof MakeMoveRequest.prototype.toObject>;
+                rematch_request?: ReturnType<typeof RematchRequest.prototype.toObject>;
             } = {};
             if (this.sign_up_request != null) {
                 data.sign_up_request = this.sign_up_request.toObject();
@@ -325,6 +365,9 @@ export namespace server2 {
             if (this.make_move_request != null) {
                 data.make_move_request = this.make_move_request.toObject();
             }
+            if (this.rematch_request != null) {
+                data.rematch_request = this.rematch_request.toObject();
+            }
             return data;
         }
         serialize(): Uint8Array;
@@ -347,6 +390,8 @@ export namespace server2 {
                 writer.writeMessage(7, this.create_game_request, () => this.create_game_request.serialize(writer));
             if (this.has_make_move_request)
                 writer.writeMessage(8, this.make_move_request, () => this.make_move_request.serialize(writer));
+            if (this.has_rematch_request)
+                writer.writeMessage(9, this.rematch_request, () => this.rematch_request.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -380,6 +425,9 @@ export namespace server2 {
                     case 8:
                         reader.readMessage(message.make_move_request, () => message.make_move_request = MakeMoveRequest.deserialize(reader));
                         break;
+                    case 9:
+                        reader.readMessage(message.rematch_request, () => message.rematch_request = RematchRequest.deserialize(reader));
+                        break;
                     default: reader.skipField();
                 }
             }
@@ -393,7 +441,7 @@ export namespace server2 {
         }
     }
     export class ServerUpdate extends pb_1.Message {
-        #one_of_decls: number[][] = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]];
+        #one_of_decls: number[][] = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]];
         constructor(data?: any[] | ({} & (({
             ping?: Ping;
             client_assignment_update?: never;
@@ -414,6 +462,7 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
+            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
         } | {
@@ -436,6 +485,7 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
+            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
         } | {
@@ -458,6 +508,7 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
+            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
         } | {
@@ -480,6 +531,7 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
+            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
         } | {
@@ -502,6 +554,7 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
+            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
         } | {
@@ -524,6 +577,7 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
+            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
         } | {
@@ -546,6 +600,7 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
+            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
         } | {
@@ -568,6 +623,7 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
+            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
         } | {
@@ -590,6 +646,7 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
+            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
         } | {
@@ -612,6 +669,7 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
+            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
         } | {
@@ -634,6 +692,7 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
+            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
         } | {
@@ -656,6 +715,7 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
+            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
         } | {
@@ -678,6 +738,7 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
+            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
         } | {
@@ -700,6 +761,7 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
+            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
         } | {
@@ -722,6 +784,7 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
+            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
         } | {
@@ -744,6 +807,7 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
+            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
         } | {
@@ -766,6 +830,7 @@ export namespace server2 {
             draw_update?: DrawUpdate;
             game_start_update?: never;
             next_mover_update?: never;
+            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
         } | {
@@ -788,6 +853,7 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: GameStartUpdate;
             next_mover_update?: never;
+            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
         } | {
@@ -810,6 +876,7 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: NextMoverUpdate;
+            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
         } | {
@@ -832,6 +899,30 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
+            rematch_reply?: RematchReply;
+            player_client_update?: never;
+            player_display_name_update?: never;
+        } | {
+            ping?: never;
+            client_assignment_update?: never;
+            navigation_update?: never;
+            sign_up_reply?: never;
+            sign_in_reply?: never;
+            sign_out_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            rematch_reply?: never;
             player_client_update?: PlayerClientUpdate;
             player_display_name_update?: never;
         } | {
@@ -854,6 +945,7 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
+            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: PlayerDisplayNameUpdate;
         })))) {
@@ -916,6 +1008,9 @@ export namespace server2 {
                 }
                 if ("next_mover_update" in data && data.next_mover_update != undefined) {
                     this.next_mover_update = data.next_mover_update;
+                }
+                if ("rematch_reply" in data && data.rematch_reply != undefined) {
+                    this.rematch_reply = data.rematch_reply;
                 }
                 if ("player_client_update" in data && data.player_client_update != undefined) {
                     this.player_client_update = data.player_client_update;
@@ -1096,27 +1191,36 @@ export namespace server2 {
         get has_next_mover_update() {
             return pb_1.Message.getField(this, 19) != null;
         }
-        get player_client_update() {
-            return pb_1.Message.getWrapperField(this, PlayerClientUpdate, 20) as PlayerClientUpdate;
+        get rematch_reply() {
+            return pb_1.Message.getWrapperField(this, RematchReply, 20) as RematchReply;
         }
-        set player_client_update(value: PlayerClientUpdate) {
+        set rematch_reply(value: RematchReply) {
             pb_1.Message.setOneofWrapperField(this, 20, this.#one_of_decls[0], value);
         }
-        get has_player_client_update() {
+        get has_rematch_reply() {
             return pb_1.Message.getField(this, 20) != null;
         }
-        get player_display_name_update() {
-            return pb_1.Message.getWrapperField(this, PlayerDisplayNameUpdate, 21) as PlayerDisplayNameUpdate;
+        get player_client_update() {
+            return pb_1.Message.getWrapperField(this, PlayerClientUpdate, 21) as PlayerClientUpdate;
         }
-        set player_display_name_update(value: PlayerDisplayNameUpdate) {
+        set player_client_update(value: PlayerClientUpdate) {
             pb_1.Message.setOneofWrapperField(this, 21, this.#one_of_decls[0], value);
         }
-        get has_player_display_name_update() {
+        get has_player_client_update() {
             return pb_1.Message.getField(this, 21) != null;
+        }
+        get player_display_name_update() {
+            return pb_1.Message.getWrapperField(this, PlayerDisplayNameUpdate, 22) as PlayerDisplayNameUpdate;
+        }
+        set player_display_name_update(value: PlayerDisplayNameUpdate) {
+            pb_1.Message.setOneofWrapperField(this, 22, this.#one_of_decls[0], value);
+        }
+        get has_player_display_name_update() {
+            return pb_1.Message.getField(this, 22) != null;
         }
         get type() {
             const cases: {
-                [index: number]: "none" | "ping" | "client_assignment_update" | "navigation_update" | "sign_up_reply" | "sign_in_reply" | "sign_out_reply" | "my_lobby_details" | "my_lobby_joiner_update" | "my_lobby_leaver_update" | "create_lobby_reply" | "join_lobby_reply" | "leave_my_lobby_reply" | "create_game_reply" | "make_move_reply" | "move_update" | "winner_update" | "draw_update" | "game_start_update" | "next_mover_update" | "player_client_update" | "player_display_name_update";
+                [index: number]: "none" | "ping" | "client_assignment_update" | "navigation_update" | "sign_up_reply" | "sign_in_reply" | "sign_out_reply" | "my_lobby_details" | "my_lobby_joiner_update" | "my_lobby_leaver_update" | "create_lobby_reply" | "join_lobby_reply" | "leave_my_lobby_reply" | "create_game_reply" | "make_move_reply" | "move_update" | "winner_update" | "draw_update" | "game_start_update" | "next_mover_update" | "rematch_reply" | "player_client_update" | "player_display_name_update";
             } = {
                 0: "none",
                 1: "ping",
@@ -1138,10 +1242,11 @@ export namespace server2 {
                 17: "draw_update",
                 18: "game_start_update",
                 19: "next_mover_update",
-                20: "player_client_update",
-                21: "player_display_name_update"
+                20: "rematch_reply",
+                21: "player_client_update",
+                22: "player_display_name_update"
             };
-            return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21])];
+            return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22])];
         }
         static fromObject(data: {
             ping?: ReturnType<typeof Ping.prototype.toObject>;
@@ -1163,6 +1268,7 @@ export namespace server2 {
             draw_update?: ReturnType<typeof DrawUpdate.prototype.toObject>;
             game_start_update?: ReturnType<typeof GameStartUpdate.prototype.toObject>;
             next_mover_update?: ReturnType<typeof NextMoverUpdate.prototype.toObject>;
+            rematch_reply?: ReturnType<typeof RematchReply.prototype.toObject>;
             player_client_update?: ReturnType<typeof PlayerClientUpdate.prototype.toObject>;
             player_display_name_update?: ReturnType<typeof PlayerDisplayNameUpdate.prototype.toObject>;
         }): ServerUpdate {
@@ -1224,6 +1330,9 @@ export namespace server2 {
             if (data.next_mover_update != null) {
                 message.next_mover_update = NextMoverUpdate.fromObject(data.next_mover_update);
             }
+            if (data.rematch_reply != null) {
+                message.rematch_reply = RematchReply.fromObject(data.rematch_reply);
+            }
             if (data.player_client_update != null) {
                 message.player_client_update = PlayerClientUpdate.fromObject(data.player_client_update);
             }
@@ -1253,6 +1362,7 @@ export namespace server2 {
                 draw_update?: ReturnType<typeof DrawUpdate.prototype.toObject>;
                 game_start_update?: ReturnType<typeof GameStartUpdate.prototype.toObject>;
                 next_mover_update?: ReturnType<typeof NextMoverUpdate.prototype.toObject>;
+                rematch_reply?: ReturnType<typeof RematchReply.prototype.toObject>;
                 player_client_update?: ReturnType<typeof PlayerClientUpdate.prototype.toObject>;
                 player_display_name_update?: ReturnType<typeof PlayerDisplayNameUpdate.prototype.toObject>;
             } = {};
@@ -1313,6 +1423,9 @@ export namespace server2 {
             if (this.next_mover_update != null) {
                 data.next_mover_update = this.next_mover_update.toObject();
             }
+            if (this.rematch_reply != null) {
+                data.rematch_reply = this.rematch_reply.toObject();
+            }
             if (this.player_client_update != null) {
                 data.player_client_update = this.player_client_update.toObject();
             }
@@ -1363,10 +1476,12 @@ export namespace server2 {
                 writer.writeMessage(18, this.game_start_update, () => this.game_start_update.serialize(writer));
             if (this.has_next_mover_update)
                 writer.writeMessage(19, this.next_mover_update, () => this.next_mover_update.serialize(writer));
+            if (this.has_rematch_reply)
+                writer.writeMessage(20, this.rematch_reply, () => this.rematch_reply.serialize(writer));
             if (this.has_player_client_update)
-                writer.writeMessage(20, this.player_client_update, () => this.player_client_update.serialize(writer));
+                writer.writeMessage(21, this.player_client_update, () => this.player_client_update.serialize(writer));
             if (this.has_player_display_name_update)
-                writer.writeMessage(21, this.player_display_name_update, () => this.player_display_name_update.serialize(writer));
+                writer.writeMessage(22, this.player_display_name_update, () => this.player_display_name_update.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -1434,9 +1549,12 @@ export namespace server2 {
                         reader.readMessage(message.next_mover_update, () => message.next_mover_update = NextMoverUpdate.deserialize(reader));
                         break;
                     case 20:
-                        reader.readMessage(message.player_client_update, () => message.player_client_update = PlayerClientUpdate.deserialize(reader));
+                        reader.readMessage(message.rematch_reply, () => message.rematch_reply = RematchReply.deserialize(reader));
                         break;
                     case 21:
+                        reader.readMessage(message.player_client_update, () => message.player_client_update = PlayerClientUpdate.deserialize(reader));
+                        break;
+                    case 22:
                         reader.readMessage(message.player_display_name_update, () => message.player_display_name_update = PlayerDisplayNameUpdate.deserialize(reader));
                         break;
                     default: reader.skipField();
@@ -3494,6 +3612,7 @@ export namespace server2 {
         constructor(data?: any[] | {
             winner?: Winner;
             mover?: Mover;
+            technicality?: Technicality;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
@@ -3504,10 +3623,13 @@ export namespace server2 {
                 if ("mover" in data && data.mover != undefined) {
                     this.mover = data.mover;
                 }
+                if ("technicality" in data && data.technicality != undefined) {
+                    this.technicality = data.technicality;
+                }
             }
         }
         get winner() {
-            return pb_1.Message.getFieldWithDefault(this, 1, Winner.you) as Winner;
+            return pb_1.Message.getFieldWithDefault(this, 1, Winner.YOU) as Winner;
         }
         set winner(value: Winner) {
             pb_1.Message.setField(this, 1, value);
@@ -3518,9 +3640,16 @@ export namespace server2 {
         set mover(value: Mover) {
             pb_1.Message.setField(this, 2, value);
         }
+        get technicality() {
+            return pb_1.Message.getFieldWithDefault(this, 3, Technicality.NO_PROBLEM) as Technicality;
+        }
+        set technicality(value: Technicality) {
+            pb_1.Message.setField(this, 3, value);
+        }
         static fromObject(data: {
             winner?: Winner;
             mover?: Mover;
+            technicality?: Technicality;
         }): WinnerUpdate {
             const message = new WinnerUpdate({});
             if (data.winner != null) {
@@ -3529,12 +3658,16 @@ export namespace server2 {
             if (data.mover != null) {
                 message.mover = data.mover;
             }
+            if (data.technicality != null) {
+                message.technicality = data.technicality;
+            }
             return message;
         }
         toObject() {
             const data: {
                 winner?: Winner;
                 mover?: Mover;
+                technicality?: Technicality;
             } = {};
             if (this.winner != null) {
                 data.winner = this.winner;
@@ -3542,16 +3675,21 @@ export namespace server2 {
             if (this.mover != null) {
                 data.mover = this.mover;
             }
+            if (this.technicality != null) {
+                data.technicality = this.technicality;
+            }
             return data;
         }
         serialize(): Uint8Array;
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (this.winner != Winner.you)
+            if (this.winner != Winner.YOU)
                 writer.writeEnum(1, this.winner);
             if (this.mover != Mover.UNSPECIFIED)
                 writer.writeEnum(2, this.mover);
+            if (this.technicality != Technicality.NO_PROBLEM)
+                writer.writeEnum(3, this.technicality);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -3566,6 +3704,9 @@ export namespace server2 {
                         break;
                     case 2:
                         message.mover = reader.readEnum();
+                        break;
+                    case 3:
+                        message.technicality = reader.readEnum();
                         break;
                     default: reader.skipField();
                 }
@@ -3841,6 +3982,143 @@ export namespace server2 {
         }
         static deserializeBinary(bytes: Uint8Array): PlayerDisplayNameUpdate {
             return PlayerDisplayNameUpdate.deserialize(bytes);
+        }
+    }
+    export class RematchRequest extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            rematch?: boolean;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("rematch" in data && data.rematch != undefined) {
+                    this.rematch = data.rematch;
+                }
+            }
+        }
+        get rematch() {
+            return pb_1.Message.getFieldWithDefault(this, 1, false) as boolean;
+        }
+        set rematch(value: boolean) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        static fromObject(data: {
+            rematch?: boolean;
+        }): RematchRequest {
+            const message = new RematchRequest({});
+            if (data.rematch != null) {
+                message.rematch = data.rematch;
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                rematch?: boolean;
+            } = {};
+            if (this.rematch != null) {
+                data.rematch = this.rematch;
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.rematch != false)
+                writer.writeBool(1, this.rematch);
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): RematchRequest {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new RematchRequest();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.rematch = reader.readBool();
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): RematchRequest {
+            return RematchRequest.deserialize(bytes);
+        }
+    }
+    export class RematchReply extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            outcome?: Outcome;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("outcome" in data && data.outcome != undefined) {
+                    this.outcome = data.outcome;
+                }
+            }
+        }
+        get outcome() {
+            return pb_1.Message.getWrapperField(this, Outcome, 1) as Outcome;
+        }
+        set outcome(value: Outcome) {
+            pb_1.Message.setWrapperField(this, 1, value);
+        }
+        get has_outcome() {
+            return pb_1.Message.getField(this, 1) != null;
+        }
+        static fromObject(data: {
+            outcome?: ReturnType<typeof Outcome.prototype.toObject>;
+        }): RematchReply {
+            const message = new RematchReply({});
+            if (data.outcome != null) {
+                message.outcome = Outcome.fromObject(data.outcome);
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                outcome?: ReturnType<typeof Outcome.prototype.toObject>;
+            } = {};
+            if (this.outcome != null) {
+                data.outcome = this.outcome.toObject();
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.has_outcome)
+                writer.writeMessage(1, this.outcome, () => this.outcome.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): RematchReply {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new RematchReply();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        reader.readMessage(message.outcome, () => message.outcome = Outcome.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): RematchReply {
+            return RematchReply.deserialize(bytes);
         }
     }
     interface GrpcUnaryServiceInterface<P, R> {

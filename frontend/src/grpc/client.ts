@@ -1,6 +1,6 @@
 import { TicTacToeClient } from './TctxtoServiceClientPb';
 import * as GrpcConst from "../constants/grpc"
-import { ClientUpdate, NavigationPath, NavigationUpdate, ServerUpdate, SignInRequest, SignUpRequest, SignOutRequest, CreateLobbyRequest, Lobby, Empty, Player, JoinLobbyRequest, LeaveMyLobbyRequest } from "./tctxto_pb"
+import { ClientUpdate, NavigationPath, NavigationUpdate, ServerUpdate, SignInRequest, SignUpRequest, SignOutRequest, CreateLobbyRequest, Lobby, Empty, Player, JoinLobbyRequest, LeaveMyLobbyRequest, CreateGameRequest, MakeMoveRequest, Mover, Winner, Move, Technicality } from "./tctxto_pb"
 import { ClientReadableStream, Metadata } from "grpc-web"
 
 const CLIENT_ID_STORAGE_KEY: string = 'TicTacToeClient_clientId'
@@ -11,7 +11,9 @@ let stream: ClientReadableStream<ServerUpdate> | null = null
 let latestData: LatestData = {
     path: null,
     lobby: null,
-    playerDisplayName: ''
+    playerDisplayName: '',
+    gameStatus: null,
+    shouldForceUpdateLobby: false
 }
 
 function resetLatestData(): void {
@@ -23,10 +25,22 @@ export function getLatestData(): LatestData {
     return latestData
 }
 
+export interface GameStatus {
+    you: Mover
+    other: Mover
+    mover: Mover,
+    move: Move | null,
+    winner: Winner | null
+    winTechnicality: Technicality | null
+    draw: string | null
+}
+
 export interface LatestData {
     path: NavigationPath | null
     lobby: Lobby | null
     playerDisplayName: string
+    gameStatus: GameStatus | null
+    shouldForceUpdateLobby: boolean
 }
 
 export interface ClientCallback {
@@ -46,6 +60,13 @@ export interface ClientCallback {
     leaveMyLobbyNotOkay(): void
     someoneJoinedMyLobby(id: string, name: string): void
     someoneLeftMyLobby(id: string): void
+    createGameNotOkay(): void
+    makeMoveNotOkay(): void
+    gameStarted(): void
+    nextMoverDetermined(): void
+    moveUpdated(): void
+    winnerDetermined(): void
+    noOneWins(): void
 }
 
 class ClientCallbackDefaultImp implements ClientCallback {
@@ -110,6 +131,34 @@ class ClientCallbackDefaultImp implements ClientCallback {
     }
 
     someoneLeftMyLobby(id: string): void {
+        throw new Error("Method not implemented.")
+    }
+
+    createGameNotOkay(): void {
+        throw new Error("Method not implemented.")
+    }
+
+    makeMoveNotOkay(): void {
+        throw new Error("Method not implemented.")
+    }
+
+    gameStarted(): void {
+        throw new Error("Method not implemented.")
+    }
+
+    nextMoverDetermined(): void {
+        throw new Error("Method not implemented.")
+    }
+
+    moveUpdated(): void {
+        throw new Error("Method not implemented.")
+    }
+
+    winnerDetermined(): void {
+        throw new Error("Method not implemented.")
+    }
+
+    noOneWins(): void {
         throw new Error("Method not implemented.")
     }
 }
@@ -258,6 +307,41 @@ export async function leaveMyLobby(): Promise<void> {
     })
 }
 
+export async function createGame(player1Id: string, player2Id: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+        try {
+            const update = new ClientUpdate()
+            const request = new CreateGameRequest()
+            request.setPlayer1Id(player1Id)
+            request.setPlayer2Id(player2Id)
+            update.setCreateGameRequest(request)
+            const client = createClient()
+            client.notify(update, metadataWithClientId())
+            resolve()
+        } catch (error) {
+            clientCallback.createGameNotOkay()
+            reject(error)
+        }
+    })
+}
+
+export async function makeMove(position: number): Promise<void> {
+    return new Promise((resolve, reject) => {
+        try {
+            const update = new ClientUpdate()
+            const request = new MakeMoveRequest()
+            request.setPosition(position)
+            update.setMakeMoveRequest(request)
+            const client = createClient()
+            client.notify(update, metadataWithClientId())
+            resolve()
+        } catch (error) {
+            clientCallback.makeMoveNotOkay()
+            reject(error)
+        }
+    })
+}
+
 
 function handleStreamData(update: ServerUpdate) {
     console.log(`[STREAM] server update received`)
@@ -324,7 +408,8 @@ function handleStreamData(update: ServerUpdate) {
         case ServerUpdate.TypeCase.MY_LOBBY_DETAILS:
             if (update.getMyLobbyDetails()) {
                 if (update.getMyLobbyDetails()!.getLobby()) {
-                    if (!deepCompareLobby(latestData.lobby, update.getMyLobbyDetails()!.getLobby()!)) {
+                    if (latestData.shouldForceUpdateLobby || !deepCompareLobby(latestData.lobby, update.getMyLobbyDetails()!.getLobby()!)) {
+                        latestData.shouldForceUpdateLobby = false
                         latestData.lobby = update.getMyLobbyDetails()!.getLobby()!
                         clientCallback.displayMyLobbyDetails(latestData.lobby!)
                     }
@@ -369,6 +454,103 @@ function handleStreamData(update: ServerUpdate) {
                         const playerLeftLobby = update.getMyLobbyLeaverUpdate()!.getPlayer()!
                         removeLobbyPlayerById(latestData.lobby!, playerLeftLobby.getId())
                         clientCallback.someoneLeftMyLobby(playerLeftLobby.getId())
+                    }
+                }
+            }
+            break
+        case ServerUpdate.TypeCase.CREATE_GAME_REPLY:
+            if (update.getCreateGameReply()) {
+                if (update.getCreateGameReply()!.getOutcome()) {
+                    if (!update.getCreateGameReply()!.getOutcome()!.getOk()) {
+                        console.log(`create game reply outcome: ${update.getCreateGameReply()!.getOutcome()!}`)
+                        clientCallback.createGameNotOkay()
+                    }
+                }
+            }
+            break
+        case ServerUpdate.TypeCase.MAKE_MOVE_REPLY:
+            if (update.getMakeMoveReply()) {
+                if (update.getMakeMoveReply()!.getOutcome()) {
+                    if (!update.getMakeMoveReply()!.getOutcome()!.getOk()) {
+                        console.log(`make move reply: ${update.getMakeMoveReply()!.getOutcome()!}`)
+                        clientCallback.makeMoveNotOkay()
+                    }
+                }
+            }
+            break
+        case ServerUpdate.TypeCase.GAME_START_UPDATE:
+            if (update.getGameStartUpdate()) {
+                if (update.getGameStartUpdate()) {
+                    const gameStartUpdate = update.getGameStartUpdate()!
+                    if (!latestData.gameStatus) {
+                        latestData.gameStatus = {
+                            you: gameStartUpdate.getYou(),
+                            other: gameStartUpdate.getYou(),
+                            mover: Mover.UNSPECIFIED,
+                            move: null,
+                            winner: null,
+                            winTechnicality: null,
+                            draw: null
+                        }
+                        clientCallback.gameStarted()
+                        return
+                    }
+                    if (latestData.gameStatus!.you !== gameStartUpdate.getYou() ||
+                        latestData.gameStatus!.other !== gameStartUpdate.getOther()) {
+                        latestData.gameStatus!.you = gameStartUpdate.getYou()
+                        latestData.gameStatus!.other = gameStartUpdate.getOther()
+                        clientCallback.gameStarted()
+                    }
+                }
+            }
+            break
+        case ServerUpdate.TypeCase.NEXT_MOVER_UPDATE:
+            if (update.getNextMoverUpdate()) {
+                if (update.getNextMoverUpdate()!.getMover()) {
+                    if (latestData.gameStatus) {
+                        const mover = update.getNextMoverUpdate()!.getMover()!
+                        if (mover !== latestData.gameStatus.mover) {
+                            latestData.gameStatus!.mover = mover
+                            clientCallback.nextMoverDetermined()
+                        }
+                    }
+                }
+            }
+            break
+        case ServerUpdate.TypeCase.MOVE_UPDATE:
+            if (update.getMoveUpdate()) {
+                if (update.getMoveUpdate()!.getMove()) {
+                    if (latestData.gameStatus) {
+                        const move = update.getMoveUpdate()!.getMove()!
+                        if (move !== latestData.gameStatus.move) {
+                            latestData.gameStatus.move = move
+                            clientCallback.moveUpdated()
+                        }
+                    }
+                }
+            }
+            break
+        case ServerUpdate.TypeCase.WINNER_UPDATE:
+            if (update.getWinnerUpdate()) {
+                if (latestData.gameStatus) {
+                    const winnerUpdate = update.getWinnerUpdate()!
+                    if (latestData.gameStatus.winner != winnerUpdate.getWinner() ||
+                        latestData.gameStatus.winTechnicality != winnerUpdate.getTechnicality()) {
+                        latestData.gameStatus.winTechnicality = winnerUpdate.getTechnicality()
+                        latestData.gameStatus.winner = winnerUpdate.getWinner()
+                        latestData.shouldForceUpdateLobby = true
+                        clientCallback.winnerDetermined()
+                    }
+                }
+            }
+            break
+        case ServerUpdate.TypeCase.DRAW_UPDATE:
+            if (update.getDrawUpdate()) {
+                if (latestData.gameStatus) {
+                    if (!latestData.gameStatus.draw) {
+                        latestData.gameStatus.draw = ''
+                        latestData.shouldForceUpdateLobby = true
+                        clientCallback.noOneWins()
                     }
                 }
             }

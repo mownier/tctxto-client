@@ -16,6 +16,7 @@ export const PLAYER_2_SELECT_ID = "player-2-select"
 export const PLAYER_DISPLAY_NAME_ID = "player-display-name"
 
 export const GAME_CONTAINER_DIV_ID = "game-container"
+export const GAME_STATUD_ID = "game-status"
 
 export const NO_SESSION_STATUS_ID = "no-session-status"
 export const WITH_SESSION_STATUS_ID = "with-session-status"
@@ -26,3 +27,8 @@ export const MY_LOBBY_NAME_ID = "my-lobby-name"
 export const MY_LOBBY_PLAYERS_TABLE_ID = "my-lobby-players-table"
 
 export const HOME_STATUS_ID = "home-status-id"
+export const CELL_BOARD_POSITION_PREFIX_ID = "cell-board-position-"
+
+export const YOU_MOVER_INFO_ID = "you-mover-info"
+export const OTHER_MOVER_INFO_ID = "other-mover-info"
+export const MOVER_INFO_ID = "mover-info"

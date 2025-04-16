@@ -57,6 +57,11 @@ export class ClientUpdate extends jspb.Message {
   hasMakeMoveRequest(): boolean;
   clearMakeMoveRequest(): ClientUpdate;
 
+  getRematchRequest(): RematchRequest | undefined;
+  setRematchRequest(value?: RematchRequest): ClientUpdate;
+  hasRematchRequest(): boolean;
+  clearRematchRequest(): ClientUpdate;
+
   getTypeCase(): ClientUpdate.TypeCase;
 
   serializeBinary(): Uint8Array;
@@ -77,6 +82,7 @@ export namespace ClientUpdate {
     leaveMyLobbyRequest?: LeaveMyLobbyRequest.AsObject,
     createGameRequest?: CreateGameRequest.AsObject,
     makeMoveRequest?: MakeMoveRequest.AsObject,
+    rematchRequest?: RematchRequest.AsObject,
   }
 
   export enum TypeCase { 
@@ -89,6 +95,7 @@ export namespace ClientUpdate {
     LEAVE_MY_LOBBY_REQUEST = 6,
     CREATE_GAME_REQUEST = 7,
     MAKE_MOVE_REQUEST = 8,
+    REMATCH_REQUEST = 9,
   }
 }
 
@@ -188,6 +195,11 @@ export class ServerUpdate extends jspb.Message {
   hasNextMoverUpdate(): boolean;
   clearNextMoverUpdate(): ServerUpdate;
 
+  getRematchReply(): RematchReply | undefined;
+  setRematchReply(value?: RematchReply): ServerUpdate;
+  hasRematchReply(): boolean;
+  clearRematchReply(): ServerUpdate;
+
   getPlayerClientUpdate(): PlayerClientUpdate | undefined;
   setPlayerClientUpdate(value?: PlayerClientUpdate): ServerUpdate;
   hasPlayerClientUpdate(): boolean;
@@ -229,6 +241,7 @@ export namespace ServerUpdate {
     drawUpdate?: DrawUpdate.AsObject,
     gameStartUpdate?: GameStartUpdate.AsObject,
     nextMoverUpdate?: NextMoverUpdate.AsObject,
+    rematchReply?: RematchReply.AsObject,
     playerClientUpdate?: PlayerClientUpdate.AsObject,
     playerDisplayNameUpdate?: PlayerDisplayNameUpdate.AsObject,
   }
@@ -254,8 +267,9 @@ export namespace ServerUpdate {
     DRAW_UPDATE = 17,
     GAME_START_UPDATE = 18,
     NEXT_MOVER_UPDATE = 19,
-    PLAYER_CLIENT_UPDATE = 20,
-    PLAYER_DISPLAY_NAME_UPDATE = 21,
+    REMATCH_REPLY = 20,
+    PLAYER_CLIENT_UPDATE = 21,
+    PLAYER_DISPLAY_NAME_UPDATE = 22,
   }
 }
 
@@ -820,6 +834,9 @@ export class WinnerUpdate extends jspb.Message {
   getMover(): Mover;
   setMover(value: Mover): WinnerUpdate;
 
+  getTechnicality(): Technicality;
+  setTechnicality(value: Technicality): WinnerUpdate;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): WinnerUpdate.AsObject;
   static toObject(includeInstance: boolean, msg: WinnerUpdate): WinnerUpdate.AsObject;
@@ -832,6 +849,7 @@ export namespace WinnerUpdate {
   export type AsObject = {
     winner: Winner,
     mover: Mover,
+    technicality: Technicality,
   }
 }
 
@@ -907,6 +925,44 @@ export namespace PlayerDisplayNameUpdate {
   }
 }
 
+export class RematchRequest extends jspb.Message {
+  getRematch(): boolean;
+  setRematch(value: boolean): RematchRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RematchRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: RematchRequest): RematchRequest.AsObject;
+  static serializeBinaryToWriter(message: RematchRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RematchRequest;
+  static deserializeBinaryFromReader(message: RematchRequest, reader: jspb.BinaryReader): RematchRequest;
+}
+
+export namespace RematchRequest {
+  export type AsObject = {
+    rematch: boolean,
+  }
+}
+
+export class RematchReply extends jspb.Message {
+  getOutcome(): Outcome | undefined;
+  setOutcome(value?: Outcome): RematchReply;
+  hasOutcome(): boolean;
+  clearOutcome(): RematchReply;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RematchReply.AsObject;
+  static toObject(includeInstance: boolean, msg: RematchReply): RematchReply.AsObject;
+  static serializeBinaryToWriter(message: RematchReply, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RematchReply;
+  static deserializeBinaryFromReader(message: RematchReply, reader: jspb.BinaryReader): RematchReply;
+}
+
+export namespace RematchReply {
+  export type AsObject = {
+    outcome?: Outcome.AsObject,
+  }
+}
+
 export enum NavigationPath { 
   WELCOME = 0,
   HOME = 1,
@@ -921,4 +977,8 @@ export enum Mover {
 export enum Winner { 
   YOU = 0,
   OTHER = 1,
+}
+export enum Technicality { 
+  NO_PROBLEM = 0,
+  BY_FORFEIT = 1,
 }

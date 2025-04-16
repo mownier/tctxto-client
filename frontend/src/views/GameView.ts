@@ -1,71 +1,67 @@
-import { i18n } from "../localization/localization"
+import { LocalizableElement, renderLocalizedTexts } from "../localization/localization"
 import * as ElementIds from "../constants/element-ids"
 
+type MoveCallback = (position: number) => void
+
 export class GameView {
-    private gameId: string
-    private container: HTMLElement
-    private titleHeading: HTMLHeadingElement
-    private statusHeading: HTMLHeadingElement
-    private onMove: (position: number) => void
+    private rootElement: HTMLElement
 
-    constructor(containerId: string, gameId: string, onMove: (position: number) => void, onInit: (view: GameView) => void) {
-        this.container = document.getElementById(containerId) as HTMLElement
+    private titleHeading: HTMLHeadingElement = document.createElement('h1')
+    private statusParagraph: HTMLHeadingElement = document.createElement('p')
+    private gameContainer: HTMLDivElement = document.createElement('div')
 
-        if (!this.container) {
-            throw new Error(`container with id ${containerId} not found`)
-        }
+    private youMoverParagraph: HTMLParagraphElement = document.createElement('p')
+    private otherMoverParagraph: HTMLParagraphElement = document.createElement('p')
+    private moverParagraph: HTMLParagraphElement = document.createElement('p')
+    
+    private moveCallback: MoveCallback | null = null
 
-        this.container.innerHTML = ''
+    private localizableElements: LocalizableElement[] = [
+        { element: this.titleHeading, key: "Game" },
+    ]
 
-        this.titleHeading = document.createElement('h1')
-        this.container.appendChild(this.titleHeading)
+    constructor(rootElement: HTMLElement) {
+        this.rootElement = rootElement
+        this.initializeView()
+        renderLocalizedTexts(this.localizableElements)
+    }
 
-        this.statusHeading = document.createElement('h2')
-        this.container.appendChild(this.statusHeading)
+    private initializeView(): void {
+        this.rootElement.innerHTML = ''
 
-        const gameContainer = document.createElement('div')
-        gameContainer.id = ElementIds.GAME_CONTAINER_DIV_ID
-        this.container.appendChild(gameContainer)
+        this.rootElement.appendChild(this.titleHeading) 
+        this.rootElement.appendChild(this.youMoverParagraph)
+        this.rootElement.appendChild(this.otherMoverParagraph)
+        this.rootElement.appendChild(this.gameContainer)
+        this.rootElement.appendChild(this.moverParagraph)
+        this.rootElement.appendChild(this.statusParagraph)
+
+        this.gameContainer.id = ElementIds.GAME_CONTAINER_DIV_ID
+        this.youMoverParagraph.id = ElementIds.YOU_MOVER_INFO_ID
+        this.otherMoverParagraph.id = ElementIds.OTHER_MOVER_INFO_ID
+        this.moverParagraph.id = ElementIds.MOVER_INFO_ID
+
+        this.statusParagraph.id = ElementIds.GAME_STATUD_ID
 
         for (let i = 0; i < 3; i++) {
             for (let j = 0; j < 3; j++) {
-                const cell = document.createElement("div");
+                const cell = document.createElement('div') as HTMLDivElement
                 const position = (i * 3) + j
-                cell.classList.add("cell");
-                cell.id = `cell-tag-${position}`
-                cell.textContent = ""
+                cell.classList.add('cell')
+                cell.id = `${ElementIds.CELL_BOARD_POSITION_PREFIX_ID}${position}`
+                cell.textContent = ''
                 cell.dataset.row = i.toString()
                 cell.dataset.col = j.toString()
-                cell.addEventListener("click", () => this.handleCellClick(position));
-                gameContainer.appendChild(cell);
+                cell.addEventListener('click', () => {
+                    this.moveCallback?.(position)
+                })
+                this.gameContainer.appendChild(cell)
             }
         }
-
-        this.gameId = gameId
-        this.onMove = onMove
-
-        this.renderLocalizedTexts()
-
-        onInit(this)
     }
 
-    async renderLocalizedTexts() {
-        this.titleHeading.textContent = `${await i18n("Game")} ${this.gameId}`
-    }
-
-    handleCellClick(position: number) {
-        this.onMove(position)
-    }
-
-    updateCellTag(position: number, textContent: string) {
-        const cell = document.getElementById(`cell-tag-${position}`)
-        if (!cell) {
-            return
-        }
-        cell.textContent = textContent
-    }
-
-    async updateStatusHeadingText(textPromise: Promise<string>) {
-        this.statusHeading.textContent = await textPromise
+    setMoveCallback(value: MoveCallback | null): GameView {
+        this.moveCallback = value
+        return this
     }
 }

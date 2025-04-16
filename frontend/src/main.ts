@@ -3,13 +3,14 @@ import { MainRootView } from './views/MainRootView'
 import * as ElementIds from './constants/element-ids'
 import { NoSessionHeaderView } from './views/NoSessionHeaderView'
 import { WelcomeView } from './views/WelcomeView'
-import { ClientCallback, createLobby, getLatestData, joinLobby, leaveMyLobby, setClientCallback, signIn, signOut, signUp, subscribe } from './grpc/client'
+import { ClientCallback, createGame, createLobby, getLatestData, joinLobby, leaveMyLobby, makeMove, setClientCallback, signIn, signOut, signUp, subscribe } from './grpc/client'
 import { WithSessionHeaderView } from './views/WithSessionHeaderView'
 import { EmptytView } from './views/EmptyView'
 import { HomeView } from './views/HomeView'
 import { MyLobbyView } from './views/MyLobbyView'
 import { ErrorView } from './views/ErrorView'
-import { Lobby, Player } from './grpc/tctxto_pb'
+import { Lobby, Mover, Player, Technicality, Winner } from './grpc/tctxto_pb'
+import { GameView } from './views/GameView'
 
 async function main() {
     try {
@@ -99,14 +100,33 @@ class MyClientCallback implements ClientCallback {
 
     showGame(): void {
         const headerView = new EmptytView(this.mainRootHeaderElement)
-        const contentView = new EmptytView(this.mainRootContentElement)
+        const contentView = new GameView(this.mainRootContentElement)
+            .setMoveCallback(async (position: number) => {
+                try {
+                    await makeMove(position)
+                } catch {
+                    this.makeMoveNotOkay()
+                }
+            })
     }
 
     showMyLobby(): void {
         const headerView = this.newWithSessionHeaderView()
         const contentView = new MyLobbyView(this.mainRootContentElement)
-            .setCreateGameCallback((player1, player2) => {
-                console.log(`todo: create game for player1 = ${player1}, player2 = ${player2}`)
+            .setCreateGameCallback(async (player1, player2) => {
+                if (player1.length == 0) {
+                    this.updateMyLobbyStatus("player1 is empty")
+                    return
+                }
+                if (player2.length == 0) {
+                    this.updateMyLobbyStatus("player2 is empty")
+                    return
+                }
+                try {
+                    await createGame(player1, player2)
+                } catch (error) {
+                    this.createGameNotOkay()
+                }
             })
             .setCopyLobbyIdCallback(() => {
                 const lobbyId = getLatestData().lobby?.getId()
@@ -308,6 +328,111 @@ class MyClientCallback implements ClientCallback {
         }
     }
 
+    createGameNotOkay(): void {
+        this.updateMyLobbyStatus("Unable to create game")
+    }
+
+    makeMoveNotOkay(): void {
+        this.updateGameStatus("Unable to move")
+    }
+
+    gameStarted(): void {
+        const youMoverParagraph = document.getElementById(ElementIds.YOU_MOVER_INFO_ID) as HTMLParagraphElement
+        const otherMoverParagraph = document.getElementById(ElementIds.OTHER_MOVER_INFO_ID) as HTMLParagraphElement
+        const gameStatus = getLatestData().gameStatus
+        if (!gameStatus || !youMoverParagraph || !otherMoverParagraph) {
+            return
+        }
+        // TODO: Localization
+        if (gameStatus.you == Mover.O) {
+            youMoverParagraph.textContent = "You are O"
+            otherMoverParagraph.textContent = "Other is X"
+        } else if (gameStatus.you == Mover.X) {
+            youMoverParagraph.textContent = "You are X"
+            otherMoverParagraph.textContent = "Other is O"
+        }
+    }
+
+    nextMoverDetermined(): void {
+        const gameStatus = getLatestData().gameStatus
+        if (!gameStatus) {
+            return
+        }
+        // TODO: Localization
+        if (gameStatus.mover == Mover.O) {
+            this.updateMoverInfo("O turns to move")
+        } else if (gameStatus.mover == Mover.X) {
+            this.updateMoverInfo("X turns to move")
+        }
+    }
+
+    moveUpdated(): void {
+        const gameStatus = getLatestData().gameStatus
+        if (!gameStatus) {
+            return
+        }
+        const move = gameStatus.move
+        if (!move) {
+            return
+        }
+        const element = document.getElementById(`${ElementIds.CELL_BOARD_POSITION_PREFIX_ID}${move.getPosition()}`) as HTMLDivElement
+        if (!element) {
+            return
+        }
+        if (move.getMover() == Mover.O) {
+            element.textContent = "O"
+        } else if (move.getMover() == Mover.X) {
+            element.textContent = "X"
+        }
+    }
+
+    winnerDetermined(): void {
+        const gameStatus = getLatestData().gameStatus
+        if (!gameStatus) {
+            return
+        }
+        const winner = gameStatus.winner
+        const technicality = gameStatus.winTechnicality
+        if (!winner || !technicality) {
+            return
+        }
+        if (winner.valueOf() === 0) {
+            if (technicality == Technicality.BY_FORFEIT) {
+                this.updateMoverInfo("You WIN by forfeit")
+                return
+            }
+            if (technicality == Technicality.NO_PROBLEM) {
+                this.updateMoverInfo("You WIN")
+                return
+            }
+            return
+        }
+        if (winner.valueOf() === 1) {
+            if (technicality == Technicality.BY_FORFEIT) {
+                this.updateMoverInfo("Other WIN by forfeit")
+                return
+            }
+            if (technicality == Technicality.NO_PROBLEM) {
+                this.updateMoverInfo("Other WIN")
+                return
+            }
+            return
+        }
+    }
+
+    noOneWins(): void {
+        // TODO: localization
+        this.updateMoverInfo("Draw")
+    }
+
+    private updateMoverInfo(text: string): void {
+        const element = document.getElementById(ElementIds.MOVER_INFO_ID) as HTMLParagraphElement
+        if (!element) {
+            return
+        }
+        element.textContent = text
+    }
+
     private updateHomeStatus(text: string): void {
         const element = document.getElementById(ElementIds.HOME_STATUS_ID) as HTMLParagraphElement
         if (!element) {
@@ -320,6 +445,16 @@ class MyClientCallback implements ClientCallback {
 
     private updateMyLobbyStatus(text: string): void {
         const element = document.getElementById(ElementIds.MY_LOBBY_STATUS_ID) as HTMLParagraphElement
+        if (!element) {
+            return
+        }
+        renderLocalizedTexts([
+            { element: element, key: text },
+        ])
+    }
+
+    private updateGameStatus(text: string): void {
+        const element = document.getElementById(ElementIds.GAME_STATUD_ID) as HTMLParagraphElement
         if (!element) {
             return
         }
