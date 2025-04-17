@@ -1,6 +1,6 @@
 import { TicTacToeClient } from './TctxtoServiceClientPb';
 import * as GrpcConst from "../constants/grpc"
-import { ClientUpdate, NavigationPath, NavigationUpdate, ServerUpdate, SignInRequest, SignUpRequest, SignOutRequest, CreateLobbyRequest, Lobby, Empty, Player, JoinLobbyRequest, LeaveMyLobbyRequest, CreateGameRequest, MakeMoveRequest, Mover, Winner, Move, Technicality } from "./tctxto_pb"
+import { ClientUpdate, NavigationPath, NavigationUpdate, ServerUpdate, SignInRequest, SignUpRequest, SignOutRequest, CreateLobbyRequest, Lobby, Empty, Player, JoinLobbyRequest, LeaveMyLobbyRequest, CreateGameRequest, MakeMoveRequest, Mover, Winner, Move, Technicality, RematchRequest } from "./tctxto_pb"
 import { ClientReadableStream, Metadata } from "grpc-web"
 
 const CLIENT_ID_STORAGE_KEY: string = 'TicTacToeClient_clientId'
@@ -12,8 +12,7 @@ let latestData: LatestData = {
     path: null,
     lobby: null,
     playerDisplayName: '',
-    gameStatus: null,
-    shouldForceUpdateLobby: false
+    gameStatus: null
 }
 
 function resetLatestData(): void {
@@ -40,7 +39,6 @@ export interface LatestData {
     lobby: Lobby | null
     playerDisplayName: string
     gameStatus: GameStatus | null
-    shouldForceUpdateLobby: boolean
 }
 
 export interface ClientCallback {
@@ -67,6 +65,8 @@ export interface ClientCallback {
     moveUpdated(): void
     winnerDetermined(): void
     noOneWins(): void
+    rematchNotOkay(): void
+    showRematchWaitingRoom(): void
 }
 
 class ClientCallbackDefaultImp implements ClientCallback {
@@ -159,6 +159,14 @@ class ClientCallbackDefaultImp implements ClientCallback {
     }
 
     noOneWins(): void {
+        throw new Error("Method not implemented.")
+    }
+
+    rematchNotOkay(): void {
+        throw new Error("Method not implemented.")
+    }
+
+    showRematchWaitingRoom(): void {
         throw new Error("Method not implemented.")
     }
 }
@@ -342,6 +350,23 @@ export async function makeMove(position: number): Promise<void> {
     })
 }
 
+export async function rematch(yes: boolean): Promise<void> {
+    return new Promise((resolve, reject) => {
+        try {
+            const update = new ClientUpdate()
+            const request = new RematchRequest()
+            request.setYes(yes)
+            update.setRematchRequest(request)
+            const client = createClient()
+            client.notify(update, metadataWithClientId())
+            resolve()
+        } catch (error) {
+            clientCallback.rematchNotOkay()
+            reject(error)
+        }
+    })
+}
+
 
 function handleStreamData(update: ServerUpdate) {
     console.log(`[STREAM] server update received`)
@@ -408,8 +433,7 @@ function handleStreamData(update: ServerUpdate) {
         case ServerUpdate.TypeCase.MY_LOBBY_DETAILS:
             if (update.getMyLobbyDetails()) {
                 if (update.getMyLobbyDetails()!.getLobby()) {
-                    if (latestData.shouldForceUpdateLobby || !deepCompareLobby(latestData.lobby, update.getMyLobbyDetails()!.getLobby()!)) {
-                        latestData.shouldForceUpdateLobby = false
+                    if (!deepCompareLobby(latestData.lobby, update.getMyLobbyDetails()!.getLobby()!)) {
                         latestData.lobby = update.getMyLobbyDetails()!.getLobby()!
                         clientCallback.displayMyLobbyDetails(latestData.lobby!)
                     }
@@ -462,7 +486,6 @@ function handleStreamData(update: ServerUpdate) {
             if (update.getCreateGameReply()) {
                 if (update.getCreateGameReply()!.getOutcome()) {
                     if (!update.getCreateGameReply()!.getOutcome()!.getOk()) {
-                        console.log(`create game reply outcome: ${update.getCreateGameReply()!.getOutcome()!}`)
                         clientCallback.createGameNotOkay()
                     }
                 }
@@ -472,7 +495,6 @@ function handleStreamData(update: ServerUpdate) {
             if (update.getMakeMoveReply()) {
                 if (update.getMakeMoveReply()!.getOutcome()) {
                     if (!update.getMakeMoveReply()!.getOutcome()!.getOk()) {
-                        console.log(`make move reply: ${update.getMakeMoveReply()!.getOutcome()!}`)
                         clientCallback.makeMoveNotOkay()
                     }
                 }
@@ -538,7 +560,6 @@ function handleStreamData(update: ServerUpdate) {
                         latestData.gameStatus.winTechnicality != winnerUpdate.getTechnicality()) {
                         latestData.gameStatus.winTechnicality = winnerUpdate.getTechnicality()
                         latestData.gameStatus.winner = winnerUpdate.getWinner()
-                        latestData.shouldForceUpdateLobby = true
                         clientCallback.winnerDetermined()
                     }
                 }
@@ -549,11 +570,27 @@ function handleStreamData(update: ServerUpdate) {
                 if (latestData.gameStatus) {
                     if (!latestData.gameStatus.draw) {
                         latestData.gameStatus.draw = ''
-                        latestData.shouldForceUpdateLobby = true
                         clientCallback.noOneWins()
                     }
                 }
             }
+            break
+        case ServerUpdate.TypeCase.REMATCH_REPLY:
+            if (update.getRematchReply()) {
+                if (update.getRematchReply()!.getOutcome()) {
+                    if (!update.getRematchReply()!.getOutcome()!.getOk()) {
+                        clientCallback.rematchNotOkay()
+                    }
+                }
+            }
+            break
+        case ServerUpdate.TypeCase.REMATCH_APPROVED:
+            latestData.gameStatus = null
+            break
+        case ServerUpdate.TypeCase.REMATCH_DENIED:
+            latestData.gameStatus = null
+            break
+        case ServerUpdate.TypeCase.REMATCH_PENDING:
             break
     }
 }
@@ -666,6 +703,8 @@ function handleNavigationUpdate(update: NavigationUpdate) {
     latestData.path = update.getPath()
     switch (update.getPath()) {
         case NavigationPath.GAME:
+            latestData.gameStatus = null
+            latestData.lobby = null
             clientCallback.showGame()
             break
         case NavigationPath.HOME:
@@ -676,7 +715,12 @@ function handleNavigationUpdate(update: NavigationUpdate) {
             clientCallback.showWelcome()
             break
         case NavigationPath.MY_LOBBY:
+            latestData.gameStatus = null
             clientCallback.showMyLobby()
+            break
+        case NavigationPath.REMATCH:
+            latestData.gameStatus = null
+            clientCallback.showRematchWaitingRoom()
             break
     }
 }

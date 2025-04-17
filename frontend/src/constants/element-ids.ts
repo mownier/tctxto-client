@@ -32,3 +32,9 @@ export const CELL_BOARD_POSITION_PREFIX_ID = "cell-board-position-"
 export const YOU_MOVER_INFO_ID = "you-mover-info"
 export const OTHER_MOVER_INFO_ID = "other-mover-info"
 export const MOVER_INFO_ID = "mover-info"
+
+export const REMATCH_YES_BUTTON_ID = "rematch-yes"
+export const REMATCH_NO_BUTTON_ID = "rematch-no"
+export const REMATCH_CONTAINER_DIV_ID = "rematch-container"
+
+export const REMATCH_WAITING_ROOM_CONTENT_DIV_ID = 'rematch-waiting-room-content'

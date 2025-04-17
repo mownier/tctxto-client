@@ -10,7 +10,8 @@ export namespace server2 {
         WELCOME = 0,
         HOME = 1,
         MY_LOBBY = 2,
-        GAME = 3
+        GAME = 3,
+        REMATCH = 4
     }
     export enum Mover {
         UNSPECIFIED = 0,
@@ -441,7 +442,7 @@ export namespace server2 {
         }
     }
     export class ServerUpdate extends pb_1.Message {
-        #one_of_decls: number[][] = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]];
+        #one_of_decls: number[][] = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]];
         constructor(data?: any[] | ({} & (({
             ping?: Ping;
             client_assignment_update?: never;
@@ -462,9 +463,12 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
-            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
+            rematch_reply?: never;
+            rematch_denied?: never;
+            rematch_approved?: never;
+            rematch_pending?: never;
         } | {
             ping?: never;
             client_assignment_update?: ClientAssignmentUpdate;
@@ -485,9 +489,12 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
-            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
+            rematch_reply?: never;
+            rematch_denied?: never;
+            rematch_approved?: never;
+            rematch_pending?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -508,9 +515,12 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
-            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
+            rematch_reply?: never;
+            rematch_denied?: never;
+            rematch_approved?: never;
+            rematch_pending?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -531,9 +541,12 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
-            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
+            rematch_reply?: never;
+            rematch_denied?: never;
+            rematch_approved?: never;
+            rematch_pending?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -554,9 +567,12 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
-            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
+            rematch_reply?: never;
+            rematch_denied?: never;
+            rematch_approved?: never;
+            rematch_pending?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -577,9 +593,12 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
-            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
+            rematch_reply?: never;
+            rematch_denied?: never;
+            rematch_approved?: never;
+            rematch_pending?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -600,9 +619,12 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
-            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
+            rematch_reply?: never;
+            rematch_denied?: never;
+            rematch_approved?: never;
+            rematch_pending?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -623,9 +645,12 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
-            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
+            rematch_reply?: never;
+            rematch_denied?: never;
+            rematch_approved?: never;
+            rematch_pending?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -646,9 +671,12 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
-            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
+            rematch_reply?: never;
+            rematch_denied?: never;
+            rematch_approved?: never;
+            rematch_pending?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -669,9 +697,12 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
-            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
+            rematch_reply?: never;
+            rematch_denied?: never;
+            rematch_approved?: never;
+            rematch_pending?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -692,9 +723,12 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
-            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
+            rematch_reply?: never;
+            rematch_denied?: never;
+            rematch_approved?: never;
+            rematch_pending?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -715,9 +749,12 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
-            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
+            rematch_reply?: never;
+            rematch_denied?: never;
+            rematch_approved?: never;
+            rematch_pending?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -738,9 +775,12 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
-            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
+            rematch_reply?: never;
+            rematch_denied?: never;
+            rematch_approved?: never;
+            rematch_pending?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -761,9 +801,12 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
-            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
+            rematch_reply?: never;
+            rematch_denied?: never;
+            rematch_approved?: never;
+            rematch_pending?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -784,9 +827,12 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
-            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
+            rematch_reply?: never;
+            rematch_denied?: never;
+            rematch_approved?: never;
+            rematch_pending?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -807,9 +853,12 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
-            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
+            rematch_reply?: never;
+            rematch_denied?: never;
+            rematch_approved?: never;
+            rematch_pending?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -830,9 +879,12 @@ export namespace server2 {
             draw_update?: DrawUpdate;
             game_start_update?: never;
             next_mover_update?: never;
-            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
+            rematch_reply?: never;
+            rematch_denied?: never;
+            rematch_approved?: never;
+            rematch_pending?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -853,9 +905,12 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: GameStartUpdate;
             next_mover_update?: never;
-            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
+            rematch_reply?: never;
+            rematch_denied?: never;
+            rematch_approved?: never;
+            rematch_pending?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -876,9 +931,12 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: NextMoverUpdate;
-            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: never;
+            rematch_reply?: never;
+            rematch_denied?: never;
+            rematch_approved?: never;
+            rematch_pending?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -899,32 +957,12 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
-            rematch_reply?: RematchReply;
-            player_client_update?: never;
-            player_display_name_update?: never;
-        } | {
-            ping?: never;
-            client_assignment_update?: never;
-            navigation_update?: never;
-            sign_up_reply?: never;
-            sign_in_reply?: never;
-            sign_out_reply?: never;
-            my_lobby_details?: never;
-            my_lobby_joiner_update?: never;
-            my_lobby_leaver_update?: never;
-            create_lobby_reply?: never;
-            join_lobby_reply?: never;
-            leave_my_lobby_reply?: never;
-            create_game_reply?: never;
-            make_move_reply?: never;
-            move_update?: never;
-            winner_update?: never;
-            draw_update?: never;
-            game_start_update?: never;
-            next_mover_update?: never;
-            rematch_reply?: never;
             player_client_update?: PlayerClientUpdate;
             player_display_name_update?: never;
+            rematch_reply?: never;
+            rematch_denied?: never;
+            rematch_approved?: never;
+            rematch_pending?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -945,9 +983,116 @@ export namespace server2 {
             draw_update?: never;
             game_start_update?: never;
             next_mover_update?: never;
-            rematch_reply?: never;
             player_client_update?: never;
             player_display_name_update?: PlayerDisplayNameUpdate;
+            rematch_reply?: never;
+            rematch_denied?: never;
+            rematch_approved?: never;
+            rematch_pending?: never;
+        } | {
+            ping?: never;
+            client_assignment_update?: never;
+            navigation_update?: never;
+            sign_up_reply?: never;
+            sign_in_reply?: never;
+            sign_out_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+            player_display_name_update?: never;
+            rematch_reply?: RematchReply;
+            rematch_denied?: never;
+            rematch_approved?: never;
+            rematch_pending?: never;
+        } | {
+            ping?: never;
+            client_assignment_update?: never;
+            navigation_update?: never;
+            sign_up_reply?: never;
+            sign_in_reply?: never;
+            sign_out_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+            player_display_name_update?: never;
+            rematch_reply?: never;
+            rematch_denied?: RematchDenied;
+            rematch_approved?: never;
+            rematch_pending?: never;
+        } | {
+            ping?: never;
+            client_assignment_update?: never;
+            navigation_update?: never;
+            sign_up_reply?: never;
+            sign_in_reply?: never;
+            sign_out_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+            player_display_name_update?: never;
+            rematch_reply?: never;
+            rematch_denied?: never;
+            rematch_approved?: RematchApproved;
+            rematch_pending?: never;
+        } | {
+            ping?: never;
+            client_assignment_update?: never;
+            navigation_update?: never;
+            sign_up_reply?: never;
+            sign_in_reply?: never;
+            sign_out_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+            player_display_name_update?: never;
+            rematch_reply?: never;
+            rematch_denied?: never;
+            rematch_approved?: never;
+            rematch_pending?: RematchPending;
         })))) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
@@ -1009,14 +1154,23 @@ export namespace server2 {
                 if ("next_mover_update" in data && data.next_mover_update != undefined) {
                     this.next_mover_update = data.next_mover_update;
                 }
-                if ("rematch_reply" in data && data.rematch_reply != undefined) {
-                    this.rematch_reply = data.rematch_reply;
-                }
                 if ("player_client_update" in data && data.player_client_update != undefined) {
                     this.player_client_update = data.player_client_update;
                 }
                 if ("player_display_name_update" in data && data.player_display_name_update != undefined) {
                     this.player_display_name_update = data.player_display_name_update;
+                }
+                if ("rematch_reply" in data && data.rematch_reply != undefined) {
+                    this.rematch_reply = data.rematch_reply;
+                }
+                if ("rematch_denied" in data && data.rematch_denied != undefined) {
+                    this.rematch_denied = data.rematch_denied;
+                }
+                if ("rematch_approved" in data && data.rematch_approved != undefined) {
+                    this.rematch_approved = data.rematch_approved;
+                }
+                if ("rematch_pending" in data && data.rematch_pending != undefined) {
+                    this.rematch_pending = data.rematch_pending;
                 }
             }
         }
@@ -1191,36 +1345,63 @@ export namespace server2 {
         get has_next_mover_update() {
             return pb_1.Message.getField(this, 19) != null;
         }
-        get rematch_reply() {
-            return pb_1.Message.getWrapperField(this, RematchReply, 20) as RematchReply;
-        }
-        set rematch_reply(value: RematchReply) {
-            pb_1.Message.setOneofWrapperField(this, 20, this.#one_of_decls[0], value);
-        }
-        get has_rematch_reply() {
-            return pb_1.Message.getField(this, 20) != null;
-        }
         get player_client_update() {
-            return pb_1.Message.getWrapperField(this, PlayerClientUpdate, 21) as PlayerClientUpdate;
+            return pb_1.Message.getWrapperField(this, PlayerClientUpdate, 20) as PlayerClientUpdate;
         }
         set player_client_update(value: PlayerClientUpdate) {
-            pb_1.Message.setOneofWrapperField(this, 21, this.#one_of_decls[0], value);
+            pb_1.Message.setOneofWrapperField(this, 20, this.#one_of_decls[0], value);
         }
         get has_player_client_update() {
-            return pb_1.Message.getField(this, 21) != null;
+            return pb_1.Message.getField(this, 20) != null;
         }
         get player_display_name_update() {
-            return pb_1.Message.getWrapperField(this, PlayerDisplayNameUpdate, 22) as PlayerDisplayNameUpdate;
+            return pb_1.Message.getWrapperField(this, PlayerDisplayNameUpdate, 21) as PlayerDisplayNameUpdate;
         }
         set player_display_name_update(value: PlayerDisplayNameUpdate) {
-            pb_1.Message.setOneofWrapperField(this, 22, this.#one_of_decls[0], value);
+            pb_1.Message.setOneofWrapperField(this, 21, this.#one_of_decls[0], value);
         }
         get has_player_display_name_update() {
+            return pb_1.Message.getField(this, 21) != null;
+        }
+        get rematch_reply() {
+            return pb_1.Message.getWrapperField(this, RematchReply, 22) as RematchReply;
+        }
+        set rematch_reply(value: RematchReply) {
+            pb_1.Message.setOneofWrapperField(this, 22, this.#one_of_decls[0], value);
+        }
+        get has_rematch_reply() {
             return pb_1.Message.getField(this, 22) != null;
+        }
+        get rematch_denied() {
+            return pb_1.Message.getWrapperField(this, RematchDenied, 23) as RematchDenied;
+        }
+        set rematch_denied(value: RematchDenied) {
+            pb_1.Message.setOneofWrapperField(this, 23, this.#one_of_decls[0], value);
+        }
+        get has_rematch_denied() {
+            return pb_1.Message.getField(this, 23) != null;
+        }
+        get rematch_approved() {
+            return pb_1.Message.getWrapperField(this, RematchApproved, 24) as RematchApproved;
+        }
+        set rematch_approved(value: RematchApproved) {
+            pb_1.Message.setOneofWrapperField(this, 24, this.#one_of_decls[0], value);
+        }
+        get has_rematch_approved() {
+            return pb_1.Message.getField(this, 24) != null;
+        }
+        get rematch_pending() {
+            return pb_1.Message.getWrapperField(this, RematchPending, 25) as RematchPending;
+        }
+        set rematch_pending(value: RematchPending) {
+            pb_1.Message.setOneofWrapperField(this, 25, this.#one_of_decls[0], value);
+        }
+        get has_rematch_pending() {
+            return pb_1.Message.getField(this, 25) != null;
         }
         get type() {
             const cases: {
-                [index: number]: "none" | "ping" | "client_assignment_update" | "navigation_update" | "sign_up_reply" | "sign_in_reply" | "sign_out_reply" | "my_lobby_details" | "my_lobby_joiner_update" | "my_lobby_leaver_update" | "create_lobby_reply" | "join_lobby_reply" | "leave_my_lobby_reply" | "create_game_reply" | "make_move_reply" | "move_update" | "winner_update" | "draw_update" | "game_start_update" | "next_mover_update" | "rematch_reply" | "player_client_update" | "player_display_name_update";
+                [index: number]: "none" | "ping" | "client_assignment_update" | "navigation_update" | "sign_up_reply" | "sign_in_reply" | "sign_out_reply" | "my_lobby_details" | "my_lobby_joiner_update" | "my_lobby_leaver_update" | "create_lobby_reply" | "join_lobby_reply" | "leave_my_lobby_reply" | "create_game_reply" | "make_move_reply" | "move_update" | "winner_update" | "draw_update" | "game_start_update" | "next_mover_update" | "player_client_update" | "player_display_name_update" | "rematch_reply" | "rematch_denied" | "rematch_approved" | "rematch_pending";
             } = {
                 0: "none",
                 1: "ping",
@@ -1242,11 +1423,14 @@ export namespace server2 {
                 17: "draw_update",
                 18: "game_start_update",
                 19: "next_mover_update",
-                20: "rematch_reply",
-                21: "player_client_update",
-                22: "player_display_name_update"
+                20: "player_client_update",
+                21: "player_display_name_update",
+                22: "rematch_reply",
+                23: "rematch_denied",
+                24: "rematch_approved",
+                25: "rematch_pending"
             };
-            return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22])];
+            return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25])];
         }
         static fromObject(data: {
             ping?: ReturnType<typeof Ping.prototype.toObject>;
@@ -1268,9 +1452,12 @@ export namespace server2 {
             draw_update?: ReturnType<typeof DrawUpdate.prototype.toObject>;
             game_start_update?: ReturnType<typeof GameStartUpdate.prototype.toObject>;
             next_mover_update?: ReturnType<typeof NextMoverUpdate.prototype.toObject>;
-            rematch_reply?: ReturnType<typeof RematchReply.prototype.toObject>;
             player_client_update?: ReturnType<typeof PlayerClientUpdate.prototype.toObject>;
             player_display_name_update?: ReturnType<typeof PlayerDisplayNameUpdate.prototype.toObject>;
+            rematch_reply?: ReturnType<typeof RematchReply.prototype.toObject>;
+            rematch_denied?: ReturnType<typeof RematchDenied.prototype.toObject>;
+            rematch_approved?: ReturnType<typeof RematchApproved.prototype.toObject>;
+            rematch_pending?: ReturnType<typeof RematchPending.prototype.toObject>;
         }): ServerUpdate {
             const message = new ServerUpdate({});
             if (data.ping != null) {
@@ -1330,14 +1517,23 @@ export namespace server2 {
             if (data.next_mover_update != null) {
                 message.next_mover_update = NextMoverUpdate.fromObject(data.next_mover_update);
             }
-            if (data.rematch_reply != null) {
-                message.rematch_reply = RematchReply.fromObject(data.rematch_reply);
-            }
             if (data.player_client_update != null) {
                 message.player_client_update = PlayerClientUpdate.fromObject(data.player_client_update);
             }
             if (data.player_display_name_update != null) {
                 message.player_display_name_update = PlayerDisplayNameUpdate.fromObject(data.player_display_name_update);
+            }
+            if (data.rematch_reply != null) {
+                message.rematch_reply = RematchReply.fromObject(data.rematch_reply);
+            }
+            if (data.rematch_denied != null) {
+                message.rematch_denied = RematchDenied.fromObject(data.rematch_denied);
+            }
+            if (data.rematch_approved != null) {
+                message.rematch_approved = RematchApproved.fromObject(data.rematch_approved);
+            }
+            if (data.rematch_pending != null) {
+                message.rematch_pending = RematchPending.fromObject(data.rematch_pending);
             }
             return message;
         }
@@ -1362,9 +1558,12 @@ export namespace server2 {
                 draw_update?: ReturnType<typeof DrawUpdate.prototype.toObject>;
                 game_start_update?: ReturnType<typeof GameStartUpdate.prototype.toObject>;
                 next_mover_update?: ReturnType<typeof NextMoverUpdate.prototype.toObject>;
-                rematch_reply?: ReturnType<typeof RematchReply.prototype.toObject>;
                 player_client_update?: ReturnType<typeof PlayerClientUpdate.prototype.toObject>;
                 player_display_name_update?: ReturnType<typeof PlayerDisplayNameUpdate.prototype.toObject>;
+                rematch_reply?: ReturnType<typeof RematchReply.prototype.toObject>;
+                rematch_denied?: ReturnType<typeof RematchDenied.prototype.toObject>;
+                rematch_approved?: ReturnType<typeof RematchApproved.prototype.toObject>;
+                rematch_pending?: ReturnType<typeof RematchPending.prototype.toObject>;
             } = {};
             if (this.ping != null) {
                 data.ping = this.ping.toObject();
@@ -1423,14 +1622,23 @@ export namespace server2 {
             if (this.next_mover_update != null) {
                 data.next_mover_update = this.next_mover_update.toObject();
             }
-            if (this.rematch_reply != null) {
-                data.rematch_reply = this.rematch_reply.toObject();
-            }
             if (this.player_client_update != null) {
                 data.player_client_update = this.player_client_update.toObject();
             }
             if (this.player_display_name_update != null) {
                 data.player_display_name_update = this.player_display_name_update.toObject();
+            }
+            if (this.rematch_reply != null) {
+                data.rematch_reply = this.rematch_reply.toObject();
+            }
+            if (this.rematch_denied != null) {
+                data.rematch_denied = this.rematch_denied.toObject();
+            }
+            if (this.rematch_approved != null) {
+                data.rematch_approved = this.rematch_approved.toObject();
+            }
+            if (this.rematch_pending != null) {
+                data.rematch_pending = this.rematch_pending.toObject();
             }
             return data;
         }
@@ -1476,12 +1684,18 @@ export namespace server2 {
                 writer.writeMessage(18, this.game_start_update, () => this.game_start_update.serialize(writer));
             if (this.has_next_mover_update)
                 writer.writeMessage(19, this.next_mover_update, () => this.next_mover_update.serialize(writer));
-            if (this.has_rematch_reply)
-                writer.writeMessage(20, this.rematch_reply, () => this.rematch_reply.serialize(writer));
             if (this.has_player_client_update)
-                writer.writeMessage(21, this.player_client_update, () => this.player_client_update.serialize(writer));
+                writer.writeMessage(20, this.player_client_update, () => this.player_client_update.serialize(writer));
             if (this.has_player_display_name_update)
-                writer.writeMessage(22, this.player_display_name_update, () => this.player_display_name_update.serialize(writer));
+                writer.writeMessage(21, this.player_display_name_update, () => this.player_display_name_update.serialize(writer));
+            if (this.has_rematch_reply)
+                writer.writeMessage(22, this.rematch_reply, () => this.rematch_reply.serialize(writer));
+            if (this.has_rematch_denied)
+                writer.writeMessage(23, this.rematch_denied, () => this.rematch_denied.serialize(writer));
+            if (this.has_rematch_approved)
+                writer.writeMessage(24, this.rematch_approved, () => this.rematch_approved.serialize(writer));
+            if (this.has_rematch_pending)
+                writer.writeMessage(25, this.rematch_pending, () => this.rematch_pending.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -1549,13 +1763,22 @@ export namespace server2 {
                         reader.readMessage(message.next_mover_update, () => message.next_mover_update = NextMoverUpdate.deserialize(reader));
                         break;
                     case 20:
-                        reader.readMessage(message.rematch_reply, () => message.rematch_reply = RematchReply.deserialize(reader));
-                        break;
-                    case 21:
                         reader.readMessage(message.player_client_update, () => message.player_client_update = PlayerClientUpdate.deserialize(reader));
                         break;
-                    case 22:
+                    case 21:
                         reader.readMessage(message.player_display_name_update, () => message.player_display_name_update = PlayerDisplayNameUpdate.deserialize(reader));
+                        break;
+                    case 22:
+                        reader.readMessage(message.rematch_reply, () => message.rematch_reply = RematchReply.deserialize(reader));
+                        break;
+                    case 23:
+                        reader.readMessage(message.rematch_denied, () => message.rematch_denied = RematchDenied.deserialize(reader));
+                        break;
+                    case 24:
+                        reader.readMessage(message.rematch_approved, () => message.rematch_approved = RematchApproved.deserialize(reader));
+                        break;
+                    case 25:
+                        reader.readMessage(message.rematch_pending, () => message.rematch_pending = RematchPending.deserialize(reader));
                         break;
                     default: reader.skipField();
                 }
@@ -3987,37 +4210,37 @@ export namespace server2 {
     export class RematchRequest extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
-            rematch?: boolean;
+            yes?: boolean;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
-                if ("rematch" in data && data.rematch != undefined) {
-                    this.rematch = data.rematch;
+                if ("yes" in data && data.yes != undefined) {
+                    this.yes = data.yes;
                 }
             }
         }
-        get rematch() {
+        get yes() {
             return pb_1.Message.getFieldWithDefault(this, 1, false) as boolean;
         }
-        set rematch(value: boolean) {
+        set yes(value: boolean) {
             pb_1.Message.setField(this, 1, value);
         }
         static fromObject(data: {
-            rematch?: boolean;
+            yes?: boolean;
         }): RematchRequest {
             const message = new RematchRequest({});
-            if (data.rematch != null) {
-                message.rematch = data.rematch;
+            if (data.yes != null) {
+                message.yes = data.yes;
             }
             return message;
         }
         toObject() {
             const data: {
-                rematch?: boolean;
+                yes?: boolean;
             } = {};
-            if (this.rematch != null) {
-                data.rematch = this.rematch;
+            if (this.yes != null) {
+                data.yes = this.yes;
             }
             return data;
         }
@@ -4025,8 +4248,8 @@ export namespace server2 {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (this.rematch != false)
-                writer.writeBool(1, this.rematch);
+            if (this.yes != false)
+                writer.writeBool(1, this.yes);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -4037,7 +4260,7 @@ export namespace server2 {
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
-                        message.rematch = reader.readBool();
+                        message.yes = reader.readBool();
                         break;
                     default: reader.skipField();
                 }
@@ -4119,6 +4342,126 @@ export namespace server2 {
         }
         static deserializeBinary(bytes: Uint8Array): RematchReply {
             return RematchReply.deserialize(bytes);
+        }
+    }
+    export class RematchDenied extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {}) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") { }
+        }
+        static fromObject(data: {}): RematchDenied {
+            const message = new RematchDenied({});
+            return message;
+        }
+        toObject() {
+            const data: {} = {};
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): RematchDenied {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new RematchDenied();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): RematchDenied {
+            return RematchDenied.deserialize(bytes);
+        }
+    }
+    export class RematchApproved extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {}) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") { }
+        }
+        static fromObject(data: {}): RematchApproved {
+            const message = new RematchApproved({});
+            return message;
+        }
+        toObject() {
+            const data: {} = {};
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): RematchApproved {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new RematchApproved();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): RematchApproved {
+            return RematchApproved.deserialize(bytes);
+        }
+    }
+    export class RematchPending extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {}) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") { }
+        }
+        static fromObject(data: {}): RematchPending {
+            const message = new RematchPending({});
+            return message;
+        }
+        toObject() {
+            const data: {} = {};
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): RematchPending {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new RematchPending();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): RematchPending {
+            return RematchPending.deserialize(bytes);
         }
     }
     interface GrpcUnaryServiceInterface<P, R> {

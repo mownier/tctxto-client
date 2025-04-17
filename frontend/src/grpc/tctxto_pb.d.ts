@@ -195,11 +195,6 @@ export class ServerUpdate extends jspb.Message {
   hasNextMoverUpdate(): boolean;
   clearNextMoverUpdate(): ServerUpdate;
 
-  getRematchReply(): RematchReply | undefined;
-  setRematchReply(value?: RematchReply): ServerUpdate;
-  hasRematchReply(): boolean;
-  clearRematchReply(): ServerUpdate;
-
   getPlayerClientUpdate(): PlayerClientUpdate | undefined;
   setPlayerClientUpdate(value?: PlayerClientUpdate): ServerUpdate;
   hasPlayerClientUpdate(): boolean;
@@ -209,6 +204,26 @@ export class ServerUpdate extends jspb.Message {
   setPlayerDisplayNameUpdate(value?: PlayerDisplayNameUpdate): ServerUpdate;
   hasPlayerDisplayNameUpdate(): boolean;
   clearPlayerDisplayNameUpdate(): ServerUpdate;
+
+  getRematchReply(): RematchReply | undefined;
+  setRematchReply(value?: RematchReply): ServerUpdate;
+  hasRematchReply(): boolean;
+  clearRematchReply(): ServerUpdate;
+
+  getRematchDenied(): RematchDenied | undefined;
+  setRematchDenied(value?: RematchDenied): ServerUpdate;
+  hasRematchDenied(): boolean;
+  clearRematchDenied(): ServerUpdate;
+
+  getRematchApproved(): RematchApproved | undefined;
+  setRematchApproved(value?: RematchApproved): ServerUpdate;
+  hasRematchApproved(): boolean;
+  clearRematchApproved(): ServerUpdate;
+
+  getRematchPending(): RematchPending | undefined;
+  setRematchPending(value?: RematchPending): ServerUpdate;
+  hasRematchPending(): boolean;
+  clearRematchPending(): ServerUpdate;
 
   getTypeCase(): ServerUpdate.TypeCase;
 
@@ -241,9 +256,12 @@ export namespace ServerUpdate {
     drawUpdate?: DrawUpdate.AsObject,
     gameStartUpdate?: GameStartUpdate.AsObject,
     nextMoverUpdate?: NextMoverUpdate.AsObject,
-    rematchReply?: RematchReply.AsObject,
     playerClientUpdate?: PlayerClientUpdate.AsObject,
     playerDisplayNameUpdate?: PlayerDisplayNameUpdate.AsObject,
+    rematchReply?: RematchReply.AsObject,
+    rematchDenied?: RematchDenied.AsObject,
+    rematchApproved?: RematchApproved.AsObject,
+    rematchPending?: RematchPending.AsObject,
   }
 
   export enum TypeCase { 
@@ -267,9 +285,12 @@ export namespace ServerUpdate {
     DRAW_UPDATE = 17,
     GAME_START_UPDATE = 18,
     NEXT_MOVER_UPDATE = 19,
-    REMATCH_REPLY = 20,
-    PLAYER_CLIENT_UPDATE = 21,
-    PLAYER_DISPLAY_NAME_UPDATE = 22,
+    PLAYER_CLIENT_UPDATE = 20,
+    PLAYER_DISPLAY_NAME_UPDATE = 21,
+    REMATCH_REPLY = 22,
+    REMATCH_DENIED = 23,
+    REMATCH_APPROVED = 24,
+    REMATCH_PENDING = 25,
   }
 }
 
@@ -926,8 +947,8 @@ export namespace PlayerDisplayNameUpdate {
 }
 
 export class RematchRequest extends jspb.Message {
-  getRematch(): boolean;
-  setRematch(value: boolean): RematchRequest;
+  getYes(): boolean;
+  setYes(value: boolean): RematchRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): RematchRequest.AsObject;
@@ -939,7 +960,7 @@ export class RematchRequest extends jspb.Message {
 
 export namespace RematchRequest {
   export type AsObject = {
-    rematch: boolean,
+    yes: boolean,
   }
 }
 
@@ -963,11 +984,54 @@ export namespace RematchReply {
   }
 }
 
+export class RematchDenied extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RematchDenied.AsObject;
+  static toObject(includeInstance: boolean, msg: RematchDenied): RematchDenied.AsObject;
+  static serializeBinaryToWriter(message: RematchDenied, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RematchDenied;
+  static deserializeBinaryFromReader(message: RematchDenied, reader: jspb.BinaryReader): RematchDenied;
+}
+
+export namespace RematchDenied {
+  export type AsObject = {
+  }
+}
+
+export class RematchApproved extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RematchApproved.AsObject;
+  static toObject(includeInstance: boolean, msg: RematchApproved): RematchApproved.AsObject;
+  static serializeBinaryToWriter(message: RematchApproved, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RematchApproved;
+  static deserializeBinaryFromReader(message: RematchApproved, reader: jspb.BinaryReader): RematchApproved;
+}
+
+export namespace RematchApproved {
+  export type AsObject = {
+  }
+}
+
+export class RematchPending extends jspb.Message {
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): RematchPending.AsObject;
+  static toObject(includeInstance: boolean, msg: RematchPending): RematchPending.AsObject;
+  static serializeBinaryToWriter(message: RematchPending, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): RematchPending;
+  static deserializeBinaryFromReader(message: RematchPending, reader: jspb.BinaryReader): RematchPending;
+}
+
+export namespace RematchPending {
+  export type AsObject = {
+  }
+}
+
 export enum NavigationPath { 
   WELCOME = 0,
   HOME = 1,
   MY_LOBBY = 2,
   GAME = 3,
+  REMATCH = 4,
 }
 export enum Mover { 
   UNSPECIFIED = 0,

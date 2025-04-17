@@ -3,7 +3,7 @@ import { MainRootView } from './views/MainRootView'
 import * as ElementIds from './constants/element-ids'
 import { NoSessionHeaderView } from './views/NoSessionHeaderView'
 import { WelcomeView } from './views/WelcomeView'
-import { ClientCallback, createGame, createLobby, getLatestData, joinLobby, leaveMyLobby, makeMove, setClientCallback, signIn, signOut, signUp, subscribe } from './grpc/client'
+import { ClientCallback, createGame, createLobby, getLatestData, joinLobby, leaveMyLobby, makeMove, rematch, setClientCallback, signIn, signOut, signUp, subscribe } from './grpc/client'
 import { WithSessionHeaderView } from './views/WithSessionHeaderView'
 import { EmptytView } from './views/EmptyView'
 import { HomeView } from './views/HomeView'
@@ -11,6 +11,7 @@ import { MyLobbyView } from './views/MyLobbyView'
 import { ErrorView } from './views/ErrorView'
 import { Lobby, Mover, Player, Technicality, Winner } from './grpc/tctxto_pb'
 import { GameView } from './views/GameView'
+import { RematchWaitingRoomView } from './views/RematchWaitingRoomView'
 
 async function main() {
     try {
@@ -106,6 +107,20 @@ class MyClientCallback implements ClientCallback {
                     await makeMove(position)
                 } catch {
                     this.makeMoveNotOkay()
+                }
+            })
+            .setRematchNoCallback(async () => {
+                try {
+                    await rematch(false)
+                } catch {
+                    this.rematchNotOkay()
+                }
+            })
+            .setRematchYesCallback(async () => {
+                try {
+                    await rematch(true)
+                } catch {
+                    this.rematchNotOkay()
                 }
             })
     }
@@ -336,6 +351,10 @@ class MyClientCallback implements ClientCallback {
         this.updateGameStatus("Unable to move")
     }
 
+    rematchNotOkay(): void {
+        this.updateGameStatus("Rematch failed")
+    }
+
     gameStarted(): void {
         const youMoverParagraph = document.getElementById(ElementIds.YOU_MOVER_INFO_ID) as HTMLParagraphElement
         const otherMoverParagraph = document.getElementById(ElementIds.OTHER_MOVER_INFO_ID) as HTMLParagraphElement
@@ -393,36 +412,57 @@ class MyClientCallback implements ClientCallback {
         }
         const winner = gameStatus.winner
         const technicality = gameStatus.winTechnicality
-        if (!winner || !technicality) {
+        if (winner === null || !technicality === null) {
             return
         }
-        if (winner.valueOf() === 0) {
-            if (technicality == Technicality.BY_FORFEIT) {
-                this.updateMoverInfo("You WIN by forfeit")
-                return
-            }
-            if (technicality == Technicality.NO_PROBLEM) {
-                this.updateMoverInfo("You WIN")
-                return
-            }
-            return
+        switch (winner) {
+            case Winner.OTHER:
+                switch (technicality) {
+                    case Technicality.BY_FORFEIT:
+                        this.updateMoverInfo("Other WIN by forfeit")
+                        break
+                    case Technicality.NO_PROBLEM:
+                        this.updateMoverInfo("Other WIN")
+                        break
+                }
+                break
+            case Winner.YOU:
+                switch (technicality) {
+                    case Technicality.BY_FORFEIT:
+                        this.updateMoverInfo("You WIN by forfeit")
+                        break
+                    case Technicality.NO_PROBLEM:
+                        this.updateMoverInfo("You WIN")
+                        break
+                }
+                break
         }
-        if (winner.valueOf() === 1) {
-            if (technicality == Technicality.BY_FORFEIT) {
-                this.updateMoverInfo("Other WIN by forfeit")
-                return
-            }
-            if (technicality == Technicality.NO_PROBLEM) {
-                this.updateMoverInfo("Other WIN")
-                return
-            }
-            return
+        const rematchContainer = document.getElementById(ElementIds.REMATCH_CONTAINER_DIV_ID) as HTMLDivElement
+        if (rematchContainer) {
+            rematchContainer.hidden = false
         }
     }
 
     noOneWins(): void {
         // TODO: localization
         this.updateMoverInfo("Draw")
+        const rematchContainer = document.getElementById(ElementIds.REMATCH_CONTAINER_DIV_ID) as HTMLDivElement
+        if (rematchContainer) {
+            rematchContainer.hidden = false
+        }
+    }
+
+    showRematchWaitingRoom(): void {
+        const headerView = new EmptytView(this.mainRootHeaderElement)
+        const contentView = new RematchWaitingRoomView(this.mainRootContentElement)
+            .setCancelCallback(async () => {
+                try {
+                    await rematch(false)
+                } catch (error) {
+                    console.log(`showRematchWaitingRoom error ${error}`)
+                    this.rematchNotOkay()
+                }
+            })
     }
 
     private updateMoverInfo(text: string): void {
