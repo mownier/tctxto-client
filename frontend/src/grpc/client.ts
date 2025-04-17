@@ -1,6 +1,6 @@
 import { TicTacToeClient } from './TctxtoServiceClientPb';
 import * as GrpcConst from "../constants/grpc"
-import { ClientUpdate, NavigationPath, NavigationUpdate, ServerUpdate, SignInRequest, SignUpRequest, SignOutRequest, CreateLobbyRequest, Lobby, Empty, Player, JoinLobbyRequest, LeaveMyLobbyRequest, CreateGameRequest, MakeMoveRequest, Mover, Winner, Move, Technicality, RematchRequest } from "./tctxto_pb"
+import { ClientUpdate, NavigationPath, NavigationUpdate, ServerUpdate, SignInRequest, SignUpRequest, SignOutRequest, CreateLobbyRequest, Lobby, Empty, Player, JoinLobbyRequest, LeaveMyLobbyRequest, CreateGameRequest, MakeMoveRequest, Mover, Move, Technicality, RematchRequest } from "./tctxto_pb"
 import { ClientReadableStream, Metadata } from "grpc-web"
 
 const CLIENT_ID_STORAGE_KEY: string = 'TicTacToeClient_clientId'
@@ -26,10 +26,9 @@ export function getLatestData(): LatestData {
 
 export interface GameStatus {
     you: Mover
-    other: Mover
-    mover: Mover,
+    youMove: boolean | null,
     move: Move | null,
-    winner: Winner | null
+    youWin: boolean | null
     winTechnicality: Technicality | null
     draw: string | null
 }
@@ -504,23 +503,24 @@ function handleStreamData(update: ServerUpdate) {
             if (update.getGameStartUpdate()) {
                 if (update.getGameStartUpdate()) {
                     const gameStartUpdate = update.getGameStartUpdate()!
+                    console.log(`gameStatus is null ? ${latestData.gameStatus === null}`)
                     if (!latestData.gameStatus) {
                         latestData.gameStatus = {
                             you: gameStartUpdate.getYou(),
-                            other: gameStartUpdate.getYou(),
-                            mover: Mover.UNSPECIFIED,
+                            youMove: null,
                             move: null,
-                            winner: null,
+                            youWin: null,
                             winTechnicality: null,
                             draw: null
                         }
+                        console.log(`gameStatus is null ? YES, gameStarted called`)
                         clientCallback.gameStarted()
                         return
                     }
-                    if (latestData.gameStatus!.you !== gameStartUpdate.getYou() ||
-                        latestData.gameStatus!.other !== gameStartUpdate.getOther()) {
+                    console.log(`gameStatus is null ? NO`)
+                    if (latestData.gameStatus!.you !== gameStartUpdate.getYou()) {
                         latestData.gameStatus!.you = gameStartUpdate.getYou()
-                        latestData.gameStatus!.other = gameStartUpdate.getOther()
+                        console.log(`gameStatus is null ? NO, gameStarted called`)
                         clientCallback.gameStarted()
                     }
                 }
@@ -528,13 +528,11 @@ function handleStreamData(update: ServerUpdate) {
             break
         case ServerUpdate.TypeCase.NEXT_MOVER_UPDATE:
             if (update.getNextMoverUpdate()) {
-                if (update.getNextMoverUpdate()!.getMover()) {
-                    if (latestData.gameStatus) {
-                        const mover = update.getNextMoverUpdate()!.getMover()!
-                        if (mover !== latestData.gameStatus.mover) {
-                            latestData.gameStatus!.mover = mover
-                            clientCallback.nextMoverDetermined()
-                        }
+                if (latestData.gameStatus) {
+                    const youMove = update.getNextMoverUpdate()!.getYou()
+                    if (youMove !== latestData.gameStatus.youMove) {
+                        latestData.gameStatus!.youMove = youMove
+                        clientCallback.nextMoverDetermined()
                     }
                 }
             }
@@ -556,10 +554,10 @@ function handleStreamData(update: ServerUpdate) {
             if (update.getWinnerUpdate()) {
                 if (latestData.gameStatus) {
                     const winnerUpdate = update.getWinnerUpdate()!
-                    if (latestData.gameStatus.winner != winnerUpdate.getWinner() ||
+                    if (latestData.gameStatus.youWin != winnerUpdate.getYou() ||
                         latestData.gameStatus.winTechnicality != winnerUpdate.getTechnicality()) {
                         latestData.gameStatus.winTechnicality = winnerUpdate.getTechnicality()
-                        latestData.gameStatus.winner = winnerUpdate.getWinner()
+                        latestData.gameStatus.youWin = winnerUpdate.getYou()
                         clientCallback.winnerDetermined()
                     }
                 }
@@ -586,9 +584,11 @@ function handleStreamData(update: ServerUpdate) {
             break
         case ServerUpdate.TypeCase.REMATCH_APPROVED:
             latestData.gameStatus = null
+            latestData.path = null
             break
         case ServerUpdate.TypeCase.REMATCH_DENIED:
             latestData.gameStatus = null
+            latestData.path = null
             break
         case ServerUpdate.TypeCase.REMATCH_PENDING:
             break

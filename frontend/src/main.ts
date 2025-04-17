@@ -9,7 +9,7 @@ import { EmptytView } from './views/EmptyView'
 import { HomeView } from './views/HomeView'
 import { MyLobbyView } from './views/MyLobbyView'
 import { ErrorView } from './views/ErrorView'
-import { Lobby, Mover, Player, Technicality, Winner } from './grpc/tctxto_pb'
+import { Lobby, Mover, Player, Technicality } from './grpc/tctxto_pb'
 import { GameView } from './views/GameView'
 import { RematchWaitingRoomView } from './views/RematchWaitingRoomView'
 
@@ -357,18 +357,15 @@ class MyClientCallback implements ClientCallback {
 
     gameStarted(): void {
         const youMoverParagraph = document.getElementById(ElementIds.YOU_MOVER_INFO_ID) as HTMLParagraphElement
-        const otherMoverParagraph = document.getElementById(ElementIds.OTHER_MOVER_INFO_ID) as HTMLParagraphElement
         const gameStatus = getLatestData().gameStatus
-        if (!gameStatus || !youMoverParagraph || !otherMoverParagraph) {
+        if (!gameStatus || !youMoverParagraph) {
             return
         }
         // TODO: Localization
         if (gameStatus.you == Mover.O) {
             youMoverParagraph.textContent = "You are O"
-            otherMoverParagraph.textContent = "Other is X"
         } else if (gameStatus.you == Mover.X) {
             youMoverParagraph.textContent = "You are X"
-            otherMoverParagraph.textContent = "Other is O"
         }
     }
 
@@ -377,12 +374,16 @@ class MyClientCallback implements ClientCallback {
         if (!gameStatus) {
             return
         }
-        // TODO: Localization
-        if (gameStatus.mover == Mover.O) {
-            this.updateMoverInfo("O turns to move")
-        } else if (gameStatus.mover == Mover.X) {
-            this.updateMoverInfo("X turns to move")
+        const youMove = gameStatus.youMove
+        if (youMove === null) {
+            return
         }
+        // TODO: Localization
+        if (youMove) {
+            this.updateMoverInfo("Your turn to move")
+            return
+        }
+        this.updateMoverInfo("Wait for your turn")
     }
 
     moveUpdated(): void {
@@ -398,6 +399,7 @@ class MyClientCallback implements ClientCallback {
         if (!element) {
             return
         }
+        this.updateGameStatus("")
         if (move.getMover() == Mover.O) {
             element.textContent = "O"
         } else if (move.getMover() == Mover.X) {
@@ -410,33 +412,32 @@ class MyClientCallback implements ClientCallback {
         if (!gameStatus) {
             return
         }
-        const winner = gameStatus.winner
+        const youWin = gameStatus.youWin
         const technicality = gameStatus.winTechnicality
-        if (winner === null || !technicality === null) {
+        if (youWin === null || !technicality === null) {
             return
         }
-        switch (winner) {
-            case Winner.OTHER:
-                switch (technicality) {
-                    case Technicality.BY_FORFEIT:
-                        this.updateMoverInfo("Other WIN by forfeit")
-                        break
-                    case Technicality.NO_PROBLEM:
-                        this.updateMoverInfo("Other WIN")
-                        break
-                }
-                break
-            case Winner.YOU:
-                switch (technicality) {
-                    case Technicality.BY_FORFEIT:
-                        this.updateMoverInfo("You WIN by forfeit")
-                        break
-                    case Technicality.NO_PROBLEM:
-                        this.updateMoverInfo("You WIN")
-                        break
-                }
-                break
+        // TODO: localization
+        if (youWin) {
+            switch (technicality) {
+                case Technicality.BY_FORFEIT:
+                    this.updateMoverInfo("You WIN by forfeit")
+                    break
+                case Technicality.NO_PROBLEM:
+                    this.updateMoverInfo("You WIN")
+                    break
+            }
+        } else {
+            switch (technicality) {
+                case Technicality.BY_FORFEIT:
+                    this.updateMoverInfo("You LOSE by forfeit")
+                    break
+                case Technicality.NO_PROBLEM:
+                    this.updateMoverInfo("You LOSE")
+                    break
+            }
         }
+       
         const rematchContainer = document.getElementById(ElementIds.REMATCH_CONTAINER_DIV_ID) as HTMLDivElement
         if (rematchContainer) {
             rematchContainer.hidden = false
@@ -445,7 +446,7 @@ class MyClientCallback implements ClientCallback {
 
     noOneWins(): void {
         // TODO: localization
-        this.updateMoverInfo("Draw")
+        this.updateMoverInfo("It's a DRAW")
         const rematchContainer = document.getElementById(ElementIds.REMATCH_CONTAINER_DIV_ID) as HTMLDivElement
         if (rematchContainer) {
             rematchContainer.hidden = false

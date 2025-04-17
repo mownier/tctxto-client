@@ -14,13 +14,8 @@ export namespace server2 {
         REMATCH = 4
     }
     export enum Mover {
-        UNSPECIFIED = 0,
-        X = 1,
-        O = 2
-    }
-    export enum Winner {
-        YOU = 0,
-        OTHER = 1
+        X = 0,
+        O = 1
     }
     export enum Technicality {
         NO_PROBLEM = 0,
@@ -3257,7 +3252,7 @@ export namespace server2 {
             }
         }
         get mover() {
-            return pb_1.Message.getFieldWithDefault(this, 1, Mover.UNSPECIFIED) as Mover;
+            return pb_1.Message.getFieldWithDefault(this, 1, Mover.X) as Mover;
         }
         set mover(value: Mover) {
             pb_1.Message.setField(this, 1, value);
@@ -3298,7 +3293,7 @@ export namespace server2 {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (this.mover != Mover.UNSPECIFIED)
+            if (this.mover != Mover.X)
                 writer.writeEnum(1, this.mover);
             if (this.position != 0)
                 writer.writeInt32(2, this.position);
@@ -3402,37 +3397,37 @@ export namespace server2 {
     export class NextMoverUpdate extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
-            mover?: Mover;
+            you?: boolean;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
-                if ("mover" in data && data.mover != undefined) {
-                    this.mover = data.mover;
+                if ("you" in data && data.you != undefined) {
+                    this.you = data.you;
                 }
             }
         }
-        get mover() {
-            return pb_1.Message.getFieldWithDefault(this, 1, Mover.UNSPECIFIED) as Mover;
+        get you() {
+            return pb_1.Message.getFieldWithDefault(this, 1, false) as boolean;
         }
-        set mover(value: Mover) {
+        set you(value: boolean) {
             pb_1.Message.setField(this, 1, value);
         }
         static fromObject(data: {
-            mover?: Mover;
+            you?: boolean;
         }): NextMoverUpdate {
             const message = new NextMoverUpdate({});
-            if (data.mover != null) {
-                message.mover = data.mover;
+            if (data.you != null) {
+                message.you = data.you;
             }
             return message;
         }
         toObject() {
             const data: {
-                mover?: Mover;
+                you?: boolean;
             } = {};
-            if (this.mover != null) {
-                data.mover = this.mover;
+            if (this.you != null) {
+                data.you = this.you;
             }
             return data;
         }
@@ -3440,8 +3435,8 @@ export namespace server2 {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (this.mover != Mover.UNSPECIFIED)
-                writer.writeEnum(1, this.mover);
+            if (this.you != false)
+                writer.writeBool(1, this.you);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -3452,7 +3447,7 @@ export namespace server2 {
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
-                        message.mover = reader.readEnum();
+                        message.you = reader.readBool();
                         break;
                     default: reader.skipField();
                 }
@@ -3833,35 +3828,25 @@ export namespace server2 {
     export class WinnerUpdate extends pb_1.Message {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
-            winner?: Winner;
-            mover?: Mover;
+            you?: boolean;
             technicality?: Technicality;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
-                if ("winner" in data && data.winner != undefined) {
-                    this.winner = data.winner;
-                }
-                if ("mover" in data && data.mover != undefined) {
-                    this.mover = data.mover;
+                if ("you" in data && data.you != undefined) {
+                    this.you = data.you;
                 }
                 if ("technicality" in data && data.technicality != undefined) {
                     this.technicality = data.technicality;
                 }
             }
         }
-        get winner() {
-            return pb_1.Message.getFieldWithDefault(this, 1, Winner.YOU) as Winner;
+        get you() {
+            return pb_1.Message.getFieldWithDefault(this, 1, false) as boolean;
         }
-        set winner(value: Winner) {
+        set you(value: boolean) {
             pb_1.Message.setField(this, 1, value);
-        }
-        get mover() {
-            return pb_1.Message.getFieldWithDefault(this, 2, Mover.UNSPECIFIED) as Mover;
-        }
-        set mover(value: Mover) {
-            pb_1.Message.setField(this, 2, value);
         }
         get technicality() {
             return pb_1.Message.getFieldWithDefault(this, 3, Technicality.NO_PROBLEM) as Technicality;
@@ -3870,16 +3855,12 @@ export namespace server2 {
             pb_1.Message.setField(this, 3, value);
         }
         static fromObject(data: {
-            winner?: Winner;
-            mover?: Mover;
+            you?: boolean;
             technicality?: Technicality;
         }): WinnerUpdate {
             const message = new WinnerUpdate({});
-            if (data.winner != null) {
-                message.winner = data.winner;
-            }
-            if (data.mover != null) {
-                message.mover = data.mover;
+            if (data.you != null) {
+                message.you = data.you;
             }
             if (data.technicality != null) {
                 message.technicality = data.technicality;
@@ -3888,15 +3869,11 @@ export namespace server2 {
         }
         toObject() {
             const data: {
-                winner?: Winner;
-                mover?: Mover;
+                you?: boolean;
                 technicality?: Technicality;
             } = {};
-            if (this.winner != null) {
-                data.winner = this.winner;
-            }
-            if (this.mover != null) {
-                data.mover = this.mover;
+            if (this.you != null) {
+                data.you = this.you;
             }
             if (this.technicality != null) {
                 data.technicality = this.technicality;
@@ -3907,10 +3884,8 @@ export namespace server2 {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (this.winner != Winner.YOU)
-                writer.writeEnum(1, this.winner);
-            if (this.mover != Mover.UNSPECIFIED)
-                writer.writeEnum(2, this.mover);
+            if (this.you != false)
+                writer.writeBool(1, this.you);
             if (this.technicality != Technicality.NO_PROBLEM)
                 writer.writeEnum(3, this.technicality);
             if (!w)
@@ -3923,10 +3898,7 @@ export namespace server2 {
                     break;
                 switch (reader.getFieldNumber()) {
                     case 1:
-                        message.winner = reader.readEnum();
-                        break;
-                    case 2:
-                        message.mover = reader.readEnum();
+                        message.you = reader.readBool();
                         break;
                     case 3:
                         message.technicality = reader.readEnum();
@@ -3987,7 +3959,6 @@ export namespace server2 {
         #one_of_decls: number[][] = [];
         constructor(data?: any[] | {
             you?: Mover;
-            other?: Mover;
         }) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
@@ -3995,46 +3966,29 @@ export namespace server2 {
                 if ("you" in data && data.you != undefined) {
                     this.you = data.you;
                 }
-                if ("other" in data && data.other != undefined) {
-                    this.other = data.other;
-                }
             }
         }
         get you() {
-            return pb_1.Message.getFieldWithDefault(this, 1, Mover.UNSPECIFIED) as Mover;
+            return pb_1.Message.getFieldWithDefault(this, 1, Mover.X) as Mover;
         }
         set you(value: Mover) {
             pb_1.Message.setField(this, 1, value);
         }
-        get other() {
-            return pb_1.Message.getFieldWithDefault(this, 2, Mover.UNSPECIFIED) as Mover;
-        }
-        set other(value: Mover) {
-            pb_1.Message.setField(this, 2, value);
-        }
         static fromObject(data: {
             you?: Mover;
-            other?: Mover;
         }): GameStartUpdate {
             const message = new GameStartUpdate({});
             if (data.you != null) {
                 message.you = data.you;
-            }
-            if (data.other != null) {
-                message.other = data.other;
             }
             return message;
         }
         toObject() {
             const data: {
                 you?: Mover;
-                other?: Mover;
             } = {};
             if (this.you != null) {
                 data.you = this.you;
-            }
-            if (this.other != null) {
-                data.other = this.other;
             }
             return data;
         }
@@ -4042,10 +3996,8 @@ export namespace server2 {
         serialize(w: pb_1.BinaryWriter): void;
         serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
             const writer = w || new pb_1.BinaryWriter();
-            if (this.you != Mover.UNSPECIFIED)
+            if (this.you != Mover.X)
                 writer.writeEnum(1, this.you);
-            if (this.other != Mover.UNSPECIFIED)
-                writer.writeEnum(2, this.other);
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -4057,9 +4009,6 @@ export namespace server2 {
                 switch (reader.getFieldNumber()) {
                     case 1:
                         message.you = reader.readEnum();
-                        break;
-                    case 2:
-                        message.other = reader.readEnum();
                         break;
                     default: reader.skipField();
                 }

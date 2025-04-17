@@ -733,8 +733,8 @@ export namespace MoveUpdate {
 }
 
 export class NextMoverUpdate extends jspb.Message {
-  getMover(): Mover;
-  setMover(value: Mover): NextMoverUpdate;
+  getYou(): boolean;
+  setYou(value: boolean): NextMoverUpdate;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): NextMoverUpdate.AsObject;
@@ -746,7 +746,7 @@ export class NextMoverUpdate extends jspb.Message {
 
 export namespace NextMoverUpdate {
   export type AsObject = {
-    mover: Mover,
+    you: boolean,
   }
 }
 
@@ -849,11 +849,8 @@ export namespace CreateGameReply {
 }
 
 export class WinnerUpdate extends jspb.Message {
-  getWinner(): Winner;
-  setWinner(value: Winner): WinnerUpdate;
-
-  getMover(): Mover;
-  setMover(value: Mover): WinnerUpdate;
+  getYou(): boolean;
+  setYou(value: boolean): WinnerUpdate;
 
   getTechnicality(): Technicality;
   setTechnicality(value: Technicality): WinnerUpdate;
@@ -868,8 +865,7 @@ export class WinnerUpdate extends jspb.Message {
 
 export namespace WinnerUpdate {
   export type AsObject = {
-    winner: Winner,
-    mover: Mover,
+    you: boolean,
     technicality: Technicality,
   }
 }
@@ -892,9 +888,6 @@ export class GameStartUpdate extends jspb.Message {
   getYou(): Mover;
   setYou(value: Mover): GameStartUpdate;
 
-  getOther(): Mover;
-  setOther(value: Mover): GameStartUpdate;
-
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): GameStartUpdate.AsObject;
   static toObject(includeInstance: boolean, msg: GameStartUpdate): GameStartUpdate.AsObject;
@@ -906,7 +899,6 @@ export class GameStartUpdate extends jspb.Message {
 export namespace GameStartUpdate {
   export type AsObject = {
     you: Mover,
-    other: Mover,
   }
 }
 
@@ -1034,13 +1026,8 @@ export enum NavigationPath {
   REMATCH = 4,
 }
 export enum Mover { 
-  UNSPECIFIED = 0,
-  X = 1,
-  O = 2,
-}
-export enum Winner { 
-  YOU = 0,
-  OTHER = 1,
+  X = 0,
+  O = 1,
 }
 export enum Technicality { 
   NO_PROBLEM = 0,
