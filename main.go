@@ -4,23 +4,35 @@ import (
 	"embed"
 	"fmt"
 	"log"
+	"net"
 	"os"
 	"tctxtocl/server"
 )
 
 var (
-	addr = ":2323"
+	port = "2323"
 	//go:embed templates/* static/*
 	fs embed.FS
 )
 
 func main() {
-	port := os.Getenv("TCTXTO_PORT")
-	if port != "" {
-		addr = fmt.Sprintf(":%s", port)
+	envPort := os.Getenv("TCTXTO_PORT")
+	if envPort != "" {
+		port = envPort
 	}
-	fmt.Printf("listening on localhost%s\n", addr)
-	if err := server.ListenAndServe(addr, fs); err != nil {
-		log.Fatalln("failed to listen and serve:", err)
+	addrs, err := net.InterfaceAddrs()
+	if err != nil {
+		log.Fatalf("error getting network interfaces: %v\n", err)
+	}
+	for _, addr := range addrs {
+		if ipnet, ok := addr.(*net.IPNet); ok && !ipnet.IP.IsLoopback() {
+			if ipnet.IP.To4() != nil {
+				localIP := ipnet.IP.String()
+				fmt.Printf("server running on %s:%s\n", localIP, port)
+			}
+		}
+	}
+	if err := server.ListenAndServe(fmt.Sprintf(":%s", port), fs); err != nil {
+		log.Fatalf("failed to listen and serve: %v\n", err)
 	}
 }
