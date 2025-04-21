@@ -5,7 +5,7 @@ build-linux:
 	GOOS=linux GOARCH=amd64 cd frontend && npm run build && cd .. && go build -o build/linux/tctxtocl
 
 build-windows:
-	GOOS=windows GOARCH=amd64 cd frontend && npm run build && cd .. && go build -o build/linux/tctxtocl.exe
+	GOOS=windows GOARCH=amd64 cd frontend && npm run build && cd .. && go build -o build/windows/tctxtocl.exe
 
 build-all: build-macos build-windows build-linux
 
