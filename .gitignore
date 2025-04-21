@@ -129,3 +129,6 @@ __pycache__/ #python cache
 # Ignore generated files
 static/script.min.js
 static/localization/*
+
+tctxtocl
+tctxtocl.exe

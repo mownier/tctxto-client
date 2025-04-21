@@ -12,8 +12,8 @@ build-windows:
 build-all: build-macos build-window build-linux
 
 run:
-	cd frontend && npm run build && cd .. && go build -o build/snapshot/tctxtocl && cd build/snapshot/ && ./tctxtocl
+	cd frontend && npm run build && cd .. && go build -o tctxtocl && ./tctxtocl
 
 # for windows
 run-w:
-	cd frontend && npm run build && cd .. && go build -o build/snapshot/tctxtocl.exe && cd build/snapshot/ && ./tctxtocl.exe
+	cd frontend && npm run build && cd .. && go build -o tctxtocl.exe && ./tctxtocl.exe
