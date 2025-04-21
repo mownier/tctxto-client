@@ -1,5 +1,3 @@
-build-all: build-darwin-amd64 build-windows-amd64 build-linux-amd64
-
 build-macos:
 	GOOS=darwin GOARCH=amd64 cd frontend && npm run build && cd .. && go build -o build/macos/tctxtocl
 
