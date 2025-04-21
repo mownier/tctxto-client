@@ -202,13 +202,17 @@ function subscribeMetdata(): Metadata {
 }
 
 export async function subscribe(): Promise<void> {
-    return new Promise((resolve, _) => {
-        const client = createClient()
-        stream = client.subscribe(new Empty(), subscribeMetdata())
-        stream.on('data', handleStreamData)
-        stream.on('error', handleStreamError)
-        stream.on('end', handleStreamEnd)
-        resolve()
+    return new Promise((resolve, reject) => {
+        try {
+            const client = createClient()
+            stream = client.subscribe(new Empty(), subscribeMetdata())
+            stream.on('data', handleStreamData)
+            stream.on('error', handleStreamError)
+            stream.on('end', handleStreamEnd)
+            resolve()
+        } catch (error) {
+            reject(error)
+        }
     })
 }
 
