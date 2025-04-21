@@ -16,7 +16,7 @@ var (
 )
 
 func main() {
-	envPort := os.Getenv("TCTXTO_PORT")
+	envPort := os.Getenv("TCTXTO_CLIENT_PORT")
 	if envPort != "" {
 		port = envPort
 	}
@@ -28,7 +28,7 @@ func main() {
 		if ipnet, ok := addr.(*net.IPNet); ok && !ipnet.IP.IsLoopback() {
 			if ipnet.IP.To4() != nil {
 				localIP := ipnet.IP.String()
-				fmt.Printf("server running on %s:%s\n", localIP, port)
+				log.Printf("tctxto client running on http://%s:%s\n", localIP, port)
 			}
 		}
 	}
