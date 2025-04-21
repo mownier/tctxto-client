@@ -177,7 +177,7 @@ export function setClientCallback(value: ClientCallback) {
 }
 
 function createClient(): TicTacToeClient {
-    return new TicTacToeClient(`${GrpcConst.GRPC_WEB_PROXY_HOST}:${GrpcConst.GRPC_WEB_PROXY_PORT}`)
+    return new TicTacToeClient(GrpcConst.GRPC_WEB_PROXY_ORIGIN)
 }
 
 function storeClientId(clientId: string): void {
