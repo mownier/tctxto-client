@@ -3,7 +3,7 @@ import { MainRootView } from './views/MainRootView'
 import * as ElementIds from './constants/element-ids'
 import { NoSessionHeaderView } from './views/NoSessionHeaderView'
 import { WelcomeView } from './views/WelcomeView'
-import { ClientCallback, createGame, createLobby, getLatestData, joinLobby, leaveMyLobby, makeMove, rematch, setClientCallback, signIn, signOut, signUp, subscribe } from './grpc/client'
+import { ClientCallback, createGame, createLobby, getLatestData, joinLobby, leaveMyLobby, makeMove, rematch, setClientCallback, signIn, signOut, signUp, subscribe, updateProxyOrigin, updateServerPublicKey } from './grpc/client'
 import { WithSessionHeaderView } from './views/WithSessionHeaderView'
 import { EmptytView } from './views/EmptyView'
 import { HomeView } from './views/HomeView'
@@ -14,6 +14,22 @@ import { GameView } from './views/GameView'
 import { RematchWaitingRoomView } from './views/RematchWaitingRoomView'
 
 async function main() {
+    const pkMeta = document.querySelector('meta[name="pk"]') as Element
+    if (pkMeta) {
+        let pkMetaContent: string | null = pkMeta.getAttribute('content')
+        if (pkMetaContent) {
+            updateServerPublicKey(pkMetaContent)
+        }
+    }
+
+    const poMeta = document.querySelector('meta[name="po"]') as Element
+    if (poMeta) {
+        let poMetaContent: string | null = poMeta.getAttribute('content')
+        if (poMetaContent) {
+            updateProxyOrigin(poMetaContent)
+        }
+    }
+    
     try {
         await setLocaleAutomatically()
     } catch (error) {
