@@ -8,6 +8,8 @@ import (
 	"os"
 	"strings"
 	"tctxtocl/server"
+
+	"github.com/joho/godotenv"
 )
 
 //go:embed templates/* static/*
@@ -33,12 +35,17 @@ func main() {
 		log.Fatalln("unable to determine local IP")
 	}
 
+	err = godotenv.Load()
+	if err != nil {
+		log.Fatalln("The .env file is not found. It should have TCTXTO_PROXY_ORIGIN=?, TCTXTO_SERVER_PK=?, and TCTXTO_CLIENT_PORT=2323")
+	}
+
 	emptyEnvVars := []string{}
 	if len(os.Getenv("TCTXTO_PROXY_ORIGIN")) == 0 {
-		emptyEnvVars = append(emptyEnvVars, fmt.Sprintf("set environment variable TCTXTO_PROXY_ORIGIN (e.g. export TCTXTO_PROXY_ORIGIN=http://%s:2121)", localIP))
+		emptyEnvVars = append(emptyEnvVars, fmt.Sprintf("set environment variable TCTXTO_PROXY_ORIGIN (e.g. TCTXTO_PROXY_ORIGIN=http://%s:2121)", localIP))
 	}
 	if len(os.Getenv("TCTXTO_SERVER_PK")) == 0 {
-		emptyEnvVars = append(emptyEnvVars, "set environment variable TCTXTO_SERVER_PK (e.g. export TCTXTO_SERVER_PK=<consumer_public_key>)")
+		emptyEnvVars = append(emptyEnvVars, "set environment variable TCTXTO_SERVER_PK (e.g. TCTXTO_SERVER_PK=<consumer_public_key>)")
 	}
 	if len(emptyEnvVars) > 0 {
 		log.Fatalf("encountered problem(s): %s\n", strings.Join(emptyEnvVars, ", "))
@@ -51,7 +58,12 @@ func main() {
 
 	log.Printf("tctxto client running on http://%s:%s\n", localIP, port)
 
-	if err := server.ListenAndServe(fmt.Sprintf(":%s", port), fs); err != nil {
+	d := server.PageData{
+		PublicKey:   os.Getenv("TCTXTO_SERVER_PK"),
+		ProxyOrigin: os.Getenv("TCTXTO_PROXY_ORIGIN"),
+	}
+
+	if err := server.ListenAndServe(fmt.Sprintf(":%s", port), d, fs); err != nil {
 		log.Fatalf("failed to listen and serve: %v\n", err)
 	}
 }
