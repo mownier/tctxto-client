@@ -534,6 +534,9 @@ class MyClientCallback implements ClientCallback {
                     new ErrorView(this.mainRootContentElement, "Encountered error while signing out. Please try again.")
                 }
             })
+            .setCommitNameChangeCallback(async (name: string) => {
+                // TODO:
+            })
     }
 }
 

@@ -14,6 +14,7 @@ export const PLAYER_2_NAME_INPUT_ID = "player-2-name-input"
 export const PLAYER_1_SELECT_ID = "player-1-select"
 export const PLAYER_2_SELECT_ID = "player-2-select"
 export const PLAYER_DISPLAY_NAME_ID = "player-display-name"
+export const PLAYER_DISPLAY_NAME_INPUT_ID = 'player-display-name-input'
 
 export const GAME_CONTAINER_DIV_ID = "game-container"
 export const GAME_STATUD_ID = "game-status"
