@@ -1,7 +1,6 @@
-const path = require('path');
-const TerserPlugin = require('terser-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
-const webpack = require('webpack');
+const path = require('path')
+const TerserPlugin = require('terser-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   entry: './src/main.ts', // Entry point of your application
@@ -31,9 +30,5 @@ module.exports = {
         { from: 'src/localization/locales', to: 'localization/locales' },
       ],
     }),
-    new webpack.DefinePlugin({
-      'process.env.TCTXTO_PROXY_ORIGIN': JSON.stringify(process.env.TCTXTO_PROXY_ORIGIN),
-      'process.env.TCTXTO_SERVER_PK': JSON.stringify(process.env.TCTXTO_SERVER_PK),
-    }),
   ],
-};
+}
