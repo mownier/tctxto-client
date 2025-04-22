@@ -164,7 +164,7 @@ class MyClientCallback implements ClientCallback {
                 if (lobbyId) {
                     this.copyTextToClipboard(lobbyId)
                         .then(() => this.updateMyLobbyStatus("Copied lobby ID to clipboard"))
-                        .catch((error) => this.updateMyLobbyStatus("Unable to copy lobby ID"))
+                        .catch((error) => this.updateMyLobbyStatus(`Unable to copy lobby ID ${lobbyId}`))
                 }
             })
             .setLeaveCallback(async () => {
