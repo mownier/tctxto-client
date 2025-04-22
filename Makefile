@@ -9,6 +9,12 @@ build-windows:
 
 build-all: build-macos build-windows build-linux
 
+build:
+	cd frontend && npm run build && cd .. && go build -o tctxtocl
+
+build-w:
+	cd frontend && npm run build && cd .. && go build -o tctxtocl.exe
+
 run:
 	cd frontend && npm run build && cd .. && go build -o tctxtocl && ./tctxtocl
 
