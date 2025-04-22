@@ -159,12 +159,10 @@ class MyClientCallback implements ClientCallback {
                     this.createGameNotOkay()
                 }
             })
-            .setCopyLobbyIdCallback(() => {
+            .setShowLobbyIdCallback(() => {
                 const lobbyId = getLatestData().lobby?.getId()
                 if (lobbyId) {
-                    this.copyTextToClipboard(lobbyId)
-                        .then(() => this.updateMyLobbyStatus("Copied lobby ID to clipboard"))
-                        .catch((error) => this.updateMyLobbyStatus(`Unable to copy lobby ID ${lobbyId}`))
+                    this.updateMyLobbyStatus(`Lobby ID ${lobbyId}`)
                 }
             })
             .setLeaveCallback(async () => {

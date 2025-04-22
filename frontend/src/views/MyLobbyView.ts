@@ -2,7 +2,7 @@ import { LocalizableElement, renderLocalizedTexts } from "../localization/locali
 import * as ElementIds from "../constants/element-ids"
 
 type CreateGameCallback = (player1: string, player2: string) => void
-type CopyLobbyIdCallback = () => void
+type ShowLobbyIdCallback = () => void
 type LeaveCallback = () => void
 
 export class MyLobbyView {
@@ -19,10 +19,10 @@ export class MyLobbyView {
     private player2SelectLabel: HTMLLabelElement = document.createElement('label')
     private player1Select: HTMLSelectElement = document.createElement('select')
     private player2Select: HTMLSelectElement = document.createElement('select')
-    private copyLobbyIdButton: HTMLButtonElement = document.createElement('button')
+    private showLobbyIdButton: HTMLButtonElement = document.createElement('button')
 
     private createGameCallback: CreateGameCallback | null = null
-    private copyLobbyIdCallback: CopyLobbyIdCallback | null = null
+    private showLobbyIdCallback: ShowLobbyIdCallback | null = null
     private leaveCallback: LeaveCallback | null = null
 
     private localizableElements: LocalizableElement[] = [
@@ -32,7 +32,7 @@ export class MyLobbyView {
         { element: this.player1SelectLabel, key: "Enter player 1" },
         { element: this.player2SelectLabel, key: "Enter player 2" },
         { element: this.createGameButton, key: "Create Game" },
-        { element: this.copyLobbyIdButton, key: "Copy Lobby ID" },
+        { element: this.showLobbyIdButton, key: "Show Lobby ID" },
     ]
 
     constructor(rootElement: HTMLElement) {
@@ -48,7 +48,7 @@ export class MyLobbyView {
         this.rootElement.appendChild(this.nameHeading)
         this.rootElement.appendChild(this.statusParagraph)
         this.rootElement.appendChild(this.leaveButton)
-        this.rootElement.appendChild(this.copyLobbyIdButton)
+        this.rootElement.appendChild(this.showLobbyIdButton)
         this.rootElement.appendChild(this.player1SelectLabel)
         this.rootElement.appendChild(this.player1Select)
         this.rootElement.appendChild(this.player2SelectLabel)
@@ -70,8 +70,8 @@ export class MyLobbyView {
             this.createGameCallback?.(player1, player2)
         })
 
-        this.copyLobbyIdButton.addEventListener('click', () => {
-            this.copyLobbyIdCallback?.()
+        this.showLobbyIdButton.addEventListener('click', () => {
+            this.showLobbyIdCallback?.()
         })
 
         this.leaveButton.addEventListener('click', () => {
@@ -84,8 +84,8 @@ export class MyLobbyView {
         return this
     }
 
-    setCopyLobbyIdCallback(value: CopyLobbyIdCallback | null): MyLobbyView {
-        this.copyLobbyIdCallback = value
+    setShowLobbyIdCallback(value: ShowLobbyIdCallback | null): MyLobbyView {
+        this.showLobbyIdCallback = value
         return this
     }
 
