@@ -1,10 +1,12 @@
 import { TicTacToeClient } from './TctxtoServiceClientPb';
-import * as GrpcConst from "../constants/grpc"
 import { ClientUpdate, NavigationPath, NavigationUpdate, ServerUpdate, SignInRequest, SignUpRequest, SignOutRequest, CreateLobbyRequest, Lobby, Empty, Player, JoinLobbyRequest, LeaveMyLobbyRequest, CreateGameRequest, MakeMoveRequest, Mover, Move, Technicality, RematchRequest } from "./tctxto_pb"
 import { ClientReadableStream, Metadata } from "grpc-web"
 
 const CLIENT_ID_STORAGE_KEY: string = 'TicTacToeClient_clientId'
 const SUBSCRIBE_MAX_ATTEMPTS: number = 3
+
+let proxyOrigin: string = ''
+let serverPublicKey: string = ''
 
 let subscribeAttempts: number = 0
 let stream: ClientReadableStream<ServerUpdate> | null = null
@@ -13,6 +15,14 @@ let latestData: LatestData = {
     lobby: null,
     playerDisplayName: '',
     gameStatus: null
+}
+
+export function updateProxyOrigin(value: string): void {
+    proxyOrigin = value
+}
+
+export function updateServerPublicKey(value: string): void {
+    serverPublicKey = value
 }
 
 function resetLatestData(): void {
@@ -177,7 +187,7 @@ export function setClientCallback(value: ClientCallback) {
 }
 
 function createClient(): TicTacToeClient {
-    return new TicTacToeClient(GrpcConst.GRPC_WEB_PROXY_ORIGIN)
+    return new TicTacToeClient(proxyOrigin)
 }
 
 function storeClientId(clientId: string): void {
@@ -197,7 +207,7 @@ function subscribeMetdata(): Metadata {
     const clientId = getClientId()
     return {
         'ClientId': clientId,
-        'PublicKey': GrpcConst.GRPC_SERVER_PK
+        'PublicKey': serverPublicKey
     }
 }
 
