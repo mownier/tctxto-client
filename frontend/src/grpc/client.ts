@@ -1,5 +1,5 @@
 import { TicTacToeClient } from './TctxtoServiceClientPb';
-import { ClientUpdate, NavigationPath, NavigationUpdate, ServerUpdate, SignInRequest, SignUpRequest, SignOutRequest, CreateLobbyRequest, Lobby, Empty, Player, JoinLobbyRequest, LeaveMyLobbyRequest, CreateGameRequest, MakeMoveRequest, Mover, Move, Technicality, RematchRequest } from "./tctxto_pb"
+import { ClientUpdate, NavigationPath, NavigationUpdate, ServerUpdate, SignInRequest, SignUpRequest, SignOutRequest, CreateLobbyRequest, Lobby, Empty, Player, JoinLobbyRequest, LeaveMyLobbyRequest, CreateGameRequest, MakeMoveRequest, Mover, Move, Technicality, RematchRequest, ChangePlayerDisplayNameRequest } from "./tctxto_pb"
 import { ClientReadableStream, Metadata } from "grpc-web"
 
 const CLIENT_ID_STORAGE_KEY: string = 'TicTacToeClient_clientId'
@@ -76,6 +76,7 @@ export interface ClientCallback {
     noOneWins(): void
     rematchNotOkay(): void
     showRematchWaitingRoom(): void
+    changeDisplayNameNotOkay(): void
 }
 
 class ClientCallbackDefaultImp implements ClientCallback {
@@ -176,6 +177,10 @@ class ClientCallbackDefaultImp implements ClientCallback {
     }
 
     showRematchWaitingRoom(): void {
+        throw new Error("Method not implemented.")
+    }
+
+    changeDisplayNameNotOkay(): void {
         throw new Error("Method not implemented.")
     }
 }
@@ -380,6 +385,22 @@ export async function rematch(yes: boolean): Promise<void> {
     })
 }
 
+export async function changeDisplayName(name: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+        try {
+            const update = new ClientUpdate()
+            const request = new ChangePlayerDisplayNameRequest()
+            request.setDisplayname(name)
+            update.setChangePlayerDisplayNameRequest(request)
+            const client = createClient()
+            client.notify(update, metadataWithClientId())
+            resolve()
+        } catch (error) {
+            clientCallback.changeDisplayNameNotOkay()
+            reject(error)
+        }
+    })
+}
 
 function handleStreamData(update: ServerUpdate) {
     console.log(`[STREAM] server update received`)
@@ -605,6 +626,15 @@ function handleStreamData(update: ServerUpdate) {
             latestData.path = null
             break
         case ServerUpdate.TypeCase.REMATCH_PENDING:
+            break
+        case ServerUpdate.TypeCase.CHANGE_PLAYER_DISPLAY_NAME_REPLY:
+            if (update.getChangePlayerDisplayNameReply()) {
+                if (update.getChangePlayerDisplayNameReply()!.getOutcome()) {
+                    if (!update.getChangePlayerDisplayNameReply()!.getOutcome()!.getOk()) {
+                        clientCallback.changeDisplayNameNotOkay()
+                    }
+                }
+            }
             break
     }
 }

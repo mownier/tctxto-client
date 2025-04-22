@@ -62,6 +62,11 @@ export class ClientUpdate extends jspb.Message {
   hasRematchRequest(): boolean;
   clearRematchRequest(): ClientUpdate;
 
+  getChangePlayerDisplayNameRequest(): ChangePlayerDisplayNameRequest | undefined;
+  setChangePlayerDisplayNameRequest(value?: ChangePlayerDisplayNameRequest): ClientUpdate;
+  hasChangePlayerDisplayNameRequest(): boolean;
+  clearChangePlayerDisplayNameRequest(): ClientUpdate;
+
   getTypeCase(): ClientUpdate.TypeCase;
 
   serializeBinary(): Uint8Array;
@@ -83,6 +88,7 @@ export namespace ClientUpdate {
     createGameRequest?: CreateGameRequest.AsObject,
     makeMoveRequest?: MakeMoveRequest.AsObject,
     rematchRequest?: RematchRequest.AsObject,
+    changePlayerDisplayNameRequest?: ChangePlayerDisplayNameRequest.AsObject,
   }
 
   export enum TypeCase { 
@@ -96,6 +102,7 @@ export namespace ClientUpdate {
     CREATE_GAME_REQUEST = 7,
     MAKE_MOVE_REQUEST = 8,
     REMATCH_REQUEST = 9,
+    CHANGE_PLAYER_DISPLAY_NAME_REQUEST = 10,
   }
 }
 
@@ -225,6 +232,11 @@ export class ServerUpdate extends jspb.Message {
   hasRematchPending(): boolean;
   clearRematchPending(): ServerUpdate;
 
+  getChangePlayerDisplayNameReply(): ChangePlayerDisplayNameReply | undefined;
+  setChangePlayerDisplayNameReply(value?: ChangePlayerDisplayNameReply): ServerUpdate;
+  hasChangePlayerDisplayNameReply(): boolean;
+  clearChangePlayerDisplayNameReply(): ServerUpdate;
+
   getTypeCase(): ServerUpdate.TypeCase;
 
   serializeBinary(): Uint8Array;
@@ -262,6 +274,7 @@ export namespace ServerUpdate {
     rematchDenied?: RematchDenied.AsObject,
     rematchApproved?: RematchApproved.AsObject,
     rematchPending?: RematchPending.AsObject,
+    changePlayerDisplayNameReply?: ChangePlayerDisplayNameReply.AsObject,
   }
 
   export enum TypeCase { 
@@ -291,6 +304,7 @@ export namespace ServerUpdate {
     REMATCH_DENIED = 23,
     REMATCH_APPROVED = 24,
     REMATCH_PENDING = 25,
+    CHANGE_PLAYER_DISPLAY_NAME_REPLY = 26,
   }
 }
 
@@ -1015,6 +1029,44 @@ export class RematchPending extends jspb.Message {
 
 export namespace RematchPending {
   export type AsObject = {
+  }
+}
+
+export class ChangePlayerDisplayNameRequest extends jspb.Message {
+  getDisplayname(): string;
+  setDisplayname(value: string): ChangePlayerDisplayNameRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ChangePlayerDisplayNameRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: ChangePlayerDisplayNameRequest): ChangePlayerDisplayNameRequest.AsObject;
+  static serializeBinaryToWriter(message: ChangePlayerDisplayNameRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ChangePlayerDisplayNameRequest;
+  static deserializeBinaryFromReader(message: ChangePlayerDisplayNameRequest, reader: jspb.BinaryReader): ChangePlayerDisplayNameRequest;
+}
+
+export namespace ChangePlayerDisplayNameRequest {
+  export type AsObject = {
+    displayname: string,
+  }
+}
+
+export class ChangePlayerDisplayNameReply extends jspb.Message {
+  getOutcome(): Outcome | undefined;
+  setOutcome(value?: Outcome): ChangePlayerDisplayNameReply;
+  hasOutcome(): boolean;
+  clearOutcome(): ChangePlayerDisplayNameReply;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ChangePlayerDisplayNameReply.AsObject;
+  static toObject(includeInstance: boolean, msg: ChangePlayerDisplayNameReply): ChangePlayerDisplayNameReply.AsObject;
+  static serializeBinaryToWriter(message: ChangePlayerDisplayNameReply, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ChangePlayerDisplayNameReply;
+  static deserializeBinaryFromReader(message: ChangePlayerDisplayNameReply, reader: jspb.BinaryReader): ChangePlayerDisplayNameReply;
+}
+
+export namespace ChangePlayerDisplayNameReply {
+  export type AsObject = {
+    outcome?: Outcome.AsObject,
   }
 }
 

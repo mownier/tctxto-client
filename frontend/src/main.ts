@@ -3,7 +3,7 @@ import { MainRootView } from './views/MainRootView'
 import * as ElementIds from './constants/element-ids'
 import { NoSessionHeaderView } from './views/NoSessionHeaderView'
 import { WelcomeView } from './views/WelcomeView'
-import { ClientCallback, createGame, createLobby, getLatestData, joinLobby, leaveMyLobby, makeMove, rematch, setClientCallback, signIn, signOut, signUp, subscribe, updateProxyOrigin, updateServerPublicKey } from './grpc/client'
+import { changeDisplayName, ClientCallback, createGame, createLobby, getLatestData, joinLobby, leaveMyLobby, makeMove, rematch, setClientCallback, signIn, signOut, signUp, subscribe, updateProxyOrigin, updateServerPublicKey } from './grpc/client'
 import { WithSessionHeaderView } from './views/WithSessionHeaderView'
 import { EmptytView } from './views/EmptyView'
 import { HomeView } from './views/HomeView'
@@ -480,6 +480,10 @@ class MyClientCallback implements ClientCallback {
             })
     }
 
+    changeDisplayNameNotOkay(): void {
+        this.updateHomeStatus("Unable to change display name")
+    }
+
     private updateMoverInfo(text: string): void {
         const element = document.getElementById(ElementIds.MOVER_INFO_ID) as HTMLParagraphElement
         if (!element) {
@@ -535,7 +539,11 @@ class MyClientCallback implements ClientCallback {
                 }
             })
             .setCommitNameChangeCallback(async (name: string) => {
-                // TODO:
+                try {
+                    await changeDisplayName(name)
+                } catch {
+                    this.changeDisplayNameNotOkay()
+                }
             })
     }
 }
