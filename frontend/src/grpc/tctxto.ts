@@ -62,7 +62,7 @@ export namespace server2 {
         }
     }
     export class ClientUpdate extends pb_1.Message {
-        #one_of_decls: number[][] = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]];
+        #one_of_decls: number[][] = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]];
         constructor(data?: any[] | ({} & (({
             sign_up_request?: SignUpRequest;
             sign_in_request?: never;
@@ -74,6 +74,7 @@ export namespace server2 {
             make_move_request?: never;
             rematch_request?: never;
             change_player_display_name_request?: never;
+            lobby_search_request?: never;
         } | {
             sign_up_request?: never;
             sign_in_request?: SignInRequest;
@@ -85,6 +86,7 @@ export namespace server2 {
             make_move_request?: never;
             rematch_request?: never;
             change_player_display_name_request?: never;
+            lobby_search_request?: never;
         } | {
             sign_up_request?: never;
             sign_in_request?: never;
@@ -96,6 +98,7 @@ export namespace server2 {
             make_move_request?: never;
             rematch_request?: never;
             change_player_display_name_request?: never;
+            lobby_search_request?: never;
         } | {
             sign_up_request?: never;
             sign_in_request?: never;
@@ -107,6 +110,7 @@ export namespace server2 {
             make_move_request?: never;
             rematch_request?: never;
             change_player_display_name_request?: never;
+            lobby_search_request?: never;
         } | {
             sign_up_request?: never;
             sign_in_request?: never;
@@ -118,6 +122,7 @@ export namespace server2 {
             make_move_request?: never;
             rematch_request?: never;
             change_player_display_name_request?: never;
+            lobby_search_request?: never;
         } | {
             sign_up_request?: never;
             sign_in_request?: never;
@@ -129,6 +134,7 @@ export namespace server2 {
             make_move_request?: never;
             rematch_request?: never;
             change_player_display_name_request?: never;
+            lobby_search_request?: never;
         } | {
             sign_up_request?: never;
             sign_in_request?: never;
@@ -140,6 +146,7 @@ export namespace server2 {
             make_move_request?: never;
             rematch_request?: never;
             change_player_display_name_request?: never;
+            lobby_search_request?: never;
         } | {
             sign_up_request?: never;
             sign_in_request?: never;
@@ -151,6 +158,7 @@ export namespace server2 {
             make_move_request?: MakeMoveRequest;
             rematch_request?: never;
             change_player_display_name_request?: never;
+            lobby_search_request?: never;
         } | {
             sign_up_request?: never;
             sign_in_request?: never;
@@ -162,6 +170,7 @@ export namespace server2 {
             make_move_request?: never;
             rematch_request?: RematchRequest;
             change_player_display_name_request?: never;
+            lobby_search_request?: never;
         } | {
             sign_up_request?: never;
             sign_in_request?: never;
@@ -173,6 +182,19 @@ export namespace server2 {
             make_move_request?: never;
             rematch_request?: never;
             change_player_display_name_request?: ChangePlayerDisplayNameRequest;
+            lobby_search_request?: never;
+        } | {
+            sign_up_request?: never;
+            sign_in_request?: never;
+            sign_out_request?: never;
+            create_lobby_request?: never;
+            join_lobby_request?: never;
+            leave_my_lobby_request?: never;
+            create_game_request?: never;
+            make_move_request?: never;
+            rematch_request?: never;
+            change_player_display_name_request?: never;
+            lobby_search_request?: LobbySearchRequest;
         })))) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
@@ -206,6 +228,9 @@ export namespace server2 {
                 }
                 if ("change_player_display_name_request" in data && data.change_player_display_name_request != undefined) {
                     this.change_player_display_name_request = data.change_player_display_name_request;
+                }
+                if ("lobby_search_request" in data && data.lobby_search_request != undefined) {
+                    this.lobby_search_request = data.lobby_search_request;
                 }
             }
         }
@@ -299,9 +324,18 @@ export namespace server2 {
         get has_change_player_display_name_request() {
             return pb_1.Message.getField(this, 10) != null;
         }
+        get lobby_search_request() {
+            return pb_1.Message.getWrapperField(this, LobbySearchRequest, 11) as LobbySearchRequest;
+        }
+        set lobby_search_request(value: LobbySearchRequest) {
+            pb_1.Message.setOneofWrapperField(this, 11, this.#one_of_decls[0], value);
+        }
+        get has_lobby_search_request() {
+            return pb_1.Message.getField(this, 11) != null;
+        }
         get type() {
             const cases: {
-                [index: number]: "none" | "sign_up_request" | "sign_in_request" | "sign_out_request" | "create_lobby_request" | "join_lobby_request" | "leave_my_lobby_request" | "create_game_request" | "make_move_request" | "rematch_request" | "change_player_display_name_request";
+                [index: number]: "none" | "sign_up_request" | "sign_in_request" | "sign_out_request" | "create_lobby_request" | "join_lobby_request" | "leave_my_lobby_request" | "create_game_request" | "make_move_request" | "rematch_request" | "change_player_display_name_request" | "lobby_search_request";
             } = {
                 0: "none",
                 1: "sign_up_request",
@@ -313,9 +347,10 @@ export namespace server2 {
                 7: "create_game_request",
                 8: "make_move_request",
                 9: "rematch_request",
-                10: "change_player_display_name_request"
+                10: "change_player_display_name_request",
+                11: "lobby_search_request"
             };
-            return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])];
+            return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])];
         }
         static fromObject(data: {
             sign_up_request?: ReturnType<typeof SignUpRequest.prototype.toObject>;
@@ -328,6 +363,7 @@ export namespace server2 {
             make_move_request?: ReturnType<typeof MakeMoveRequest.prototype.toObject>;
             rematch_request?: ReturnType<typeof RematchRequest.prototype.toObject>;
             change_player_display_name_request?: ReturnType<typeof ChangePlayerDisplayNameRequest.prototype.toObject>;
+            lobby_search_request?: ReturnType<typeof LobbySearchRequest.prototype.toObject>;
         }): ClientUpdate {
             const message = new ClientUpdate({});
             if (data.sign_up_request != null) {
@@ -360,6 +396,9 @@ export namespace server2 {
             if (data.change_player_display_name_request != null) {
                 message.change_player_display_name_request = ChangePlayerDisplayNameRequest.fromObject(data.change_player_display_name_request);
             }
+            if (data.lobby_search_request != null) {
+                message.lobby_search_request = LobbySearchRequest.fromObject(data.lobby_search_request);
+            }
             return message;
         }
         toObject() {
@@ -374,6 +413,7 @@ export namespace server2 {
                 make_move_request?: ReturnType<typeof MakeMoveRequest.prototype.toObject>;
                 rematch_request?: ReturnType<typeof RematchRequest.prototype.toObject>;
                 change_player_display_name_request?: ReturnType<typeof ChangePlayerDisplayNameRequest.prototype.toObject>;
+                lobby_search_request?: ReturnType<typeof LobbySearchRequest.prototype.toObject>;
             } = {};
             if (this.sign_up_request != null) {
                 data.sign_up_request = this.sign_up_request.toObject();
@@ -405,6 +445,9 @@ export namespace server2 {
             if (this.change_player_display_name_request != null) {
                 data.change_player_display_name_request = this.change_player_display_name_request.toObject();
             }
+            if (this.lobby_search_request != null) {
+                data.lobby_search_request = this.lobby_search_request.toObject();
+            }
             return data;
         }
         serialize(): Uint8Array;
@@ -431,6 +474,8 @@ export namespace server2 {
                 writer.writeMessage(9, this.rematch_request, () => this.rematch_request.serialize(writer));
             if (this.has_change_player_display_name_request)
                 writer.writeMessage(10, this.change_player_display_name_request, () => this.change_player_display_name_request.serialize(writer));
+            if (this.has_lobby_search_request)
+                writer.writeMessage(11, this.lobby_search_request, () => this.lobby_search_request.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -470,6 +515,9 @@ export namespace server2 {
                     case 10:
                         reader.readMessage(message.change_player_display_name_request, () => message.change_player_display_name_request = ChangePlayerDisplayNameRequest.deserialize(reader));
                         break;
+                    case 11:
+                        reader.readMessage(message.lobby_search_request, () => message.lobby_search_request = LobbySearchRequest.deserialize(reader));
+                        break;
                     default: reader.skipField();
                 }
             }
@@ -483,7 +531,7 @@ export namespace server2 {
         }
     }
     export class ServerUpdate extends pb_1.Message {
-        #one_of_decls: number[][] = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26]];
+        #one_of_decls: number[][] = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]];
         constructor(data?: any[] | ({} & (({
             ping?: Ping;
             client_assignment_update?: never;
@@ -511,6 +559,8 @@ export namespace server2 {
             rematch_approved?: never;
             rematch_pending?: never;
             change_player_display_name_reply?: never;
+            lobby_search_reply?: never;
+            lobby_search_result?: never;
         } | {
             ping?: never;
             client_assignment_update?: ClientAssignmentUpdate;
@@ -538,6 +588,8 @@ export namespace server2 {
             rematch_approved?: never;
             rematch_pending?: never;
             change_player_display_name_reply?: never;
+            lobby_search_reply?: never;
+            lobby_search_result?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -565,6 +617,8 @@ export namespace server2 {
             rematch_approved?: never;
             rematch_pending?: never;
             change_player_display_name_reply?: never;
+            lobby_search_reply?: never;
+            lobby_search_result?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -592,6 +646,8 @@ export namespace server2 {
             rematch_approved?: never;
             rematch_pending?: never;
             change_player_display_name_reply?: never;
+            lobby_search_reply?: never;
+            lobby_search_result?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -619,6 +675,8 @@ export namespace server2 {
             rematch_approved?: never;
             rematch_pending?: never;
             change_player_display_name_reply?: never;
+            lobby_search_reply?: never;
+            lobby_search_result?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -646,6 +704,8 @@ export namespace server2 {
             rematch_approved?: never;
             rematch_pending?: never;
             change_player_display_name_reply?: never;
+            lobby_search_reply?: never;
+            lobby_search_result?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -673,6 +733,8 @@ export namespace server2 {
             rematch_approved?: never;
             rematch_pending?: never;
             change_player_display_name_reply?: never;
+            lobby_search_reply?: never;
+            lobby_search_result?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -700,6 +762,8 @@ export namespace server2 {
             rematch_approved?: never;
             rematch_pending?: never;
             change_player_display_name_reply?: never;
+            lobby_search_reply?: never;
+            lobby_search_result?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -727,6 +791,8 @@ export namespace server2 {
             rematch_approved?: never;
             rematch_pending?: never;
             change_player_display_name_reply?: never;
+            lobby_search_reply?: never;
+            lobby_search_result?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -754,6 +820,8 @@ export namespace server2 {
             rematch_approved?: never;
             rematch_pending?: never;
             change_player_display_name_reply?: never;
+            lobby_search_reply?: never;
+            lobby_search_result?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -781,6 +849,8 @@ export namespace server2 {
             rematch_approved?: never;
             rematch_pending?: never;
             change_player_display_name_reply?: never;
+            lobby_search_reply?: never;
+            lobby_search_result?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -808,6 +878,8 @@ export namespace server2 {
             rematch_approved?: never;
             rematch_pending?: never;
             change_player_display_name_reply?: never;
+            lobby_search_reply?: never;
+            lobby_search_result?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -835,6 +907,8 @@ export namespace server2 {
             rematch_approved?: never;
             rematch_pending?: never;
             change_player_display_name_reply?: never;
+            lobby_search_reply?: never;
+            lobby_search_result?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -862,6 +936,8 @@ export namespace server2 {
             rematch_approved?: never;
             rematch_pending?: never;
             change_player_display_name_reply?: never;
+            lobby_search_reply?: never;
+            lobby_search_result?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -889,6 +965,8 @@ export namespace server2 {
             rematch_approved?: never;
             rematch_pending?: never;
             change_player_display_name_reply?: never;
+            lobby_search_reply?: never;
+            lobby_search_result?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -916,6 +994,8 @@ export namespace server2 {
             rematch_approved?: never;
             rematch_pending?: never;
             change_player_display_name_reply?: never;
+            lobby_search_reply?: never;
+            lobby_search_result?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -943,6 +1023,8 @@ export namespace server2 {
             rematch_approved?: never;
             rematch_pending?: never;
             change_player_display_name_reply?: never;
+            lobby_search_reply?: never;
+            lobby_search_result?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -970,6 +1052,8 @@ export namespace server2 {
             rematch_approved?: never;
             rematch_pending?: never;
             change_player_display_name_reply?: never;
+            lobby_search_reply?: never;
+            lobby_search_result?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -997,6 +1081,8 @@ export namespace server2 {
             rematch_approved?: never;
             rematch_pending?: never;
             change_player_display_name_reply?: never;
+            lobby_search_reply?: never;
+            lobby_search_result?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -1024,6 +1110,8 @@ export namespace server2 {
             rematch_approved?: never;
             rematch_pending?: never;
             change_player_display_name_reply?: never;
+            lobby_search_reply?: never;
+            lobby_search_result?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -1051,6 +1139,8 @@ export namespace server2 {
             rematch_approved?: never;
             rematch_pending?: never;
             change_player_display_name_reply?: never;
+            lobby_search_reply?: never;
+            lobby_search_result?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -1078,6 +1168,8 @@ export namespace server2 {
             rematch_approved?: never;
             rematch_pending?: never;
             change_player_display_name_reply?: never;
+            lobby_search_reply?: never;
+            lobby_search_result?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -1105,6 +1197,8 @@ export namespace server2 {
             rematch_approved?: never;
             rematch_pending?: never;
             change_player_display_name_reply?: never;
+            lobby_search_reply?: never;
+            lobby_search_result?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -1132,6 +1226,8 @@ export namespace server2 {
             rematch_approved?: RematchApproved;
             rematch_pending?: never;
             change_player_display_name_reply?: never;
+            lobby_search_reply?: never;
+            lobby_search_result?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -1159,6 +1255,8 @@ export namespace server2 {
             rematch_approved?: never;
             rematch_pending?: RematchPending;
             change_player_display_name_reply?: never;
+            lobby_search_reply?: never;
+            lobby_search_result?: never;
         } | {
             ping?: never;
             client_assignment_update?: never;
@@ -1186,6 +1284,66 @@ export namespace server2 {
             rematch_approved?: never;
             rematch_pending?: never;
             change_player_display_name_reply?: ChangePlayerDisplayNameReply;
+            lobby_search_reply?: never;
+            lobby_search_result?: never;
+        } | {
+            ping?: never;
+            client_assignment_update?: never;
+            navigation_update?: never;
+            sign_up_reply?: never;
+            sign_in_reply?: never;
+            sign_out_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+            player_display_name_update?: never;
+            rematch_reply?: never;
+            rematch_denied?: never;
+            rematch_approved?: never;
+            rematch_pending?: never;
+            change_player_display_name_reply?: never;
+            lobby_search_reply?: LobbySearchReply;
+            lobby_search_result?: never;
+        } | {
+            ping?: never;
+            client_assignment_update?: never;
+            navigation_update?: never;
+            sign_up_reply?: never;
+            sign_in_reply?: never;
+            sign_out_reply?: never;
+            my_lobby_details?: never;
+            my_lobby_joiner_update?: never;
+            my_lobby_leaver_update?: never;
+            create_lobby_reply?: never;
+            join_lobby_reply?: never;
+            leave_my_lobby_reply?: never;
+            create_game_reply?: never;
+            make_move_reply?: never;
+            move_update?: never;
+            winner_update?: never;
+            draw_update?: never;
+            game_start_update?: never;
+            next_mover_update?: never;
+            player_client_update?: never;
+            player_display_name_update?: never;
+            rematch_reply?: never;
+            rematch_denied?: never;
+            rematch_approved?: never;
+            rematch_pending?: never;
+            change_player_display_name_reply?: never;
+            lobby_search_reply?: never;
+            lobby_search_result?: LobbySearchResult;
         })))) {
             super();
             pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
@@ -1267,6 +1425,12 @@ export namespace server2 {
                 }
                 if ("change_player_display_name_reply" in data && data.change_player_display_name_reply != undefined) {
                     this.change_player_display_name_reply = data.change_player_display_name_reply;
+                }
+                if ("lobby_search_reply" in data && data.lobby_search_reply != undefined) {
+                    this.lobby_search_reply = data.lobby_search_reply;
+                }
+                if ("lobby_search_result" in data && data.lobby_search_result != undefined) {
+                    this.lobby_search_result = data.lobby_search_result;
                 }
             }
         }
@@ -1504,9 +1668,27 @@ export namespace server2 {
         get has_change_player_display_name_reply() {
             return pb_1.Message.getField(this, 26) != null;
         }
+        get lobby_search_reply() {
+            return pb_1.Message.getWrapperField(this, LobbySearchReply, 27) as LobbySearchReply;
+        }
+        set lobby_search_reply(value: LobbySearchReply) {
+            pb_1.Message.setOneofWrapperField(this, 27, this.#one_of_decls[0], value);
+        }
+        get has_lobby_search_reply() {
+            return pb_1.Message.getField(this, 27) != null;
+        }
+        get lobby_search_result() {
+            return pb_1.Message.getWrapperField(this, LobbySearchResult, 28) as LobbySearchResult;
+        }
+        set lobby_search_result(value: LobbySearchResult) {
+            pb_1.Message.setOneofWrapperField(this, 28, this.#one_of_decls[0], value);
+        }
+        get has_lobby_search_result() {
+            return pb_1.Message.getField(this, 28) != null;
+        }
         get type() {
             const cases: {
-                [index: number]: "none" | "ping" | "client_assignment_update" | "navigation_update" | "sign_up_reply" | "sign_in_reply" | "sign_out_reply" | "my_lobby_details" | "my_lobby_joiner_update" | "my_lobby_leaver_update" | "create_lobby_reply" | "join_lobby_reply" | "leave_my_lobby_reply" | "create_game_reply" | "make_move_reply" | "move_update" | "winner_update" | "draw_update" | "game_start_update" | "next_mover_update" | "player_client_update" | "player_display_name_update" | "rematch_reply" | "rematch_denied" | "rematch_approved" | "rematch_pending" | "change_player_display_name_reply";
+                [index: number]: "none" | "ping" | "client_assignment_update" | "navigation_update" | "sign_up_reply" | "sign_in_reply" | "sign_out_reply" | "my_lobby_details" | "my_lobby_joiner_update" | "my_lobby_leaver_update" | "create_lobby_reply" | "join_lobby_reply" | "leave_my_lobby_reply" | "create_game_reply" | "make_move_reply" | "move_update" | "winner_update" | "draw_update" | "game_start_update" | "next_mover_update" | "player_client_update" | "player_display_name_update" | "rematch_reply" | "rematch_denied" | "rematch_approved" | "rematch_pending" | "change_player_display_name_reply" | "lobby_search_reply" | "lobby_search_result";
             } = {
                 0: "none",
                 1: "ping",
@@ -1534,9 +1716,11 @@ export namespace server2 {
                 23: "rematch_denied",
                 24: "rematch_approved",
                 25: "rematch_pending",
-                26: "change_player_display_name_reply"
+                26: "change_player_display_name_reply",
+                27: "lobby_search_reply",
+                28: "lobby_search_result"
             };
-            return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26])];
+            return cases[pb_1.Message.computeOneofCase(this, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28])];
         }
         static fromObject(data: {
             ping?: ReturnType<typeof Ping.prototype.toObject>;
@@ -1565,6 +1749,8 @@ export namespace server2 {
             rematch_approved?: ReturnType<typeof RematchApproved.prototype.toObject>;
             rematch_pending?: ReturnType<typeof RematchPending.prototype.toObject>;
             change_player_display_name_reply?: ReturnType<typeof ChangePlayerDisplayNameReply.prototype.toObject>;
+            lobby_search_reply?: ReturnType<typeof LobbySearchReply.prototype.toObject>;
+            lobby_search_result?: ReturnType<typeof LobbySearchResult.prototype.toObject>;
         }): ServerUpdate {
             const message = new ServerUpdate({});
             if (data.ping != null) {
@@ -1645,6 +1831,12 @@ export namespace server2 {
             if (data.change_player_display_name_reply != null) {
                 message.change_player_display_name_reply = ChangePlayerDisplayNameReply.fromObject(data.change_player_display_name_reply);
             }
+            if (data.lobby_search_reply != null) {
+                message.lobby_search_reply = LobbySearchReply.fromObject(data.lobby_search_reply);
+            }
+            if (data.lobby_search_result != null) {
+                message.lobby_search_result = LobbySearchResult.fromObject(data.lobby_search_result);
+            }
             return message;
         }
         toObject() {
@@ -1675,6 +1867,8 @@ export namespace server2 {
                 rematch_approved?: ReturnType<typeof RematchApproved.prototype.toObject>;
                 rematch_pending?: ReturnType<typeof RematchPending.prototype.toObject>;
                 change_player_display_name_reply?: ReturnType<typeof ChangePlayerDisplayNameReply.prototype.toObject>;
+                lobby_search_reply?: ReturnType<typeof LobbySearchReply.prototype.toObject>;
+                lobby_search_result?: ReturnType<typeof LobbySearchResult.prototype.toObject>;
             } = {};
             if (this.ping != null) {
                 data.ping = this.ping.toObject();
@@ -1754,6 +1948,12 @@ export namespace server2 {
             if (this.change_player_display_name_reply != null) {
                 data.change_player_display_name_reply = this.change_player_display_name_reply.toObject();
             }
+            if (this.lobby_search_reply != null) {
+                data.lobby_search_reply = this.lobby_search_reply.toObject();
+            }
+            if (this.lobby_search_result != null) {
+                data.lobby_search_result = this.lobby_search_result.toObject();
+            }
             return data;
         }
         serialize(): Uint8Array;
@@ -1812,6 +2012,10 @@ export namespace server2 {
                 writer.writeMessage(25, this.rematch_pending, () => this.rematch_pending.serialize(writer));
             if (this.has_change_player_display_name_reply)
                 writer.writeMessage(26, this.change_player_display_name_reply, () => this.change_player_display_name_reply.serialize(writer));
+            if (this.has_lobby_search_reply)
+                writer.writeMessage(27, this.lobby_search_reply, () => this.lobby_search_reply.serialize(writer));
+            if (this.has_lobby_search_result)
+                writer.writeMessage(28, this.lobby_search_result, () => this.lobby_search_result.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -1898,6 +2102,12 @@ export namespace server2 {
                         break;
                     case 26:
                         reader.readMessage(message.change_player_display_name_reply, () => message.change_player_display_name_reply = ChangePlayerDisplayNameReply.deserialize(reader));
+                        break;
+                    case 27:
+                        reader.readMessage(message.lobby_search_reply, () => message.lobby_search_reply = LobbySearchReply.deserialize(reader));
+                        break;
+                    case 28:
+                        reader.readMessage(message.lobby_search_result, () => message.lobby_search_result = LobbySearchResult.deserialize(reader));
                         break;
                     default: reader.skipField();
                 }
@@ -4672,6 +4882,210 @@ export namespace server2 {
         }
         static deserializeBinary(bytes: Uint8Array): ChangePlayerDisplayNameReply {
             return ChangePlayerDisplayNameReply.deserialize(bytes);
+        }
+    }
+    export class LobbySearchRequest extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            name?: string;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("name" in data && data.name != undefined) {
+                    this.name = data.name;
+                }
+            }
+        }
+        get name() {
+            return pb_1.Message.getFieldWithDefault(this, 1, "") as string;
+        }
+        set name(value: string) {
+            pb_1.Message.setField(this, 1, value);
+        }
+        static fromObject(data: {
+            name?: string;
+        }): LobbySearchRequest {
+            const message = new LobbySearchRequest({});
+            if (data.name != null) {
+                message.name = data.name;
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                name?: string;
+            } = {};
+            if (this.name != null) {
+                data.name = this.name;
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.name.length)
+                writer.writeString(1, this.name);
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): LobbySearchRequest {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new LobbySearchRequest();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        message.name = reader.readString();
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): LobbySearchRequest {
+            return LobbySearchRequest.deserialize(bytes);
+        }
+    }
+    export class LobbySearchReply extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            outcome?: Outcome;
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("outcome" in data && data.outcome != undefined) {
+                    this.outcome = data.outcome;
+                }
+            }
+        }
+        get outcome() {
+            return pb_1.Message.getWrapperField(this, Outcome, 1) as Outcome;
+        }
+        set outcome(value: Outcome) {
+            pb_1.Message.setWrapperField(this, 1, value);
+        }
+        get has_outcome() {
+            return pb_1.Message.getField(this, 1) != null;
+        }
+        static fromObject(data: {
+            outcome?: ReturnType<typeof Outcome.prototype.toObject>;
+        }): LobbySearchReply {
+            const message = new LobbySearchReply({});
+            if (data.outcome != null) {
+                message.outcome = Outcome.fromObject(data.outcome);
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                outcome?: ReturnType<typeof Outcome.prototype.toObject>;
+            } = {};
+            if (this.outcome != null) {
+                data.outcome = this.outcome.toObject();
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.has_outcome)
+                writer.writeMessage(1, this.outcome, () => this.outcome.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): LobbySearchReply {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new LobbySearchReply();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        reader.readMessage(message.outcome, () => message.outcome = Outcome.deserialize(reader));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): LobbySearchReply {
+            return LobbySearchReply.deserialize(bytes);
+        }
+    }
+    export class LobbySearchResult extends pb_1.Message {
+        #one_of_decls: number[][] = [];
+        constructor(data?: any[] | {
+            lobbies?: Lobby[];
+        }) {
+            super();
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
+            if (!Array.isArray(data) && typeof data == "object") {
+                if ("lobbies" in data && data.lobbies != undefined) {
+                    this.lobbies = data.lobbies;
+                }
+            }
+        }
+        get lobbies() {
+            return pb_1.Message.getRepeatedWrapperField(this, Lobby, 1) as Lobby[];
+        }
+        set lobbies(value: Lobby[]) {
+            pb_1.Message.setRepeatedWrapperField(this, 1, value);
+        }
+        static fromObject(data: {
+            lobbies?: ReturnType<typeof Lobby.prototype.toObject>[];
+        }): LobbySearchResult {
+            const message = new LobbySearchResult({});
+            if (data.lobbies != null) {
+                message.lobbies = data.lobbies.map(item => Lobby.fromObject(item));
+            }
+            return message;
+        }
+        toObject() {
+            const data: {
+                lobbies?: ReturnType<typeof Lobby.prototype.toObject>[];
+            } = {};
+            if (this.lobbies != null) {
+                data.lobbies = this.lobbies.map((item: Lobby) => item.toObject());
+            }
+            return data;
+        }
+        serialize(): Uint8Array;
+        serialize(w: pb_1.BinaryWriter): void;
+        serialize(w?: pb_1.BinaryWriter): Uint8Array | void {
+            const writer = w || new pb_1.BinaryWriter();
+            if (this.lobbies.length)
+                writer.writeRepeatedMessage(1, this.lobbies, (item: Lobby) => item.serialize(writer));
+            if (!w)
+                return writer.getResultBuffer();
+        }
+        static deserialize(bytes: Uint8Array | pb_1.BinaryReader): LobbySearchResult {
+            const reader = bytes instanceof pb_1.BinaryReader ? bytes : new pb_1.BinaryReader(bytes), message = new LobbySearchResult();
+            while (reader.nextField()) {
+                if (reader.isEndGroup())
+                    break;
+                switch (reader.getFieldNumber()) {
+                    case 1:
+                        reader.readMessage(message.lobbies, () => pb_1.Message.addToRepeatedWrapperField(message, 1, Lobby.deserialize(reader), Lobby));
+                        break;
+                    default: reader.skipField();
+                }
+            }
+            return message;
+        }
+        serializeBinary(): Uint8Array {
+            return this.serialize();
+        }
+        static deserializeBinary(bytes: Uint8Array): LobbySearchResult {
+            return LobbySearchResult.deserialize(bytes);
         }
     }
     interface GrpcUnaryServiceInterface<P, R> {

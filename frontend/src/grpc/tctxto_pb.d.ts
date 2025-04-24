@@ -67,6 +67,11 @@ export class ClientUpdate extends jspb.Message {
   hasChangePlayerDisplayNameRequest(): boolean;
   clearChangePlayerDisplayNameRequest(): ClientUpdate;
 
+  getLobbySearchRequest(): LobbySearchRequest | undefined;
+  setLobbySearchRequest(value?: LobbySearchRequest): ClientUpdate;
+  hasLobbySearchRequest(): boolean;
+  clearLobbySearchRequest(): ClientUpdate;
+
   getTypeCase(): ClientUpdate.TypeCase;
 
   serializeBinary(): Uint8Array;
@@ -89,6 +94,7 @@ export namespace ClientUpdate {
     makeMoveRequest?: MakeMoveRequest.AsObject,
     rematchRequest?: RematchRequest.AsObject,
     changePlayerDisplayNameRequest?: ChangePlayerDisplayNameRequest.AsObject,
+    lobbySearchRequest?: LobbySearchRequest.AsObject,
   }
 
   export enum TypeCase { 
@@ -103,6 +109,7 @@ export namespace ClientUpdate {
     MAKE_MOVE_REQUEST = 8,
     REMATCH_REQUEST = 9,
     CHANGE_PLAYER_DISPLAY_NAME_REQUEST = 10,
+    LOBBY_SEARCH_REQUEST = 11,
   }
 }
 
@@ -237,6 +244,16 @@ export class ServerUpdate extends jspb.Message {
   hasChangePlayerDisplayNameReply(): boolean;
   clearChangePlayerDisplayNameReply(): ServerUpdate;
 
+  getLobbySearchReply(): LobbySearchReply | undefined;
+  setLobbySearchReply(value?: LobbySearchReply): ServerUpdate;
+  hasLobbySearchReply(): boolean;
+  clearLobbySearchReply(): ServerUpdate;
+
+  getLobbySearchResult(): LobbySearchResult | undefined;
+  setLobbySearchResult(value?: LobbySearchResult): ServerUpdate;
+  hasLobbySearchResult(): boolean;
+  clearLobbySearchResult(): ServerUpdate;
+
   getTypeCase(): ServerUpdate.TypeCase;
 
   serializeBinary(): Uint8Array;
@@ -275,6 +292,8 @@ export namespace ServerUpdate {
     rematchApproved?: RematchApproved.AsObject,
     rematchPending?: RematchPending.AsObject,
     changePlayerDisplayNameReply?: ChangePlayerDisplayNameReply.AsObject,
+    lobbySearchReply?: LobbySearchReply.AsObject,
+    lobbySearchResult?: LobbySearchResult.AsObject,
   }
 
   export enum TypeCase { 
@@ -305,6 +324,8 @@ export namespace ServerUpdate {
     REMATCH_APPROVED = 24,
     REMATCH_PENDING = 25,
     CHANGE_PLAYER_DISPLAY_NAME_REPLY = 26,
+    LOBBY_SEARCH_REPLY = 27,
+    LOBBY_SEARCH_RESULT = 28,
   }
 }
 
@@ -1067,6 +1088,64 @@ export class ChangePlayerDisplayNameReply extends jspb.Message {
 export namespace ChangePlayerDisplayNameReply {
   export type AsObject = {
     outcome?: Outcome.AsObject,
+  }
+}
+
+export class LobbySearchRequest extends jspb.Message {
+  getName(): string;
+  setName(value: string): LobbySearchRequest;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): LobbySearchRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: LobbySearchRequest): LobbySearchRequest.AsObject;
+  static serializeBinaryToWriter(message: LobbySearchRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): LobbySearchRequest;
+  static deserializeBinaryFromReader(message: LobbySearchRequest, reader: jspb.BinaryReader): LobbySearchRequest;
+}
+
+export namespace LobbySearchRequest {
+  export type AsObject = {
+    name: string,
+  }
+}
+
+export class LobbySearchReply extends jspb.Message {
+  getOutcome(): Outcome | undefined;
+  setOutcome(value?: Outcome): LobbySearchReply;
+  hasOutcome(): boolean;
+  clearOutcome(): LobbySearchReply;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): LobbySearchReply.AsObject;
+  static toObject(includeInstance: boolean, msg: LobbySearchReply): LobbySearchReply.AsObject;
+  static serializeBinaryToWriter(message: LobbySearchReply, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): LobbySearchReply;
+  static deserializeBinaryFromReader(message: LobbySearchReply, reader: jspb.BinaryReader): LobbySearchReply;
+}
+
+export namespace LobbySearchReply {
+  export type AsObject = {
+    outcome?: Outcome.AsObject,
+  }
+}
+
+export class LobbySearchResult extends jspb.Message {
+  getLobbiesList(): Array<Lobby>;
+  setLobbiesList(value: Array<Lobby>): LobbySearchResult;
+  clearLobbiesList(): LobbySearchResult;
+  addLobbies(value?: Lobby, index?: number): Lobby;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): LobbySearchResult.AsObject;
+  static toObject(includeInstance: boolean, msg: LobbySearchResult): LobbySearchResult.AsObject;
+  static serializeBinaryToWriter(message: LobbySearchResult, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): LobbySearchResult;
+  static deserializeBinaryFromReader(message: LobbySearchResult, reader: jspb.BinaryReader): LobbySearchResult;
+}
+
+export namespace LobbySearchResult {
+  export type AsObject = {
+    lobbiesList: Array<Lobby.AsObject>,
   }
 }
 

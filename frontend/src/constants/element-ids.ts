@@ -39,3 +39,5 @@ export const REMATCH_NO_BUTTON_ID = "rematch-no"
 export const REMATCH_CONTAINER_DIV_ID = "rematch-container"
 
 export const REMATCH_WAITING_ROOM_CONTENT_DIV_ID = 'rematch-waiting-room-content'
+
+export const LOBBY_SEARCH_RESULT_TABLE_ID = 'lobby-search-result-table'

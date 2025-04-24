@@ -3,7 +3,7 @@ import { MainRootView } from './views/MainRootView'
 import * as ElementIds from './constants/element-ids'
 import { NoSessionHeaderView } from './views/NoSessionHeaderView'
 import { WelcomeView } from './views/WelcomeView'
-import { changeDisplayName, ClientCallback, createGame, createLobby, getLatestData, joinLobby, leaveMyLobby, makeMove, rematch, setClientCallback, signIn, signOut, signUp, subscribe, updateProxyOrigin, updateServerPublicKey } from './grpc/client'
+import { changeDisplayName, ClientCallback, createGame, createLobby, getLatestData, joinLobby, leaveMyLobby, makeMove, rematch, searchLobby, setClientCallback, signIn, signOut, signUp, subscribe, updateProxyOrigin, updateServerPublicKey } from './grpc/client'
 import { WithSessionHeaderView } from './views/WithSessionHeaderView'
 import { EmptytView } from './views/EmptyView'
 import { HomeView } from './views/HomeView'
@@ -29,7 +29,7 @@ async function main() {
             updateProxyOrigin(poMetaContent)
         }
     }
-    
+
     try {
         await setLocaleAutomatically()
     } catch (error) {
@@ -92,6 +92,13 @@ class MyClientCallback implements ClientCallback {
                     await joinLobby(lobbyId)
                 } catch {
                     this.joinLobbyNotOkay()
+                }
+            })
+            .setSearchLobbyCallback(async (lobbyName: string) => {
+                try {
+                    await searchLobby(lobbyName)
+                } catch {
+                    this.lobbySearchNotOkay()
                 }
             })
     }
@@ -451,7 +458,7 @@ class MyClientCallback implements ClientCallback {
                     break
             }
         }
-       
+
         const rematchContainer = document.getElementById(ElementIds.REMATCH_CONTAINER_DIV_ID) as HTMLDivElement
         if (rematchContainer) {
             rematchContainer.hidden = false
@@ -482,6 +489,49 @@ class MyClientCallback implements ClientCallback {
 
     changeDisplayNameNotOkay(): void {
         this.updateHomeStatus("Unable to change display name")
+    }
+
+    lobbySearchNotOkay(): void {
+        this.updateHomeStatus("Unable to search for lobbies")
+    }
+
+    lobbySearchResultReceived(): void {
+        const table = document.getElementById(ElementIds.LOBBY_SEARCH_RESULT_TABLE_ID) as HTMLTableElement
+        if (!table) {
+            return
+        }
+        if (getLatestData().lobbySearchResult.length == 0) {
+            this.updateHomeStatus("No lobbies found")
+            return
+        }
+
+        table.innerHTML = ''
+
+        const tbody: HTMLTableSectionElement = document.createElement('tbody')
+        getLatestData().lobbySearchResult.forEach(lobby => {
+            if (lobby) {
+                const row: HTMLTableRowElement = tbody.insertRow()
+
+                const nameCell: HTMLTableCellElement = row.insertCell()
+                nameCell.textContent = lobby.getName()
+                nameCell.style.width = 'auto'
+
+                const joinButtonCell: HTMLTableCellElement = row.insertCell()
+                const joinButton: HTMLButtonElement = document.createElement('button')
+                joinButtonCell.style.textAlign = 'right'
+                joinButton.classList.add('lobby-search-result-join-button')
+                joinButton.textContent = "Join" 
+                joinButton.addEventListener('click', async () => {
+                    try {
+                        await joinLobby(lobby.getId())
+                    } catch (error) {
+                        this.joinLobbyNotOkay()
+                    }
+                })
+                joinButtonCell.appendChild(joinButton)
+            }
+        })
+        table.appendChild(tbody)
     }
 
     private updateMoverInfo(text: string): void {

@@ -1,5 +1,5 @@
 import { TicTacToeClient } from './TctxtoServiceClientPb';
-import { ClientUpdate, NavigationPath, NavigationUpdate, ServerUpdate, SignInRequest, SignUpRequest, SignOutRequest, CreateLobbyRequest, Lobby, Empty, Player, JoinLobbyRequest, LeaveMyLobbyRequest, CreateGameRequest, MakeMoveRequest, Mover, Move, Technicality, RematchRequest, ChangePlayerDisplayNameRequest } from "./tctxto_pb"
+import { ClientUpdate, NavigationPath, NavigationUpdate, ServerUpdate, SignInRequest, SignUpRequest, SignOutRequest, CreateLobbyRequest, Lobby, Empty, Player, JoinLobbyRequest, LeaveMyLobbyRequest, CreateGameRequest, MakeMoveRequest, Mover, Move, Technicality, RematchRequest, ChangePlayerDisplayNameRequest, LobbySearchRequest } from "./tctxto_pb"
 import { ClientReadableStream, Metadata } from "grpc-web"
 
 const CLIENT_ID_STORAGE_KEY: string = 'TicTacToeClient_clientId'
@@ -14,7 +14,8 @@ let latestData: LatestData = {
     path: null,
     lobby: null,
     playerDisplayName: '',
-    gameStatus: null
+    gameStatus: null,
+    lobbySearchResult: [],
 }
 
 export function updateProxyOrigin(value: string): void {
@@ -48,6 +49,7 @@ export interface LatestData {
     lobby: Lobby | null
     playerDisplayName: string
     gameStatus: GameStatus | null
+    lobbySearchResult: Lobby[]
 }
 
 export interface ClientCallback {
@@ -77,6 +79,8 @@ export interface ClientCallback {
     rematchNotOkay(): void
     showRematchWaitingRoom(): void
     changeDisplayNameNotOkay(): void
+    lobbySearchNotOkay(): void
+    lobbySearchResultReceived(): void
 }
 
 class ClientCallbackDefaultImp implements ClientCallback {
@@ -181,6 +185,14 @@ class ClientCallbackDefaultImp implements ClientCallback {
     }
 
     changeDisplayNameNotOkay(): void {
+        throw new Error("Method not implemented.")
+    }
+
+    lobbySearchResultReceived(): void {
+        throw new Error("Method not implemented.")
+    }
+
+    lobbySearchNotOkay(): void {
         throw new Error("Method not implemented.")
     }
 }
@@ -397,6 +409,23 @@ export async function changeDisplayName(name: string): Promise<void> {
             resolve()
         } catch (error) {
             clientCallback.changeDisplayNameNotOkay()
+            reject(error)
+        }
+    })
+}
+
+export async function searchLobby(name: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+        try {
+            const update = new ClientUpdate()
+            const request = new LobbySearchRequest()
+            request.setName(name)
+            update.setLobbySearchRequest(request)
+            const client = createClient()
+            client.notify(update, metadataWithClientId())
+            resolve()
+        } catch (error) {
+            clientCallback.lobbySearchNotOkay()
             reject(error)
         }
     })
@@ -633,6 +662,24 @@ function handleStreamData(update: ServerUpdate) {
                     if (!update.getChangePlayerDisplayNameReply()!.getOutcome()!.getOk()) {
                         clientCallback.changeDisplayNameNotOkay()
                     }
+                }
+            }
+            break
+        case ServerUpdate.TypeCase.LOBBY_SEARCH_REPLY:
+            if (update.getLobbySearchReply()) {
+                if (update.getLobbySearchReply()!.getOutcome()) {
+                    if (!update.getLobbySearchReply()!.getOutcome()!.getOk()) {
+                        clientCallback.lobbySearchNotOkay()
+                    }
+                }
+            }
+            break
+        case ServerUpdate.TypeCase.LOBBY_SEARCH_RESULT:
+            if (update.getLobbySearchResult()) {
+                if (update.getLobbySearchResult()!.getLobbiesList()) {
+                    const list: Lobby[] = update.getLobbySearchResult()!.getLobbiesList()!
+                    latestData.lobbySearchResult = list
+                    clientCallback.lobbySearchResultReceived()
                 }
             }
             break
